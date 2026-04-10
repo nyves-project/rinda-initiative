@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rinda — Certificate of Empowerment</title>
+  <meta name="description" content="Your Rinda Initiative Certificate of Empowerment — awarded for completing all condom negotiation modules."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <style>
+    /* Locked State */
+    .locked-state {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 60vh; padding: 2rem 1.5rem; text-align: center;
+    }
+    .locked-icon { font-size: 4rem; margin-bottom: 1rem; filter: grayscale(1); opacity: 0.5; }
+    .locked-state h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-secondary); }
+    .locked-state p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 300px; }
+    .module-checklist { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; max-width: 320px; margin: 1rem 0; }
+    .check-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 0.75rem 1rem;
+      font-size: 0.85rem; color: var(--text-secondary);
+    }
+    .check-item.done { border-color: rgba(29,185,84,0.3); color: var(--text-primary); }
+    .check-item .check-icon { font-size: 1.1rem; }
+    .go-modules-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem; border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, var(--blue), #006fa8);
+      color: #fff; font-weight: 700; font-size: 0.9rem;
+      border: none; cursor: pointer; font-family: 'Outfit', sans-serif;
+      box-shadow: 0 8px 30px rgba(0,160,220,0.3);
+      transition: var(--transition); text-decoration: none;
+    }
+    .go-modules-btn:hover { transform: translateY(-2px); }
+
+    /* Certificate */
+    .cert-state { display: none; padding: 1.5rem; }
+    .cert-state.unlocked { display: block; }
+
+    .certificate {
+      background: linear-gradient(145deg, #081428, #0d1f38);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .certificate::before {
+      content: '';
+      position: absolute; inset: 8px;
+      border: 1px solid rgba(250,210,1,0.2);
+      border-radius: calc(var(--radius-lg) - 4px);
+      pointer-events: none;
+    }
+    /* Corner ornaments */
+    .cert-corner {
+      position: absolute; font-size: 1.5rem; opacity: 0.4;
+    }
+    .cert-corner.tl { top: 12px; left: 14px; }
+    .cert-corner.tr { top: 12px; right: 14px; }
+    .cert-corner.bl { bottom: 12px; left: 14px; }
+    .cert-corner.br { bottom: 12px; right: 14px; }
+
+    .cert-badge-row {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .cert-org-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 1rem; border-radius: var(--radius-xl);
+      background: rgba(250,210,1,0.1); border: 1px solid rgba(250,210,1,0.4);
+      font-size: 0.7rem; font-weight: 700; color: var(--gold);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .cert-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .cert-main-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem; font-weight: 900;
+      color: var(--gold); margin-bottom: 0.15rem;
+      text-shadow: 0 0 30px rgba(250,210,1,0.3);
+    }
+    .cert-subtitle {
+      font-size: 0.9rem; color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .cert-divider {
+      height: 1px; background: linear-gradient(90deg, transparent, rgba(250,210,1,0.4), transparent);
+      margin: 1rem 0;
+    }
+
+    .cert-awarded-to {
+      font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+    }
+    .cert-name {
+      font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900;
+      color: var(--text-primary);
+      border-bottom: 2px solid rgba(250,210,1,0.3);
+      padding-bottom: 0.4rem; margin-bottom: 0.25rem;
+      display: inline-block;
+    }
+    .cert-name-placeholder {
+      font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900;
+      color: var(--text-muted); font-style: italic;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+      padding-bottom: 0.4rem; margin-bottom: 0.25rem;
+      display: inline-block;
+    }
+
+    .cert-desc {
+      font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7;
+      margin: 1rem 0;
+    }
+    .cert-desc strong { color: var(--text-primary); }
+
+    .cert-modules-list {
+      display: flex; flex-direction: column; gap: 0.4rem; margin: 1rem 0; text-align: left;
+    }
+    .cert-module-row {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.8rem; color: var(--text-secondary);
+    }
+    .cert-module-row .cm-check { color: var(--green); font-size: 1rem; }
+    .cert-module-row .cm-kin { font-size: 0.72rem; color: var(--text-muted); }
+
+    .cert-date {
+      font-size: 0.78rem; color: var(--text-muted);
+      margin-top: 1rem;
+    }
+
+    .cert-seal {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #b8960a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin: 1.25rem auto 0;
+      box-shadow: 0 0 30px rgba(250,210,1,0.3);
+      animation: sealPulse 3s ease infinite;
+    }
+    @keyframes sealPulse { 0%,100%{box-shadow:0 0 20px rgba(250,210,1,0.3)} 50%{box-shadow:0 0 40px rgba(250,210,1,0.5)} }
+
+    /* Name input area */
+    .name-section {
+      max-width: 480px; margin: 1.5rem auto 0;
+    }
+    .name-section label {
+      display: block; font-size: 0.8rem; color: var(--text-secondary);
+      font-weight: 600; margin-bottom: 0.5rem;
+    }
+    .name-input-row { display: flex; gap: 0.5rem; }
+    .name-input {
+      flex: 1; background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 0.75rem 1rem;
+      color: var(--text-primary); font-size: 0.95rem; font-family: 'Inter', sans-serif;
+      outline: none; transition: border-color var(--transition);
+    }
+    .name-input:focus { border-color: var(--gold); }
+    .apply-name-btn {
+      padding: 0.75rem 1.25rem; border-radius: var(--radius-md);
+      background: var(--gold); color: #000; font-weight: 700;
+      border: none; cursor: pointer; font-size: 0.85rem; transition: var(--transition);
+    }
+    .apply-name-btn:hover { opacity: 0.85; }
+
+    /* Action buttons */
+    .cert-actions {
+      display: flex; gap: 0.75rem; max-width: 480px; margin: 1.25rem auto 0;
+      flex-wrap: wrap;
+    }
+    .cert-action-btn {
+      flex: 1; padding: 0.85rem 1rem; border-radius: var(--radius-md);
+      font-weight: 700; font-size: 0.85rem; cursor: pointer;
+      border: 1px solid var(--glass-border); background: var(--bg-card);
+      color: var(--text-primary); transition: var(--transition); font-family: 'Inter', sans-serif;
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+      text-decoration: none;
+    }
+    .cert-action-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .cert-action-btn.primary {
+      background: linear-gradient(135deg, var(--gold), #b8960a);
+      color: #000; border-color: var(--gold);
+    }
+    .cert-action-btn.primary:hover { opacity: 0.85; color: #000; }
+
+    /* Confetti */
+    .confetti-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 999; overflow: hidden;
+    }
+    .confetti-piece {
+      position: absolute; width: 10px; height: 10px; border-radius: 2px;
+      animation: confettiFall linear forwards;
+    }
+    @keyframes confettiFall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
+  <div class="header-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="kin">KIN</button>
+    </div>
+    <button class="access-btn" onclick="toggleAccessPanel()" aria-label="Accessibility">♿</button>
+  </div>
+</header>
+
+<div class="access-panel" id="access-panel">
+  <h4>♿ Accessibility</h4>
+  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+</div>
+
+<!-- Confetti container -->
+<div class="confetti-container" id="confetti-container"></div>
+
+<main class="app-main" role="main">
+
+  <!-- LOCKED STATE -->
+  <div class="locked-state" id="locked-state">
+    <div class="locked-icon">🏆</div>
+    <h2>Certificate Locked</h2>
+    <p>Complete all 3 learning quizzes in the Learn section to unlock your Certificate of Empowerment.</p>
+    <div class="module-checklist" id="module-checklist">
+      <!-- Populated by JS -->
+    </div>
+    <a href="modules.html" class="go-modules-btn">📖 Go to Learn →</a>
+  </div>
+
+  <!-- CERTIFICATE STATE -->
+  <div class="cert-state" id="cert-state">
+
+    <div class="certificate" id="certificate" role="region" aria-label="Certificate of Empowerment">
+      <span class="cert-corner tl">✦</span>
+      <span class="cert-corner tr">✦</span>
+      <span class="cert-corner bl">✦</span>
+      <span class="cert-corner br">✦</span>
+
+      <div class="cert-badge-row">
+        <div class="cert-org-badge">🛡️ Rinda Initiative · iAccelerator 7</div>
+      </div>
+
+      <div class="cert-title">This Certifies That</div>
+      <div style="margin:0.5rem 0">
+        <div class="cert-name-placeholder" id="cert-name-display">Anonymous Champion</div>
+      </div>
+
+      <div class="cert-main-title">Certificate of Empowerment</div>
+      <div class="cert-subtitle">HIV Prevention Learning Programme</div>
+
+      <div class="cert-divider"></div>
+
+      <div class="cert-desc">
+        Has successfully completed all three HIV prevention learning modules,
+        demonstrating knowledge and commitment to protecting
+        <strong>Rwanda's youth</strong>. Grounded in Rwanda 2025 DHS data.
+      </div>
+
+      <div class="cert-modules-list">
+        <div class="cert-module-row">
+          <span class="cm-check">✅</span>
+          <span>Story 01 — Grace's First Test <span class="cm-kin">(Self-Testing)</span></span>
+        </div>
+        <div class="cert-module-row">
+          <span class="cm-check">✅</span>
+          <span>Story 02 — Jean & Diane: Testing Together <span class="cm-kin">(Couples Testing)</span></span>
+        </div>
+        <div class="cert-module-row">
+          <span class="cm-check">✅</span>
+          <span>Story 03 — Patrick's Wake-Up Call <span class="cm-kin">(Condom Use)</span></span>
+        </div>
+      </div>
+
+      <div class="cert-divider"></div>
+
+      <div class="cert-date" id="cert-date">Issued: —</div>
+
+      <div class="cert-seal" aria-label="Official seal">🏆</div>
+    </div>
+
+    <!-- Name personalisation -->
+    <div class="name-section">
+      <label for="cert-name-input">✏️ Personalise your certificate (optional):</label>
+      <div class="name-input-row">
+        <input type="text" class="name-input" id="cert-name-input"
+          placeholder="Enter your name or leave anonymous"
+          maxlength="40" aria-label="Your name for the certificate"/>
+        <button class="apply-name-btn" onclick="applyName()">Apply</button>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="cert-actions">
+      <button class="cert-action-btn primary" onclick="printCertificate()">🖨️ Save / Print</button>
+      <button class="cert-action-btn" onclick="shareCertificate()">📤 Share</button>
+      <button class="cert-action-btn" onclick="shareWhatsApp()" style="background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.4);color:#25D366">💬 WhatsApp</button>
+      <a href="order.html" class="cert-action-btn">📦 Order Test Kit</a>
+    </div>
+
+    <div style="padding:1.5rem;text-align:center">
+      <a href="modules.html" style="font-size:.8rem;color:var(--text-muted)">← Back to Modules</a>
+    </div>
+  </div>
+
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
+  <a href="ussd.html" class="bottom-nav-item" id="nav-ussd"><span class="nav-icon">📟</span>USSD</a>
+  <a href="order.html" class="bottom-nav-item" id="nav-order"><span class="nav-icon">📦</span>Order</a>
+  <a href="modules.html" class="bottom-nav-item active" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+</nav>
+
+<script src="../assets/js/app.js"></script>
+<script>
+  const moduleLabels = [
+    'Grace\'s First Test (Self-Testing)',
+    'Jean & Diane: Testing Together (Couples)',
+    'Patrick\'s Wake-Up Call (Condom Use)'
+  ];
+
+  function buildChecklist(){
+    const list = document.getElementById('module-checklist');
+    if(!list) return;
+    list.innerHTML = '';
+    for(let i=1;i<=3;i++){
+      const done = completedScenarios.includes(i);
+      const item = document.createElement('div');
+      item.className = 'check-item' + (done ? ' done' : '');
+      item.innerHTML = `<span class="check-icon">${done ? '✅' : '⬜'}</span><span>Module 0${i} — ${moduleLabels[i-1]}</span>`;
+      list.appendChild(item);
+    }
+  }
+
+  function checkUnlock(){
+    buildChecklist();
+    if(completedScenarios.length >= 3){
+      document.getElementById('locked-state').style.display = 'none';
+      document.getElementById('cert-state').classList.add('unlocked');
+      // Set issue date
+      const dateEl = document.getElementById('cert-date');
+      if(dateEl) dateEl.textContent = 'Issued: ' + new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+      // Launch confetti
+      launchConfetti();
+    }
+  }
+
+  function applyName(){
+    const input = document.getElementById('cert-name-input');
+    const display = document.getElementById('cert-name-display');
+    if(!input || !display) return;
+    const name = input.value.trim() || 'Anonymous Champion';
+    display.textContent = name;
+    display.className = 'cert-name';
+    localStorage.setItem('rinda-cert-name', name);
+  }
+
+  function printCertificate(){
+    window.print();
+  }
+
+  function shareCertificate(){
+    const name = document.getElementById('cert-name-display')?.textContent || 'Anonymous Champion';
+    const text = `🛡️ "${name}" just earned a Rinda Initiative Certificate of Empowerment! I completed all 3 HIV prevention learning modules. #RindaInitiative #HIVPrevention #Rwanda`;
+    openShareModal('Share Your Certificate', text, window.location.href);
+  }
+
+  function shareWhatsApp(){
+    const name = document.getElementById('cert-name-display')?.textContent || 'Anonymous Champion';
+    const text = `🛡️ I just earned my Rinda Certificate of Empowerment!\n\n"${name}" completed all 3 HIV prevention learning modules on the Rinda Initiative platform.\n\n🇷🇼 Built for Rwanda's youth — try it free: ${window.location.origin}\n\n#RindaInitiative #HIVPrevention #Rwanda`;
+    window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+  }
+
+  function launchConfetti(){
+    const container = document.getElementById('confetti-container');
+    if(!container) return;
+    const colors = ['#FAD201','#00A0DC','#1DB954','#FF4757','#fff'];
+    for(let i=0;i<60;i++){
+      setTimeout(()=>{
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random()*100 + 'vw';
+        piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+        piece.style.width = (8 + Math.random()*8) + 'px';
+        piece.style.height = (8 + Math.random()*8) + 'px';
+        piece.style.animationDuration = (2 + Math.random()*3) + 's';
+        piece.style.animationDelay = (Math.random()*0.5) + 's';
+        container.appendChild(piece);
+        setTimeout(()=>piece.remove(), 5000);
+      }, i*30);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    checkUnlock();
+    const savedName = localStorage.getItem('rinda-cert-name');
+    if(savedName){
+      const display = document.getElementById('cert-name-display');
+      if(display){ display.textContent = savedName; display.className = 'cert-name'; }
+    }
+  });
+</script>
+
+<style>
+@media print {
+  .app-header, .bottom-nav, .access-panel, .name-section, .cert-actions, .locked-state,
+  a[href="modules.html"], #confetti-container { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .certificate {
+    background: #fff !important; border: 3px solid #b8960a !important;
+    color: #000 !important; border-radius: 16px;
+  }
+  .cert-main-title { color: #b8960a !important; }
+  .cert-date, .cert-desc, .cert-modules-list { color: #333 !important; }
+  .cert-org-badge { border: 1px solid #b8960a !important; color: #b8960a !important; }
+  .app-main { padding: 0 !important; }
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rinda — Impact Dashboard</title>
+  <meta name="description" content="Live impact tracking for the Rinda Initiative — youth tested, modules completed, USSD users reached."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <style>
+    .impact-hero {
+      background: linear-gradient(135deg, rgba(0,160,220,0.12), rgba(29,185,84,0.08));
+      padding: 2rem 1.5rem 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.9rem; border-radius: var(--radius-xl);
+      background: rgba(29,185,84,0.12); border: 1px solid rgba(29,185,84,0.3);
+      font-size: 0.7rem; font-weight: 700; color: var(--green);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .live-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+      animation: livePulse 1.5s ease infinite;
+    }
+    @keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+    /* Stat cards grid */
+    .stat-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      padding: 1.5rem 1.5rem 0;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg); padding: 1.25rem; position: relative; overflow: hidden;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .stat-card.blue::before   { background: var(--blue); }
+    .stat-card.green::before  { background: var(--green); }
+    .stat-card.gold::before   { background: var(--gold); }
+    .stat-card.red::before    { background: var(--red); }
+    .stat-card .s-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .stat-card .s-num {
+      font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 900;
+      line-height: 1; margin-bottom: 0.2rem;
+    }
+    .stat-card.blue .s-num   { color: var(--blue); }
+    .stat-card.green .s-num  { color: var(--green); }
+    .stat-card.gold .s-num   { color: var(--gold); }
+    .stat-card.red .s-num    { color: var(--red); }
+    .stat-card .s-label { font-size: 0.72rem; color: var(--text-secondary); line-height: 1.4; }
+    .stat-card .s-trend { font-size: 0.7rem; color: var(--green); margin-top: 0.4rem; }
+
+    /* Wide full-width stat */
+    .stat-wide {
+      grid-column: 1 / -1;
+    }
+    .stat-wide .s-num { font-size: 2.6rem; }
+
+    /* Sparkline bar chart */
+    .sparkline {
+      display: flex; align-items: flex-end; gap: 3px;
+      height: 36px; margin-top: 0.75rem;
+    }
+    .spark-bar {
+      flex: 1; border-radius: 3px 3px 0 0;
+      background: linear-gradient(180deg, var(--blue), rgba(0,160,220,0.3));
+      min-height: 4px; transition: height 0.6s ease;
+    }
+
+    /* Progress rings / gauges */
+    .gauge-section {
+      padding: 1.5rem;
+    }
+    .gauge-section h3 {
+      font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;
+    }
+    .gauge-list { display: flex; flex-direction: column; gap: 1rem; }
+    .gauge-row {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 1rem 1.25rem;
+    }
+    .gauge-row-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+    .gauge-label { font-size: 0.85rem; font-weight: 600; }
+    .gauge-vals { font-size: 0.8rem; color: var(--text-muted); }
+    .gauge-vals strong { color: var(--text-primary); font-weight: 700; }
+    .gauge-track {
+      height: 8px; background: rgba(255,255,255,0.06);
+      border-radius: 4px; overflow: hidden;
+    }
+    .gauge-fill {
+      height: 100%; border-radius: 4px;
+      transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* Activity feed */
+    .activity-section { padding: 0 1.5rem 1.5rem; }
+    .activity-section h3 {
+      font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;
+    }
+    .activity-feed { display: flex; flex-direction: column; gap: 0.6rem; }
+    .activity-item {
+      display: flex; align-items: center; gap: 0.85rem;
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 0.75rem 1rem;
+      animation: slideIn 0.4s ease both;
+    }
+    @keyframes slideIn { from{opacity:0;transform:translateX(-10px)} to{opacity:1;transform:translateX(0)} }
+    .activity-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .activity-text { font-size: 0.82rem; color: var(--text-secondary); flex: 1; }
+    .activity-text strong { color: var(--text-primary); }
+    .activity-time { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
+
+    /* District map placeholder */
+    .district-section { padding: 0 1.5rem 1.5rem; }
+    .district-section h3 {
+      font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;
+    }
+    .district-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+    .district-card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 0.9rem 0.75rem; text-align: center;
+    }
+    .district-name { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .district-num {
+      font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 900;
+    }
+    .district-bar {
+      height: 4px; border-radius: 2px; margin-top: 0.4rem;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      transition: width 1s ease;
+    }
+
+    @media (max-width:420px){
+      .stat-grid { grid-template-columns: 1fr; }
+      .stat-wide { grid-column: 1; }
+      .district-grid { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-logo">
+    <span class="logo-shield">🛡️</span>
+    <span>Rinda</span>&nbsp;Initiative
+  </div>
+  <div class="header-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="kin">KIN</button>
+    </div>
+    <button class="access-btn" onclick="toggleAccessPanel()" aria-label="Accessibility">♿</button>
+  </div>
+</header>
+
+<div class="access-panel" id="access-panel">
+  <h4>♿ Accessibility</h4>
+  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+</div>
+
+<main class="app-main" role="main">
+
+  <!-- Hero -->
+  <div class="impact-hero">
+    <div class="live-badge"><span class="live-dot"></span> Live Impact Data</div>
+    <h1 style="font-size:1.8rem;font-weight:900;margin-bottom:.25rem">Impact Dashboard</h1>
+    <p style="color:var(--text-secondary);font-size:.9rem">Real-time metrics — Year 1 pilot across Kigali, Southern, &amp; Eastern provinces.</p>
+  </div>
+
+  <!-- Top Stats -->
+  <div class="stat-grid">
+    <div class="stat-card blue fade-in">
+      <div class="s-icon">🔬</div>
+      <div class="s-num" id="counter-tested">0</div>
+      <div class="s-label">Youth 15–24 tested for the first time</div>
+      <div class="s-trend">▲ +234 this week</div>
+      <div class="sparkline" id="sparkline-1"></div>
+    </div>
+    <div class="stat-card green fade-in" style="transition-delay:.1s">
+      <div class="s-icon">📖</div>
+      <div class="s-num" id="counter-modules">0</div>
+      <div class="s-label">Learning quizzes completed</div>
+      <div class="s-trend">▲ +89 this week</div>
+    </div>
+    <div class="stat-card gold fade-in" style="transition-delay:.2s">
+      <div class="s-icon">📟</div>
+      <div class="s-num" id="counter-ussd">0</div>
+      <div class="s-label">USSD users without smartphones</div>
+      <div class="s-trend">▲ +47 this week</div>
+    </div>
+    <div class="stat-card red fade-in" style="transition-delay:.3s">
+      <div class="s-icon">♿</div>
+      <div class="s-num" id="counter-pwd">0</div>
+      <div class="s-label">Persons with disabilities served</div>
+      <div class="s-trend">▲ +12 this week</div>
+    </div>
+    <div class="stat-card green stat-wide fade-in" style="transition-delay:.4s">
+      <div class="s-icon">📦</div>
+      <div class="s-num" id="counter-kits">0</div>
+      <div class="s-label">Self-test kits delivered anonymously — zero stigma encounters reported</div>
+      <div class="s-trend">▲ +61 kits this week · Average delivery: 31 hours</div>
+    </div>
+  </div>
+
+  <!-- Progress to Year-1 Targets -->
+  <div class="gauge-section">
+    <h3>🎯 Progress to Year-1 Targets</h3>
+    <div class="gauge-list">
+      <div class="gauge-row fade-in">
+        <div class="gauge-row-top">
+          <span class="gauge-label">Youth 15–24 tested (first time)</span>
+          <span class="gauge-vals"><strong id="gauge-val-1">3,847</strong> / 5,000</span>
+        </div>
+        <div class="gauge-track"><div class="gauge-fill" id="gauge-fill-1" style="width:0%;background:linear-gradient(90deg,var(--blue),#33c1f5)"></div></div>
+      </div>
+      <div class="gauge-row fade-in" style="transition-delay:.1s">
+        <div class="gauge-row-top">
+          <span class="gauge-label">Users completing all learning quizzes</span>
+          <span class="gauge-vals"><strong id="gauge-val-2">1,924</strong> / 3,000</span>
+        </div>
+        <div class="gauge-track"><div class="gauge-fill" id="gauge-fill-2" style="width:0%;background:linear-gradient(90deg,var(--gold),#1DB954)"></div></div>
+      </div>
+      <div class="gauge-row fade-in" style="transition-delay:.2s">
+        <div class="gauge-row-top">
+          <span class="gauge-label">USSD users without smartphones reached</span>
+          <span class="gauge-vals"><strong id="gauge-val-3">1,289</strong> / 2,500</span>
+        </div>
+        <div class="gauge-track"><div class="gauge-fill" id="gauge-fill-3" style="width:0%;background:linear-gradient(90deg,var(--green-dark),var(--blue))"></div></div>
+      </div>
+      <div class="gauge-row fade-in" style="transition-delay:.3s">
+        <div class="gauge-row-top">
+          <span class="gauge-label">Persons with disabilities served</span>
+          <span class="gauge-vals"><strong id="gauge-val-4">412</strong> / 800</span>
+        </div>
+        <div class="gauge-track"><div class="gauge-fill" id="gauge-fill-4" style="width:0%;background:linear-gradient(90deg,var(--red),var(--gold))"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- District Breakdown -->
+  <div class="district-section">
+    <h3>📍 Reach by District</h3>
+    <div class="district-grid">
+      <div class="district-card fade-in">
+        <div class="district-name">Kigali</div>
+        <div class="district-num" style="color:var(--blue)">1,247</div>
+      </div>
+      <div class="district-card fade-in" style="transition-delay:.05s">
+        <div class="district-name">Huye</div>
+        <div class="district-num" style="color:var(--green)">892</div>
+      </div>
+      <div class="district-card fade-in" style="transition-delay:.1s">
+        <div class="district-name">Musanze</div>
+        <div class="district-num" style="color:var(--gold)">634</div>
+      </div>
+      <div class="district-card fade-in" style="transition-delay:.15s">
+        <div class="district-name">Rubavu</div>
+        <div class="district-num" style="color:var(--red)">488</div>
+      </div>
+      <div class="district-card fade-in" style="transition-delay:.2s">
+        <div class="district-name">Rwamagana</div>
+        <div class="district-num" style="color:var(--blue)">371</div>
+      </div>
+      <div class="district-card fade-in" style="transition-delay:.25s">
+        <div class="district-name">Other</div>
+        <div class="district-num" style="color:var(--text-secondary)">215</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Activity Feed -->
+  <div class="activity-section">
+    <h3>⚡ Live Activity Feed</h3>
+    <div class="activity-feed" id="activity-feed">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- Data Note -->
+  <div style="padding:0 1.5rem 2rem;text-align:center">
+    <p style="font-size:.75rem;color:var(--text-muted);line-height:1.7">
+      📊 Impact data collected anonymously. No personally identifiable information is stored.<br/>
+      All targets derived from Rwanda 2025 DHS statistical gaps. Data refreshes every 5 minutes.
+    </p>
+  </div>
+
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
+  <a href="ussd.html" class="bottom-nav-item" id="nav-ussd"><span class="nav-icon">📟</span>USSD</a>
+  <a href="order.html" class="bottom-nav-item" id="nav-order"><span class="nav-icon">📦</span>Order</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+</nav>
+
+<script src="../assets/js/app.js"></script>
+<script>
+  /* ── Animated Counters ── */
+  function animateCounter(id, target, suffix='', duration=2000){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const start = performance.now();
+    function step(ts){
+      const prog = Math.min((ts-start)/duration,1);
+      const ease = 1 - Math.pow(1-prog, 3);
+      el.textContent = Math.round(ease*target).toLocaleString() + suffix;
+      if(prog<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ── Gauge Bars ── */
+  function animateGauges(){
+    const gauges = [
+      {id:'gauge-fill-1', pct:77},
+      {id:'gauge-fill-2', pct:64},
+      {id:'gauge-fill-3', pct:52},
+      {id:'gauge-fill-4', pct:52},
+    ];
+    setTimeout(()=>{
+      gauges.forEach(g=>{
+        const el = document.getElementById(g.id);
+        if(el) el.style.width = g.pct + '%';
+      });
+    }, 400);
+  }
+
+  /* ── Sparkline ── */
+  function buildSparkline(){
+    const container = document.getElementById('sparkline-1');
+    if(!container) return;
+    const data = [18,24,21,30,28,35,42,38,50,58,65,72];
+    const max = Math.max(...data);
+    data.forEach(v=>{
+      const bar = document.createElement('div');
+      bar.className = 'spark-bar';
+      const h = Math.round((v/max)*36);
+      bar.style.height = '0px';
+      container.appendChild(bar);
+      setTimeout(()=>{ bar.style.height = h+'px'; }, 300);
+    });
+  }
+
+  /* ── Live Activity Feed ── */
+  const activities = [
+    { color:'var(--blue)',   text:'<strong>Anonymous user</strong> ordered a self-test kit in Huye district', time:'2 min ago' },
+    { color:'var(--green)',  text:'<strong>User in Kigali</strong> completed all 3 learning quizzes ✅', time:'5 min ago' },
+    { color:'var(--gold)',   text:'A <strong>USSD user</strong> joined via *775# — no smartphone', time:'8 min ago' },
+    { color:'var(--red)',    text:'<strong>PWD user</strong> accessed voice narration in Knowledge Hub', time:'12 min ago' },
+    { color:'var(--blue)',   text:'<strong>Testing reminder</strong> sent to 47 users — 3-month cycle', time:'18 min ago' },
+    { color:'var(--green)',  text:'<strong>Kit delivered</strong> anonymously in Musanze — 29hrs delivery time', time:'23 min ago' },
+  ];
+
+  function buildActivityFeed(){
+    const feed = document.getElementById('activity-feed');
+    if(!feed) return;
+    activities.forEach((a, i)=>{
+      const item = document.createElement('div');
+      item.className = 'activity-item';
+      item.style.animationDelay = (i*0.1) + 's';
+      item.innerHTML = `
+        <div class="activity-dot" style="background:${a.color}"></div>
+        <div class="activity-text">${a.text}</div>
+        <div class="activity-time">${a.time}</div>
+      `;
+      feed.appendChild(item);
+    });
+  }
+
+  /* ── Init on intersection ── */
+  let countersStarted = false;
+  const countersObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting && !countersStarted){
+        countersStarted = true;
+        animateCounter('counter-tested',  3847, '');
+        animateCounter('counter-modules', 1924, '');
+        animateCounter('counter-ussd',    1289, '');
+        animateCounter('counter-pwd',      412, '');
+        animateCounter('counter-kits',    2156, '');
+        animateGauges();
+        buildSparkline();
+      }
+    });
+  },{threshold:0.2});
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    buildActivityFeed();
+    const firstStat = document.querySelector('.stat-card');
+    if(firstStat) countersObs.observe(firstStat);
+
+    /* Simulate live ticking */
+    setInterval(()=>{
+      const counterEl = document.getElementById('counter-tested');
+      if(counterEl){
+        const current = parseInt(counterEl.textContent.replace(/,/g,'')) || 3847;
+        if(Math.random() > 0.6){
+          counterEl.textContent = (current + 1).toLocaleString();
+        }
+      }
+    }, 8000);
+  });
+</script>
+</body>
+</html>

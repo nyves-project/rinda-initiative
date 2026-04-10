@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rinda Initiative — iAccelerator 7 Pitch</title>
+  <meta name="description" content="The Rinda Initiative pitch deck for iAccelerator 7 — HIV prevention platform for Rwanda's youth."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #050c18; --card: rgba(10,20,40,0.9); --border: rgba(255,255,255,0.08);
+      --blue: #00A0DC; --green: #1DB954; --gold: #FAD201; --red: #FF4757;
+      --text: #f0f4ff; --muted: #8fa4c8; --dim: #4a6080;
+      --r: 20px; --rx: 40px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Outfit', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+    /* ── Slide System ── */
+    .slide {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 5rem 2rem 4rem; position: relative; overflow: hidden;
+    }
+    .slide-inner { max-width: 900px; width: 100%; }
+    .slide-num {
+      position: absolute; top: 1.5rem; right: 2rem;
+      font-size: .75rem; color: var(--dim); font-family: 'Outfit', sans-serif; font-weight: 700;
+      letter-spacing: .1em;
+    }
+    .slide-label {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .3rem .9rem; border-radius: var(--rx);
+      font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+      margin-bottom: 1.25rem;
+    }
+    .slide-label.blue  { background: rgba(0,160,220,.12); border: 1px solid rgba(0,160,220,.3); color: var(--blue); }
+    .slide-label.green { background: rgba(29,185,84,.12); border: 1px solid rgba(29,185,84,.3); color: var(--green); }
+    .slide-label.gold  { background: rgba(250,210,1,.12); border: 1px solid rgba(250,210,1,.3); color: var(--gold); }
+    .slide-label.red   { background: rgba(255,71,87,.12); border: 1px solid rgba(255,71,87,.3); color: var(--red); }
+
+    /* divider between slides */
+    .slide + .slide { border-top: 1px solid var(--border); }
+
+    /* ── Nav Bar ── */
+    .pitch-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 58px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; background: rgba(5,12,24,.95); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .pn-logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.1rem; display: flex; align-items: center; gap: .5rem; }
+    .pn-links { display: flex; gap: 1.5rem; font-size: .82rem; color: var(--muted); }
+    .pn-links a:hover { color: var(--text); }
+    .pn-cta {
+      padding: .45rem 1.2rem; border-radius: var(--rx); font-size: .82rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), #006fa8); color: #fff; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; transition: opacity .2s;
+    }
+    .pn-cta:hover { opacity: .85; }
+
+    /* ── Slide 1: Cover ── */
+    .cover-slide { background: radial-gradient(ellipse at 50% 0%, rgba(0,160,220,.15) 0%, transparent 60%); }
+    .cover-kicker { font-size: .85rem; color: var(--blue); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .cover-title { font-size: clamp(3rem,7vw,5.5rem); font-weight: 900; line-height: 1.05; margin-bottom: 1.25rem; }
+    .cover-title span { background: linear-gradient(135deg, var(--blue), var(--green)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .cover-sub { font-size: 1.15rem; color: var(--muted); max-width: 600px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cover-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 1rem; }
+    .cs-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.25rem; text-align: center; }
+    .cs-num { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 900; color: var(--blue); line-height: 1; }
+    .cs-label { font-size: .75rem; color: var(--muted); margin-top: .35rem; }
+
+    /* ── Slide 2: Problem ── */
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+    .pb-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 1.5rem; position: relative; overflow: hidden;
+    }
+    .pb-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .pb-card.red::before { background: var(--red); }
+    .pb-card.gold::before { background: var(--gold); }
+    .pb-card.blue::before { background: var(--blue); }
+    .pb-card.green::before { background: var(--green); }
+    .pb-stat { font-family: 'Outfit', sans-serif; font-size: 2.8rem; font-weight: 900; line-height: 1; margin-bottom: .4rem; }
+    .pb-card.red   .pb-stat { color: var(--red); }
+    .pb-card.gold  .pb-stat { color: var(--gold); }
+    .pb-card.blue  .pb-stat { color: var(--blue); }
+    .pb-card.green .pb-stat { color: var(--green); }
+    .pb-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .source-tag { font-size: .68rem; color: var(--dim); margin-top: .5rem; }
+
+    /* ── Slide 3: Solution ── */
+    .solution-features { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2rem; }
+    .sf-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 1.5rem; text-align: center; transition: transform .3s, border-color .3s;
+    }
+    .sf-card:hover { transform: translateY(-4px); border-color: rgba(0,160,220,.3); }
+    .sf-icon { font-size: 2.5rem; margin-bottom: .75rem; display: block; }
+    .sf-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
+    .sf-card p { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Slide 4: How it works ── */
+    .steps-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+    .step-row {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem;
+    }
+    .step-num-circle {
+      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--blue), #006fa8);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff;
+    }
+    .step-text h4 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
+    .step-text p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Slide 5: Impact ── */
+    .impact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2rem; }
+    .imp-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem; text-align: center;
+    }
+    .imp-num { font-family: 'Outfit', sans-serif; font-size: 2.4rem; font-weight: 900; color: var(--green); line-height: 1; }
+    .imp-label { font-size: .78rem; color: var(--muted); margin-top: .35rem; line-height: 1.4; }
+
+    /* ── Slide 6: Business Model ── */
+    .biz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    .biz-col h4 { font-size: 1rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .biz-item { display: flex; gap: .75rem; margin-bottom: .85rem; font-size: .88rem; }
+    .biz-icon { flex-shrink: 0; font-size: 1.1rem; }
+    .biz-item span { color: var(--muted); line-height: 1.5; }
+    .biz-item strong { color: var(--text); }
+
+    /* ── Slide 7: The Ask ── */
+    .ask-box {
+      background: linear-gradient(135deg, rgba(0,160,220,.1), rgba(29,185,84,.06));
+      border: 1px solid rgba(0,160,220,.25); border-radius: var(--r); padding: 2.5rem;
+      text-align: center; margin-top: 2rem;
+    }
+    .ask-amount { font-family: 'Outfit', sans-serif; font-size: 4rem; font-weight: 900; color: var(--gold); margin: .5rem 0; }
+    .ask-breakdown { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+    .ask-item {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 1rem 1.5rem; text-align: center; min-width: 160px;
+    }
+    .ask-item .a-pct { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--blue); }
+    .ask-item .a-label { font-size: .75rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ── CTA Slide ── */
+    .cta-slide { background: radial-gradient(ellipse at 50% 100%, rgba(29,185,84,.1) 0%, transparent 60%); }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .cta-btn {
+      padding: 1rem 2rem; border-radius: var(--rx); font-size: .95rem; font-weight: 700;
+      cursor: pointer; transition: opacity .3s; font-family: 'Outfit', sans-serif; border: none;
+    }
+    .cta-btn.primary { background: linear-gradient(135deg, var(--blue), #006fa8); color: #fff; }
+    .cta-btn.outline { background: transparent; border: 2px solid var(--blue); color: var(--blue); }
+    .cta-btn:hover { opacity: .8; }
+
+    /* Grid BG */
+    .slide::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px), linear-gradient(90deg,rgba(255,255,255,.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    @media(max-width:700px){
+      .cover-stats, .problem-grid, .solution-features, .impact-grid, .biz-grid { grid-template-columns: 1fr; }
+      .cover-title { font-size: 2.6rem; }
+      .pn-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="pitch-nav">
+  <div class="pn-logo">🛡️ Rinda Initiative</div>
+  <div class="pn-links">
+    <a href="#problem">Problem</a>
+    <a href="#solution">Solution</a>
+    <a href="#impact">Impact</a>
+    <a href="#ask">The Ask</a>
+  </div>
+  <a href="app/index.html" class="pn-cta">Try the Platform →</a>
+</nav>
+
+<!-- SLIDE 1: COVER -->
+<section class="slide cover-slide" id="cover">
+  <div class="slide-num">01 / 07</div>
+  <div class="slide-inner">
+    <div class="cover-kicker">iAccelerator 7 · Rwanda · 2025</div>
+    <h1 class="cover-title">The <span>Rinda</span><br/>Initiative</h1>
+    <p class="cover-sub">A bilingual, disability-inclusive HIV prevention platform reaching Rwanda's 15+ million youth who fall through the healthcare gap — via smartphone, USSD, and peer agents.</p>
+    <div class="cover-stats">
+      <div class="cs-box">
+        <div class="cs-num" style="color:var(--red)">22.4%</div>
+        <div class="cs-label">Youth aged 15–24 who have never tested for HIV<br/><span style="color:var(--dim);font-size:.65rem">Rwanda 2025 DHS</span></div>
+      </div>
+      <div class="cs-box">
+        <div class="cs-num" style="color:var(--gold)">32.4%</div>
+        <div class="cs-label">Women with no education who have HIV knowledge<br/><span style="color:var(--dim);font-size:.65rem">Rwanda 2025 DHS</span></div>
+      </div>
+      <div class="cs-box">
+        <div class="cs-num" style="color:var(--green)">15M+</div>
+        <div class="cs-label">Rwandans without smartphones — reachable via USSD<br/><span style="color:var(--dim);font-size:.65rem">RURA 2024</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: PROBLEM -->
+<section class="slide" id="problem">
+  <div class="slide-num">02 / 07</div>
+  <div class="slide-inner">
+    <div class="slide-label red">🚨 The Problem</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:.75rem;line-height:1.15">Rwanda's HIV prevention system has four critical gaps</h2>
+    <p style="color:var(--muted);margin-bottom:.5rem">All four are documented in the 2025 Rwanda Demographic and Health Survey</p>
+    <div class="problem-grid">
+      <div class="pb-card red">
+        <div class="pb-stat">22.4%</div>
+        <div class="pb-desc">of youth 15–24 have <strong>never been tested</strong> — they don't know their status</div>
+        <div class="source-tag">📊 Rwanda 2025 DHS, Table 12.7</div>
+      </div>
+      <div class="pb-card gold">
+        <div class="pb-stat">32.4%</div>
+        <div class="pb-desc">of women with no education have HIV knowledge — <strong>2× lower</strong> than educated peers</div>
+        <div class="source-tag">📊 Rwanda 2025 DHS, Chapter 12</div>
+      </div>
+      <div class="pb-card blue">
+        <div class="pb-stat">15M+</div>
+        <div class="pb-desc">Rwandans own <strong>basic phones only</strong> — locked out of smartphone health apps</div>
+        <div class="source-tag">📊 RURA Mobile Penetration Report 2024</div>
+      </div>
+      <div class="pb-card green">
+        <div class="pb-stat">3.1%</div>
+        <div class="pb-desc">of PWD youth have ever accessed HIV services — <strong>disability exclusion is systemic</strong></div>
+        <div class="source-tag">📊 Rwanda 2025 DHS, Table 14.2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: SOLUTION -->
+<section class="slide" id="solution">
+  <div class="slide-num">03 / 07</div>
+  <div class="slide-inner">
+    <div class="slide-label blue">✅ Our Solution</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:.75rem;line-height:1.15">Rinda: One platform, every barrier removed</h2>
+    <p style="color:var(--muted);margin-bottom:.5rem">Six interlocking tools that work <em>together</em> to reach the hardest-to-reach youth</p>
+    <div class="solution-features">
+      <div class="sf-card">
+        <span class="sf-icon">📦</span>
+        <h4>Anonymous Kit Delivery</h4>
+        <p>No name, no ID. Self-test kits delivered in plain packaging by trained peer agents within 48 hours.</p>
+      </div>
+      <div class="sf-card">
+        <span class="sf-icon">📟</span>
+        <h4>USSD (*775#)</h4>
+        <p>Zero smartphone, zero data required. Any basic phone user accesses all services in Kinyarwanda.</p>
+      </div>
+      <div class="sf-card">
+        <span class="sf-icon">📖</span>
+        <h4>Story-Driven Learning</h4>
+        <p>Real HIV prevention stories featuring Rwandan youth — builds knowledge without stigma or lecture.</p>
+      </div>
+      <div class="sf-card">
+        <span class="sf-icon">📚</span>
+        <h4>Knowledge Hub</h4>
+        <p>20 medically-verified cards across 6 categories. Audio read-aloud for low-literacy & visually impaired users.</p>
+      </div>
+      <div class="sf-card">
+        <span class="sf-icon">🧪</span>
+        <h4>Risk Assessment Quiz</h4>
+        <p>Personalised HIV risk score with immediate, culturally-sensitive action steps — no stigma framing.</p>
+      </div>
+      <div class="sf-card">
+        <span class="sf-icon">♿</span>
+        <h4>Disability-Inclusive Design</h4>
+        <p>High-contrast mode, font scaling, screen reader support, sign-language agent option — from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: HOW IT WORKS -->
+<section class="slide" id="how">
+  <div class="slide-num">04 / 07</div>
+  <div class="slide-inner">
+    <div class="slide-label gold">⚙️ How It Works</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:.75rem;line-height:1.15">From first touch to test result in 48 hours</h2>
+    <div class="steps-list">
+      <div class="step-row">
+        <div class="step-num-circle">1</div>
+        <div class="step-text">
+          <h4>Youth discovers Rinda — in any way</h4>
+          <p>Via the web platform on a smartphone, OR by dialling *775# on any basic phone, OR from a peer agent at school, clinic, or community event. No internet required for USSD.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num-circle">2</div>
+        <div class="step-text">
+          <h4>Takes a quick Risk Assessment (3 minutes)</h4>
+          <p>10 anonymous questions generate a personalised HIV risk score. Low/Medium/High with instant, non-judgmental action steps. All data stays on-device — nothing stored server-side.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num-circle">3</div>
+        <div class="step-text">
+          <h4>Orders a self-test kit anonymously</h4>
+          <p>No name, no ID, no clinic visit needed. Selects their sector. A trained peer agent packs the kit in plain packaging and delivers within 24–48 hours — a discreet knock at the door.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num-circle">4</div>
+        <div class="step-text">
+          <h4>Gets result + learns what to do next</h4>
+          <p>The Knowledge Hub explains exactly how to read results. If positive, the app connects to the free 114 counselling line. If negative, sets a 6-month testing reminder automatically.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: IMPACT -->
+<section class="slide" id="impact">
+  <div class="slide-num">05 / 07</div>
+  <div class="slide-inner">
+    <div class="slide-label green">📊 Year-1 Impact Targets</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:.75rem;line-height:1.15">Measurable, data-grounded targets linked to DHS gaps</h2>
+    <div class="impact-grid">
+      <div class="imp-card">
+        <div class="imp-num">5,000</div>
+        <div class="imp-label">Youth 15–24 tested for HIV for the first time</div>
+      </div>
+      <div class="imp-card">
+        <div class="imp-num">3,000</div>
+        <div class="imp-label">Users completing all learning quizzes (retained knowledge)</div>
+      </div>
+      <div class="imp-card">
+        <div class="imp-num">2,500</div>
+        <div class="imp-label">USSD users reached without smartphones</div>
+      </div>
+      <div class="imp-card">
+        <div class="imp-num" style="color:var(--gold)">800</div>
+        <div class="imp-label">Persons with disabilities served — first accessible HIV platform in Rwanda</div>
+      </div>
+      <div class="imp-card">
+        <div class="imp-num" style="color:var(--blue)">50</div>
+        <div class="imp-label">Trained peer agents in Kigali, Southern & Eastern provinces</div>
+      </div>
+      <div class="imp-card">
+        <div class="imp-num" style="color:var(--red)">0</div>
+        <div class="imp-label">Stigma encounters — anonymous-first design eliminates disclosure risk</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: BUSINESS MODEL -->
+<section class="slide" id="model">
+  <div class="slide-num">06 / 07</div>
+  <div class="slide-inner">
+    <div class="slide-label blue">💼 Business Model</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:.75rem;line-height:1.15">Revenue pathways aligned with Rwanda's health system</h2>
+    <div class="biz-grid">
+      <div class="biz-col">
+        <h4>💰 Revenue Streams</h4>
+        <div class="biz-item"><span class="biz-icon">🏛️</span><span><strong>Government contracts</strong> — Rwanda MoH / RBC procurement for self-test kit distribution platform (existing RBC framework)</span></div>
+        <div class="biz-item"><span class="biz-icon">🌍</span><span><strong>INGO partnerships</strong> — USAID, UNICEF, PSI Rwanda pay per-user for distribution platform access</span></div>
+        <div class="biz-item"><span class="biz-icon">📡</span><span><strong>Telco integration</strong> — MTN Rwanda, Airtel branded USSD health portal (revenue-share model)</span></div>
+        <div class="biz-item"><span class="biz-icon">🏥</span><span><strong>Clinic referral fees</strong> — partner clinics pay per confirmed referral from Rinda platform</span></div>
+      </div>
+      <div class="biz-col">
+        <h4>🔑 Competitive Moats</h4>
+        <div class="biz-item"><span class="biz-icon">🌐</span><span><strong>USSD-first</strong> — only HIV platform that works without internet in Rwanda</span></div>
+        <div class="biz-item"><span class="biz-icon">♿</span><span><strong>Disability inclusion</strong> — no other platform offers sign-language agent routing or audio USSD</span></div>
+        <div class="biz-item"><span class="biz-icon">🔒</span><span><strong>Zero-stigma anonymity</strong> — no name, no ID, no clinic visit required at any step</span></div>
+        <div class="biz-item"><span class="biz-icon">📊</span><span><strong>DHS data-grounded</strong> — every feature targets a specific statistically-identified gap</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: THE ASK -->
+<section class="slide" id="ask">
+  <div class="slide-num">07 / 07</div>
+  <div class="slide-inner">
+    <div class="slide-label gold">🎯 The Ask</div>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:.5rem;line-height:1.15">Seed funding to launch Year-1 pilot</h2>
+    <div class="ask-box">
+      <p style="color:var(--muted);font-size:.9rem">Requesting</p>
+      <div class="ask-amount">RWF 15,000,000</div>
+      <p style="color:var(--muted);font-size:.85rem">≈ USD 10,500 · 12-month pilot · Kigali + Southern + Eastern provinces</p>
+      <div class="ask-breakdown">
+        <div class="ask-item">
+          <div class="a-pct">45%</div>
+          <div class="a-label">Self-test kit procurement & delivery logistics</div>
+        </div>
+        <div class="ask-item">
+          <div class="a-pct">25%</div>
+          <div class="a-label">Peer agent training & stipends (50 agents)</div>
+        </div>
+        <div class="ask-item">
+          <div class="a-pct">20%</div>
+          <div class="a-label">Platform hosting, USSD integration & MoH registration</div>
+        </div>
+        <div class="ask-item">
+          <div class="a-pct">10%</div>
+          <div class="a-label">M&E, community outreach & iAccelerator programme requirements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: CTA -->
+<section class="slide cta-slide" id="cta">
+  <div class="slide-inner" style="text-align:center">
+    <div style="font-size:4rem;margin-bottom:1rem">🛡️</div>
+    <div class="slide-label blue" style="display:inline-flex;margin-bottom:1.5rem">Built by young Rwandans, for young Rwandans</div>
+    <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:1rem;line-height:1.15">Rinda is live, tested,<br/>and data-backed.</h2>
+    <p style="color:var(--muted);font-size:1rem;max-width:520px;margin:0 auto 1rem;line-height:1.7">Every feature you see was built specifically to close the gaps in the 2025 Rwanda DHS. Try the platform right now.</p>
+    <div style="font-size:.88rem;color:var(--dim);margin-bottom:2rem">NSHUTI Yves (Project Lead & Tech Lead) · ISHIMWE Aimee Benitha (Health Advisor & Community Lead)</div>
+    <div class="cta-btns">
+      <a href="app/index.html" class="cta-btn primary">🚀 Enter the Platform</a>
+      <a href="index.html" class="cta-btn outline">🌐 View Full Landing Page</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

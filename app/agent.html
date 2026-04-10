@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rinda — Peer Agent Portal</title>
+  <meta name="description" content="Rinda Peer Agent dashboard — manage deliveries, view pending orders, and track your impact."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <style>
+    .agent-hero {
+      background: linear-gradient(135deg, rgba(29,185,84,0.12), rgba(0,160,220,0.08));
+      padding: 2rem 1.5rem 1.5rem; border-bottom: 1px solid var(--glass-border);
+    }
+    .agent-stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; padding: 1rem 1.5rem 0; }
+    .agent-stat {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 1rem; text-align: center;
+    }
+    .as-num { font-family:'Outfit',sans-serif; font-size: 1.6rem; font-weight: 900; line-height: 1; }
+    .as-label { font-size: .7rem; color: var(--text-muted); margin-top: .3rem; }
+    .delivery-list { padding: 1rem 1.5rem; }
+    .delivery-list h3 {
+      font-size: .85rem; font-weight: 700; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .delivery-card {
+      background: var(--bg-card); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: .75rem;
+      transition: var(--transition);
+    }
+    .delivery-card:hover { border-color: rgba(0,160,220,.3); }
+    .dc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .6rem; }
+    .dc-code { font-family:'Outfit',sans-serif; font-weight: 800; color: var(--blue); font-size: .95rem; }
+    .dc-status {
+      padding: .25rem .7rem; border-radius: var(--radius-xl); font-size: .7rem; font-weight: 700;
+    }
+    .dc-status.pending { background: rgba(250,210,1,.12); border: 1px solid rgba(250,210,1,.3); color: var(--gold); }
+    .dc-status.transit { background: rgba(0,160,220,.12); border: 1px solid rgba(0,160,220,.3); color: var(--blue); }
+    .dc-status.delivered { background: rgba(29,185,84,.12); border: 1px solid rgba(29,185,84,.3); color: var(--green); }
+    .dc-details { font-size: .82rem; color: var(--text-secondary); line-height: 1.7; }
+    .dc-details strong { color: var(--text-primary); }
+    .dc-actions { display: flex; gap: .5rem; margin-top: .75rem; }
+    .dc-btn {
+      flex: 1; padding: .6rem; border-radius: var(--radius-sm); border: 1px solid var(--glass-border);
+      background: transparent; color: var(--text-secondary); font-size: .8rem; font-weight: 600;
+      cursor: pointer; transition: var(--transition); font-family: 'Inter', sans-serif;
+    }
+    .dc-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .dc-btn.primary { background: linear-gradient(135deg, var(--green), #1a9e48); color: #fff; border-color: var(--green); }
+    .dc-btn.primary:hover { opacity: .85; color: #fff; }
+    /* Badge */
+    .agent-badge {
+      margin: 1rem 1.5rem 0; background: linear-gradient(135deg, rgba(250,210,1,.08), rgba(250,210,1,.03));
+      border: 1px solid rgba(250,210,1,.25); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center;
+    }
+    .ab-medal { font-size: 3.5rem; display: block; margin-bottom: .5rem; }
+    .ab-title { font-size: 1.1rem; font-weight: 800; color: var(--gold); margin-bottom: .2rem; }
+    .ab-sub { font-size: .82rem; color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+<header class="app-header">
+  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Agent Portal</div>
+  <div class="header-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="kin">KIN</button>
+    </div>
+  </div>
+</header>
+
+<main class="app-main" role="main">
+  <div class="agent-hero">
+    <div class="section-badge">🤝 Peer Agent Dashboard</div>
+    <h1 style="font-size:1.7rem;font-weight:900;margin-bottom:.2rem">Welcome back, Agent</h1>
+    <p style="color:var(--text-secondary);font-size:.88rem">You are making a difference in your community. Here are your active assignments.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="agent-stat-row">
+    <div class="agent-stat">
+      <div class="as-num" style="color:var(--green)">47</div>
+      <div class="as-label">Kits Delivered</div>
+    </div>
+    <div class="agent-stat">
+      <div class="as-num" style="color:var(--gold)">3</div>
+      <div class="as-label">Active Orders</div>
+    </div>
+    <div class="agent-stat">
+      <div class="as-num" style="color:var(--blue)">4.9★</div>
+      <div class="as-label">Rating</div>
+    </div>
+  </div>
+
+  <!-- Agent Badge -->
+  <div class="agent-badge">
+    <span class="ab-medal">🥇</span>
+    <div class="ab-title">Gold Tier Agent</div>
+    <div class="ab-sub">Top 10% in Kigali region · 47 successful deliveries · 0 complaints</div>
+  </div>
+
+  <!-- Pending Deliveries -->
+  <div class="delivery-list">
+    <h3>📦 Active Deliveries (3)</h3>
+
+    <div class="delivery-card fade-in">
+      <div class="dc-header">
+        <span class="dc-code">RND-38291</span>
+        <span class="dc-status pending">⏳ Pending Pickup</span>
+      </div>
+      <div class="dc-details">
+        <strong>Sector:</strong> Gasabo — Kigali<br/>
+        <strong>Time window:</strong> Morning (8am – 12pm)<br/>
+        <strong>Accessibility:</strong> None specified<br/>
+        <strong>Ordered:</strong> 14 minutes ago
+      </div>
+      <div class="dc-actions">
+        <button class="dc-btn primary" onclick="this.textContent='✅ Accepted';this.disabled=true;this.parentElement.parentElement.querySelector('.dc-status').className='dc-status transit';this.parentElement.parentElement.querySelector('.dc-status').textContent='🛵 In Transit'">Accept & Start</button>
+        <button class="dc-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="delivery-card fade-in" style="transition-delay:.1s">
+      <div class="dc-header">
+        <span class="dc-code">RND-52104</span>
+        <span class="dc-status transit">🛵 In Transit</span>
+      </div>
+      <div class="dc-details">
+        <strong>Sector:</strong> Kicukiro — Kigali<br/>
+        <strong>Time window:</strong> Afternoon (12pm – 5pm)<br/>
+        <strong>Accessibility:</strong> Visually impaired — audio support needed<br/>
+        <strong>Accepted:</strong> 2 hours ago
+      </div>
+      <div class="dc-actions">
+        <button class="dc-btn primary" onclick="this.textContent='✅ Marked Delivered';this.disabled=true;this.parentElement.parentElement.querySelector('.dc-status').className='dc-status delivered';this.parentElement.parentElement.querySelector('.dc-status').textContent='✅ Delivered'">Mark as Delivered</button>
+        <button class="dc-btn" onclick="window.open('tel:114')">📞 Call Support</button>
+      </div>
+    </div>
+
+    <div class="delivery-card fade-in" style="transition-delay:.2s">
+      <div class="dc-header">
+        <span class="dc-code">RND-67823</span>
+        <span class="dc-status pending">⏳ Pending Pickup</span>
+      </div>
+      <div class="dc-details">
+        <strong>Sector:</strong> Nyarugenge — Kigali<br/>
+        <strong>Time window:</strong> Evening (5pm – 8pm)<br/>
+        <strong>Accessibility:</strong> Deaf — sign language agent requested<br/>
+        <strong>Ordered:</strong> 1 hour ago
+      </div>
+      <div class="dc-actions">
+        <button class="dc-btn primary" onclick="this.textContent='✅ Accepted';this.disabled=true;this.parentElement.parentElement.querySelector('.dc-status').className='dc-status transit';this.parentElement.parentElement.querySelector('.dc-status').textContent='🛵 In Transit'">Accept & Start</button>
+        <button class="dc-btn">View Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Past Deliveries -->
+  <div class="delivery-list">
+    <h3>✅ Recently Completed</h3>
+
+    <div class="delivery-card" style="opacity:.7">
+      <div class="dc-header">
+        <span class="dc-code">RND-44012</span>
+        <span class="dc-status delivered">✅ Delivered</span>
+      </div>
+      <div class="dc-details">
+        <strong>Sector:</strong> Gasabo — Kigali<br/>
+        <strong>Delivered:</strong> Yesterday, 3:42 PM · Rating: ⭐⭐⭐⭐⭐
+      </div>
+    </div>
+
+    <div class="delivery-card" style="opacity:.7">
+      <div class="dc-header">
+        <span class="dc-code">RND-39871</span>
+        <span class="dc-status delivered">✅ Delivered</span>
+      </div>
+      <div class="dc-details">
+        <strong>Sector:</strong> Kicukiro — Kigali<br/>
+        <strong>Delivered:</strong> 2 days ago, 10:15 AM · Rating: ⭐⭐⭐⭐⭐
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:2rem 1.5rem;text-align:center">
+    <a href="index.html" style="color:var(--text-muted);font-size:.85rem">← Back to User Dashboard</a>
+  </div>
+</main>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
