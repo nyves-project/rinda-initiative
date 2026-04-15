@@ -1,13 +1,6 @@
 {
   "version": 2,
   "name": "rinda-initiative",
-  "builds": [
-    { "src": "**/*.html", "use": "@vercel/static" },
-    { "src": "assets/**", "use": "@vercel/static" },
-    { "src": "sw.js", "use": "@vercel/static" },
-    { "src": "manifest.json", "use": "@vercel/static" },
-    { "src": "books/**", "use": "@vercel/static" }
-  ],
   "routes": [
     { "src": "/app/(.*)", "dest": "/app/$1" },
     { "src": "/(.*)", "dest": "/$1" }

@@ -53,10 +53,10 @@
 
   <div class="library-grid">
 
-    <a href="#" onclick="openDocModal('../books/agaciro_kanjye___agatabo_kagenewe_urubyiruko_rufite_imyaka_hagati_ya_15_na_24.pdf', 'Agaciro Kanjye   Agatabo Kagenewe Urubyiruko Rufite Imyaka Hagati Ya 15 Na 24')" class="doc-card fade-in visible" data-tag="all">
+    <a href="#" onclick="openDocModal('../books/agaciro-kanjye-agatabo-kagenewe-urubyiruko-rufite-imyaka-hagati-ya-15-na-24.pdf', 'Agaciro Kanjye Agatabo Kagenewe Urubyiruko Rufite Imyaka Hagati Ya 15 Na 24')" class="doc-card fade-in visible" data-tag="all">
       <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
       <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
-        <h4 style="margin-bottom:.3rem;line-height:1.4">Agaciro Kanjye   Agatabo Kagenewe Urubyiruko Rufite Imyaka Hagati Ya 15 Na 24</h4>
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Agaciro Kanjye Agatabo Kagenewe Urubyiruko Rufite Imyaka Hagati Ya 15 Na 24</h4>
         <div class="doc-meta" style="margin-top:.2rem">
           <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
           <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">7.4 MB</span>
@@ -89,7 +89,7 @@
       <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
     </a>
   
-    <a href="#" onclick="openDocModal('../books/inkoranyamagambo_y_ururimi_rw_amarenga_nyarwanda.pdf', 'Inkoranyamagambo Y Ururimi Rw Amarenga Nyarwanda')" class="doc-card fade-in visible" data-tag="all">
+    <a href="#" onclick="openDocModal('../books/inkoranyamagambo-y-ururimi-rw-amarenga-nyarwanda.pdf', 'Inkoranyamagambo Y Ururimi Rw Amarenga Nyarwanda')" class="doc-card fade-in visible" data-tag="all">
       <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
       <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
         <h4 style="margin-bottom:.3rem;line-height:1.4">Inkoranyamagambo Y Ururimi Rw Amarenga Nyarwanda</h4>
@@ -149,7 +149,7 @@
       <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
     </a>
   
-    <a href="#" onclick="openDocModal('../books/national_policy_on_disability_and_inclusion_final.pdf', 'National Policy On Disability And Inclusion Final')" class="doc-card fade-in visible" data-tag="all">
+    <a href="#" onclick="openDocModal('../books/national-policy-on-disability-and-inclusion-final.pdf', 'National Policy On Disability And Inclusion Final')" class="doc-card fade-in visible" data-tag="all">
       <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
       <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
         <h4 style="margin-bottom:.3rem;line-height:1.4">National Policy On Disability And Inclusion Final</h4>
@@ -197,7 +197,7 @@
       <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
     </a>
   
-    <a href="#" onclick="openDocModal('../books/tuganire_mwana_wanjye_booklet.pdf', 'Tuganire Mwana Wanjye Booklet')" class="doc-card fade-in visible" data-tag="all">
+    <a href="#" onclick="openDocModal('../books/tuganire-mwana-wanjye-booklet.pdf', 'Tuganire Mwana Wanjye Booklet')" class="doc-card fade-in visible" data-tag="all">
       <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
       <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
         <h4 style="margin-bottom:.3rem;line-height:1.4">Tuganire Mwana Wanjye Booklet</h4>
@@ -235,6 +235,86 @@
   
 </div>
 </main>
+
+
+<!-- Document Viewer Modal -->
+<div class="app-modal" id="doc-modal" style="padding: 0;">
+  <div class="app-modal-content" style="max-width: 100%; height: 100vh; border-radius: 0; display:flex; flex-direction:column; padding:0; background:#e2e8f0;">
+    
+    <!-- Top Bar -->
+    <div style="padding:.75rem 1.5rem; background:#0f172a; border-bottom:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center;">
+      <div class="app-modal-title" style="margin:0;font-size:1rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60%;" id="doc-title">Document</div>
+      <div style="display:flex;gap:1.5rem;align-items:center;">
+        <button id="btn-download" style="background:var(--blue); border:none; color:#fff; font-size:.85rem; font-weight:700; cursor:pointer; padding:.4rem .8rem; border-radius:var(--radius-sm);"><span style="margin-right:.25rem">⬇️</span> Download</button>
+        <button style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; padding:0;" onclick="closeDocModal()">✕</button>
+      </div>
+    </div>
+    
+    <!-- PDF Loading Indicator -->
+    <div id="pdf-loader" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#0f172a; font-weight:700; display:none; text-align:center;">
+       <div style="font-size:2rem; margin-bottom:1rem;">🔄</div>
+       Loading Document...<br>
+       <span style="font-size:.8rem; font-weight:400; color:#64748b;">This may take a moment for larger files.</span>
+    </div>
+
+    <!-- PDF Toolbar -->
+    <div id="pdf-toolbar" style="background:#1e293b; padding:.5rem 1.5rem; display:none; justify-content:center; align-items:center; gap:1rem; flex-wrap:wrap;">
+      <button id="prev-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">◀ Prev</button>
+      <span style="color:#cbd5e1; font-size:.9rem; font-weight:600;">Page <span id="page-num">1</span> of <span id="page-count">--</span></span>
+      <button id="next-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">Next ▶</button>
+      <div style="width:2px; height:20px; background:#475569;"></div>
+      <button id="zoom-out" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">🔍 -</button>
+      <button id="zoom-in" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">🔍 +</button>
+    </div>
+
+    <!-- Canvas Container -->
+    <div style="flex:1; overflow:auto; display:flex; flex-direction:column; align-items:center; padding:2rem;" id="pdf-container">
+      <canvas id="pdf-render" style="box-shadow:0 10px 30px rgba(0,0,0,0.3); display:none;"></canvas>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!-- Document Viewer Modal -->
+<div class="app-modal" id="doc-modal" style="padding: 0;">
+  <div class="app-modal-content" style="max-width: 100%; height: 100vh; border-radius: 0; display:flex; flex-direction:column; padding:0; background:#e2e8f0;">
+    
+    <!-- Top Bar -->
+    <div style="padding:.75rem 1.5rem; background:#0f172a; border-bottom:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center;">
+      <div class="app-modal-title" style="margin:0;font-size:1rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60%;" id="doc-title">Document</div>
+      <div style="display:flex;gap:1.5rem;align-items:center;">
+        <button id="btn-download" style="background:var(--blue); border:none; color:#fff; font-size:.85rem; font-weight:700; cursor:pointer; padding:.4rem .8rem; border-radius:var(--radius-sm);"><span style="margin-right:.25rem">⬇️</span> Download</button>
+        <button style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; padding:0;" onclick="closeDocModal()">✕</button>
+      </div>
+    </div>
+    
+    <!-- PDF Loading Indicator -->
+    <div id="pdf-loader" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#0f172a; font-weight:700; display:none; text-align:center;">
+       <div style="font-size:2rem; margin-bottom:1rem;">🔄</div>
+       Loading Document...<br>
+       <span style="font-size:.8rem; font-weight:400; color:#64748b;">This may take a moment for larger files.</span>
+    </div>
+
+    <!-- PDF Toolbar -->
+    <div id="pdf-toolbar" style="background:#1e293b; padding:.5rem 1.5rem; display:none; justify-content:center; align-items:center; gap:1rem; flex-wrap:wrap;">
+      <button id="prev-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">◀ Prev</button>
+      <span style="color:#cbd5e1; font-size:.9rem; font-weight:600;">Page <span id="page-num">1</span> of <span id="page-count">--</span></span>
+      <button id="next-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">Next ▶</button>
+      <div style="width:2px; height:20px; background:#475569;"></div>
+      <button id="zoom-out" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">🔍 -</button>
+      <button id="zoom-in" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">🔍 +</button>
+    </div>
+
+    <!-- Canvas Container -->
+    <div style="flex:1; overflow:auto; display:flex; flex-direction:column; align-items:center; padding:2rem;" id="pdf-container">
+      <canvas id="pdf-render" style="box-shadow:0 10px 30px rgba(0,0,0,0.3); display:none;"></canvas>
+    </div>
+    
+  </div>
+</div>
+
 
 
 <!-- Document Viewer Modal -->
