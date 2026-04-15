@@ -45,6 +45,25 @@ const translations = {
     /* Knowledge Hub */
     hubTitle:"HIV Knowledge Hub",
     hubSubtitle:"Everything you need to know about HIV — facts, myths, prevention, treatment, and your rights.",
+    /* New Modules */
+    clinicTitle:"Clinics & Care",
+    clinicDesc:"Find youth-friendly clinics, book an appointment, or chat with a professional.",
+    menstrualTitle:"Menstrual Health",
+    menstrualDesc:"Track your period, manage pain, and find affordable reusable pads.",
+    communityTitle:"Community Q&A",
+    communityDesc:"Ask questions anonymously and get answers from peers and professionals.",
+    rewardsTitle:"Rewards Store",
+    rewardsDesc:"Redeem your quiz points for pads, soap, or internet data.",
+    libraryTitle:"Resource Library",
+    libraryDesc:"Official MoH and RBC health booklets for educators and youth.",
+    mentalTitle:"Mental Health",
+    mentalDesc:"Anonymous peer support & crisis help",
+    booksTitle:"Growing Up Books",
+    booksDesc:"Puberty & body guides",
+    orderSmallDesc:"Order an HIV self-test kit securely",
+    ussdDesc:"Dial *775# offline simulation",
+    budgetTitle:"Pilot Plan & Budget",
+    budgetDesc:"6-month · 10M RWF breakdown",
   },
   kin:{
     /* Dashboard — Verified Kinyarwanda (RBC / MoH Rwanda) */
@@ -89,6 +108,25 @@ const translations = {
     /* Knowledge Hub */
     hubTitle:"Ubumenyi ku Bijyanye na Virusi itera SIDA",
     hubSubtitle:"Ibyo ukeneye kumenya byose: ibintu by'ibanze, ibinyoma, gukumira, kuvura, n'uburenganzira bwawe.",
+    /* New Modules */
+    clinicTitle:"Amavuriro n'Ukwitaho",
+    clinicDesc:"Shaka amavuriro y'urubyiruko, saba guhura na muganga, cyangwa muganire.",
+    menstrualTitle:"Ubuzima bw'Imweho",
+    menstrualDesc:"Kurikirana imihango yawe, gabanya ububabare, kandi ushake ibikoresho by'isuku.",
+    communityTitle:"Ibibazo n'Ibisubizo",
+    communityDesc:"Baza ibibazo mu ibanga, ubone ibisubizo kuva ku bandi n'abahanga.",
+    rewardsTitle:"Isoko ry'Ibihembo",
+    rewardsDesc:"Gura ibikoresho by'isuku cyangwa interineti ukoresheje amanota yawe.",
+    libraryTitle:"Isomero rya Minisante",
+    libraryDesc:"Ibitabo byemewe bya Minisante na RBC byo kwigisha ubuzima.",
+    mentalTitle:"Ubuzima bwo mu Mutwe",
+    mentalDesc:"Ubufasha bw'ibanga mu bihe bigoranye",
+    booksTitle:"Kwiga Gukura",
+    booksDesc:"Ibitabo byihariye ku bwangavu n'ubugimbi",
+    orderSmallDesc:"Tumiza igikoresho cyo kwipima mu mutekano",
+    ussdDesc:"Kanda *775# bose batareba",
+    budgetTitle:"Gahunda n'Ingengo y'Imari",
+    budgetDesc:"Amezi 6 · Miliyoni 10 RWF",
   }
 };
 
@@ -105,6 +143,21 @@ function setLang(lang){
     if(translations[lang] && translations[lang][key] !== undefined)
       el.textContent = translations[lang][key];
   });
+
+  // Dynamically translate bottom nav icons across all pages
+  const navTabs = {
+    'nav-home': {en: '<span class="nav-icon">🏠</span>Home', kin: '<span class="nav-icon">🏠</span>Ahabanza'},
+    'nav-clinic': {en: '<span class="nav-icon">🏥</span>Care', kin: '<span class="nav-icon">🏥</span>Kwivuza'},
+    'nav-menstrual': {en: '<span class="nav-icon">🩸</span>Health', kin: '<span class="nav-icon">🩸</span>Ubuzima'},
+    'nav-modules': {en: '<span class="nav-icon">📖</span>Learn', kin: '<span class="nav-icon">📖</span>Kwiga'},
+    'nav-knowledge': {en: '<span class="nav-icon">📚</span>Hub', kin: '<span class="nav-icon">📚</span>Ubumenyi'}
+  };
+  for(const [id, texts] of Object.entries(navTabs)){
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = texts[lang] + (el.classList.contains('active') ? '' : ''); 
+    // Wait, need to preserve active state but innerHTML overwrites it. innerHTML doesn't affect classList on the anchor tag itself.
+  }
+
   // set html lang attr
   document.documentElement.lang = lang === 'kin' ? 'rw' : 'en';
 }
@@ -115,6 +168,72 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   setLang(currentLang);
 });
+
+/* ── Voice Commands ── */
+let recognition = null;
+let isListening = false;
+
+function toggleVoiceCommand(){
+  if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)){
+    alert("Voice commands are not supported in your browser.");
+    return;
+  }
+  if(isListening){
+    if(recognition) recognition.stop();
+    return;
+  }
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.lang = currentLang === 'kin' ? 'rw-RW' : 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.onstart = function() {
+    isListening = true;
+    document.getElementById('voice-mic-btn').classList.add('recording');
+  };
+
+  recognition.onresult = function(event) {
+    const transcript = event.results[0][0].transcript.toLowerCase();
+    console.log("Voice Command: ", transcript);
+    // Simple navigation rules based on keywords
+    if(transcript.includes('home') || transcript.includes('ahabanza')) window.location.href = 'index.html';
+    else if(transcript.includes('clinic') || transcript.includes('doctor') || transcript.includes('amavuriro')) window.location.href = 'clinic.html';
+    else if(transcript.includes('menstrua') || transcript.includes('period') || transcript.includes('imihango')) window.location.href = 'menstrual.html';
+    else if(transcript.includes('order') || transcript.includes('tumiza')) window.location.href = 'order.html';
+    else if(transcript.includes('learn') || transcript.includes('read') || transcript.includes('kwiga')) window.location.href = 'modules.html';
+    else if(transcript.includes('knowledge') || transcript.includes('ubumenyi')) window.location.href = 'knowledge.html';
+    else alert("Command not recognized: " + transcript);
+  };
+
+  recognition.onspeechend = function() {
+    recognition.stop();
+  };
+
+  recognition.onend = function() {
+    isListening = false;
+    const mic = document.getElementById('voice-mic-btn');
+    if(mic) mic.classList.remove('recording');
+  };
+
+  recognition.onerror = function(event) {
+    console.error("Speech error", event.error);
+    isListening = false;
+    const mic = document.getElementById('voice-mic-btn');
+    if(mic) mic.classList.remove('recording');
+  };
+
+  recognition.start();
+}
+
+/* ── Global State: Points ── */
+let globalPoints = parseInt(localStorage.getItem('rinda-points') || '0');
+function addPoints(pts){
+  globalPoints += pts;
+  localStorage.setItem('rinda-points', globalPoints);
+  const pDisplay = document.getElementById('global-points-display');
+  if(pDisplay) pDisplay.textContent = globalPoints;
+}
 
 /* ── Accessibility Panel ── */
 let accessOpen = false;
@@ -149,6 +268,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Restore contrast checkbox state
   const toggle = document.getElementById('contrast-toggle');
   if(toggle) toggle.checked = localStorage.getItem('rinda-contrast')==='1';
+
+  // Clear any stale tour localStorage keys
+  localStorage.removeItem('rinda-tour-active');
+  localStorage.removeItem('rinda-tour-step');
 
   // scroll animations
   const obs = new IntersectionObserver(entries=>{
@@ -261,6 +384,8 @@ function answerQuiz(scenarioId, clickedIdx){
     completedScenarios.push(scenarioId);
     localStorage.setItem('rinda-scenarios', JSON.stringify(completedScenarios));
     updateProgress();
+    // Award points for completing a story quiz
+    if(typeof addPoints === 'function') addPoints(15);
   }
 }
 
@@ -302,107 +427,20 @@ function filterKnowledge(tag){
   window.addEventListener('scroll',()=>btn.classList.toggle('show', window.scrollY>400), {passive:true});
 })();
 
-/* ── Guided Demo Tour ── */
-const demoSteps = [
-  { icon:'🛡️', title:'Welcome to the Rinda Demo', desc:'This guided tour walks you through all key features in about 2 minutes. Perfect for judges and new visitors. Use the buttons below to navigate.' },
-  { icon:'🧪', title:'Risk Assessment Quiz', desc:'Take a 5-question anonymous quiz to get a personalised HIV risk score — Low, Moderate, or High — with immediate action steps. All data stays on your device.', link:'quiz.html', linkText:'Try the Quiz →' },
-  { icon:'📖', title:'Learn: Real HIV Stories', desc:'Three real stories featuring Rwandan youth (Grace, Jean & Diane, Patrick) with embedded knowledge quizzes. Complete all 3 to unlock your Certificate of Empowerment.', link:'modules.html', linkText:'Read Stories →' },
-  { icon:'📚', title:'Growing Up Books', desc:'New! Comprehensive guides on puberty, menstruation, health, and relationships for girls and boys. Authentic information designed specifically for Rwanda\'s youth.', link:'modules.html?tab=books', linkText:'Read Books →' },
-  { icon:'📦', title:'Order a Self-Test Kit', desc:'No name, no ID required. Select your sector, confirm consent — a trained peer agent delivers in plain packaging within 24–48 hours. Completely anonymous.', link:'order.html', linkText:'See Order Flow →' },
-  { icon:'📟', title:'USSD for Basic Phones', desc:'Dial *775# on any phone — no smartphone or data needed. All services available in Kinyarwanda via USSD, reaching Rwanda\'s 15M+ basic-phone users.', link:'ussd.html', linkText:'Try USSD Simulator →' },
-  { icon:'📚', title:'Knowledge Hub', desc:'20 medically-verified cards across 6 categories. Audio read-aloud for low-literacy and visually impaired users. Search and filter by topic.', link:'knowledge.html', linkText:'Browse Hub →' },
-];
+/* ── Floating Emergency SOS Button ── */
+(function(){
+  const sos = document.createElement('a');
+  sos.href = 'tel:114';
+  sos.className = 'sos-fab';
+  sos.innerHTML = '🆘';
+  sos.title = 'Emergency: Call 114 (Free)';
+  sos.setAttribute('aria-label','Emergency helpline — call 114 free');
+  sos.style.cssText = 'position:fixed;bottom:5rem;right:1rem;z-index:90;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ff4757,#c0392b);display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 4px 18px rgba(255,71,87,0.4);text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;border:2px solid rgba(255,255,255,0.15);';
+  sos.onmouseenter = ()=>{ sos.style.transform='scale(1.12)'; sos.style.boxShadow='0 6px 24px rgba(255,71,87,0.6)'};
+  sos.onmouseleave = ()=>{ sos.style.transform='scale(1)'; sos.style.boxShadow='0 4px 18px rgba(255,71,87,0.4)'};
+  document.body.appendChild(sos);
+})();
 
-let demoStep = 0;
-let demoEl = null;
-
-function startDemo(stepIdx = 0){
-  if(!demoEl){
-    demoEl = document.createElement('div');
-    demoEl.className='demo-overlay';
-    demoEl.innerHTML=`
-      <div class="demo-card">
-        <div class="demo-step-indicator" id="demo-dots"></div>
-        <span class="demo-icon" id="demo-icon"></span>
-        <div class="demo-title" id="demo-title"></div>
-        <div class="demo-desc" id="demo-desc"></div>
-        <div class="demo-actions">
-          <button class="demo-btn skip" onclick="closeDemoOrSkip()">✕ Skip Tour</button>
-          <button class="demo-btn next" id="demo-next-btn" onclick="demoNext()">Next →</button>
-        </div>
-      </div>`;
-    document.body.appendChild(demoEl);
-  }
-  demoStep = stepIdx;
-  localStorage.setItem('rinda-tour-active', 'true');
-  localStorage.setItem('rinda-tour-step', demoStep);
-  renderDemoStep();
-  demoEl.classList.add('active');
-}
-
-function renderDemoStep(){
-  const step = demoSteps[demoStep];
-  document.getElementById('demo-icon').textContent = step.icon;
-  document.getElementById('demo-title').textContent = step.title;
-  document.getElementById('demo-desc').textContent = step.desc;
-  const nextBtn = document.getElementById('demo-next-btn');
-  const isLast = demoStep >= demoSteps.length - 1;
-  nextBtn.textContent = isLast ? '✅ Done' : (step.linkText || 'Next →');
-  
-  nextBtn.onclick = ()=>{
-    if(isLast) {
-      closeDemoOrSkip();
-    } else if(step.link) {
-      // Save next step before navigating
-      localStorage.setItem('rinda-tour-step', demoStep + 1);
-      window.location.href = step.link;
-    } else {
-      demoNext();
-    }
-  };
-
-  // dots
-  const dotsEl = document.getElementById('demo-dots');
-  if(dotsEl){
-    dotsEl.innerHTML = '';
-    demoSteps.forEach((_,i)=>{
-      const d = document.createElement('div');
-      d.className='demo-dot' + (i<demoStep?' done':i===demoStep?' active':'');
-      dotsEl.appendChild(d);
-    });
-  }
-}
-
-function demoNext(){
-  if(demoStep < demoSteps.length - 1){ 
-    demoStep++; 
-    localStorage.setItem('rinda-tour-step', demoStep);
-    renderDemoStep(); 
-  }
-}
-
-function closeDemoOrSkip(){
-  if(demoEl) demoEl.classList.remove('active');
-  localStorage.setItem('rinda-tour-active', 'false');
-}
-
-/* Inject demo FAB and handle resume tour */
-document.addEventListener('DOMContentLoaded',()=>{
-  const fab = document.createElement('button');
-  fab.className='demo-fab'; fab.innerHTML='▶ Guided Tour';
-  fab.setAttribute('aria-label','Start guided demo tour');
-  fab.onclick=()=>startDemo(0);
-  document.body.appendChild(fab);
-
-  // Resume tour if active
-  if(localStorage.getItem('rinda-tour-active') === 'true'){
-    const savedStep = parseInt(localStorage.getItem('rinda-tour-step') || '0');
-    if(savedStep < demoSteps.length){
-      // small delay to prevent animation collisions
-      setTimeout(()=>startDemo(savedStep), 500);
-    }
-  }
-});
 
 /* ── Share Modal ── */
 function openShareModal(title, text, url){

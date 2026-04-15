@@ -6,6 +6,9 @@
   <title>Rinda — Knowledge Hub</title>
   <meta name="description" content="Rinda Knowledge Hub: Comprehensive HIV education — basics, myths, prevention, testing, condoms, and your rights."/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
   <link rel="stylesheet" href="../assets/css/app.css"/>
 </head>
 <body>
@@ -47,6 +50,7 @@
     <button class="filter-chip" data-tag="testing" onclick="filterKnowledge('testing')" id="filter-testing">🔬 Testing</button>
     <button class="filter-chip" data-tag="treatment" onclick="filterKnowledge('treatment')" id="filter-treatment">💊 Treatment</button>
     <button class="filter-chip" data-tag="rights" onclick="filterKnowledge('rights')" id="filter-rights">🟡 Rights</button>
+    <button class="filter-chip" data-tag="fp" onclick="filterKnowledge('fp')" id="filter-fp">👨‍👩‍👧 Family Planning</button>
   </div>
 
   <!-- Cards -->
@@ -57,6 +61,19 @@
       <div class="k-card-top"><span class="k-tag basics">Basics</span><button class="audio-icon-btn" onclick="speakCard('kcard-1-text')" aria-label="Listen">🔊</button></div>
       <h4>What is HIV?</h4>
       <p id="kcard-1-text">HIV (Human Immunodeficiency Virus) attacks the body's immune system — specifically the CD4 cells (T cells) that fight infection. Without treatment, HIV gradually destroys these cells, making the body unable to fight diseases. A person with HIV can look and feel completely healthy for years while unknowingly transmitting the virus to others. This is why testing is essential — you cannot tell who has HIV by looking at them.</p>
+    </div>
+
+    <!-- FAMILY PLANNING -->
+    <div class="knowledge-card fade-in" data-tag="fp" role="listitem" id="kcard-fp-1">
+      <div class="k-card-top"><span class="k-tag basics">Family Planning</span><button class="audio-icon-btn" onclick="speakCard('kcard-fp-1-text')" aria-label="Listen">🔊</button></div>
+      <h4>Short-term Contraceptives</h4>
+      <p id="kcard-fp-1-text">Short-term methods include pills, injections, and condoms. Pills must be taken daily at the same time. Injections (like Depo-Provera) are given every 3 months. Condoms are the only method that also protects against STIs and HIV. These methods are private and easily available at youth clinics without parental consent for older teens.</p>
+    </div>
+
+    <div class="knowledge-card fade-in" data-tag="fp" role="listitem" id="kcard-fp-2">
+      <div class="k-card-top"><span class="k-tag basics">Family Planning</span><button class="audio-icon-btn" onclick="speakCard('kcard-fp-2-text')" aria-label="Listen">🔊</button></div>
+      <h4>Long-term Contraceptives (LARC)</h4>
+      <p id="kcard-fp-2-text">Long-Acting Reversible Contraceptives include implants and IUDs. Implants are small rods placed under the skin of the arm lasting 3 to 5 years. IUDs are placed in the uterus and can last up to 10 years. They are safe, highly effective, and can be removed at any time by a health professional if you decide to have children.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="basics" role="listitem" id="kcard-2" style="transition-delay:.05s">
@@ -187,8 +204,8 @@
 
 <nav class="bottom-nav">
   <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="ussd.html" class="bottom-nav-item" id="nav-ussd"><span class="nav-icon">📟</span>USSD</a>
-  <a href="order.html" class="bottom-nav-item" id="nav-order"><span class="nav-icon">📦</span>Order</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
   <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
   <a href="knowledge.html" class="bottom-nav-item active" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
 </nav>

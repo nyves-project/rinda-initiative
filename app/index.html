@@ -7,6 +7,9 @@
   <meta name="description" content="Rinda Initiative Dashboard — Your private HIV health companion for Rwandan youth."/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
   <link rel="manifest" href="../manifest.json"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
   <link rel="stylesheet" href="../assets/css/app.css"/>
   <style>
     /* Reminder widget */
@@ -105,6 +108,7 @@
       <button class="lang-btn active" data-lang="en" aria-label="Switch to English">EN</button>
       <button class="lang-btn" data-lang="kin" aria-label="Switch to Kinyarwanda">KIN</button>
     </div>
+    <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoiceCommand()" aria-label="Voice Command">🎤</button>
     <button class="access-btn" onclick="toggleAccessPanel()" aria-label="Accessibility settings" aria-expanded="false">♿</button>
   </div>
 </header>
@@ -134,7 +138,8 @@
   <div style="background:linear-gradient(135deg,rgba(0,160,220,0.12),rgba(32,96,61,0.08));padding:2rem 1.5rem 1.5rem;border-bottom:1px solid var(--glass-border)">
     <div class="section-badge">🛡️ iAccelerator 7</div>
     <h1 style="font-size:1.9rem;font-weight:900;margin-bottom:.25rem" data-i18n="welcome">Welcome to Rinda</h1>
-    <p style="color:var(--text-secondary);font-size:.9rem" data-i18n="subtitle">Your private HIV health companion</p>
+    <p style="color:var(--text-secondary);font-size:.9rem;line-height:1.5" data-i18n="subtitle">Your private HIV health &amp; mental wellness companion.</p>
+    <div style="display:inline-block;background:rgba(0,160,220,0.15);color:var(--blue);padding:0.25rem 0.6rem;border-radius:1rem;font-size:0.75rem;font-weight:700;margin-top:0.4rem;border:1px solid rgba(0,160,220,0.3)">👥 Designed for Adolescent Youth (Ages 15–24)</div>
   </div>
 
   <!-- PWA Install Banner -->
@@ -176,15 +181,16 @@
   <!-- Quick Stats Strip -->
   <div class="info-strip" role="region" aria-label="Key statistics">
     <div class="info-chip">
+      <div class="chip-num" style="color:var(--gold)" id="global-points-display">0</div>
+      <div class="chip-label">Rewards Points Available</div>
+    </div>
+    <div class="info-chip">
       <div class="chip-num">81%</div>
       <div class="chip-label" data-i18n="stat1">of 15–19 yr-old men never tested</div>
     </div>
     <div class="info-chip">
       <div class="chip-num" style="color:var(--blue)">74.5%</div>
       <div class="chip-label" data-i18n="stat2">of 15–19 yr-old women never tested</div>
-    </div>
-    <div class="info-chip" style="min-width:220px">
-      <div class="chip-num" style="font-size:1rem;color:var(--green);margin-top:.25rem;font-weight:700" data-i18n="stat3">This platform is changing these numbers.</div>
     </div>
   </div>
 
@@ -193,61 +199,91 @@
     <h2 style="font-size:1rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em" data-i18n="platformModules">Platform Modules</h2>
   </div>
   <div class="module-grid" role="region" aria-label="Platform modules">
-    <a href="order.html" class="module-card blue fade-in" id="mod-order" aria-label="Order a self-test kit">
-      <div class="m-icon">📦</div>
-      <h3 data-i18n="module1">Self-Test Kit Order</h3>
-      <p data-i18n="m1desc">Order a discreet HIV self-test kit. Delivered anonymously.</p>
-      <div class="m-arrow" data-i18n="orderNow">Order now →</div>
+    <a href="clinic.html" class="module-card teal fade-in" id="mod-clinic" aria-label="Clinics & Care" style="transition-delay:0s">
+      <div class="m-icon">🏥</div>
+      <h3 data-i18n="clinicTitle">Clinics & Care</h3>
+      <p data-i18n="clinicDesc">Find youth-friendly clinics, book an appointment, or chat with a professional.</p>
+      <div class="m-arrow" style="color:var(--teal)" data-i18n="explore">Explore →</div>
     </a>
-    <a href="modules.html" class="module-card gold fade-in" id="mod-learn" aria-label="Learn: HIV Prevention" style="transition-delay:.1s">
+    <a href="menstrual.html" class="module-card red fade-in" id="mod-menstrual" aria-label="Menstrual Health" style="transition-delay:.1s">
+      <div class="m-icon">🩸</div>
+      <h3 data-i18n="menstrualTitle">Menstrual Health</h3>
+      <p data-i18n="menstrualDesc">Track your period, manage pain, and find affordable reusable pads.</p>
+      <div class="m-arrow" style="color:var(--red)" data-i18n="start">Start →</div>
+    </a>
+    <a href="modules.html" class="module-card gold fade-in" id="mod-learn" aria-label="Learn: HIV Prevention" style="transition-delay:.2s">
       <div class="m-icon">📖</div>
       <h3 data-i18n="module2">Learn: HIV Prevention</h3>
       <p data-i18n="m2desc">Real stories, practical guides, and condom education.</p>
       <div class="m-arrow" style="color:var(--gold)" data-i18n="start">Start →</div>
     </a>
-    <a href="ussd.html" class="module-card green fade-in" id="mod-ussd" aria-label="USSD simulator" style="transition-delay:.2s">
-      <div class="m-icon">📟</div>
-      <h3 data-i18n="module3">USSD Simulator</h3>
-      <p data-i18n="m3desc">Experience how *775# works — no smartphone needed.</p>
-      <div class="m-arrow" style="color:var(--green)" data-i18n="tryIt">Try it →</div>
-    </a>
-    <a href="knowledge.html" class="module-card red fade-in" id="mod-knowledge" aria-label="Knowledge hub" style="transition-delay:.3s">
+    <a href="knowledge.html" class="module-card blue fade-in" id="mod-knowledge" aria-label="Knowledge Hub" style="transition-delay:.3s">
       <div class="m-icon">📚</div>
       <h3 data-i18n="module4">Knowledge Hub</h3>
-      <p data-i18n="m4desc">Learn HIV basics, myths, and prevention.</p>
-      <div class="m-arrow" style="color:var(--red)" data-i18n="explore">Explore →</div>
+      <p data-i18n="m4desc">HIV basics, myths, prevention, treatment, and rights.</p>
+      <div class="m-arrow" style="color:var(--blue)" data-i18n="explore">Explore →</div>
     </a>
   </div>
 
   <!-- Extra Modules Row -->
   <div class="extra-modules">
-    <a href="quiz.html" class="extra-card fade-in" style="transition-delay:.4s">
+    <a href="community.html" class="extra-card fade-in" style="transition-delay:.4s;background:rgba(155,89,182,0.08);border:1px solid rgba(155,89,182,0.2)">
+      <span class="ec-icon" style="color:var(--violet)">💜</span>
+      <div class="ec-text">
+        <h4 style="color:var(--violet)" data-i18n="mentalTitle">Mental Health</h4>
+        <p data-i18n="mentalDesc">Anonymous peer support &amp; crisis help</p>
+      </div>
+    </a>
+    <a href="library.html" class="extra-card fade-in" style="transition-delay:.5s">
+      <span class="ec-icon">📁</span>
+      <div class="ec-text">
+        <h4 data-i18n="libraryTitle">Resource Library</h4>
+        <p data-i18n="libraryDesc">MoH and RBC documents</p>
+      </div>
+    </a>
+    <a href="modules.html?tab=books" class="extra-card fade-in" style="transition-delay:.55s">
+      <span class="ec-icon" style="color:var(--teal)">📖</span>
+      <div class="ec-text">
+        <h4 data-i18n="booksTitle">Growing Up Books</h4>
+        <p data-i18n="booksDesc">Puberty & body guides</p>
+      </div>
+    </a>
+    <a href="rewards.html" class="extra-card fade-in" style="transition-delay:.6s;background:rgba(250,210,1,0.1);border:1px solid rgba(250,210,1,0.2)">
+      <span class="ec-icon">🎁</span>
+      <div class="ec-text">
+        <h4 style="color:var(--gold)" data-i18n="rewardsTitle">Rewards Store</h4>
+        <p data-i18n="rewardsDesc">Redeem your points</p>
+      </div>
+    </a>
+    <a href="quiz.html" class="extra-card fade-in" style="transition-delay:.7s">
       <span class="ec-icon">❓</span>
       <div class="ec-text">
         <h4 data-i18n="quizTitle">Risk Assessment</h4>
-        <p data-i18n="quizDesc">5 questions → your risk level</p>
+        <p data-i18n="quizDesc">Earn points by completing quizzes</p>
       </div>
     </a>
-    <a href="modules.html?tab=books" class="extra-card fade-in" style="transition-delay:.48s;background:rgba(250,210,1,0.1);border:1px solid rgba(250,210,1,0.2)">
-      <span class="ec-icon">📚</span>
+  </div>
+
+  <div class="extra-modules" style="margin-top:0.5rem">
+    <a href="order.html" class="extra-card fade-in" style="transition-delay:.8s;background:rgba(29,185,84,0.1);border:1px solid rgba(29,185,84,0.2)">
+      <span class="ec-icon">📦</span>
       <div class="ec-text">
-        <h4 style="color:var(--gold)">Growing Up Books</h4>
-        <p>Puberty & Health Guides</p>
+        <h4 style="color:var(--green)" data-i18n="module1">Self-Test Order</h4>
+        <p data-i18n="orderSmallDesc">Order an HIV self-test kit securely</p>
       </div>
     </a>
-    <a href="impact.html" class="extra-card fade-in" style="transition-delay:.5s">
-    <a href="certificate.html" class="extra-card fade-in" style="transition-delay:.5s">
-      <span class="ec-icon">🏆</span>
+    <a href="ussd.html" class="extra-card fade-in" style="transition-delay:.9s">
+      <span class="ec-icon">📟</span>
       <div class="ec-text">
-        <h4 data-i18n="certTitle">Certificate</h4>
-        <p data-i18n="certDesc">Complete all learning quizzes to unlock</p>
+        <h4 data-i18n="module3">USSD Simulator</h4>
+        <p data-i18n="ussdDesc">Dial *775# offline simulation</p>
       </div>
     </a>
-    <a href="agent.html" class="extra-card fade-in" style="transition-delay:.7s">
-      <span class="ec-icon">🤝</span>
+    <a href="budget.html" class="extra-card fade-in" style="transition-delay:1s;background:rgba(250,210,1,0.06);border:1px solid rgba(250,210,1,0.18)">
+      <span class="ec-icon">📊</span>
       <div class="ec-text">
-        <h4>Agent Portal</h4>
-        <p>Peer agent delivery view</p>
+        <h4 style="color:var(--gold)" data-i18n="budgetTitle">Pilot Plan &amp; Budget</h4>
+        <p data-i18n="budgetDesc">6-month · 10M RWF breakdown</p>
       </div>
     </a>
   </div>
@@ -271,8 +307,8 @@
 
 <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
   <a href="index.html" class="bottom-nav-item active" id="nav-home" aria-label="Dashboard"><span class="nav-icon">🏠</span>Home</a>
-  <a href="ussd.html" class="bottom-nav-item" id="nav-ussd" aria-label="USSD Simulator"><span class="nav-icon">📟</span>USSD</a>
-  <a href="order.html" class="bottom-nav-item" id="nav-order" aria-label="Order Kit"><span class="nav-icon">📦</span>Order</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" aria-label="Care & Clinics"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" aria-label="Menstrual Health"><span class="nav-icon">🩸</span>Health</a>
   <a href="modules.html" class="bottom-nav-item" id="nav-modules" aria-label="Learn"><span class="nav-icon">📖</span>Learn</a>
   <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" aria-label="Knowledge Hub"><span class="nav-icon">📚</span>Hub</a>
 </nav>

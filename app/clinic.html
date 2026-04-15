@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rinda — Clinics & Care</title>
+  <meta name="description" content="Find youth-friendly HIV testing clinics near you, book appointments anonymously, and chat with healthcare professionals."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
+  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <style>
+    .clinic-tabs { display: flex; gap: 0.5rem; padding: 0 1.5rem 1rem; overflow-x: auto; scrollbar-width: none; }
+    .clinic-tabs::-webkit-scrollbar { display: none; }
+    .c-tab { padding: 0.6rem 1.25rem; border-radius: var(--radius-xl); background: var(--bg-card); border: 1px solid var(--glass-border); color: var(--text-secondary); font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: var(--transition); }
+    .c-tab.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .c-panel { display: none; padding: 0 1.5rem 2rem; }
+    .c-panel.active { display: block; animation: pageSlideIn 0.3s ease; }
+
+    /* Clinic List */
+    .clinic-card { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1rem; display: flex; align-items:flex-start; gap: 1rem; }
+    .clinic-card .c-icon { font-size: 2rem; background: rgba(26,188,156,0.1); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid rgba(26,188,156,0.2); }
+    .clinic-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .clinic-info p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+    .dist-badge { display: inline-block; background: rgba(0,160,220,0.15); color: var(--blue); padding: 0.2rem 0.6rem; border-radius: var(--radius-sm); font-size: 0.7rem; font-weight: 700; margin-left: auto; }
+    .c-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+    .c-btn { flex: 1; padding: 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--glass-border); background: transparent; color: var(--text-secondary); font-size: 0.8rem; font-family: 'Inter', sans-serif; cursor: pointer; text-align: center; }
+    .c-btn.primary { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+    /* Chat UI */
+    .chat-box { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); height: 400px; display: flex; flex-direction: column; overflow: hidden; }
+    .chat-header { background: rgba(26,188,156,0.1); padding: 1rem; display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--glass-border); }
+    .chat-header .doc-avatar { font-size: 1.8rem; }
+    .chat-header h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+    .chat-header span { font-size: 0.75rem; color: var(--teal); font-weight: 600; }
+    .chat-messages { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+    .msg { max-width: 80%; padding: 0.75rem 1rem; font-size: 0.85rem; line-height: 1.5; border-radius: var(--radius-lg); }
+    .msg.system { align-self: center; background: transparent; color: var(--text-muted); font-size: 0.75rem; }
+    .msg.doc { align-self: flex-start; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-bottom-left-radius: 4px; }
+    .msg.user { align-self: flex-end; background: var(--teal); color: #fff; border-bottom-right-radius: 4px; }
+    .chat-input { padding: 1rem; border-top: 1px solid var(--glass-border); display: flex; gap: 0.5rem; }
+    .chat-input input { flex: 1; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); padding: 0.75rem 1rem; border-radius: var(--radius-xl); color: var(--text-primary); outline: none; }
+    .chat-input button { width: 44px; height: 44px; border-radius: 50%; background: var(--teal); border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Care</div>
+  <div class="header-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="kin">KIN</button>
+    </div>
+    <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoiceCommand()" aria-label="Voice Command">🎤</button>
+    <button class="access-btn" onclick="toggleAccessPanel()">♿</button>
+  </div>
+</header>
+<div class="access-panel" id="access-panel">
+  <h4>♿ Accessibility</h4>
+  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
+</div>
+
+<main class="app-main" role="main">
+  <div class="page-header">
+    <div class="section-badge" style="background:rgba(26,188,156,0.15);color:var(--teal);border-color:rgba(26,188,156,0.3)">🏥 SRH Services</div>
+    <h1>Clinics & Care</h1>
+    <p>Find youth-friendly services, book appointments without judgment, and talk to professionals.</p>
+  </div>
+
+  <div class="clinic-tabs" role="tablist">
+    <button class="c-tab active" onclick="switchTab('locator', this)">📍 Clinic Locator</button>
+    <button class="c-tab" onclick="switchTab('chat', this)">💬 Chat with HCP</button>
+    <button class="c-tab" onclick="switchTab('emergency', this)">🚨 Call for Help</button>
+  </div>
+
+  <!-- Locator Panel -->
+  <div class="c-panel active" id="panel-locator">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem">Showing verified Youth-Friendly Health Centres near you.</p>
+    
+    <div class="clinic-card fade-in">
+      <div class="c-icon">🏥</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div class="clinic-info">
+            <h4>Kigali Youth Center</h4>
+            <p>Remera Sector, Kigali<br/>Open: 8:00 AM - 5:00 PM</p>
+          </div>
+          <span class="dist-badge">2.4 km</span>
+        </div>
+        <div class="c-actions">
+          <button class="c-btn primary" onclick="bookApt('Kigali Youth Center')">Book Appt</button>
+          <a href="tel:114" class="c-btn">Call</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="clinic-card fade-in" style="transition-delay:0.1s">
+      <div class="c-icon">💉</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div class="clinic-info">
+            <h4>Kicukiro Health Clinic</h4>
+            <p>Kicukiro, Kigali<br/>PrEP & Family Planning Available</p>
+          </div>
+          <span class="dist-badge">5.1 km</span>
+        </div>
+        <div class="c-actions">
+          <button class="c-btn primary" onclick="bookApt('Kicukiro Health Clinic')">Book Appt</button>
+          <a href="tel:114" class="c-btn">Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Panel -->
+  <div class="c-panel" id="panel-chat">
+    <div class="chat-box fade-in">
+      <div class="chat-header">
+        <div class="doc-avatar">👩🏾‍⚕️</div>
+        <div>
+          <h4>Nurse Marie</h4>
+          <span>🟢 Online • Anonymous Chat</span>
+        </div>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="msg system">Encrypted connection established. Your identity is hidden.</div>
+        <div class="msg doc">Hello! I'm Nurse Marie. How can I help you today? You can ask me about testing, side effects, or anything related to sexual health.</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off" onkeydown="if(event.key==='Enter')sendChat()"/>
+        <button onclick="sendChat()">📤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency Panel -->
+  <div class="c-panel" id="panel-emergency">
+    <div style="background:var(--bg-card);border:1px solid rgba(255,71,87,0.3);border-radius:var(--radius-md);padding:1.5rem;text-align:center;margin-bottom:1rem;" class="fade-in">
+      <div style="font-size:3rem;margin-bottom:0.5rem">📞</div>
+      <h3 style="color:var(--red);margin-bottom:0.5rem;font-size:1.2rem">GBV & Child Abuse Hotline</h3>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem">Isange One Stop Center — Free, confidential emergency support for Gender-Based Violence or abuse.</p>
+      <a href="tel:3029" style="display:inline-block;padding:1rem;background:var(--red);color:#fff;font-weight:900;border-radius:var(--radius-xl);width:100%">Call 3029 (Free)</a>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid rgba(29,185,84,0.3);border-radius:var(--radius-md);padding:1.5rem;text-align:center;transition-delay:0.1s" class="fade-in">
+      <div style="font-size:3rem;margin-bottom:0.5rem">🩺</div>
+      <h3 style="color:var(--green);margin-bottom:0.5rem;font-size:1.2rem">RBC Health Info</h3>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem">General health questions and counseling via the Rwanda Biomedical Centre.</p>
+      <a href="tel:114" style="display:inline-block;padding:1rem;background:var(--green);color:#fff;font-weight:900;border-radius:var(--radius-xl);width:100%">Call 114 (Free)</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- Book Appointment Modal -->
+<div class="app-modal" id="book-modal">
+  <div class="app-modal-content">
+    <button class="app-modal-close" onclick="closeBookModal()">✕</button>
+    <div class="app-modal-title">Book Appointment</div>
+    <div class="app-modal-desc" id="book-clinic-name">Kigali Youth Center</div>
+    
+    <label style="display:block;font-size:0.85rem;margin-bottom:0.4rem;color:var(--text-primary)">Select Date (Optional)</label>
+    <input type="date" style="width:100%;padding:0.75rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);background:var(--bg-deep);color:var(--text-primary);margin-bottom:1rem;outline:none"/>
+    
+    <button style="width:100%;padding:0.8rem;border-radius:var(--radius-md);background:var(--teal);border:none;color:#fff;font-weight:700;cursor:pointer;font-size:0.9rem" onclick="confirmBooking()">Confirm Booking</button>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item" id="nav-home"> <span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item active" id="nav-clinic"> <span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"> <span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules"> <span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"> <span class="nav-icon">📚</span>Hub</a>
+</nav>
+
+<script src="../assets/js/app.js"></script>
+<script>
+  function switchTab(id, btn){
+    document.querySelectorAll('.c-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.c-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+  }
+
+  function bookApt(clinic){
+    document.getElementById('book-clinic-name').textContent = clinic;
+    document.getElementById('book-modal').classList.add('open');
+  }
+  function closeBookModal() {
+    document.getElementById('book-modal').classList.remove('open');
+  }
+  function confirmBooking(){
+    closeBookModal();
+    setTimeout(() => {
+      alert("Success! Your anonymous booking code has been generated. The clinic has been notified and you will receive a free SMS reminder.");
+    }, 300);
+  }
+
+  let chatStep = 0;
+  function sendChat(e){
+    if(e) e.preventDefault();
+    const inp = document.getElementById('chat-input');
+    const val = inp.value.trim();
+    if(!val) return;
+    
+    const container = document.getElementById('chat-messages');
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg user'; userMsg.textContent = val;
+    container.appendChild(userMsg);
+    inp.value = '';
+    container.scrollTop = container.scrollHeight;
+
+    chatStep++;
+    let reply = "";
+    if(chatStep === 1) {
+      reply = "Thank you for reaching out. What symptoms are you experiencing today?";
+    } else if(chatStep === 2) {
+      reply = "I understand. If this continues for more than 24 hours or comes with pain, it's best to book a free appointment for a check-up. Can I assist you with anything else?";
+    } else {
+      reply = "Remember, everything shared here is completely confidential. I am here if you need more help.";
+    }
+
+    setTimeout(()=>{
+      const docMsg = document.createElement('div');
+      docMsg.className = 'msg doc';
+      docMsg.textContent = reply;
+      container.appendChild(docMsg);
+      container.scrollTop = container.scrollHeight;
+    }, 1200);
+  }
+</script>
+</body>
+</html>

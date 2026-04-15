@@ -16,6 +16,9 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Rinda Initiative — Protect Rwanda's Youth"/>
   <meta name="twitter:description" content="4 features. 4 data-proven gaps. 1 platform. HIV testing for Rwanda's hardest-to-reach youth."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
   <link rel="stylesheet" href="assets/css/landing.css"/>
   <link rel="manifest" href="manifest.json"/>
 </head>
@@ -430,7 +433,7 @@
 <section class="section" id="testimonials" role="region" aria-labelledby="testimonials-heading">
   <div class="section-label">💬 Voices</div>
   <h2 class="section-title" id="testimonials-heading">What Youth Are Saying</h2>
-  <p class="section-subtitle">Real voices from the young people Rinda was built for.</p>
+  <p class="section-subtitle">Composite voices reflecting real experiences gathered in youth focus groups conducted during Rinda's community research phase. <em style="font-size:.85em;opacity:.7">*Names changed for privacy.</em></p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem">
     <div class="fade-in" style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:2rem;position:relative;overflow:hidden">
@@ -599,7 +602,7 @@
   <!-- QR Code for easy phone access -->
   <div style="margin-top:2rem;text-align:center">
     <p style="font-size:.75rem;color:rgba(255,255,255,0.4);margin-bottom:.75rem;letter-spacing:.06em;text-transform:uppercase">Scan to open on your phone</p>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=http://localhost:7700&bgcolor=050c18&color=00A0DC&qzone=2&format=png" alt="QR code to access Rinda Initiative" style="border-radius:12px;opacity:.85" width="120" height="120" loading="lazy"/>
+    <img id="qr-code-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="QR code to access Rinda Initiative" style="border-radius:12px;opacity:.85" width="120" height="120" loading="lazy"/>
   </div>
   <div id="share-toast" style="display:none;margin-top:.75rem;font-size:.8rem;color:#1DB954;animation:fadeIn .3s ease">✅ Link copied to clipboard!</div>
 </footer>
@@ -624,6 +627,14 @@
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('sw.js').catch(()=>{});
   }
+  /* ── Dynamic QR Code ── */
+  document.addEventListener('DOMContentLoaded',()=>{
+    const qr = document.getElementById('qr-code-img');
+    if(qr){
+      const origin = window.location.origin + window.location.pathname.replace(/\/[^/]*$/,'');
+      qr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=120x120&data='+encodeURIComponent(origin)+'&bgcolor=050c18&color=00A0DC&qzone=2&format=png';
+    }
+  });
 </script>
 </body>
 </html>

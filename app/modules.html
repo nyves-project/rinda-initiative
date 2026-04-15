@@ -6,6 +6,9 @@
   <title>Rinda — Learn: Stories, Guides & Growing Up</title>
   <meta name="description" content="Real HIV prevention stories, puberty guides for girls and boys, condom guides, and educational quizzes for Rwanda's youth."/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
   <link rel="stylesheet" href="../assets/css/app.css"/>
   <style>
     /* ── Tab Navigation ── */
@@ -204,6 +207,22 @@
       border-radius: var(--radius-sm); padding: .75rem 1rem; margin-top: .75rem;
       font-size: .82rem; color: var(--green); line-height: 1.6;
     }
+
+    /* Negotiation tab buttons */
+    .neg-tab {
+      padding: .5rem .9rem; border-radius: var(--radius-xl);
+      border: 1px solid var(--glass-border); background: transparent;
+      color: var(--text-secondary); font-size: .78rem; font-weight: 700;
+      cursor: pointer; white-space: nowrap; transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+    .neg-tab.active { border-color: rgba(155,89,182,.6); background: rgba(155,89,182,.2); color: #c39bea; }
+    .neg-tab:hover:not(.active) { border-color: rgba(155,89,182,.4); color: #c39bea; }
+
+    /* Dialogue bubbles in negotiation */
+    .neg-bubble-her { background: rgba(155,89,182,.15); border-left: 3px solid #9b59b6; padding: .7rem 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: .5rem 0; font-size: .85rem; color: var(--text-primary); line-height: 1.5; }
+    .neg-bubble-him { background: rgba(255,255,255,.04); border-left: 3px solid var(--glass-border); padding: .7rem 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: .5rem 0; font-size: .85rem; color: var(--text-secondary); line-height: 1.5; font-style: italic; }
+    .neg-label { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; margin-bottom: .2rem; }
   </style>
 </head>
 <body>
@@ -444,6 +463,57 @@
             <button class="quiz-option" onclick="answerQuiz('3b',3)">D. Every single time — consistent use is the only effective protection</button>
           </div>
           <div class="quiz-feedback" id="qf-3b"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Story 4: Menstrual Health -->
+    <div class="story-card fade-in" id="story-card-4" style="transition-delay:.3s">
+      <div class="story-header" onclick="toggleStory(4)">
+        <div class="story-avatar" style="background:linear-gradient(135deg,rgba(255,71,87,.2),rgba(250,210,1,.1))">👧🏾</div>
+        <div class="story-meta">
+          <h3>Sonia's Red Flag — <span id="status-4" style="color:var(--gold)">▶</span></h3>
+          <div class="story-tag">🩸 Menstrual Health · Ages 14–19 · 8 min read</div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">Learning to listen to what her body was saying about pain</div>
+        </div>
+        <span class="story-toggle">▾</span>
+      </div>
+      <div class="story-body">
+        <div class="story-text">
+          <p>Sonia always dreaded the second week of the month. While other girls in her class complained of mild cramps, Sonia would spend two days unable to stand straight. Her mother told her it was normal: <em>"Women are born to endure this, it means your body is working."</em></p>
+          <p>She believed it until a nurse visited her school to talk about menstrual health. The nurse explained the difference between normal discomfort and severe pain that disrupts your life (dysmenorrhea).</p>
+          <div class="highlight-box">
+            <strong>When Pain Isn't Normal:</strong>
+            Normal cramps can be managed with rest or basic painkillers. If the pain makes you vomit, faint, or miss school regularly, it is a medical issue that needs a doctor's attention.
+          </div>
+          <p>Sonia used the Rinda Care module to chat anonymously with a nurse. She explained her symptoms. The nurse guided her to a youth-friendly clinic where she received proper pain management medication, changing her life.</p>
+        </div>
+        <div class="story-lesson">
+          <div class="sl-label">📘 Lesson from this story</div>
+          <p>Never accept debilitating pain as "normal." Your period should not stop your life. Healthcare professionals at youth-friendly clinics can help you manage severe period pain with confidentiality.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Story 5: Family Planning -->
+    <div class="story-card fade-in" id="story-card-5" style="transition-delay:.4s">
+      <div class="story-header" onclick="toggleStory(5)">
+        <div class="story-avatar" style="background:linear-gradient(135deg,rgba(0,160,220,.2),rgba(29,185,84,.1))">👩🏾‍𱗿</div>
+        <div class="story-meta">
+          <h3>The Power of Choice — <span id="status-5" style="color:var(--gold)">▶</span></h3>
+          <div class="story-tag">👨‍👩‍👧 Family Planning · Ages 18–24 · 9 min read</div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">Taking control of her future through LARC</div>
+        </div>
+        <span class="story-toggle">▾</span>
+      </div>
+      <div class="story-body">
+        <div class="story-text">
+          <p>Chantal was 19 and starting university. She was in a steady relationship, but the fear of unintended pregnancy clouded everything. Condoms were their only method, but they weren't always consistent.</p>
+          <p>She read about Long-Acting Reversible Contraceptives (LARC) on the Rinda Knowledge Hub. She was nervous—friends told her implants made you infertile. But verified facts told her otherwise. She confidently booked an appointment, got a 3-year implant, and took complete control of her future.</p>
+        </div>
+        <div class="story-lesson">
+          <div class="sl-label">📘 Lesson from this story</div>
+          <p>Contraception is your choice and your right. Long-acting methods are safe, do not cause infertility, and give you the peace of mind to focus on your education and goals.</p>
         </div>
       </div>
     </div>
@@ -754,6 +824,50 @@
       <p style="font-size:.88rem;color:var(--text-muted)">Clear, practical instructions that protect your health.</p>
     </div>
 
+    <!-- AUDIO NEGOTIATION MODULE -->
+    <div class="guide-card fade-in" id="negotiation-module" style="border:1px solid rgba(155,89,182,.35);background:linear-gradient(135deg,rgba(155,89,182,.08),rgba(0,0,0,0))">
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(155,89,182,.2);border:1px solid rgba(155,89,182,.4);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">🎙️</div>
+        <div>
+          <h3 style="margin-bottom:.15rem;color:#c39bea">Audio Condom Negotiation Module</h3>
+          <p style="font-size:.78rem;color:var(--text-muted)">🔊 Voice-guided · EN &amp; KIN · DHS 2025 data-backed · For young women</p>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.25);border-radius:var(--radius-md);padding:1rem;margin-bottom:1.25rem">
+        <div style="font-size:.72rem;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">📊 Why This Module Exists</div>
+        <p style="font-size:.83rem;color:var(--text-secondary);line-height:1.6">Rwanda DHS 2025 Table 12: Only <strong style="color:var(--red)">47.4%</strong> of young women aged 15–24 used a condom at last high-risk sex — vs <strong style="color:var(--blue)">73.8%</strong> of young men. Among the poorest women, this drops to <strong style="color:var(--red)">34.1%</strong>. The gap is not knowledge — it is negotiation power.</p>
+      </div>
+
+      <div style="display:flex;gap:.4rem;margin-bottom:1rem;overflow-x:auto;scrollbar-width:none">
+        <button class="neg-tab active" onclick="switchNeg(0,this)">1. He says no</button>
+        <button class="neg-tab" onclick="switchNeg(1,this)">2. Peer pressure</button>
+        <button class="neg-tab" onclick="switchNeg(2,this)">3. Age gap partner</button>
+        <button class="neg-tab" onclick="switchNeg(3,this)">4. Married partners</button>
+      </div>
+
+      <div id="neg-scenario" style="background:var(--bg-deep);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1rem"></div>
+
+      <div style="display:flex;gap:.6rem;align-items:center;background:rgba(0,0,0,.3);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:.75rem 1rem">
+        <button id="neg-play-btn" onclick="toggleNegAudio()" style="width:42px;height:42px;border-radius:50%;background:rgba(155,89,182,.8);border:none;font-size:1.1rem;cursor:pointer;flex-shrink:0;transition:transform .2s">▶</button>
+        <div style="flex:1">
+          <div style="font-size:.72rem;color:var(--text-muted);margin-bottom:.3rem">🔊 Tap to hear this scenario read aloud in your language</div>
+          <div style="height:4px;background:rgba(255,255,255,.08);border-radius:2px">
+            <div id="neg-audio-bar" style="height:100%;border-radius:2px;background:linear-gradient(90deg,#9b59b6,#c39bea);width:0%;transition:width .3s"></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:.3rem">
+          <button onclick="speakNegScenario('en')" style="padding:.3rem .6rem;border-radius:var(--radius-sm);border:1px solid var(--glass-border);background:transparent;color:var(--text-secondary);font-size:.7rem;font-weight:700;cursor:pointer">EN</button>
+          <button onclick="speakNegScenario('kin')" style="padding:.3rem .6rem;border-radius:var(--radius-sm);border:1px solid var(--glass-border);background:transparent;color:var(--text-secondary);font-size:.7rem;font-weight:700;cursor:pointer">KIN</button>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem;font-size:.75rem;color:var(--text-muted);line-height:1.6;background:rgba(250,210,1,.06);border:1px solid rgba(250,210,1,.15);border-radius:var(--radius-sm);padding:.7rem 1rem">
+        💡 <strong style="color:var(--gold)">Practice tip:</strong> Read the lines aloud yourself — then practice saying them naturally. Negotiation is a skill that gets easier with repetition.
+      </div>
+    </div>
+
+
     <!-- Male condom -->
     <div class="guide-card fade-in">
       <h3>🟢 How to Use a Male (External) Condom — Step by Step</h3>
@@ -807,8 +921,8 @@
 
 <nav class="bottom-nav">
   <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="ussd.html" class="bottom-nav-item" id="nav-ussd"><span class="nav-icon">📟</span>USSD</a>
-  <a href="order.html" class="bottom-nav-item" id="nav-order"><span class="nav-icon">📦</span>Order</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
   <a href="modules.html" class="bottom-nav-item active" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
   <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
 </nav>
@@ -928,9 +1042,153 @@
     });
     if(completedScenarios.length >= 3){
       const banner = document.getElementById('cert-unlock-banner');
-      if(banner) banner.classList.add('show');
+      if(banner){ banner.classList.add('show'); banner.scrollIntoView({behavior:'smooth',block:'center'}); }
     }
   });
 </script>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   AUDIO CONDOM NEGOTIATION ENGINE — Web Speech API
+══════════════════════════════════════════════════════ */
+const negScenarios = [
+  {
+    title: '1. "He says he doesn\'t want to use a condom"',
+    context: 'The most common barrier — affecting 34.1% of the poorest young women (DHS 2025). Your health decision is non-negotiable.',
+    steps: [
+      { speaker: 'him', line: '"I don\'t like how it feels. Can\'t we just skip it this once?"' },
+      { speaker: 'her', line: '"I understand you, but using a condom is how I protect both of us — not just one of us. This is important to me."' },
+      { speaker: 'him', line: '"You don\'t trust me?"' },
+      { speaker: 'her', line: '"This isn\'t about trust — it\'s about our health. If you care about me, you\'ll respect my decision. We can\'t be together without this."' },
+    ],
+    key: 'Your body is your boundary. A partner who cares for you will respect a health decision — especially one that protects you both.',
+    kinText: 'Sinshaka gukora urugo nta condom. Ubuzima bwacu ni ngombwa. Iyo ankunda, azubaha icyemezo cyanjye. Condom ni ibimenyetso by\'urukundo rw\'ukuri.',
+  },
+  {
+    title: '2. Friends say using a condom means you don\'t love each other',
+    context: 'Peer pressure normalises unprotected sex. Young women who reject this face social judgment — but facts protect you, not friends\' opinions.',
+    steps: [
+      { speaker: 'him', line: '"My friends say couples who trust each other don\'t need condoms."' },
+      { speaker: 'her', line: '"I love our relationship — and I want to protect it. I\'d like us both to test together first, and then we can decide together about condoms."' },
+      { speaker: 'him', line: '"But people will think we have problems..."' },
+      { speaker: 'her', line: '"People don\'t live with the consequences — we do. Our health comes before what people say."' },
+    ],
+    key: 'What others say cannot protect your health. Choosing safety is an act of love and planning — not distrust.',
+    kinText: 'Abantu bavuga ntibakunganira. Ubuzima bwacu ni rwacu. Condom ni ibimenyetso by\'urukundo rw\'ukuri, si impamvu y\'kutizana.',
+  },
+  {
+    title: '3. Older or financially dependent partner refuses',
+    context: 'Power imbalances in age-gap or transactional relationships make negotiation harder — especially for low-income young women (DHS 2025: 34.1%).',
+    steps: [
+      { speaker: 'him', line: '"I take care of you — surely you can do this one thing for me."' },
+      { speaker: 'her', line: '"What you do for me, I appreciate. But my body is not something I exchange for anything. Using a condom protects us both — that serves both of us."' },
+      { speaker: 'him', line: '"You are being difficult."' },
+      { speaker: 'her', line: '"Protecting my health is not being difficult — it is being responsible. If you care about our relationship, this matters."' },
+    ],
+    key: 'No gift or financial support gives anyone the right to unprotected access to your body. Your health is non-negotiable.',
+    kinText: 'Nta kintu namwekaho umubiri wanjye. Ubuzima bwanjye si inguzanyo. Igihe ahinduka nabi kubera condom, nta mpamvu nziza afite.',
+  },
+  {
+    title: '4. In a committed or married relationship',
+    context: '41.7% of married women with multiple-risk partners still did not use a condom (DHS 2025). Commitment does not eliminate risk.',
+    steps: [
+      { speaker: 'him', line: '"We\'re committed — we don\'t need condoms anymore."' },
+      { speaker: 'her', line: '"I love our relationship. Before we stop using condoms, I\'d like us both to test together — then we\'ll know we\'re making that choice safely."' },
+      { speaker: 'him', line: '"You\'re saying I have something?"' },
+      { speaker: 'her', line: '"I\'m saying we both deserve to know for certain — for peace of mind and our future together. Testing together shows respect, not accusation."' },
+    ],
+    key: 'In a committed relationship, testing together before stopping condom use is the responsible, loving choice — not an accusation.',
+    kinText: 'Gusaba gusubira kwipimana bose bombi si ikimenyetso cy\'kutizana. Ni ibimenyetso by\'urukundo rw\'ukuri n\'ubuzima bwacu.',
+  },
+];
+
+let currentNeg = 0;
+let negSpeaking = false;
+let negUtterance = null;
+let negAudioInterval = null;
+
+function renderNegScenario() {
+  const s = negScenarios[currentNeg];
+  const box = document.getElementById('neg-scenario');
+  if (!box) return;
+  let html = `<div style="font-size:.82rem;font-weight:800;color:#c39bea;margin-bottom:.5rem">${s.title}</div>`;
+  html += `<div style="font-size:.78rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.5">${s.context}</div>`;
+  s.steps.forEach(step => {
+    if (step.speaker === 'him') {
+      html += `<div class="neg-label" style="color:var(--text-muted)">❓ Partner says</div><div class="neg-bubble-him">${step.line}</div>`;
+    } else {
+      html += `<div class="neg-label" style="color:#c39bea">💬 Your response</div><div class="neg-bubble-her">${step.line}</div>`;
+    }
+  });
+  html += `<div style="margin-top:1rem;padding:.8rem 1rem;background:rgba(29,185,84,.08);border:1px solid rgba(29,185,84,.2);border-radius:var(--radius-sm);font-size:.8rem;color:var(--green);line-height:1.5">✅ <strong>Key message:</strong> ${s.key}</div>`;
+  box.innerHTML = html;
+  stopNegAudio();
+}
+
+function switchNeg(idx, btn) {
+  currentNeg = idx;
+  document.querySelectorAll('.neg-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderNegScenario();
+}
+
+function buildNegSpeechText(lang) {
+  const s = negScenarios[currentNeg];
+  if (lang === 'kin') return s.kinText;
+  let text = s.title.replace(/['"]/g, '') + '. ';
+  s.steps.forEach(step => {
+    text += (step.speaker === 'him' ? 'Partner says: ' : 'Your response: ');
+    text += step.line.replace(/["]/g, '') + '. ';
+  });
+  text += 'Key message: ' + s.key;
+  return text;
+}
+
+function speakNegScenario(lang) {
+  if (!window.speechSynthesis) { alert('Audio narration is not supported in this browser. Try Chrome or Edge.'); return; }
+  stopNegAudio();
+  const text = buildNegSpeechText(lang);
+  negUtterance = new SpeechSynthesisUtterance(text);
+  negUtterance.lang = lang === 'kin' ? 'rw' : 'en-US';
+  negUtterance.rate = 0.9;
+  negSpeaking = true;
+  const btn = document.getElementById('neg-play-btn');
+  if (btn) btn.textContent = '⏸';
+  let progress = 0;
+  negAudioInterval = setInterval(() => {
+    progress = Math.min(progress + 0.8, 97);
+    const bar = document.getElementById('neg-audio-bar');
+    if (bar) bar.style.width = progress + '%';
+  }, 300);
+  negUtterance.onend = () => {
+    negSpeaking = false;
+    if (btn) btn.textContent = '▶';
+    const bar = document.getElementById('neg-audio-bar');
+    if (bar) bar.style.width = '100%';
+    clearInterval(negAudioInterval);
+    setTimeout(() => { if (bar) bar.style.width = '0%'; }, 1500);
+  };
+  negUtterance.onerror = () => stopNegAudio();
+  speechSynthesis.speak(negUtterance);
+}
+
+function toggleNegAudio() {
+  if (negSpeaking) stopNegAudio();
+  else speakNegScenario('en');
+}
+
+function stopNegAudio() {
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  negSpeaking = false;
+  const btn = document.getElementById('neg-play-btn');
+  if (btn) btn.textContent = '▶';
+  clearInterval(negAudioInterval);
+  const bar = document.getElementById('neg-audio-bar');
+  if (bar) bar.style.width = '0%';
+}
+
+document.addEventListener('DOMContentLoaded', () => { renderNegScenario(); });
+</script>
+
 </body>
 </html>

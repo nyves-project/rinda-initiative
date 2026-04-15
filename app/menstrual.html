@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rinda — Menstrual Health Tracker</title>
+  <meta name="description" content="Track your menstrual cycle, predict your next 3 months, log symptoms, and find affordable reusable pads in Rwanda."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
+  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <style>
+    /* ── Tabs ── */
+    .m-tabs { display:flex; gap:.5rem; padding:0 1.5rem 1rem; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--glass-border); margin-bottom:1rem; }
+    .m-tabs::-webkit-scrollbar { display:none; }
+    .m-tab { padding:.6rem 1.1rem; border-radius:var(--radius-xl); background:transparent; border:1px solid var(--glass-border); color:var(--text-secondary); font-size:.82rem; font-weight:700; cursor:pointer; white-space:nowrap; transition:var(--transition); }
+    .m-tab.active { background:var(--red); border-color:var(--red); color:#fff; }
+    .m-panel { display:none; padding:0 1.5rem 6rem; animation:pageSlideIn .3s ease; }
+    .m-panel.active { display:block; }
+
+    /* ── Setup Card ── */
+    .setup-card {
+      background:linear-gradient(135deg,rgba(255,71,87,.08),rgba(155,89,182,.05));
+      border:1px solid rgba(255,71,87,.3); border-radius:var(--radius-lg);
+      padding:2rem; margin-bottom:1.5rem;
+    }
+    .setup-card h3 { font-size:1.1rem; font-weight:800; margin-bottom:.35rem; }
+    .setup-card p { font-size:.83rem; color:var(--text-secondary); margin-bottom:1.5rem; line-height:1.5; }
+
+    /* ── Stepper Inputs (like Playtex) ── */
+    .input-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+    .input-col { display:flex; flex-direction:column; gap:.4rem; }
+    .input-col label { font-size:.72rem; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.06em; }
+    .stepper { display:flex; align-items:center; gap:0; border:1px solid var(--glass-border); border-radius:var(--radius-md); background:var(--bg-deep); overflow:hidden; }
+    .stepper-btn { width:40px; height:44px; background:transparent; border:none; color:var(--text-secondary); font-size:1.2rem; cursor:pointer; transition:var(--transition); display:flex; align-items:center; justify-content:center; }
+    .stepper-btn:hover { background:rgba(255,71,87,.15); color:var(--red); }
+    .stepper-val { flex:1; text-align:center; font-family:'Outfit',sans-serif; font-weight:800; font-size:1rem; color:var(--text-primary); background:transparent; border:none; outline:none; pointer-events:none; }
+    .date-input { width:100%; padding:.7rem .85rem; border-radius:var(--radius-md); border:1px solid var(--glass-border); background:var(--bg-deep); color:var(--text-primary); font-family:'Inter',sans-serif; font-size:.88rem; outline:none; transition:border-color .2s; }
+    .date-input:focus { border-color:var(--red); }
+
+    .btn-track {
+      width:100%; padding:1rem; background:linear-gradient(135deg,var(--red),#c0392b);
+      color:#fff; border:none; border-radius:var(--radius-xl); font-weight:800;
+      font-family:'Outfit',sans-serif; font-size:1rem; cursor:pointer;
+      box-shadow:0 8px 25px rgba(255,71,87,.3); transition:var(--transition);
+    }
+    .btn-track:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(255,71,87,.4); }
+
+    /* ── 3-Month Grid (signature Playtex feature) ── */
+    .three-month-view { display:flex; flex-direction:column; gap:1.5rem; margin-top:1rem; }
+
+    .month-block { background:#f8fafc; border:1px solid #e2e8f0; border-radius:var(--radius-lg); overflow:hidden; max-width:400px; margin:0 auto; width:100%; }
+    .month-header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.8rem 1.1rem; background:#f1f5f9;
+      border-bottom:1px solid #e2e8f0;
+    }
+    .month-title { font-family:'Outfit',sans-serif; font-size:.88rem; font-weight:800; color:#0f172a; }
+    .month-stats { font-size:.65rem; color:#64748b; font-weight:600; }
+    .month-body { padding:.6rem .8rem .8rem; }
+
+    .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; max-width:100%; margin:0 auto; }
+    .cal-dow { text-align:center; font-size:.55rem; font-weight:800; color:#64748b; padding:.2rem 0; text-transform:uppercase; }
+    .cal-cell {
+      aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+      font-size:.62rem; font-weight:700; color:#334155;
+      border-radius:50%; position:relative; cursor:default;
+      max-width:42px; max-height:42px; margin:auto; width:100%; height:100%;
+    }
+    .cal-cell.empty { visibility:hidden; }
+    .cal-cell.today { outline:2px solid var(--blue); outline-offset:-1px; color:var(--blue); font-weight:900; background:#eff6ff; }
+    .cal-cell.period { background:#fee2e2; color:#ef4444; font-weight:800; }
+    .cal-cell.ovulation { background:#dcfce7; color:#16a34a; font-weight:800; }
+    .cal-cell.fertile { background:#f3e8ff; color:#9333ea; font-weight:800; }
+    .cal-cell.pre-period { background:#fef3c7; color:#d97706; font-weight:800; }
+    .cal-cell.logged { border:2px solid var(--red); }
+
+    /* ── Legend ── */
+    .phase-legend {
+      display:flex; flex-wrap:wrap; gap:.6rem 1rem;
+      margin-top:1rem; justify-content:center;
+    }
+    .legend-item { display:flex; align-items:center; gap:.4rem; font-size:.65rem; font-weight:600; color:var(--text-muted); }
+    .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+    /* ── Pagination ── */
+    .cal-pagination { display:flex; justify-content:space-between; align-items:center; padding:.75rem 0 0; }
+    .pg-btn { display:flex; align-items:center; gap:.4rem; background:none; border:1px solid var(--glass-border); color:var(--text-secondary); padding:.4rem .8rem; border-radius:var(--radius-xl); font-size:.7rem; font-weight:700; cursor:pointer; transition:var(--transition); }
+    .pg-btn:hover { border-color:var(--red); color:var(--red); }
+
+    /* ── Quick Stats Row ── */
+    .cycle-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; margin-bottom:1.5rem; }
+    .cs-chip { background:#f8fafc; border:1px solid #e2e8f0; border-radius:var(--radius-md); padding:.75rem .4rem; text-align:center; }
+    .cs-num { font-family:'Outfit',sans-serif; font-size:1.15rem; font-weight:900; line-height:1.1; }
+    .cs-label { font-size:.58rem; color:#64748b; font-weight:800; text-transform:uppercase; letter-spacing:.05em; margin-top:.2rem; }
+
+    /* ── Log Period button ── */
+    .btn-log-row { display:flex; gap:.75rem; margin-bottom:1.25rem; }
+    .btn-log { flex:1; padding:.8rem; background:var(--red); color:#fff; border:none; border-radius:var(--radius-xl); font-weight:800; font-family:'Outfit',sans-serif; cursor:pointer; box-shadow:0 6px 20px rgba(255,71,87,.3); transition:var(--transition); font-size:.9rem; }
+    .btn-log:hover { transform:translateY(-2px); }
+    .btn-log.logged { background:var(--green); box-shadow:none; }
+    .btn-edit { background:none; border:1px solid var(--glass-border); color:var(--text-secondary); padding:.8rem 1rem; border-radius:var(--radius-xl); font-size:.78rem; font-weight:700; cursor:pointer; transition:var(--transition); white-space:nowrap; }
+    .btn-edit:hover { border-color:var(--red); color:var(--red); }
+
+    /* ── iCal Export ── */
+    .export-row { background:rgba(0,160,220,.06); border:1px solid rgba(0,160,220,.2); border-radius:var(--radius-md); padding:.9rem 1.1rem; display:flex; align-items:center; gap:.75rem; margin-top:.75rem; }
+    .export-row p { flex:1; font-size:.8rem; color:var(--text-secondary); line-height:1.4; }
+    .export-btn { padding:.55rem 1rem; border-radius:var(--radius-xl); background:var(--blue); color:#fff; border:none; font-size:.78rem; font-weight:700; cursor:pointer; white-space:nowrap; transition:var(--transition); }
+    .export-btn:hover { opacity:.85; }
+
+    /* ── History ── */
+    .history-list { display:flex; flex-direction:column; gap:.5rem; margin-top:.75rem; }
+    .history-item { background:var(--bg-card); border:1px solid var(--glass-border); border-radius:var(--radius-sm); padding:.7rem 1rem; display:flex; justify-content:space-between; align-items:center; }
+    .hi-date { font-size:.85rem; font-weight:700; }
+    .hi-meta { font-size:.75rem; color:var(--text-muted); }
+    .hi-delete { background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:.85rem; padding:.2rem .4rem; border-radius:4px; transition:var(--transition); }
+    .hi-delete:hover { color:var(--red); background:rgba(255,71,87,.1); }
+
+    /* ── Symptoms ── */
+    .symp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; margin-top:1rem; }
+    .symp-btn { background:var(--bg-card); border:1px solid var(--glass-border); border-radius:var(--radius-sm); padding:1rem .5rem; display:flex; flex-direction:column; align-items:center; gap:.5rem; cursor:pointer; transition:var(--transition); }
+    .symp-btn:hover,.symp-btn.active { border-color:var(--red); background:rgba(255,71,87,.1); color:var(--red); }
+    .symp-icon { font-size:1.5rem; }
+    .symp-label { font-size:.7rem; font-weight:700; text-align:center; }
+    .tip-box { background:rgba(250,210,1,.08); border:1px solid rgba(250,210,1,.25); border-radius:var(--radius-md); padding:1rem; margin-top:1.25rem; display:none; }
+    .tip-box.show { display:block; animation:pageSlideIn .3s ease; }
+
+    /* ── Pads ── */
+    .pad-card { background:linear-gradient(135deg,rgba(29,185,84,.1),rgba(29,185,84,.02)); border:1px solid rgba(29,185,84,.3); border-radius:var(--radius-md); padding:1.5rem; margin-bottom:1rem; }
+    .pad-card h4 { font-size:1rem; font-weight:800; color:var(--green); margin-bottom:.5rem; }
+    .pad-card p { font-size:.8rem; color:var(--text-secondary); margin-bottom:1rem; }
+    .hygiene-step { display:flex; gap:.75rem; margin-bottom:.9rem; }
+    .h-num { width:28px; height:28px; border-radius:50%; background:rgba(0,160,220,.15); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:900; flex-shrink:0; margin-top:.1rem; }
+    .h-text { font-size:.85rem; color:var(--text-secondary); line-height:1.5; }
+
+    /* ── Section heading ── */
+    .section-h { font-size:.82rem; font-weight:800; color:var(--text-secondary); text-transform:uppercase; letter-spacing:.07em; margin:1.25rem 0 .75rem; display:flex; align-items:center; gap:.4rem; }
+
+    /* ── Disclaimer ── */
+    .disclaimer { margin-top:1.25rem; font-size:.72rem; color:var(--text-muted); line-height:1.6; background:var(--bg-card); border:1px solid var(--glass-border); border-radius:var(--radius-sm); padding:.9rem 1rem; }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Health</div>
+  <div class="header-right">
+    <div class="lang-toggle" role="group" aria-label="Language switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="kin">KIN</button>
+    </div>
+    <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoiceCommand()" aria-label="Voice Command">🎤</button>
+    <button class="access-btn" onclick="toggleAccessPanel()" aria-label="Accessibility settings">♿</button>
+  </div>
+</header>
+
+<div class="access-panel" id="access-panel">
+  <h4>♿ Accessibility</h4>
+  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+</div>
+
+<main class="app-main" role="main">
+  <div class="page-header">
+    <div class="section-badge" style="background:rgba(255,71,87,.15);color:var(--red);border-color:rgba(255,71,87,.3)">🩸 Menstrual Tracker</div>
+    <h1>Cycle & Care</h1>
+    <p>Track your period, predict your next 3 months, and manage your health.</p>
+  </div>
+
+  <div class="m-tabs" role="tablist">
+    <button class="m-tab active" onclick="switchTab('tracker',this)" role="tab">📅 Tracker</button>
+    <button class="m-tab" onclick="switchTab('symptoms',this)" role="tab">🩺 Symptoms</button>
+    <button class="m-tab" onclick="switchTab('pads',this)" role="tab">♻️ Pads & Hygiene</button>
+  </div>
+
+  <!-- ═══════ TRACKER PANEL ═══════ -->
+  <div class="m-panel active" id="panel-tracker">
+
+    <!-- Setup Card -->
+    <div class="setup-card fade-in" id="setup-card">
+      <h3>🌸 Set Up Your Tracker</h3>
+      <p>Enter your period details to predict your next 3 months. All data stays on your device — 100% private.</p>
+
+      <div class="input-row">
+        <div class="input-col" style="grid-column:1/-1">
+          <label for="inp-last-period">Last Period Started</label>
+          <input type="date" class="date-input" id="inp-last-period"/>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-col">
+          <label>Cycle Length (days)</label>
+          <div class="stepper">
+            <button class="stepper-btn" onclick="step('cycle',-1)" aria-label="Decrease">−</button>
+            <span class="stepper-val" id="cycle-val">28</span>
+            <button class="stepper-btn" onclick="step('cycle',1)" aria-label="Increase">+</button>
+          </div>
+        </div>
+        <div class="input-col">
+          <label>Period Duration (days)</label>
+          <div class="stepper">
+            <button class="stepper-btn" onclick="step('dur',-1)" aria-label="Decrease">−</button>
+            <span class="stepper-val" id="dur-val">5</span>
+            <button class="stepper-btn" onclick="step('dur',1)" aria-label="Increase">+</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-track" onclick="trackNow()">🔍 Track Now</button>
+    </div>
+
+    <!-- Results Dashboard -->
+    <div id="tracker-dashboard" style="display:none">
+
+      <!-- Quick Stats Row -->
+      <div class="cycle-stats fade-in">
+        <div class="cs-chip">
+          <div class="cs-num" id="stat-cycle-day" style="color:var(--red)">—</div>
+          <div class="cs-label">Cycle Day</div>
+        </div>
+        <div class="cs-chip">
+          <div class="cs-num" id="stat-days-left" style="color:var(--blue)">—</div>
+          <div class="cs-label">Days Until Period</div>
+        </div>
+        <div class="cs-chip">
+          <div class="cs-num" id="stat-phase" style="color:var(--gold); font-size:.85rem">—</div>
+          <div class="cs-label">Current Phase</div>
+        </div>
+      </div>
+
+      <!-- Log + Edit buttons -->
+      <div class="btn-log-row fade-in">
+        <button class="btn-log" id="btn-log-period" onclick="logPeriodToday()">🩸 Log Period Today</button>
+        <button class="btn-edit" onclick="showSetup()">⚙️ Edit</button>
+      </div>
+
+      <!-- 3-Month Calendar Grid -->
+      <div class="section-h">📅 3-Month Overview</div>
+      <div class="three-month-view fade-in" id="three-month-view">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Pagination -->
+      <div class="cal-pagination fade-in">
+        <button class="pg-btn" onclick="shiftMonths(-3)">← Previous 3 Months</button>
+        <button class="pg-btn" onclick="shiftMonths(3)">Next 3 Months →</button>
+      </div>
+
+      <!-- Phase Legend -->
+      <div class="phase-legend fade-in" style="margin-bottom:.75rem">
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(255,71,87,.6)"></div>Period</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(155,89,182,.5)"></div>Fertile</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(29,185,84,.5)"></div>Ovulation</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(250,210,1,.4)"></div>Pre-Period</div>
+        <div class="legend-item"><div class="legend-dot" style="outline:2px solid var(--blue);background:transparent;outline-offset:-2px"></div>Today</div>
+      </div>
+
+      <!-- iCal Export -->
+      <div class="export-row fade-in">
+        <span style="font-size:1.5rem">📆</span>
+        <p><strong>Sync to your calendar</strong><br/>Download predictions as an .ics file for Google Calendar, iPhone, or Outlook.</p>
+        <button class="export-btn" onclick="exportIcal()">Export</button>
+      </div>
+
+      <!-- Period History -->
+      <div class="section-h">📋 Period History</div>
+      <div class="history-list fade-in" id="history-list"></div>
+
+      <p class="disclaimer">⚠️ Cycle predictions are estimates based on your data. Actual periods may vary by several days. This tool is not a substitute for medical advice. If you notice significant irregularities, please visit a health centre.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SYMPTOMS PANEL ═══════ -->
+  <div class="m-panel" id="panel-symptoms">
+    <h3 style="font-size:1rem;font-weight:800;margin-bottom:.25rem">How are you feeling today?</h3>
+    <p style="font-size:.85rem;color:var(--text-muted)">Tap symptoms to log them and get personalised health tips.</p>
+
+    <div class="symp-grid fade-in">
+      <div class="symp-btn" onclick="toggleSymptom(this,'cramps')"><div class="symp-icon">😖</div><div class="symp-label">Cramps</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'headache')"><div class="symp-icon">🤕</div><div class="symp-label">Headache</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'fatigue')"><div class="symp-icon">😪</div><div class="symp-label">Fatigue</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'mood')"><div class="symp-icon">😢</div><div class="symp-label">Mood Swings</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'cravings')"><div class="symp-icon">🍫</div><div class="symp-label">Cravings</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'heavy')"><div class="symp-icon">🩸</div><div class="symp-label">Heavy Flow</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'backpain')"><div class="symp-icon">🦴</div><div class="symp-label">Back Pain</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'bloating')"><div class="symp-icon">🫧</div><div class="symp-label">Bloating</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'acne')"><div class="symp-icon">😰</div><div class="symp-label">Skin/Acne</div></div>
+    </div>
+
+    <div class="tip-box" id="tip-box">
+      <h4 style="color:var(--gold);font-size:.9rem;font-weight:700;margin-bottom:.25rem" id="tip-title">💡 Health Tip</h4>
+      <p style="font-size:.8rem;color:var(--text-secondary);line-height:1.6" id="tip-text"></p>
+    </div>
+
+    <button style="width:100%;padding:1rem;background:var(--red);color:#fff;border:none;border-radius:var(--radius-xl);font-weight:800;font-family:'Outfit',sans-serif;cursor:pointer;box-shadow:0 8px 25px rgba(255,71,87,.3);transition:var(--transition);font-size:.95rem;margin-top:1.5rem" onclick="saveSymptoms()">
+      💾 Save Today's Symptoms
+    </button>
+  </div>
+
+  <!-- ═══════ PADS & HYGIENE PANEL ═══════ -->
+  <div class="m-panel" id="panel-pads">
+    <div class="pad-card fade-in">
+      <h4>📦 Order Free Reusable Pads</h4>
+      <p>Locate the nearest youth center distributing free reusable pads, or order them to be delivered quietly.</p>
+      <button style="padding:.6rem 1rem;background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);font-weight:700;cursor:pointer" onclick="openPadModal()">Find Distributor</button>
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:800;margin:1.5rem 0 1rem" class="fade-in">🧼 Hygiene & Washing Guide</h3>
+    <div class="hygiene-step fade-in"><div class="h-num">1</div><div class="h-text"><strong>Soak in cold water:</strong> Always soak your reusable pad in cold water first. Hot water sets blood stains.</div></div>
+    <div class="hygiene-step fade-in"><div class="h-num">2</div><div class="h-text"><strong>Wash with soap:</strong> Use regular body soap or washing soap. Gently rub the fabric together until clean.</div></div>
+    <div class="hygiene-step fade-in"><div class="h-num">3</div><div class="h-text"><strong>Dry in direct sunlight:</strong> This is critical. Direct sunlight kills bacteria. Do not dry in damp, hidden areas.</div></div>
+    <div class="hygiene-step fade-in"><div class="h-num">4</div><div class="h-text"><strong>Store safely:</strong> Keep in a clean, dry bag ready for next month.</div></div>
+  </div>
+
+</main>
+
+<!-- Pad Order Modal -->
+<div class="app-modal" id="pad-modal">
+  <div class="app-modal-content">
+    <button class="app-modal-close" onclick="closePadModal()">✕</button>
+    <div class="app-modal-title">Pad Order</div>
+    <div class="app-modal-desc">Select your district to find the nearest free distribution zone or place an anonymous order.</div>
+    <label style="display:block;font-size:.85rem;margin-bottom:.4rem;color:var(--text-primary)">District</label>
+    <select style="width:100%;padding:.75rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);background:var(--bg-deep);color:var(--text-primary);margin-bottom:1rem;outline:none">
+      <option>Kigali - Gasabo</option><option>Kigali - Kicukiro</option><option>Kigali - Nyarugenge</option><option>Eastern Province</option><option>Southern Province</option><option>Western Province</option><option>Northern Province</option>
+    </select>
+    <label style="display:block;font-size:.85rem;margin-bottom:.4rem;color:var(--text-primary)">Age Range</label>
+    <select style="width:100%;padding:.75rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);background:var(--bg-deep);color:var(--text-primary);margin-bottom:1rem;outline:none">
+      <option>Under 15</option><option>15 - 19</option><option>20 - 24</option><option>Over 24</option>
+    </select>
+    <button style="width:100%;padding:.8rem;border-radius:var(--radius-md);background:var(--green);border:none;color:#fff;font-weight:700;cursor:pointer;font-size:.9rem" onclick="confirmPadOrder()">Confirm Request</button>
+  </div>
+</div>
+
+<nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
+  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item active" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+</nav>
+
+<script src="../assets/js/app.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════
+   RINDA CYCLE TRACKER — PLAYTEX-INSPIRED 3-MONTH VIEW
+   ═══════════════════════════════════════════════════ */
+const STORE_KEY = 'rinda-cycle-data';
+const OLD_KEY   = 'rinda-period-log';
+const DAY_MS    = 86400000;
+const MONTHS    = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTHS_S  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+/* stepper state */
+let cycleLen = 28;
+let periodDur = 5;
+
+function step(field, dir) {
+  if (field === 'cycle') {
+    cycleLen = Math.min(45, Math.max(21, cycleLen + dir));
+    document.getElementById('cycle-val').textContent = cycleLen;
+  } else {
+    periodDur = Math.min(10, Math.max(2, periodDur + dir));
+    document.getElementById('dur-val').textContent = periodDur;
+  }
+}
+
+/* ── Data helpers ── */
+function loadData() { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || null; } catch(e){ return null; } }
+function saveData(d) { localStorage.setItem(STORE_KEY, JSON.stringify(d)); }
+function toDateStr(d) { return d.toISOString().split('T')[0]; }
+function parseDate(s) { const p=s.split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+function addDays(d,n) { return new Date(d.getTime()+n*DAY_MS); }
+function diffDays(a,b) { return Math.round((a-b)/DAY_MS); }
+function fmtDate(d) { return d.getDate()+' '+MONTHS_S[d.getMonth()]; }
+function fmtDateFull(d) { return d.getDate()+' '+MONTHS_S[d.getMonth()]+' '+d.getFullYear(); }
+
+/* Migrate old format */
+function migrateOldData(){
+  const old = localStorage.getItem(OLD_KEY);
+  if(!old) return;
+  try {
+    const parsed = JSON.parse(old);
+    if(parsed && parsed.lastPeriod && !loadData()){
+      const dateStr = parsed.lastPeriod.split('T')[0];
+      saveData({ cycleLen:28, periodDur:5, history:[dateStr], symptoms:{} });
+      localStorage.removeItem(OLD_KEY);
+    }
+  } catch(e){}
+}
+
+/* ── Tab switching ── */
+function switchTab(id, btn) {
+  document.querySelectorAll('.m-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.m-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+}
+
+/* ── Setup / Save ── */
+function showSetup() {
+  const d = loadData();
+  if(d) {
+    if(d.history.length) document.getElementById('inp-last-period').value = d.history[d.history.length-1];
+    cycleLen = d.cycleLen || 28;
+    periodDur = d.periodDur || 5;
+    document.getElementById('cycle-val').textContent = cycleLen;
+    document.getElementById('dur-val').textContent = periodDur;
+  }
+  document.getElementById('setup-card').style.display = 'block';
+  document.getElementById('tracker-dashboard').style.display = 'none';
+}
+
+function trackNow() {
+  const dateVal = document.getElementById('inp-last-period').value;
+  if(!dateVal) { 
+    const err = document.getElementById('setup-err');
+    if(!err) {
+      document.getElementById('inp-last-period').insertAdjacentHTML('afterend', '<div id="setup-err" style="color:var(--red);font-size:.8rem;margin-top:.5rem">⚠️ Please enter the start date of your last period.</div>');
+    }
+    return; 
+  }
+  const selected = parseDate(dateVal);
+  const today = new Date(); today.setHours(0,0,0,0);
+  if(selected > today) { 
+    const err = document.getElementById('setup-err');
+    if(err) err.remove();
+    document.getElementById('inp-last-period').insertAdjacentHTML('afterend', '<div id="setup-err" style="color:var(--red);font-size:.8rem;margin-top:.5rem">⚠️ The date cannot be in the future.</div>');
+    return; 
+  }
+
+  let data = loadData();
+  if(!data) {
+    data = { cycleLen, periodDur, history:[dateVal], symptoms:{} };
+  } else {
+    data.cycleLen = cycleLen;
+    data.periodDur = periodDur;
+    if(!data.history.includes(dateVal)) { data.history.push(dateVal); data.history.sort(); }
+  }
+  saveData(data);
+  window.scrollTo({top: 0, behavior: 'smooth'}); // Fix the scroll offset issue
+  renderDashboard();
+}
+
+/* ── Log today ── */
+function logPeriodToday() {
+  let data = loadData();
+  if(!data) return;
+  const todayStr = toDateStr(new Date());
+  if(!data.history.includes(todayStr)) {
+    data.history.push(todayStr);
+    data.history.sort();
+    saveData(data);
+  }
+  renderDashboard();
+}
+
+/* ── Phase data builder ── */
+function buildPhaseSets(data, cyclesBack, cyclesForward) {
+  const lastPeriod = parseDate(data.history[data.history.length-1]);
+  const cl = data.cycleLen || 28;
+  const pd = data.periodDur || 5;
+  const ovDay = cl - 14;
+
+  const periodDates = new Set();
+  const fertileDates = new Set();
+  const ovulationDates = new Set();
+  const preperiodDates = new Set();
+
+  for(let c = cyclesBack; c < cyclesForward; c++){
+    const start = addDays(lastPeriod, c * cl);
+    for(let d=0; d<pd; d++) periodDates.add(toDateStr(addDays(start,d)));
+    const ov = addDays(start, ovDay);
+    ovulationDates.add(toDateStr(ov));
+    for(let d=ovDay-4; d<ovDay; d++) {
+      if(d>=pd) fertileDates.add(toDateStr(addDays(start,d)));
+    }
+    fertileDates.add(toDateStr(addDays(start,ovDay+1)));
+    for(let d=cl-3; d<cl; d++) {
+      if(d>pd) preperiodDates.add(toDateStr(addDays(start,d)));
+    }
+  }
+  return { periodDates, fertileDates, ovulationDates, preperiodDates };
+}
+
+/* ── 3-Month view ── */
+let monthOffset = 0;
+
+function shiftMonths(n) { monthOffset += n; renderThreeMonths(); }
+
+function renderThreeMonths() {
+  const data = loadData();
+  const container = document.getElementById('three-month-view');
+  container.innerHTML = '';
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const now = new Date();
+  const baseYear = now.getFullYear();
+  const baseMonth = now.getMonth() + monthOffset;
+
+  let phases = null;
+  try { phases = data ? buildPhaseSets(data, -6, 12) : null; } catch(e) { console.error('Phase error', e); }
+  const loggedSet = data ? new Set(data.history) : new Set();
+
+  for(let m=0; m<3; m++){
+    let y = baseYear;
+    let mo = baseMonth + m;
+    while(mo > 11){ mo -= 12; y++; }
+    while(mo < 0) { mo += 12; y--; }
+
+    const block = document.createElement('div');
+    block.className = 'month-block fade-in visible'; // Force visibility!
+
+    // Count period days in this month for the stats
+    let periodCount = 0, nextPeriod = null;
+    if(phases){
+      const dim = new Date(y, mo+1, 0).getDate();
+      for(let d=1; d<=dim; d++){
+        const str = `${y}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        if(phases.periodDates.has(str)) periodCount++;
+      }
+      if(data){
+        const lp = parseDate(data.history[data.history.length-1]);
+        const cl = data.cycleLen;
+        let cycle = 0;
+        while(true){
+          const np = addDays(lp, cycle*cl);
+          if(np.getFullYear() === y && np.getMonth() === mo){ nextPeriod = fmtDate(np); break; }
+          if(np.getFullYear() > y || (np.getFullYear() === y && np.getMonth() > mo)) break;
+          cycle++;
+          if(cycle > 20) break;
+        }
+      }
+    }
+
+    block.innerHTML = `
+      <div class="month-header">
+        <div class="month-title">${MONTHS[mo]} ${y}</div>
+        <div class="month-stats">${periodCount > 0 ? `🩸 ${periodCount} period day${periodCount>1?'s':''}` : nextPeriod ? `Next: ${nextPeriod}` : ''}</div>
+      </div>
+      <div class="month-body">
+        <div class="cal-grid" id="grid-${y}-${mo}"></div>
+      </div>
+    `;
+    container.appendChild(block);
+
+    // Build grid
+    const grid = block.querySelector(`#grid-${y}-${mo}`);
+    ['S','M','T','W','T','F','S'].forEach(d=>{
+      const lbl = document.createElement('div');
+      lbl.className='cal-dow'; lbl.textContent=d;
+      grid.appendChild(lbl);
+    });
+
+    const firstDay = new Date(y, mo, 1).getDay();
+    const daysInMonth = new Date(y, mo+1, 0).getDate();
+    for(let i=0; i<firstDay; i++){
+      const e = document.createElement('div');
+      e.className='cal-cell empty';
+      grid.appendChild(e);
+    }
+    for(let d=1; d<=daysInMonth; d++){
+      const dateStr = `${y}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const cellDate = new Date(y, mo, d);
+      const cell = document.createElement('div');
+      cell.className = 'cal-cell';
+      cell.textContent = d;
+
+      if(phases){
+        if(phases.ovulationDates.has(dateStr)) cell.classList.add('ovulation');
+        else if(phases.periodDates.has(dateStr)) cell.classList.add('period');
+        else if(phases.fertileDates.has(dateStr)) cell.classList.add('fertile');
+        else if(phases.preperiodDates.has(dateStr)) cell.classList.add('pre-period');
+      }
+      if(loggedSet.has(dateStr)) cell.classList.add('logged');
+      if(cellDate.getTime() === today.getTime()) cell.classList.add('today');
+      grid.appendChild(cell);
+    }
+  }
+}
+
+/* ── Quick stats strip ── */
+function renderStats(data) {
+  if(!data || !data.history.length) return;
+  const lp = parseDate(data.history[data.history.length-1]);
+  const today = new Date(); today.setHours(0,0,0,0);
+  const cl = data.cycleLen || 28;
+  const pd = data.periodDur || 5;
+  const daysSince = diffDays(today, lp);
+  let cycleDay = ((daysSince % cl) + cl) % cl + 1;
+  const cycleStart = addDays(lp, Math.floor(daysSince / cl) * cl);
+  const nextPeriod = addDays(cycleStart, cl);
+  const daysLeft = diffDays(nextPeriod, today);
+  const ovDay = cl - 14;
+
+  let phase;
+  if(cycleDay <= pd) phase = 'Menstruation';
+  else if(cycleDay <= ovDay-4) phase = 'Follicular';
+  else if(cycleDay <= ovDay+1) phase = 'Ovulation';
+  else if(cycleDay >= cl-3) phase = 'Pre-Period';
+  else phase = 'Luteal';
+
+  document.getElementById('stat-cycle-day').textContent = 'Day '+cycleDay;
+  document.getElementById('stat-days-left').textContent = daysLeft > 0 ? daysLeft+'d' : 'Now';
+  document.getElementById('stat-phase').textContent = phase;
+
+  // Log button
+  const btn = document.getElementById('btn-log-period');
+  const ts = toDateStr(today);
+  if(data.history.includes(ts)) {
+    btn.textContent = '✅ Logged Today';
+    btn.classList.add('logged');
+  } else {
+    btn.textContent = '🩸 Log Period Today';
+    btn.classList.remove('logged');
+  }
+}
+
+/* ── History list ── */
+function renderHistory(data) {
+  const list = document.getElementById('history-list');
+  if(!list) return;
+  list.innerHTML = '';
+  if(!data.history.length) {
+    list.innerHTML = '<p style="font-size:.8rem;color:var(--text-muted)">No periods logged yet.</p>';
+    return;
+  }
+  const sorted = [...data.history].sort().reverse();
+  sorted.forEach((dateStr,i)=>{
+    const d = parseDate(dateStr);
+    const gap = i < sorted.length-1 ? diffDays(d, parseDate(sorted[i+1])) : null;
+    const div = document.createElement('div');
+    div.className = 'history-item';
+    div.innerHTML = `
+      <div>
+        <div class="hi-date">${fmtDateFull(d)}</div>
+        <div class="hi-meta">${gap ? gap+'-day cycle' : 'First logged period'}</div>
+      </div>
+      <button class="hi-delete" onclick="deleteHistory('${dateStr}')" title="Remove">🗑️</button>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function deleteHistory(dateStr) {
+  if(!confirm('Remove this period entry?')) return;
+  const data = loadData();
+  if(!data) return;
+  data.history = data.history.filter(d=>d!==dateStr);
+  saveData(data);
+  if(!data.history.length) showSetup();
+  else renderDashboard();
+}
+
+/* ── Main render ── */
+function renderDashboard() {
+  const data = loadData();
+  if(!data || !data.history.length) { showSetup(); return; }
+
+  cycleLen = data.cycleLen || 28;
+  periodDur = data.periodDur || 5;
+  document.getElementById('cycle-val').textContent = cycleLen;
+  document.getElementById('dur-val').textContent = periodDur;
+
+  document.getElementById('setup-card').style.display = 'none';
+  document.getElementById('tracker-dashboard').style.display = 'block';
+
+  // Make sure stats are visible without waiting for observer
+  document.querySelector('.cycle-stats').classList.add('visible');
+  document.querySelector('.three-month-view').classList.add('visible');
+
+  try { renderStats(data); } catch(e) { console.error('Stats error:', e); }
+  try { renderThreeMonths(); } catch(e) { console.error('Calendar error:', e); document.getElementById('three-month-view').innerHTML = '<div style="color:red;padding:1rem">Failed to load calendar data. Please reset your period log to fix this.</div>'; }
+  try { renderHistory(data); } catch(e) { console.error('History error:', e); }
+}
+
+/* ── iCal Export ── */
+function exportIcal() {
+  const data = loadData();
+  if(!data || !data.history.length) { alert('Set up your tracker first.'); return; }
+
+  const lp = parseDate(data.history[data.history.length-1]);
+  const cl = data.cycleLen || 28;
+  const pd = data.periodDur || 5;
+  let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Rinda Initiative//Menstrual Tracker//EN\r\n';
+
+  for(let c=0; c<6; c++){
+    const start = addDays(lp, c*cl);
+    const end   = addDays(start, pd);
+    const dtStart = start.toISOString().replace(/-|:/g,'').split('.')[0]+'Z';
+    const dtEnd   = end.toISOString().replace(/-|:/g,'').split('.')[0]+'Z';
+    ics += `BEGIN:VEVENT\r\nUID:rinda-period-${c}@rinda\r\nDTSTART:${dtStart}\r\nDTEND:${dtEnd}\r\nSUMMARY:🩸 Period (Rinda Prediction)\r\nDESCRIPTION:Predicted by your Rinda Initiative Cycle Tracker.\r\nEND:VEVENT\r\n`;
+    const ov = addDays(start, cl-14);
+    const ovStr = ov.toISOString().split('T')[0].replace(/-/g,'');
+    ics += `BEGIN:VEVENT\r\nUID:rinda-ovulation-${c}@rinda\r\nDTSTART;VALUE=DATE:${ovStr}\r\nDTEND;VALUE=DATE:${ovStr}\r\nSUMMARY:🥚 Ovulation Day (Rinda)\r\nEND:VEVENT\r\n`;
+  }
+  ics += 'END:VCALENDAR';
+
+  const blob = new Blob([ics], {type:'text/calendar'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'rinda-cycle.ics';
+  a.click();
+}
+
+/* ── Symptoms ── */
+let activeSymptoms = new Set();
+const symptomTips = {
+  cramps:   { title:'💡 Cramp Relief', text:'Place a warm cloth on your lower belly. Gentle stretching helps. Ibuprofen is effective but take with food. If pain stops you from daily activity, visit a health centre.' },
+  headache: { title:'💡 Headache Relief', text:'Drink plenty of water — dehydration worsens headaches. Rest in a quiet room. A cold cloth on your forehead can help.' },
+  fatigue:  { title:'💡 Fighting Fatigue', text:'Iron-rich foods (beans, lentils, dark leafy greens) help replenish what you lose. Try to sleep 8+ hours. Light exercise boosts energy.' },
+  mood:     { title:'💡 Mood Support', text:'Hormonal changes can cause mood swings — this is normal. Talk to a friend, write in a journal, or do something creative.' },
+  heavy:    { title:'⚠️ Heavy Flow Guidance', text:'If you soak through a pad in 1 hour or less, or your period lasts more than 7 days, visit a nurse or clinic — it could indicate low iron.' },
+  backpain: { title:'💡 Back Pain Relief', text:'Gentle yoga and warm compresses help. Avoid sitting for long periods. Sleep with a pillow between your knees.' },
+  bloating: { title:'💡 Reducing Bloating', text:'Reduce salt intake, drink warm water with lemon, avoid carbonated drinks, and take light walks.' },
+  acne:     { title:'💡 Skin Care', text:'Hormonal changes can cause breakouts. Wash your face twice daily with mild soap. Breakouts improve after your period ends.' },
+  cravings: { title:'💡 Managing Cravings', text:'Cravings for sweet or salty food are caused by hormonal shifts. Eat a small portion of what you want paired with fruit or nuts.' },
+};
+
+function toggleSymptom(el, name) {
+  el.classList.toggle('active');
+  if(activeSymptoms.has(name)) activeSymptoms.delete(name);
+  else activeSymptoms.add(name);
+  if(activeSymptoms.size > 0){
+    const first = [...activeSymptoms][activeSymptoms.size-1];
+    const tip = symptomTips[first];
+    if(tip){
+      document.getElementById('tip-title').textContent = tip.title;
+      document.getElementById('tip-text').textContent = tip.text;
+      document.getElementById('tip-box').classList.add('show');
+    }
+  } else {
+    document.getElementById('tip-box').classList.remove('show');
+  }
+}
+
+function saveSymptoms() {
+  const data = loadData();
+  if(!data){ alert('Set up your tracker first.'); return; }
+  const todayStr = toDateStr(new Date());
+  if(!data.symptoms) data.symptoms = {};
+  data.symptoms[todayStr] = [...activeSymptoms];
+  saveData(data);
+  alert('✅ Symptoms saved for '+fmtDateFull(new Date())+'!');
+}
+
+/* ── Pads ── */
+function openPadModal() { document.getElementById('pad-modal').classList.add('open'); }
+function closePadModal() { document.getElementById('pad-modal').classList.remove('open'); }
+function confirmPadOrder() {
+  closePadModal();
+  setTimeout(()=>alert('Order placed! Your peer agent will contact you shortly, or collect from your selected youth center.'), 300);
+}
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const today = new Date();
+  const max = toDateStr(today);
+  const def = toDateStr(addDays(today,-7));
+  document.getElementById('inp-last-period').max = max;
+  document.getElementById('inp-last-period').value = def;
+
+  migrateOldData();
+  const data = loadData();
+  if(data && data.history.length) {
+    cycleLen = data.cycleLen || 28;
+    periodDur = data.periodDur || 5;
+    document.getElementById('cycle-val').textContent = cycleLen;
+    document.getElementById('dur-val').textContent = periodDur;
+    renderDashboard();
+  } else {
+    showSetup();
+  }
+});
+</script>
+</body>
+</html>

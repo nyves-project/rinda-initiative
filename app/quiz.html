@@ -6,6 +6,9 @@
   <title>Rinda — HIV Risk Self-Assessment</title>
   <meta name="description" content="Take Rinda's 5-question HIV risk self-assessment and get personalised next steps for your HIV prevention journey."/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
   <link rel="stylesheet" href="../assets/css/app.css"/>
   <style>
     .quiz-hero {
@@ -131,6 +134,18 @@
     }
     .score-bar-track { height: 8px; background: var(--glass); border-radius: 4px; }
     .score-bar-fill { height: 100%; border-radius: 4px; transition: width 1.2s ease; }
+
+    /* Points toast */
+    .points-toast {
+      position: fixed; bottom: 5.5rem; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: linear-gradient(135deg, rgba(250,210,1,0.95), rgba(184,150,10,0.95));
+      color: #000; font-weight: 800; font-family: 'Outfit', sans-serif;
+      padding: 0.75rem 1.5rem; border-radius: var(--radius-xl);
+      box-shadow: 0 8px 30px rgba(250,210,1,0.4);
+      font-size: 0.9rem; opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease;
+      z-index: 200; white-space: nowrap; pointer-events: none;
+    }
+    .points-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   </style>
 </head>
 <body>
@@ -141,6 +156,7 @@
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
+    <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoiceCommand()" aria-label="Voice Command">🎤</button>
     <button class="access-btn" onclick="toggleAccessPanel()" aria-label="Accessibility">♿</button>
   </div>
 </header>
@@ -149,6 +165,8 @@
   <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
   <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
+
+<div class="points-toast" id="points-toast"></div>
 
 <main class="app-main" role="main">
   <div class="quiz-hero">
@@ -251,8 +269,8 @@
 
 <nav class="bottom-nav">
   <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="ussd.html" class="bottom-nav-item" id="nav-ussd"><span class="nav-icon">📟</span>USSD</a>
-  <a href="order.html" class="bottom-nav-item" id="nav-order"><span class="nav-icon">📦</span>Order</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
   <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
   <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
 </nav>
@@ -391,6 +409,12 @@
     `;
 
     document.getElementById('result-wrap').classList.add('show');
+
+    // Add points for completing quiz — show toast instead of alert
+    if(typeof addPoints === 'function') {
+      addPoints(50);
+      showPointsToast('🎉 +50 Points earned! Check the Rewards Store');
+    }
     setTimeout(()=>{
       const bar = document.getElementById('score-bar-fill');
       if(bar) bar.style.width = pct + '%';
@@ -409,6 +433,13 @@
     document.getElementById('btn-next').textContent='Next →';
     document.getElementById('btn-next').disabled=true;
     updateStepper();
+  }
+  function showPointsToast(msg) {
+    const toast = document.getElementById('points-toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
   }
 </script>
 </body>

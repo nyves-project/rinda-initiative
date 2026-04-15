@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rinda — Resource Library</title>
+  <meta name="description" content="Download official Rwanda Ministry of Health and RBC health guidelines, flipcharts, and peer education manuals."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
+  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <style>
+    .library-grid { padding: 0 1.5rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .doc-card { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 1.25rem; display: flex; align-items: flex-start; gap: 1rem; transition: var(--transition); text-decoration: none; color: inherit; }
+    .doc-card:hover { border-color: var(--blue); transform: translateX(4px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+    .doc-icon { width: 50px; height: 60px; background: rgba(0,160,220,0.1); border: 1px solid rgba(0,160,220,0.3); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; position: relative; }
+    .doc-icon::after { content: 'PDF'; position: absolute; bottom: 4px; right: 4px; font-size: 0.5rem; font-weight: 900; color: var(--blue); background: var(--bg-deep); padding: 0.1rem 0.3rem; border-radius: 2px; }
+    .doc-info { flex: 1; }
+    .doc-info h4 { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .doc-info p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; margin-bottom: 0.5rem; }
+    .doc-meta { display: flex; gap: 0.5rem; }
+    .d-badge { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--glass-border); }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Library</div>
+  <div class="header-right">
+    <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoiceCommand()">🎤</button>
+    <button class="access-btn" onclick="toggleAccessPanel()">♿</button>
+  </div>
+</header>
+<div class="access-panel" id="access-panel">
+  <h4>♿ Accessibility</h4>
+  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
+</div>
+
+<main class="app-main" role="main">
+  <div class="page-header">
+    <div class="section-badge" style="background:rgba(0,160,220,0.15);color:var(--blue);border-color:rgba(0,160,220,0.3)">📁 Official Resources</div>
+    <h1>Provider Library</h1>
+    <p>Download official health guidelines, flipcharts, and manuals approved by the Rwanda Biomedical Centre (RBC) and Ministry of Health.</p>
+  </div>
+
+  <div class="knowledge-filters" style="margin-bottom:1rem">
+    <button class="filter-chip active" data-tag="all" onclick="filterDocs('all',this)">All Documents</button>
+    <button class="filter-chip" data-tag="fp" onclick="filterDocs('fp',this)">Family Planning</button>
+    <button class="filter-chip" data-tag="hiv" onclick="filterDocs('hiv',this)">HIV Prevention</button>
+    <button class="filter-chip" data-tag="peer" onclick="filterDocs('peer',this)">Peer Education</button>
+  </div>
+
+  <div class="library-grid">
+
+    <a href="#" onclick="openDocModal('../books/agaciro_kanjye___agatabo_kagenewe_urubyiruko_rufite_imyaka_hagati_ya_15_na_24.pdf', 'Agaciro Kanjye   Agatabo Kagenewe Urubyiruko Rufite Imyaka Hagati Ya 15 Na 24')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Agaciro Kanjye   Agatabo Kagenewe Urubyiruko Rufite Imyaka Hagati Ya 15 Na 24</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">7.4 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/comprehensive-sexuality-education-sexuality-education-and-youth-friendly-health-services-in-rwanda.pdf', 'Comprehensive Sexuality Education Sexuality Education And Youth Friendly Health Services In Rwanda')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Comprehensive Sexuality Education Sexuality Education And Youth Friendly Health Services In Rwanda</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">5.9 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/imfashanyigisho-igenewe-uhugura-muri-gahunda-ya-baho-neza-twite-ku-buzima-bwo-mu-mutwe-mutarama-2026-2.pdf', 'Imfashanyigisho Igenewe Uhugura Muri Gahunda Ya Baho Neza Twite Ku Buzima Bwo Mu Mutwe Mutarama 2026 2')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Imfashanyigisho Igenewe Uhugura Muri Gahunda Ya Baho Neza Twite Ku Buzima Bwo Mu Mutwe Mutarama 2026 2</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">10.8 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/inkoranyamagambo_y_ururimi_rw_amarenga_nyarwanda.pdf', 'Inkoranyamagambo Y Ururimi Rw Amarenga Nyarwanda')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Inkoranyamagambo Y Ururimi Rw Amarenga Nyarwanda</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">32.3 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/inyoborabiganiro-igenewe-umuhumurizamutima-muri-gahunda-ya-baho-neza-twite-ku-buzima-bwo-mu-mutwe-mutarama-2026-1.pdf', 'Inyoborabiganiro Igenewe Umuhumurizamutima Muri Gahunda Ya Baho Neza Twite Ku Buzima Bwo Mu Mutwe Mutarama 2026 1')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Inyoborabiganiro Igenewe Umuhumurizamutima Muri Gahunda Ya Baho Neza Twite Ku Buzima Bwo Mu Mutwe Mutarama 2026 1</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">10.7 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/kurinda-umubyeyi-wanduye-agakoko-gatera-sida-kwanduza-umwana-we.pdf', 'Kurinda Umubyeyi Wanduye Agakoko Gatera Sida Kwanduza Umwana We')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Kurinda Umubyeyi Wanduye Agakoko Gatera Sida Kwanduza Umwana We</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">5.7 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/menstrual-health-to-ensure-no-one-is-left-behind-with-emphasis-on-persons-with-disabilities.pdf', 'Menstrual Health To Ensure No One Is Left Behind With Emphasis On Persons With Disabilities')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Menstrual Health To Ensure No One Is Left Behind With Emphasis On Persons With Disabilities</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">3.4 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/national-guidelines-for-prevention-and-management-of-hiv-and-stis-edition-2016.pdf', 'National Guidelines For Prevention And Management Of Hiv And Stis Edition 2016')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">National Guidelines For Prevention And Management Of Hiv And Stis Edition 2016</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">2.9 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/national_policy_on_disability_and_inclusion_final.pdf', 'National Policy On Disability And Inclusion Final')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">National Policy On Disability And Inclusion Final</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">1.5 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/reproductive-systems-and-the-menstrual-cycle.pdf', 'Reproductive Systems And The Menstrual Cycle')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Reproductive Systems And The Menstrual Cycle</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">0.7 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/rwanda-national-hiv-guidelines-for-prevention-management-of-hiv-2020.pdf', 'Rwanda National Hiv Guidelines For Prevention Management Of Hiv 2020')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Rwanda National Hiv Guidelines For Prevention Management Of Hiv 2020</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">4.3 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/signed-sign-language-training-manual-06-11-2025.pdf', 'Signed Sign Language Training Manual 06 11 2025')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Signed Sign Language Training Manual 06 11 2025</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">53.8 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/tuganire_mwana_wanjye_booklet.pdf', 'Tuganire Mwana Wanjye Booklet')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Tuganire Mwana Wanjye Booklet</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">19.3 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/twimakaze-umuco-wo-kuganira-mu-muryango-inyoborabiganiro-igenewe-uhugura-ukuboza-2025.pdf', 'Twimakaze Umuco Wo Kuganira Mu Muryango Inyoborabiganiro Igenewe Uhugura Ukuboza 2025')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Twimakaze Umuco Wo Kuganira Mu Muryango Inyoborabiganiro Igenewe Uhugura Ukuboza 2025</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">9.5 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+    <a href="#" onclick="openDocModal('../books/uburyo-bwo-gufasha-ababyeyi-kurinda-abana-bavuka-ubwandu-bwa-virusi-itera-sida.pdf', 'Uburyo Bwo Gufasha Ababyeyi Kurinda Abana Bavuka Ubwandu Bwa Virusi Itera Sida')" class="doc-card fade-in visible" data-tag="all">
+      <div class="doc-icon" style="background:var(--blue);color:#fff;border:none">📄</div>
+      <div class="doc-info" style="display:flex;flex-direction:column;justify-content:center;height:100%">
+        <h4 style="margin-bottom:.3rem;line-height:1.4">Uburyo Bwo Gufasha Ababyeyi Kurinda Abana Bavuka Ubwandu Bwa Virusi Itera Sida</h4>
+        <div class="doc-meta" style="margin-top:.2rem">
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">PDF</span>
+          <span class="d-badge" style="background:var(--bg-deep);color:var(--text-secondary)">1.7 MB</span>
+        </div>
+      </div>
+      <div style="margin-left:auto;align-self:center;background:rgba(0,160,220,0.1);color:var(--blue);padding:.5rem;border-radius:50%;font-size:1.2rem;">👁️</div>
+    </a>
+  
+</div>
+</main>
+
+
+<!-- Document Viewer Modal -->
+<div class="app-modal" id="doc-modal" style="padding: 0;">
+  <div class="app-modal-content" style="max-width: 100%; height: 100vh; border-radius: 0; display:flex; flex-direction:column; padding:0; background:#e2e8f0;">
+    
+    <!-- Top Bar -->
+    <div style="padding:.75rem 1.5rem; background:#0f172a; border-bottom:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center;">
+      <div class="app-modal-title" style="margin:0;font-size:1rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60%;" id="doc-title">Document</div>
+      <div style="display:flex;gap:1.5rem;align-items:center;">
+        <button id="btn-download" style="background:var(--blue); border:none; color:#fff; font-size:.85rem; font-weight:700; cursor:pointer; padding:.4rem .8rem; border-radius:var(--radius-sm);"><span style="margin-right:.25rem">⬇️</span> Download</button>
+        <button style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; padding:0;" onclick="closeDocModal()">✕</button>
+      </div>
+    </div>
+    
+    <!-- PDF Loading Indicator -->
+    <div id="pdf-loader" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#0f172a; font-weight:700; display:none; text-align:center;">
+       <div style="font-size:2rem; margin-bottom:1rem;">🔄</div>
+       Loading Document...<br>
+       <span style="font-size:.8rem; font-weight:400; color:#64748b;">This may take a moment for larger files.</span>
+    </div>
+
+    <!-- PDF Toolbar -->
+    <div id="pdf-toolbar" style="background:#1e293b; padding:.5rem 1.5rem; display:none; justify-content:center; align-items:center; gap:1rem; flex-wrap:wrap;">
+      <button id="prev-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">◀ Prev</button>
+      <span style="color:#cbd5e1; font-size:.9rem; font-weight:600;">Page <span id="page-num">1</span> of <span id="page-count">--</span></span>
+      <button id="next-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">Next ▶</button>
+      <div style="width:2px; height:20px; background:#475569;"></div>
+      <button id="zoom-out" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">🔍 -</button>
+      <button id="zoom-in" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">🔍 +</button>
+    </div>
+
+    <!-- Canvas Container -->
+    <div style="flex:1; overflow:auto; display:flex; flex-direction:column; align-items:center; padding:2rem;" id="pdf-container">
+      <canvas id="pdf-render" style="box-shadow:0 10px 30px rgba(0,0,0,0.3); display:none;"></canvas>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!-- Document Viewer Modal -->
+<div class="app-modal" id="doc-modal" style="padding: 0;">
+  <div class="app-modal-content" style="max-width: 100%; height: 100vh; border-radius: 0; display:flex; flex-direction:column; padding:0; background:#e2e8f0;">
+    
+    <!-- Top Bar -->
+    <div style="padding:.75rem 1.5rem; background:#0f172a; border-bottom:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center;">
+      <div class="app-modal-title" style="margin:0;font-size:1rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60%;" id="doc-title">Document</div>
+      <div style="display:flex;gap:1.5rem;align-items:center;">
+        <button id="btn-download" style="background:var(--blue); border:none; color:#fff; font-size:.85rem; font-weight:700; cursor:pointer; padding:.4rem .8rem; border-radius:var(--radius-sm);"><span style="margin-right:.25rem">⬇️</span> Download</button>
+        <button style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; padding:0;" onclick="closeDocModal()">✕</button>
+      </div>
+    </div>
+    
+    <!-- PDF Loading Indicator -->
+    <div id="pdf-loader" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#0f172a; font-weight:700; display:none;">
+       🔄 Loading Document...
+    </div>
+
+    <!-- PDF Toolbar -->
+    <div id="pdf-toolbar" style="background:#1e293b; padding:.5rem 1.5rem; display:none; justify-content:center; align-items:center; gap:1rem;">
+      <button id="prev-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">◀ Prev</button>
+      <span style="color:#cbd5e1; font-size:.9rem; font-weight:600;">Page <span id="page-num">1</span> of <span id="page-count">--</span></span>
+      <button id="next-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">Next ▶</button>
+      <button id="zoom-in" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer; margin-left:1rem;font-weight:700;">🔍 +</button>
+      <button id="zoom-out" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">🔍 -</button>
+    </div>
+
+    <!-- Canvas Container -->
+    <div style="flex:1; overflow:auto; display:flex; flex-direction:column; align-items:center; padding:2rem;" id="pdf-container">
+      <canvas id="pdf-render" style="box-shadow:0 10px 30px rgba(0,0,0,0.3); display:none;"></canvas>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!-- Document Viewer Modal -->
+<div class="app-modal" id="doc-modal" style="padding: 0;">
+  <div class="app-modal-content" style="max-width: 100%; height: 100vh; border-radius: 0; display:flex; flex-direction:column; padding:0; background:#e2e8f0;">
+    
+    <!-- Top Bar -->
+    <div style="padding:.75rem 1.5rem; background:#0f172a; border-bottom:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center;">
+      <div class="app-modal-title" style="margin:0;font-size:1rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60%;" id="doc-title">Document</div>
+      <div style="display:flex;gap:1.5rem;align-items:center;">
+        <button id="btn-download" style="background:var(--blue); border:none; color:#fff; font-size:.85rem; font-weight:700; cursor:pointer; padding:.4rem .8rem; border-radius:var(--radius-sm);"><span style="margin-right:.25rem">⬇️</span> Download</button>
+        <button style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; padding:0;" onclick="closeDocModal()">✕</button>
+      </div>
+    </div>
+    
+    <!-- PDF Toolbar -->
+    <div style="background:#1e293b; padding:.5rem 1.5rem; display:flex; justify-content:center; align-items:center; gap:1rem;">
+      <button id="prev-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">◀ Prev</button>
+      <span style="color:#cbd5e1; font-size:.9rem; font-weight:600;">Page <span id="page-num">1</span> of <span id="page-count">--</span></span>
+      <button id="next-page" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">Next ▶</button>
+      <button id="zoom-in" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer; margin-left:1rem;font-weight:700;">🔍 +</button>
+      <button id="zoom-out" style="background:#334155; color:#fff; border:none; padding:.4rem .8rem; border-radius:4px; cursor:pointer;font-weight:700;">🔍 -</button>
+    </div>
+
+    <!-- Canvas Container -->
+    <div style="flex:1; overflow:auto; display:flex; flex-direction:column; align-items:center; padding:2rem;" id="pdf-container">
+      <canvas id="pdf-render" style="box-shadow:0 10px 30px rgba(0,0,0,0.3);"></canvas>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Document Viewer Modal -->
+<div class="app-modal" id="doc-modal" style="padding: 0;">
+  <div class="app-modal-content" style="max-width: 100%; height: 100vh; border-radius: 0; display:flex; flex-direction:column; padding:0;">
+    <div style="padding:1rem 1.5rem; background:#000; border-bottom:1px solid var(--glass-border); display:flex; justify-content:space-between; align-items:center;">
+      <div class="app-modal-title" style="margin:0;font-size:1.1rem;color:#fff" id="doc-title">Document</div>
+      <button style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; padding:0.5rem;" onclick="closeDocModal()">✕</button>
+    </div>
+    <div style="flex:1; background:#f4f4f4; display:flex; flex-direction:column; align-items:center; position:relative;" id="pdf-container">
+      <!-- Iframe will be injected here -->
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+
+<nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
+  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+</nav>
+
+<script src="../assets/js/app.js"></script>
+
+<!-- Load PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script>
+  let pdfDoc = null,
+      pageNum = 1,
+      pageIsRendering = false,
+      pageNumIsPending = null,
+      scale = 1.0,
+      canvas = document.getElementById('pdf-render'),
+      ctx = canvas.getContext('2d');
+
+  // Configure worker
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+  function renderPage(num) {
+    if(!pdfDoc) return;
+    pageIsRendering = true;
+    pdfDoc.getPage(num).then(page => {
+      const viewport = page.getViewport({ scale });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      const renderCtx = { canvasContext: ctx, viewport: viewport };
+      page.render(renderCtx).promise.then(() => {
+        pageIsRendering = false;
+        if(pageNumIsPending !== null) {
+          renderPage(pageNumIsPending);
+          pageNumIsPending = null;
+        }
+      });
+      document.getElementById('page-num').textContent = num;
+    });
+  }
+
+  function queueRenderPage(num) {
+    if(pageIsRendering) pageNumIsPending = num;
+    else renderPage(num);
+  }
+
+  function showPrevPage() {
+    if(pageNum <= 1) return;
+    pageNum--;
+    queueRenderPage(pageNum);
+  }
+
+  function showNextPage() {
+    if(pageNum >= pdfDoc.numPages) return;
+    pageNum++;
+    queueRenderPage(pageNum);
+  }
+
+  document.getElementById('prev-page').addEventListener('click', showPrevPage);
+  document.getElementById('next-page').addEventListener('click', showNextPage);
+  document.getElementById('zoom-in').addEventListener('click', () => { scale += 0.2; queueRenderPage(pageNum); });
+  document.getElementById('zoom-out').addEventListener('click', () => { if(scale <= 0.4) return; scale -= 0.2; queueRenderPage(pageNum); });
+
+  async function openDocModal(fileUrl, title) {
+    document.getElementById('doc-title').textContent = title;
+    document.getElementById('doc-modal').classList.add('open');
+    document.getElementById('pdf-loader').style.display = 'block';
+    document.getElementById('pdf-toolbar').style.display = 'none';
+    document.getElementById('pdf-render').style.display = 'none';
+    
+    const dlBtn = document.getElementById('btn-download');
+    dlBtn.onclick = function() {
+      const a = document.createElement('a');
+      a.href = fileUrl;
+      a.download = title + '.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+
+    try {
+      // CACHE BUSTING: Append a timestamp to prevent Service Worker interference or stale local caches
+      const response = await fetch(fileUrl + '?v=' + Date.now(), { cache: 'reload' });
+      if (!response.ok) throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+      const data = await response.arrayBuffer();
+      
+      const loadingTask = pdfjsLib.getDocument({data: data});
+      pdfDoc = await loadingTask.promise;
+      
+      document.getElementById('pdf-loader').style.display = 'none';
+      document.getElementById('pdf-toolbar').style.display = 'flex';
+      document.getElementById('pdf-render').style.display = 'block';
+      
+      document.getElementById('page-count').textContent = pdfDoc.numPages;
+      pageNum = 1;
+      // Auto-scale to width
+      const initialPage = await pdfDoc.getPage(1);
+      const viewport = initialPage.getViewport({ scale: 1 });
+      const containerWidth = document.getElementById('pdf-container').clientWidth - 64;
+      scale = containerWidth / viewport.width;
+      if (scale > 1.5) scale = 1.25; 
+      
+      renderPage(pageNum);
+    } catch (err) {
+      document.getElementById('pdf-loader').innerHTML = '<div style="font-size:2rem;color:#ef4444">❌</div>' + 
+        '<strong>Fail to load:</strong><br>' + err.message + 
+        '<br><br><button onclick="window.location.reload()" style="padding:.5rem 1rem;background:#0f172a;color:#fff;border:none;border-radius:4px;cursor:pointer;">Retry</button>';
+    }
+  }
+  
+  function closeDocModal() {
+    document.getElementById('doc-modal').classList.remove('open');
+    pdfDoc = null;
+    if(ctx) ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+</script>
+
+</body>
+</html>

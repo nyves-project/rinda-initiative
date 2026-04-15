@@ -1,5 +1,5 @@
 /* Rinda Initiative — Service Worker */
-const CACHE_NAME = 'rinda-v3';
+const CACHE_NAME = 'rinda-v24';
 const ASSETS = [
   '/',
   '/index.html',
@@ -13,11 +13,16 @@ const ASSETS = [
   '/app/impact.html',
   '/app/certificate.html',
   '/app/agent.html',
+  '/app/clinic.html',
+  '/app/menstrual.html',
+  '/app/community.html',
+  '/app/rewards.html',
+  '/app/library.html',
   '/assets/css/app.css',
   '/assets/css/landing.css',
   '/assets/js/app.js',
   '/assets/js/landing.js',
-  'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap'
+  'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap'
 ];
 
 self.addEventListener('install', e => {
@@ -42,6 +47,10 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  
+  // Bypass Service Worker explicitly for PDFs to allow Chromium to resolve ranged requests for PDF.js reading
+  if (e.request.url.includes('.pdf')) return;
+  
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
