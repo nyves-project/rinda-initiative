@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — USSD Simulator (*775#)</title>
-  <meta name="description" content="Rinda USSD Simulator: Experience how *775# works on any basic phone — no internet needed."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Rinda USSD Simulator: Experience how *775# works on any basic phone — no internet needed.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
 </head>
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
+  <div class="app-logo" data-i18n="str_1992"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1993">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -25,38 +23,38 @@
 </header>
 
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1994">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1995"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1996">Font Size</span><div class="font-size-controls" data-i18n="str_1997"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <main class="app-main" role="main">
   <div class="page-header">
-    <div class="section-badge">📟 No Internet Required</div>
-    <h1>USSD Simulator</h1>
-    <p>Dial <strong style="color:var(--blue)">*775#</strong> — works on any basic phone. No smartphone or data needed.</p>
+    <div class="section-badge" data-i18n="str_1998">📟 No Internet Required</div>
+    <h1 data-i18n="str_1999">USSD Simulator</h1>
+    <p data-i18n="str_2000">Dial <strong style="color:var(--blue)">*775#</strong> — works on any basic phone. No smartphone or data needed.</p>
   </div>
 
   <!-- Info Banner -->
-  <div style="margin:0 1.5rem 1.5rem;background:rgba(250,210,1,0.08);border:1px solid rgba(250,210,1,0.25);border-radius:var(--radius-md);padding:1rem 1.25rem;font-size:.85rem;color:var(--text-secondary)">
+  <div style="margin:0 1.5rem 1.5rem;background:rgba(250,210,1,0.08);border:1px solid rgba(250,210,1,0.25);border-radius:var(--radius-md);padding:1rem 1.25rem;font-size:.85rem;color:var(--text-secondary)" data-i18n="str_2001">
     💡 <strong style="color:var(--gold)">How this works:</strong> This simulator shows how Rwanda's 15+ million basic-phone users can access HIV services with zero internet. Tap any numbered option to navigate.
   </div>
 
   <!-- Phone Frame -->
   <div class="phone-frame" role="region" aria-label="USSD phone simulator" aria-live="polite">
     <div class="phone-screen">
-      <div class="phone-status">
+      <div class="phone-status" data-i18n="str_2002">
         <span>📶 MTN Rwanda</span>
         <span>🔋 85%</span>
       </div>
-      <div class="ussd-header" id="ussd-header">*775# — Rinda Health</div>
+      <div class="ussd-header" id="ussd-header" data-i18n="str_2003">*775# — Rinda Health</div>
       <div class="ussd-body" id="ussd-body"></div>
     </div>
-    <div class="phone-input">
-      <input type="text" id="ussd-input" placeholder="Type option (e.g. 1)" maxlength="3" inputmode="numeric" aria-label="Enter USSD menu option"/>
+    <div class="phone-input" data-i18n="str_2004">
+      <input type="text" id="ussd-input" placeholder="Type option (e.g. 1)" maxlength="3" inputmode="numeric" aria-label="Enter USSD menu option">
       <button onclick="handleInput()" aria-label="Send">Send</button>
     </div>
-    <div class="phone-bottom-btn">
+    <div class="phone-bottom-btn" data-i18n="str_2005">
       <button class="phone-btn" onclick="ussdNavigate('0')">◀ Back</button>
       <button class="phone-btn primary" onclick="resetUSSD()">Reset</button>
     </div>
@@ -64,32 +62,34 @@
 
   <!-- Explanation Cards -->
   <div style="padding:1.5rem">
-    <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em">Why USSD Matters</h3>
+    <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em" data-i18n="str_2006">Why USSD Matters</h3>
     <div style="display:flex;flex-direction:column;gap:.75rem">
       <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:1rem;display:flex;gap:.75rem;align-items:flex-start">
         <span style="font-size:1.5rem">📊</span>
-        <div><strong style="font-size:.9rem">32.4% HIV Knowledge Gap</strong><p style="font-size:.8rem;color:var(--text-secondary);margin-top:.2rem">Women with no education have only 32.4% HIV knowledge. USSD reaches them in Kinyarwanda, without reading.</p></div>
+        <div><strong style="font-size:.9rem" data-i18n="str_2007">32.4% HIV Knowledge Gap</strong><p style="font-size:.8rem;color:var(--text-secondary);margin-top:.2rem" data-i18n="str_2008">Women with no education have only 32.4% HIV knowledge. USSD reaches them in Kinyarwanda, without reading.</p></div>
       </div>
       <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:1rem;display:flex;gap:.75rem;align-items:flex-start">
         <span style="font-size:1.5rem">👁️</span>
-        <div><strong style="font-size:.9rem">Accessible for Visually Impaired Youth</strong><p style="font-size:.8rem;color:var(--text-secondary);margin-top:.2rem">Voice reads every menu option — visually impaired users navigate the full system by sound alone.</p></div>
+        <div><strong style="font-size:.9rem" data-i18n="str_2009">Accessible for Visually Impaired Youth</strong><p style="font-size:.8rem;color:var(--text-secondary);margin-top:.2rem" data-i18n="str_2010">Voice reads every menu option — visually impaired users navigate the full system by sound alone.</p></div>
       </div>
       <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:1rem;display:flex;gap:.75rem;align-items:flex-start">
         <span style="font-size:1.5rem">📡</span>
-        <div><strong style="font-size:.9rem">Zero Cost, Zero Data</strong><p style="font-size:.8rem;color:var(--text-secondary);margin-top:.2rem">USSD calls are toll-free on the Rinda system. A Rwandan youth in the most remote village can access HIV health services for RWF 0.</p></div>
+        <div><strong style="font-size:.9rem" data-i18n="str_2011">Zero Cost, Zero Data</strong><p style="font-size:.8rem;color:var(--text-secondary);margin-top:.2rem" data-i18n="str_2012">USSD calls are toll-free on the Rinda system. A Rwandan youth in the most remote village can access HIV health services for RWF 0.</p></div>
       </div>
     </div>
   </div>
 </main>
 
 <nav class="bottom-nav">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_2013"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_2014"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_2015"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_2016"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_2017"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   function handleInput(){
@@ -100,5 +100,6 @@
   function resetUSSD(){ ussdStack=['home']; renderUSSD(); }
   document.addEventListener('DOMContentLoaded', renderUSSD);
 </script>
-</body>
-</html>
+
+
+</body></html>

@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Rinda — Learn: Stories, Guides & Growing Up</title>
-  <meta name="description" content="Real HIV prevention stories, puberty guides for girls and boys, condom guides, and educational quizzes for Rwanda's youth."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Rinda — Learn: Stories, Guides &amp; Growing Up</title>
+  <meta name="description" content="Real HIV prevention stories, puberty guides for girls and boys, condom guides, and educational quizzes for Rwanda's youth.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     /* ── Tab Navigation ── */
     .learn-tabs {
@@ -228,9 +226,9 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Learn</div>
+  <div class="app-logo" data-i18n="str_1548"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Learn</div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1549">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -239,27 +237,27 @@
 </header>
 
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1550">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1551"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1552">Font Size</span><div class="font-size-controls" data-i18n="str_1553"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <main class="app-main" role="main">
   <div class="page-header">
-    <div class="section-badge">📖 Learn & Grow</div>
-    <h1>Stories, Books & Guides</h1>
-    <p>Real stories, honest knowledge, and life guides for Rwanda's youth — written with care.</p>
+    <div class="section-badge" data-i18n="str_1554">📖 Learn &amp; Grow</div>
+    <h1 data-i18n="str_1555">Stories, Books &amp; Guides</h1>
+    <p data-i18n="str_1556">Real stories, honest knowledge, and life guides for Rwanda's youth — written with care.</p>
   </div>
 
   <!-- Progress -->
-  <div style="padding:0 1.5rem .25rem;display:flex;justify-content:space-between;align-items:center">
+  <div style="padding:0 1.5rem .25rem;display:flex;justify-content:space-between;align-items:center" data-i18n="str_1557">
     <span style="font-size:.78rem;color:var(--text-muted)">Quiz progress</span>
     <span style="font-size:.78rem;font-weight:700;color:var(--green)" id="module-progress-pct">0%</span>
   </div>
   <div class="module-progress-bar"><div class="module-progress-fill" id="module-progress-fill"></div></div>
 
   <!-- Tabs -->
-  <div class="learn-tabs" role="tablist">
+  <div class="learn-tabs" role="tablist" data-i18n="str_1558">
     <button class="learn-tab active" role="tab" onclick="switchTab('stories',this)">📖 Stories</button>
     <button class="learn-tab" role="tab" onclick="switchTab('books',this)" style="position:relative">
       📚 Growing Up 
@@ -276,56 +274,56 @@
       <div class="story-header" onclick="toggleStory(1)">
         <div class="story-avatar" style="background:linear-gradient(135deg,rgba(29,185,84,.2),rgba(0,160,220,.1))">👧🏾</div>
         <div class="story-meta">
-          <h3>Grace's First Test — <span id="status-1" style="color:var(--gold)">▶</span></h3>
-          <div class="story-tag">🟢 Self-Testing · Ages 16–22 · 8 min read</div>
-          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">A 17-year-old faces her deepest fear — and finds courage she didn't know she had</div>
+          <h3 data-i18n="str_1559">Grace's First Test — <span id="status-1" style="color:var(--gold)">▶</span></h3>
+          <div class="story-tag" data-i18n="str_1560">🟢 Self-Testing · Ages 16–22 · 8 min read</div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem" data-i18n="str_1561">A 17-year-old faces her deepest fear — and finds courage she didn't know she had</div>
         </div>
         <span class="story-toggle">▾</span>
       </div>
       <div class="story-body">
         <div class="story-text">
-          <p>Grace was 17 years old, and she had a secret she carried like a stone in her chest.</p>
-          <p>Two months earlier, her boyfriend Fabrice had told her he loved her. She had believed him. She had trusted him. And one evening, when she was not ready, she had said yes to something she later wasn't sure she was ready for. She didn't know then that Fabrice had been with three other girls before her. She found out from her friend Sandrine — in a whisper, at school, between classes.</p>
-          <p>After that, Grace could not sleep properly. She Googled things at 2am on her phone, reading articles that terrified her. She found the word HIV and kept circling back to it. <em>What if?</em> The thought lived in her throat.</p>
-          <div class="dialogue">"What's wrong with you lately?" her best friend Claudine asked one afternoon, sitting on the wall outside school. "You look like you haven't slept in weeks."</div>
-          <p>Grace almost told her. But she swallowed the words. <em>What would Claudine think? What would she say at school?</em></p>
-          <p>She avoided the nearest clinic. She had heard stories — nurses who talked too much, receptionists who recognized your mother, results that came in envelopes that looked different. She was terrified of being seen.</p>
-          <div class="highlight-box">
+          <p data-i18n="str_1562">Grace was 17 years old, and she had a secret she carried like a stone in her chest.</p>
+          <p data-i18n="str_1563">Two months earlier, her boyfriend Fabrice had told her he loved her. She had believed him. She had trusted him. And one evening, when she was not ready, she had said yes to something she later wasn't sure she was ready for. She didn't know then that Fabrice had been with three other girls before her. She found out from her friend Sandrine — in a whisper, at school, between classes.</p>
+          <p data-i18n="str_1564">After that, Grace could not sleep properly. She Googled things at 2am on her phone, reading articles that terrified her. She found the word HIV and kept circling back to it. <em>What if?</em> The thought lived in her throat.</p>
+          <div class="dialogue" data-i18n="str_1565">"What's wrong with you lately?" her best friend Claudine asked one afternoon, sitting on the wall outside school. "You look like you haven't slept in weeks."</div>
+          <p data-i18n="str_1566">Grace almost told her. But she swallowed the words. <em>What would Claudine think? What would she say at school?</em></p>
+          <p data-i18n="str_1567">She avoided the nearest clinic. She had heard stories — nurses who talked too much, receptionists who recognized your mother, results that came in envelopes that looked different. She was terrified of being seen.</p>
+          <div class="highlight-box" data-i18n="str_1568">
             <strong>📌 Did you know?</strong>
             In Rwanda, 57% of young people who have never been tested say they were afraid of what people would think of them. Fear of stigma — not lack of access — is the number one barrier to HIV testing among youth aged 15–24. (Rwanda 2025 DHS)
           </div>
-          <p>One Thursday, she found a small card tucked under the door of their classroom. It said: <em>"Rinda — Know Your Status. Test at Home. No Name. No Clinic. Free delivery in 24 hours."</em> She read it five times. She turned it over. There was a number and a web address.</p>
-          <p>That night, she ordered a kit. She typed only her sector — Gasabo — and ticked a box. She pressed send before she could talk herself out of it.</p>
-          <p>The next day, a young woman in ordinary clothes knocked on the gate. She handed Grace a plain white package. No logo. No words on the outside. She smiled and left. The whole exchange took forty seconds.</p>
-          <div class="dialogue">"I just need to know," Grace told herself. "Whatever the result — I just need to know."</div>
-          <p>She waited until her parents went to bed. She locked her bedroom door. She opened the package slowly — inside was a small oral swab, a card with instructions, and a QR code linking to a video that walked her through every step in Kinyarwanda.</p>
-          <p>She placed the swab against her gum. She set a timer for 20 minutes. She sat on her floor with her back against the bed, looking at the ceiling, counting the cracks in the paint. Those were the longest 20 minutes of her life.</p>
-          <p>When the timer went off, she looked at the test strip.</p>
-          <p><strong>One line. Negative.</strong></p>
-          <p>Grace pressed both hands against her mouth. She did not scream. She did not cry — well, maybe a little. She sat there in the quiet of her room, and something in her chest unlocked. Not just relief. Something bigger. <em>Power.</em> The power of knowing.</p>
-          <div class="highlight-box">
+          <p data-i18n="str_1569">One Thursday, she found a small card tucked under the door of their classroom. It said: <em>"Rinda — Know Your Status. Test at Home. No Name. No Clinic. Free delivery in 24 hours."</em> She read it five times. She turned it over. There was a number and a web address.</p>
+          <p data-i18n="str_1570">That night, she ordered a kit. She typed only her sector — Gasabo — and ticked a box. She pressed send before she could talk herself out of it.</p>
+          <p data-i18n="str_1571">The next day, a young woman in ordinary clothes knocked on the gate. She handed Grace a plain white package. No logo. No words on the outside. She smiled and left. The whole exchange took forty seconds.</p>
+          <div class="dialogue" data-i18n="str_1572">"I just need to know," Grace told herself. "Whatever the result — I just need to know."</div>
+          <p data-i18n="str_1573">She waited until her parents went to bed. She locked her bedroom door. She opened the package slowly — inside was a small oral swab, a card with instructions, and a QR code linking to a video that walked her through every step in Kinyarwanda.</p>
+          <p data-i18n="str_1574">She placed the swab against her gum. She set a timer for 20 minutes. She sat on her floor with her back against the bed, looking at the ceiling, counting the cracks in the paint. Those were the longest 20 minutes of her life.</p>
+          <p data-i18n="str_1575">When the timer went off, she looked at the test strip.</p>
+          <p data-i18n="str_1576"><strong>One line. Negative.</strong></p>
+          <p data-i18n="str_1577">Grace pressed both hands against her mouth. She did not scream. She did not cry — well, maybe a little. She sat there in the quiet of her room, and something in her chest unlocked. Not just relief. Something bigger. <em>Power.</em> The power of knowing.</p>
+          <div class="highlight-box" data-i18n="str_1578">
             <strong>💚 What Grace did next</strong>
             She set a reminder on her phone for 6 months later — her next test. She read about condoms from the Rinda Knowledge Hub. She decided that next time she was in a relationship, she would ask about testing together. She made that a non-negotiable part of who she was.
           </div>
-          <p>Grace never told Claudine about the test. But three months later, when Claudine mentioned she was worried about something similar, Grace looked her calmly in the eye and said:</p>
-          <div class="dialogue">"There's something you can do. From home. No one needs to know. Do you want the link?"</div>
+          <p data-i18n="str_1579">Grace never told Claudine about the test. But three months later, when Claudine mentioned she was worried about something similar, Grace looked her calmly in the eye and said:</p>
+          <div class="dialogue" data-i18n="str_1580">"There's something you can do. From home. No one needs to know. Do you want the link?"</div>
         </div>
         <div class="story-lesson">
-          <div class="sl-label">📘 Lesson from this story</div>
-          <p>Testing for HIV is not a sign of something wrong — it is a sign that you are taking care of yourself. The hardest part is the decision to test. Once you test, you have power. A negative result reminds you to protect yourself. A positive result means you can start treatment early and live a full, healthy life. Knowing is always better than not knowing.</p>
+          <div class="sl-label" data-i18n="str_1581">📘 Lesson from this story</div>
+          <p data-i18n="str_1582">Testing for HIV is not a sign of something wrong — it is a sign that you are taking care of yourself. The hardest part is the decision to test. Once you test, you have power. A negative result reminds you to protect yourself. A positive result means you can start treatment early and live a full, healthy life. Knowing is always better than not knowing.</p>
         </div>
         <div class="quiz-section">
-          <h4>🧠 Quiz — What did you learn?</h4>
-          <div class="quiz-q">1. Why was Grace afraid to go to the clinic to get tested?</div>
-          <div class="quiz-options" id="quiz-1" data-correct="1">
+          <h4 data-i18n="str_1583">🧠 Quiz — What did you learn?</h4>
+          <div class="quiz-q" data-i18n="str_1584">1. Why was Grace afraid to go to the clinic to get tested?</div>
+          <div class="quiz-options" id="quiz-1" data-correct="1" data-i18n="str_1585">
             <button class="quiz-option" onclick="answerQuiz(1,0)">A. She did not have money to pay</button>
             <button class="quiz-option" onclick="answerQuiz(1,1)">B. She was afraid people would recognise her and spread information about her</button>
             <button class="quiz-option" onclick="answerQuiz(1,2)">C. She did not believe HIV tests work</button>
             <button class="quiz-option" onclick="answerQuiz(1,3)">D. She thought she could not have HIV because she felt healthy</button>
           </div>
           <div class="quiz-feedback" id="qf-1"></div>
-          <div class="quiz-q" style="margin-top:1.25rem">2. What is the most important reason to test for HIV even if you feel healthy?</div>
-          <div class="quiz-options" id="quiz-1b" data-correct="2">
+          <div class="quiz-q" style="margin-top:1.25rem" data-i18n="str_1586">2. What is the most important reason to test for HIV even if you feel healthy?</div>
+          <div class="quiz-options" id="quiz-1b" data-correct="2" data-i18n="str_1587">
             <button class="quiz-option" onclick="answerQuiz('1b',0)">A. Because the government requires it</button>
             <button class="quiz-option" onclick="answerQuiz('1b',1)">B. Because HIV makes your skin look different</button>
             <button class="quiz-option" onclick="answerQuiz('1b',2)">C. Because HIV has no visible symptoms for years — you can have it and feel completely fine</button>
@@ -341,60 +339,60 @@
       <div class="story-header" onclick="toggleStory(2)">
         <div class="story-avatar" style="background:linear-gradient(135deg,rgba(0,160,220,.2),rgba(250,210,1,.1))">💑</div>
         <div class="story-meta">
-          <h3>Jean & Diane: Testing Together — <span id="status-2" style="color:var(--gold)">▶</span></h3>
-          <div class="story-tag">🔵 Couples Testing · Ages 18–25 · 10 min read</div>
-          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">Love is not just about feeling — it is about choosing honestly, even when it is hard</div>
+          <h3 data-i18n="str_1588">Jean &amp; Diane: Testing Together — <span id="status-2" style="color:var(--gold)">▶</span></h3>
+          <div class="story-tag" data-i18n="str_1589">🔵 Couples Testing · Ages 18–25 · 10 min read</div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem" data-i18n="str_1590">Love is not just about feeling — it is about choosing honestly, even when it is hard</div>
         </div>
         <span class="story-toggle">▾</span>
       </div>
       <div class="story-body">
         <div class="story-text">
-          <p>Jean was 22, Diane was 21. They had been together for eleven months — and in their world, that was serious. In their village in Huye, eleven months meant families were starting to whisper about the future.</p>
-          <p>Jean loved Diane in the way that made him careful. He thought about her before he thought about himself. He wanted to do everything right. But there was one conversation he kept avoiding. He would get right to the edge of it and then make a joke, or change the subject, or suddenly have somewhere to be.</p>
-          <div class="dialogue">"Jean," Diane said one evening while they walked along the road near the market. "I want us to do something."</div>
-          <div class="dialogue">"Anything," he said, and meant it.</div>
-          <div class="dialogue">"I want us to test for HIV. Together."</div>
-          <p>Jean's footsteps slowed. He looked at her sideways. His first feeling — if he was honest — was something small and cold in his chest. Not guilt exactly. More like exposure. Like she had opened a door he had been keeping shut.</p>
-          <div class="dialogue">"Why would we need to do that?" he said. "We trust each other."</div>
-          <div class="dialogue">"I know we do," said Diane. "That's not what it's about."</div>
-          <p>She stopped walking. She turned to face him.</p>
-          <div class="dialogue">"Jean. Before us, you were with someone else. Before you, I was with someone else. Neither of us is starting from zero. Trusting each other doesn't change our history. I want us to know. So that if we decide to stop using condoms one day — because we're committed — we're doing it with full information."</div>
-          <p>Jean was quiet for a long time. Not because he was angry. Because she was right, and he knew it, and that meant he had to be honest about something he had been running from.</p>
-          <div class="dialogue">"I'm scared," he said finally. "What if... what if something comes back and it's my fault?"</div>
-          <div class="dialogue">"Then we deal with it together," said Diane. "That's what together means."</div>
-          <div class="highlight-box">
+          <p data-i18n="str_1591">Jean was 22, Diane was 21. They had been together for eleven months — and in their world, that was serious. In their village in Huye, eleven months meant families were starting to whisper about the future.</p>
+          <p data-i18n="str_1592">Jean loved Diane in the way that made him careful. He thought about her before he thought about himself. He wanted to do everything right. But there was one conversation he kept avoiding. He would get right to the edge of it and then make a joke, or change the subject, or suddenly have somewhere to be.</p>
+          <div class="dialogue" data-i18n="str_1593">"Jean," Diane said one evening while they walked along the road near the market. "I want us to do something."</div>
+          <div class="dialogue" data-i18n="str_1594">"Anything," he said, and meant it.</div>
+          <div class="dialogue" data-i18n="str_1595">"I want us to test for HIV. Together."</div>
+          <p data-i18n="str_1596">Jean's footsteps slowed. He looked at her sideways. His first feeling — if he was honest — was something small and cold in his chest. Not guilt exactly. More like exposure. Like she had opened a door he had been keeping shut.</p>
+          <div class="dialogue" data-i18n="str_1597">"Why would we need to do that?" he said. "We trust each other."</div>
+          <div class="dialogue" data-i18n="str_1598">"I know we do," said Diane. "That's not what it's about."</div>
+          <p data-i18n="str_1599">She stopped walking. She turned to face him.</p>
+          <div class="dialogue" data-i18n="str_1600">"Jean. Before us, you were with someone else. Before you, I was with someone else. Neither of us is starting from zero. Trusting each other doesn't change our history. I want us to know. So that if we decide to stop using condoms one day — because we're committed — we're doing it with full information."</div>
+          <p data-i18n="str_1601">Jean was quiet for a long time. Not because he was angry. Because she was right, and he knew it, and that meant he had to be honest about something he had been running from.</p>
+          <div class="dialogue" data-i18n="str_1602">"I'm scared," he said finally. "What if... what if something comes back and it's my fault?"</div>
+          <div class="dialogue" data-i18n="str_1603">"Then we deal with it together," said Diane. "That's what together means."</div>
+          <div class="highlight-box" data-i18n="str_1604">
             <strong>📌 Important fact</strong>
             Couples testing — where two partners test at the same time — is one of the most effective HIV prevention strategies. Research across sub-Saharan Africa shows that couples who test together are more likely to use condoms consistently and more likely to disclose results honestly. It builds trust rather than breaking it.
           </div>
-          <p>They ordered two self-test kits through Rinda. The kits arrived the next afternoon. They decided to test on Saturday morning — at Jean's house, when his family was at church. They sat at the small table near the window. They unwrapped the kits at the same time.</p>
-          <p>Jean's hands were shaking slightly. Diane held his eyes with hers and said:</p>
-          <div class="dialogue">"Whatever happens, I'm still here."</div>
-          <p>They each did the oral swab. They set the same timer. For twenty minutes, they talked about small things — a film they had seen, Diane's sister's new baby, what they would cook for lunch. Normal things. Ordinary things. Jean noticed that the normalness of it made the fear a little smaller.</p>
-          <p>The timer rang.</p>
-          <p>Jean: <strong>One line. Negative.</strong><br/>Diane: <strong>One line. Negative.</strong></p>
-          <p>Jean let out a breath so long that Diane started laughing — a real laugh, surprised out of her — and then he was laughing too, and then they were both just sitting there in the morning light, holding hands across the table, feeling something clean and solid between them.</p>
-          <div class="dialogue">"We should do this every six months," said Diane.<br/>"Yes," said Jean. "Together."</div>
-          <div class="warning-box">
+          <p data-i18n="str_1605">They ordered two self-test kits through Rinda. The kits arrived the next afternoon. They decided to test on Saturday morning — at Jean's house, when his family was at church. They sat at the small table near the window. They unwrapped the kits at the same time.</p>
+          <p data-i18n="str_1606">Jean's hands were shaking slightly. Diane held his eyes with hers and said:</p>
+          <div class="dialogue" data-i18n="str_1607">"Whatever happens, I'm still here."</div>
+          <p data-i18n="str_1608">They each did the oral swab. They set the same timer. For twenty minutes, they talked about small things — a film they had seen, Diane's sister's new baby, what they would cook for lunch. Normal things. Ordinary things. Jean noticed that the normalness of it made the fear a little smaller.</p>
+          <p data-i18n="str_1609">The timer rang.</p>
+          <p data-i18n="str_1610">Jean: <strong>One line. Negative.</strong><br>Diane: <strong>One line. Negative.</strong></p>
+          <p data-i18n="str_1611">Jean let out a breath so long that Diane started laughing — a real laugh, surprised out of her — and then he was laughing too, and then they were both just sitting there in the morning light, holding hands across the table, feeling something clean and solid between them.</p>
+          <div class="dialogue" data-i18n="str_1612">"We should do this every six months," said Diane.<br>"Yes," said Jean. "Together."</div>
+          <div class="warning-box" data-i18n="str_1613">
             <strong>⚠️ What if a result is positive?</strong>
             A positive result does not mean a relationship is over. It means one or both partners need to start treatment — which in Rwanda is free and widely available. HIV-positive people on treatment (ART) who have an undetectable viral load cannot pass HIV to their partners. This is called U=U: Undetectable = Untransmittable. Early testing and treatment saves lives and relationships.
           </div>
         </div>
         <div class="story-lesson">
-          <div class="sl-label">📘 Lesson from this story</div>
-          <p>Asking your partner to test with you is not an accusation. It is an act of love and respect. Couples who know their status together can make real, informed decisions. Testing together also removes the fear of "what if they think I don't trust them?" — because you are doing it as a team. Real love includes honesty about health.</p>
+          <div class="sl-label" data-i18n="str_1614">📘 Lesson from this story</div>
+          <p data-i18n="str_1615">Asking your partner to test with you is not an accusation. It is an act of love and respect. Couples who know their status together can make real, informed decisions. Testing together also removes the fear of "what if they think I don't trust them?" — because you are doing it as a team. Real love includes honesty about health.</p>
         </div>
         <div class="quiz-section">
-          <h4>🧠 Quiz — What did you learn?</h4>
-          <div class="quiz-q">1. Diane asked Jean to test together because she did not trust him. True or False?</div>
-          <div class="quiz-options" id="quiz-2" data-correct="1">
+          <h4 data-i18n="str_1616">🧠 Quiz — What did you learn?</h4>
+          <div class="quiz-q" data-i18n="str_1617">1. Diane asked Jean to test together because she did not trust him. True or False?</div>
+          <div class="quiz-options" id="quiz-2" data-correct="1" data-i18n="str_1618">
             <button class="quiz-option" onclick="answerQuiz(2,0)">A. True — she suspected he had cheated</button>
             <button class="quiz-option" onclick="answerQuiz(2,1)">B. False — she asked because knowing their status is about health, not about distrust</button>
             <button class="quiz-option" onclick="answerQuiz(2,2)">C. True — she heard a rumour about him</button>
             <button class="quiz-option" onclick="answerQuiz(2,3)">D. False — she was testing herself and Jean just happened to be there</button>
           </div>
           <div class="quiz-feedback" id="qf-2"></div>
-          <div class="quiz-q" style="margin-top:1.25rem">2. What does U=U mean in HIV treatment?</div>
-          <div class="quiz-options" id="quiz-2b" data-correct="0">
+          <div class="quiz-q" style="margin-top:1.25rem" data-i18n="str_1619">2. What does U=U mean in HIV treatment?</div>
+          <div class="quiz-options" id="quiz-2b" data-correct="0" data-i18n="str_1620">
             <button class="quiz-option" onclick="answerQuiz('2b',0)">A. Undetectable = Untransmittable — a person on effective treatment cannot pass HIV to a partner</button>
             <button class="quiz-option" onclick="answerQuiz('2b',1)">B. Untested = Unprotected — anyone who hasn't tested is at risk</button>
             <button class="quiz-option" onclick="answerQuiz('2b',2)">C. Unknown = Untreatable — if HIV is found late it cannot be cured</button>
@@ -410,53 +408,53 @@
       <div class="story-header" onclick="toggleStory(3)">
         <div class="story-avatar" style="background:linear-gradient(135deg,rgba(255,71,87,.2),rgba(250,210,1,.1))">👦🏾</div>
         <div class="story-meta">
-          <h3>Patrick's Wake-Up Call — <span id="status-3" style="color:var(--gold)">▶</span></h3>
-          <div class="story-tag">🔴 Condom Use · Ages 17–24 · 10 min read</div>
-          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">One decision can change everything — why "just this once" is the most dangerous phrase</div>
+          <h3 data-i18n="str_1621">Patrick's Wake-Up Call — <span id="status-3" style="color:var(--gold)">▶</span></h3>
+          <div class="story-tag" data-i18n="str_1622">🔴 Condom Use · Ages 17–24 · 10 min read</div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem" data-i18n="str_1623">One decision can change everything — why "just this once" is the most dangerous phrase</div>
         </div>
         <span class="story-toggle">▾</span>
       </div>
       <div class="story-body">
         <div class="story-text">
-          <p>Patrick was 19. Everyone at his school in Kicukiro knew him. He played football on Saturdays. He laughed loudly. He was confident in a way that made people stand a little closer to him at parties.</p>
-          <p>He also knew about HIV. He had been taught about it in school, twice. He could name the transmission routes. He knew what a condom was. He even carried one sometimes, in his wallet — more out of habit than intention, he told himself.</p>
-          <p>So when he met Aline at a graduation party in December, and things moved faster than he planned, and she said softly, <em>"Just this once, it's fine,"</em> — he made a choice he told himself was no big deal.</p>
-          <div class="warning-box">
+          <p data-i18n="str_1624">Patrick was 19. Everyone at his school in Kicukiro knew him. He played football on Saturdays. He laughed loudly. He was confident in a way that made people stand a little closer to him at parties.</p>
+          <p data-i18n="str_1625">He also knew about HIV. He had been taught about it in school, twice. He could name the transmission routes. He knew what a condom was. He even carried one sometimes, in his wallet — more out of habit than intention, he told himself.</p>
+          <p data-i18n="str_1626">So when he met Aline at a graduation party in December, and things moved faster than he planned, and she said softly, <em>"Just this once, it's fine,"</em> — he made a choice he told himself was no big deal.</p>
+          <div class="warning-box" data-i18n="str_1627">
             <strong>⚠️ The truth about "just this once"</strong>
             HIV can be transmitted in a single unprotected sexual encounter. There is no such thing as a "low-risk time" that makes unprotected sex safe. Each unprotected encounter carries real risk — the biology does not make exceptions.
           </div>
-          <p>For three months, Patrick did not think about it. Life continued. Then his friend Bosco mentioned, casually, during a football match, that he'd heard Aline had been to the hospital a lot lately.</p>
-          <p>That night, Patrick could not sleep.</p>
-          <p>He spent the next two weeks in a state he could not describe to anyone. He checked his body for symptoms obsessively. He read articles that made things worse. He told no one. Not his brother, not Bosco, not anyone. He sat alone with the weight of it.</p>
-          <div class="dialogue">"I know what HIV is," he thought bitterly. "I knew. And I still didn't use one."</div>
-          <p>He ordered a self-test kit through Rinda. He chose the evening delivery time. When the knock at the gate came, he took the package into his room and locked the door. His hands were cold.</p>
-          <p>He read the instructions. He did the swab. He sat for 20 minutes staring at the wall, not his phone, not anything — just the wall, and his thoughts.</p>
-          <p>His result was negative.</p>
-          <p>Relief flooded him — but it was different from what he expected. It was not clean relief. It was complicated relief. The kind that comes with an amendment:</p>
-          <div class="highlight-box">
+          <p data-i18n="str_1628">For three months, Patrick did not think about it. Life continued. Then his friend Bosco mentioned, casually, during a football match, that he'd heard Aline had been to the hospital a lot lately.</p>
+          <p data-i18n="str_1629">That night, Patrick could not sleep.</p>
+          <p data-i18n="str_1630">He spent the next two weeks in a state he could not describe to anyone. He checked his body for symptoms obsessively. He read articles that made things worse. He told no one. Not his brother, not Bosco, not anyone. He sat alone with the weight of it.</p>
+          <div class="dialogue" data-i18n="str_1631">"I know what HIV is," he thought bitterly. "I knew. And I still didn't use one."</div>
+          <p data-i18n="str_1632">He ordered a self-test kit through Rinda. He chose the evening delivery time. When the knock at the gate came, he took the package into his room and locked the door. His hands were cold.</p>
+          <p data-i18n="str_1633">He read the instructions. He did the swab. He sat for 20 minutes staring at the wall, not his phone, not anything — just the wall, and his thoughts.</p>
+          <p data-i18n="str_1634">His result was negative.</p>
+          <p data-i18n="str_1635">Relief flooded him — but it was different from what he expected. It was not clean relief. It was complicated relief. The kind that comes with an amendment:</p>
+          <div class="highlight-box" data-i18n="str_1636">
             <strong>What Patrick felt:</strong>
             "I got lucky. I genuinely got lucky. And I spent three months of my life terrified because of one moment where I ignored everything I knew. I can't do this again. I won't do this again."
           </div>
-          <p>Patrick now keeps a condom in his wallet. He keeps three. Not out of habit — out of intention. He has had the conversation with friends he trusts, not in a preachy way, but the way you talk about things that actually matter.</p>
-          <p>He also volunteers once a month at a Rinda peer awareness event at his old school. He does not tell his story there — not yet. But he listens. He answers questions. He makes sure the younger boys know what he wishes he had truly understood at 16: not just the facts, but the reality of what it feels like to not know.</p>
-          <div class="dialogue">"Knowing is one thing," he always says. "Choosing is another."</div>
+          <p data-i18n="str_1637">Patrick now keeps a condom in his wallet. He keeps three. Not out of habit — out of intention. He has had the conversation with friends he trusts, not in a preachy way, but the way you talk about things that actually matter.</p>
+          <p data-i18n="str_1638">He also volunteers once a month at a Rinda peer awareness event at his old school. He does not tell his story there — not yet. But he listens. He answers questions. He makes sure the younger boys know what he wishes he had truly understood at 16: not just the facts, but the reality of what it feels like to not know.</p>
+          <div class="dialogue" data-i18n="str_1639">"Knowing is one thing," he always says. "Choosing is another."</div>
         </div>
         <div class="story-lesson">
-          <div class="sl-label">📘 Lesson from this story</div>
-          <p>Knowing about HIV protection is not the same as using it. The gap between knowledge and action is where risk lives. A condom used every single time — not most times, not almost every time — is the only reliable barrier that prevents both HIV and other sexually transmitted infections. Carrying one is not embarrassing. Not using one when you need it is far more costly.</p>
+          <div class="sl-label" data-i18n="str_1640">📘 Lesson from this story</div>
+          <p data-i18n="str_1641">Knowing about HIV protection is not the same as using it. The gap between knowledge and action is where risk lives. A condom used every single time — not most times, not almost every time — is the only reliable barrier that prevents both HIV and other sexually transmitted infections. Carrying one is not embarrassing. Not using one when you need it is far more costly.</p>
         </div>
         <div class="quiz-section">
-          <h4>🧠 Quiz — What did you learn?</h4>
-          <div class="quiz-q">1. Patrick already knew about HIV and condoms. Why did he still have unprotected sex?</div>
-          <div class="quiz-options" id="quiz-3" data-correct="2">
+          <h4 data-i18n="str_1642">🧠 Quiz — What did you learn?</h4>
+          <div class="quiz-q" data-i18n="str_1643">1. Patrick already knew about HIV and condoms. Why did he still have unprotected sex?</div>
+          <div class="quiz-options" id="quiz-3" data-correct="2" data-i18n="str_1644">
             <button class="quiz-option" onclick="answerQuiz(3,0)">A. He did not believe HIV was real</button>
             <button class="quiz-option" onclick="answerQuiz(3,1)">B. He was too young to be at risk</button>
             <button class="quiz-option" onclick="answerQuiz(3,2)">C. He let the moment and pressure override what he knew — knowledge alone is not enough without action</button>
             <button class="quiz-option" onclick="answerQuiz(3,3)">D. He had already been tested and knew he was negative</button>
           </div>
           <div class="quiz-feedback" id="qf-3"></div>
-          <div class="quiz-q" style="margin-top:1.25rem">2. How frequently should condoms be used to protect against HIV?</div>
-          <div class="quiz-options" id="quiz-3b" data-correct="3">
+          <div class="quiz-q" style="margin-top:1.25rem" data-i18n="str_1645">2. How frequently should condoms be used to protect against HIV?</div>
+          <div class="quiz-options" id="quiz-3b" data-correct="3" data-i18n="str_1646">
             <button class="quiz-option" onclick="answerQuiz('3b',0)">A. Only when you are with someone new</button>
             <button class="quiz-option" onclick="answerQuiz('3b',1)">B. Most of the time, unless you trust the person well</button>
             <button class="quiz-option" onclick="answerQuiz('3b',2)">C. Only if you think your partner has HIV</button>
@@ -472,25 +470,25 @@
       <div class="story-header" onclick="toggleStory(4)">
         <div class="story-avatar" style="background:linear-gradient(135deg,rgba(255,71,87,.2),rgba(250,210,1,.1))">👧🏾</div>
         <div class="story-meta">
-          <h3>Sonia's Red Flag — <span id="status-4" style="color:var(--gold)">▶</span></h3>
-          <div class="story-tag">🩸 Menstrual Health · Ages 14–19 · 8 min read</div>
-          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">Learning to listen to what her body was saying about pain</div>
+          <h3 data-i18n="str_1647">Sonia's Red Flag — <span id="status-4" style="color:var(--gold)">▶</span></h3>
+          <div class="story-tag" data-i18n="str_1648">🩸 Menstrual Health · Ages 14–19 · 8 min read</div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem" data-i18n="str_1649">Learning to listen to what her body was saying about pain</div>
         </div>
         <span class="story-toggle">▾</span>
       </div>
       <div class="story-body">
         <div class="story-text">
-          <p>Sonia always dreaded the second week of the month. While other girls in her class complained of mild cramps, Sonia would spend two days unable to stand straight. Her mother told her it was normal: <em>"Women are born to endure this, it means your body is working."</em></p>
-          <p>She believed it until a nurse visited her school to talk about menstrual health. The nurse explained the difference between normal discomfort and severe pain that disrupts your life (dysmenorrhea).</p>
-          <div class="highlight-box">
+          <p data-i18n="str_1650">Sonia always dreaded the second week of the month. While other girls in her class complained of mild cramps, Sonia would spend two days unable to stand straight. Her mother told her it was normal: <em>"Women are born to endure this, it means your body is working."</em></p>
+          <p data-i18n="str_1651">She believed it until a nurse visited her school to talk about menstrual health. The nurse explained the difference between normal discomfort and severe pain that disrupts your life (dysmenorrhea).</p>
+          <div class="highlight-box" data-i18n="str_1652">
             <strong>When Pain Isn't Normal:</strong>
             Normal cramps can be managed with rest or basic painkillers. If the pain makes you vomit, faint, or miss school regularly, it is a medical issue that needs a doctor's attention.
           </div>
-          <p>Sonia used the Rinda Care module to chat anonymously with a nurse. She explained her symptoms. The nurse guided her to a youth-friendly clinic where she received proper pain management medication, changing her life.</p>
+          <p data-i18n="str_1653">Sonia used the Rinda Care module to chat anonymously with a nurse. She explained her symptoms. The nurse guided her to a youth-friendly clinic where she received proper pain management medication, changing her life.</p>
         </div>
         <div class="story-lesson">
-          <div class="sl-label">📘 Lesson from this story</div>
-          <p>Never accept debilitating pain as "normal." Your period should not stop your life. Healthcare professionals at youth-friendly clinics can help you manage severe period pain with confidentiality.</p>
+          <div class="sl-label" data-i18n="str_1654">📘 Lesson from this story</div>
+          <p data-i18n="str_1655">Never accept debilitating pain as "normal." Your period should not stop your life. Healthcare professionals at youth-friendly clinics can help you manage severe period pain with confidentiality.</p>
         </div>
       </div>
     </div>
@@ -500,20 +498,20 @@
       <div class="story-header" onclick="toggleStory(5)">
         <div class="story-avatar" style="background:linear-gradient(135deg,rgba(0,160,220,.2),rgba(29,185,84,.1))">👩🏾‍𱗿</div>
         <div class="story-meta">
-          <h3>The Power of Choice — <span id="status-5" style="color:var(--gold)">▶</span></h3>
-          <div class="story-tag">👨‍👩‍👧 Family Planning · Ages 18–24 · 9 min read</div>
-          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem">Taking control of her future through LARC</div>
+          <h3 data-i18n="str_1656">The Power of Choice — <span id="status-5" style="color:var(--gold)">▶</span></h3>
+          <div class="story-tag" data-i18n="str_1657">👨‍👩‍👧 Family Planning · Ages 18–24 · 9 min read</div>
+          <div style="font-size:.78rem;color:var(--text-muted);margin-top:.2rem" data-i18n="str_1658">Taking control of her future through LARC</div>
         </div>
         <span class="story-toggle">▾</span>
       </div>
       <div class="story-body">
         <div class="story-text">
-          <p>Chantal was 19 and starting university. She was in a steady relationship, but the fear of unintended pregnancy clouded everything. Condoms were their only method, but they weren't always consistent.</p>
-          <p>She read about Long-Acting Reversible Contraceptives (LARC) on the Rinda Knowledge Hub. She was nervous—friends told her implants made you infertile. But verified facts told her otherwise. She confidently booked an appointment, got a 3-year implant, and took complete control of her future.</p>
+          <p data-i18n="str_1659">Chantal was 19 and starting university. She was in a steady relationship, but the fear of unintended pregnancy clouded everything. Condoms were their only method, but they weren't always consistent.</p>
+          <p data-i18n="str_1660">She read about Long-Acting Reversible Contraceptives (LARC) on the Rinda Knowledge Hub. She was nervous—friends told her implants made you infertile. But verified facts told her otherwise. She confidently booked an appointment, got a 3-year implant, and took complete control of her future.</p>
         </div>
         <div class="story-lesson">
-          <div class="sl-label">📘 Lesson from this story</div>
-          <p>Contraception is your choice and your right. Long-acting methods are safe, do not cause infertility, and give you the peace of mind to focus on your education and goals.</p>
+          <div class="sl-label" data-i18n="str_1661">📘 Lesson from this story</div>
+          <p data-i18n="str_1662">Contraception is your choice and your right. Long-acting methods are safe, do not cause infertility, and give you the peace of mind to focus on your education and goals.</p>
         </div>
       </div>
     </div>
@@ -521,18 +519,18 @@
     <!-- Cert Banner -->
     <div class="cert-unlock-banner" id="cert-unlock-banner">
       <div style="font-size:2.5rem;margin-bottom:.5rem">🏆</div>
-      <h3>You've unlocked your Certificate!</h3>
-      <p style="font-size:.88rem;color:var(--text-secondary);margin:.5rem 0 1rem">You answered all the quiz questions and showed real understanding of HIV prevention.</p>
-      <a href="certificate.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--gold),#b8960a);color:#000;font-weight:700;font-size:.9rem">🏆 Get Your Certificate →</a>
+      <h3 data-i18n="str_1663">You've unlocked your Certificate!</h3>
+      <p style="font-size:.88rem;color:var(--text-secondary);margin:.5rem 0 1rem" data-i18n="str_1664">You answered all the quiz questions and showed real understanding of HIV prevention.</p>
+      <a href="certificate.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--gold),#b8960a);color:#000;font-weight:700;font-size:.9rem" data-i18n="str_1665">🏆 Get Your Certificate →</a>
     </div>
   </div>
 
   <!-- PANEL 2: GROWING UP BOOKS -->
   <div class="tab-panel" id="panel-books">
     <div style="padding:1.25rem 1.5rem .5rem">
-      <div class="section-badge">📚 Health & Life Guides</div>
-      <h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.4rem">Growing Up — Know Your Body</h2>
-      <p style="font-size:.88rem;color:var(--text-muted)">Honest, accurate guides about puberty, relationships, and sexual health. Written for youth by health educators.</p>
+      <div class="section-badge" data-i18n="str_1666">📚 Health &amp; Life Guides</div>
+      <h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.4rem" data-i18n="str_1667">Growing Up — Know Your Body</h2>
+      <p style="font-size:.88rem;color:var(--text-muted)" data-i18n="str_1668">Honest, accurate guides about puberty, relationships, and sexual health. Written for youth by health educators.</p>
     </div>
 
     <!-- Book 1: Girls -->
@@ -540,9 +538,9 @@
       <div class="book-cover" onclick="toggleBook(1)">
         <div class="book-spine" style="background:linear-gradient(135deg,rgba(255,100,150,.2),rgba(250,210,1,.15))">👩🏾</div>
         <div class="book-info">
-          <h3>A Guide for Girls: Growing Up</h3>
-          <div class="book-sub">Puberty, body changes, menstruation, emotions & health — everything explained honestly</div>
-          <div class="book-tags">
+          <h3 data-i18n="str_1669">A Guide for Girls: Growing Up</h3>
+          <div class="book-sub" data-i18n="str_1670">Puberty, body changes, menstruation, emotions &amp; health — everything explained honestly</div>
+          <div class="book-tags" data-i18n="str_1671">
             <span class="book-tag" style="background:rgba(255,100,150,.12);color:#ff6496;border:1px solid rgba(255,100,150,.3)">Girls 10–18</span>
             <span class="book-tag" style="background:rgba(250,210,1,.12);color:var(--gold);border:1px solid rgba(250,210,1,.3)">Health</span>
           </div>
@@ -551,56 +549,56 @@
       </div>
       <div class="book-content">
         <div class="book-chapter">
-          <h4>🌱 Chapter 1: What is Puberty?</h4>
-          <p>Puberty is a natural process of change that your body goes through as it grows from a child's body into an adult's body. For girls, this usually begins between the ages of 8 and 13 — but every girl is different, and there is no "right" age. Starting earlier or later than your friends is completely normal.</p>
-          <p>Puberty happens because your body starts producing hormones — chemical messengers in your blood that tell your body how to grow and develop. The main hormones involved for girls are <strong>oestrogen</strong> and <strong>progesterone</strong>, made in your ovaries.</p>
-          <div class="fact-box"><strong>📌 Fact:</strong> Puberty in girls usually takes 2–5 years to complete. During this time, your body is preparing you for adult life — not rushing you into anything.</div>
+          <h4 data-i18n="str_1672">🌱 Chapter 1: What is Puberty?</h4>
+          <p data-i18n="str_1673">Puberty is a natural process of change that your body goes through as it grows from a child's body into an adult's body. For girls, this usually begins between the ages of 8 and 13 — but every girl is different, and there is no "right" age. Starting earlier or later than your friends is completely normal.</p>
+          <p data-i18n="str_1674">Puberty happens because your body starts producing hormones — chemical messengers in your blood that tell your body how to grow and develop. The main hormones involved for girls are <strong>oestrogen</strong> and <strong>progesterone</strong>, made in your ovaries.</p>
+          <div class="fact-box" data-i18n="str_1675"><strong>📌 Fact:</strong> Puberty in girls usually takes 2–5 years to complete. During this time, your body is preparing you for adult life — not rushing you into anything.</div>
         </div>
         <div class="book-chapter">
-          <h4>🌸 Chapter 2: Body Changes to Expect</h4>
+          <h4 data-i18n="str_1676">🌸 Chapter 2: Body Changes to Expect</h4>
           <ul>
-            <li><strong>Breasts begin to develop</strong> — usually the first visible sign of puberty. You may feel a small bump under one or both nipples (called a "breast bud"). This is normal. Breasts grow slowly over several years and often start unevenly — one side before the other. This is completely normal.</li>
-            <li><strong>Body hair grows</strong> — in your armpits and pubic area (between your legs). This is natural and normal.</li>
-            <li><strong>Hips widen</strong> — your pelvis grows wider as your body prepares for adult life. This changes the shape of your hips and waist.</li>
-            <li><strong>Skin changes</strong> — you may get pimples or oily skin. This happens because hormones affect your skin's oil glands. Washing your face gently twice a day helps.</li>
-            <li><strong>Height increases</strong> — many girls have a "growth spurt" during puberty, growing several centimetres in a single year.</li>
-            <li><strong>Discharge</strong> — you may notice a white or clear fluid in your underwear. This usually starts 6–12 months before your first period. It is normal — your body's way of keeping itself clean and healthy.</li>
+            <li data-i18n="str_1677"><strong>Breasts begin to develop</strong> — usually the first visible sign of puberty. You may feel a small bump under one or both nipples (called a "breast bud"). This is normal. Breasts grow slowly over several years and often start unevenly — one side before the other. This is completely normal.</li>
+            <li data-i18n="str_1678"><strong>Body hair grows</strong> — in your armpits and pubic area (between your legs). This is natural and normal.</li>
+            <li data-i18n="str_1679"><strong>Hips widen</strong> — your pelvis grows wider as your body prepares for adult life. This changes the shape of your hips and waist.</li>
+            <li data-i18n="str_1680"><strong>Skin changes</strong> — you may get pimples or oily skin. This happens because hormones affect your skin's oil glands. Washing your face gently twice a day helps.</li>
+            <li data-i18n="str_1681"><strong>Height increases</strong> — many girls have a "growth spurt" during puberty, growing several centimetres in a single year.</li>
+            <li data-i18n="str_1682"><strong>Discharge</strong> — you may notice a white or clear fluid in your underwear. This usually starts 6–12 months before your first period. It is normal — your body's way of keeping itself clean and healthy.</li>
           </ul>
         </div>
         <div class="book-chapter">
-          <h4>🩸 Chapter 3: Menstruation (Your Period)</h4>
-          <p>Your <strong>period</strong> (or menstruation) is when your body sheds the lining of your uterus each month. It usually arrives for the first time between ages 9–16. Blood flows from your uterus through your vagina for 3–7 days.</p>
+          <h4 data-i18n="str_1683">🩸 Chapter 3: Menstruation (Your Period)</h4>
+          <p data-i18n="str_1684">Your <strong>period</strong> (or menstruation) is when your body sheds the lining of your uterus each month. It usually arrives for the first time between ages 9–16. Blood flows from your uterus through your vagina for 3–7 days.</p>
           <ul>
-            <li><strong>How much blood?</strong> Usually 3–5 tablespoons total across the whole period. It may look like a lot, but it is a small amount. The colour can be bright red, dark red, brown, or even dark — all normal at different stages of the period.</li>
-            <li><strong>How often?</strong> Usually every 21–35 days. Many girls have irregular periods in the first 1–2 years — this is normal.</li>
-            <li><strong>Does it hurt?</strong> Some girls feel cramps in their lower belly. Warmth (like a warm cloth or warm water) and gentle movement can help. If pain is very severe, speak to a health worker.</li>
-            <li><strong>What to use?</strong> Pads, period underwear, or menstrual cups. Change pads every 4–6 hours to stay clean and prevent infection.</li>
+            <li data-i18n="str_1685"><strong>How much blood?</strong> Usually 3–5 tablespoons total across the whole period. It may look like a lot, but it is a small amount. The colour can be bright red, dark red, brown, or even dark — all normal at different stages of the period.</li>
+            <li data-i18n="str_1686"><strong>How often?</strong> Usually every 21–35 days. Many girls have irregular periods in the first 1–2 years — this is normal.</li>
+            <li data-i18n="str_1687"><strong>Does it hurt?</strong> Some girls feel cramps in their lower belly. Warmth (like a warm cloth or warm water) and gentle movement can help. If pain is very severe, speak to a health worker.</li>
+            <li data-i18n="str_1688"><strong>What to use?</strong> Pads, period underwear, or menstrual cups. Change pads every 4–6 hours to stay clean and prevent infection.</li>
           </ul>
-          <div class="fact-box"><strong>📌 Fact:</strong> Having your period means your body is working normally. It does not stop you from doing any activity — school, sports, work, everything continues as normal.</div>
+          <div class="fact-box" data-i18n="str_1689"><strong>📌 Fact:</strong> Having your period means your body is working normally. It does not stop you from doing any activity — school, sports, work, everything continues as normal.</div>
         </div>
         <div class="book-chapter">
-          <h4>💭 Chapter 4: Emotional Changes</h4>
-          <p>Puberty also changes how you feel — not just your body. You may notice:</p>
+          <h4 data-i18n="str_1690">💭 Chapter 4: Emotional Changes</h4>
+          <p data-i18n="str_1691">Puberty also changes how you feel — not just your body. You may notice:</p>
           <ul>
-            <li>Stronger emotions — happiness, sadness, anger — that feel more intense than before</li>
-            <li>Feeling self-conscious about your changing body</li>
-            <li>More interest in friendships, relationships, or romance</li>
-            <li>Conflicts with family members over independence and rules</li>
-            <li>Mood changes that happen quickly and feel confusing</li>
+            <li data-i18n="str_1692">Stronger emotions — happiness, sadness, anger — that feel more intense than before</li>
+            <li data-i18n="str_1693">Feeling self-conscious about your changing body</li>
+            <li data-i18n="str_1694">More interest in friendships, relationships, or romance</li>
+            <li data-i18n="str_1695">Conflicts with family members over independence and rules</li>
+            <li data-i18n="str_1696">Mood changes that happen quickly and feel confusing</li>
           </ul>
-          <p>All of this is driven by hormones and is completely normal. <strong>Talking to someone you trust</strong> — a parent, older sister, aunt, or counsellor — makes a real difference. You do not have to navigate puberty alone.</p>
+          <p data-i18n="str_1697">All of this is driven by hormones and is completely normal. <strong>Talking to someone you trust</strong> — a parent, older sister, aunt, or counsellor — makes a real difference. You do not have to navigate puberty alone.</p>
         </div>
         <div class="book-chapter">
-          <h4>🩺 Chapter 5: Staying Healthy During Puberty</h4>
+          <h4 data-i18n="str_1698">🩺 Chapter 5: Staying Healthy During Puberty</h4>
           <ul>
-            <li>Wash your body daily, especially your armpits and genital area (use water — the inside of your vagina cleans itself, so no soap inside)</li>
-            <li>Eat regular meals with protein, vegetables, fruits, and carbohydrates — your growing body needs more nutrients</li>
-            <li>Sleep 8–10 hours — growth happens during sleep</li>
-            <li>Exercise regularly — walking, dancing, sports, anything that moves your body</li>
-            <li>Do not share razors, towels, or underwear — these can spread infections</li>
-            <li>See a health worker if you have unusual pain, unusual discharge, or anything that worries you</li>
+            <li data-i18n="str_1699">Wash your body daily, especially your armpits and genital area (use water — the inside of your vagina cleans itself, so no soap inside)</li>
+            <li data-i18n="str_1700">Eat regular meals with protein, vegetables, fruits, and carbohydrates — your growing body needs more nutrients</li>
+            <li data-i18n="str_1701">Sleep 8–10 hours — growth happens during sleep</li>
+            <li data-i18n="str_1702">Exercise regularly — walking, dancing, sports, anything that moves your body</li>
+            <li data-i18n="str_1703">Do not share razors, towels, or underwear — these can spread infections</li>
+            <li data-i18n="str_1704">See a health worker if you have unusual pain, unusual discharge, or anything that worries you</li>
           </ul>
-          <div class="fact-box"><strong>📌 Remember:</strong> In Rwanda, girls aged 15 and above have the legal right to access reproductive and sexual health services — including HIV testing — without parental permission. Your health is your right.</div>
+          <div class="fact-box" data-i18n="str_1705"><strong>📌 Remember:</strong> In Rwanda, girls aged 15 and above have the legal right to access reproductive and sexual health services — including HIV testing — without parental permission. Your health is your right.</div>
         </div>
       </div>
     </div>
@@ -610,9 +608,9 @@
       <div class="book-cover" onclick="toggleBook(2)">
         <div class="book-spine" style="background:linear-gradient(135deg,rgba(0,160,220,.2),rgba(29,185,84,.15))">👦🏾</div>
         <div class="book-info">
-          <h3>A Guide for Boys: Growing Up</h3>
-          <div class="book-sub">Puberty, body changes, reproductive health, emotions & what to expect — all explained clearly</div>
-          <div class="book-tags">
+          <h3 data-i18n="str_1706">A Guide for Boys: Growing Up</h3>
+          <div class="book-sub" data-i18n="str_1707">Puberty, body changes, reproductive health, emotions &amp; what to expect — all explained clearly</div>
+          <div class="book-tags" data-i18n="str_1708">
             <span class="book-tag" style="background:rgba(0,160,220,.12);color:var(--blue);border:1px solid rgba(0,160,220,.3)">Boys 10–18</span>
             <span class="book-tag" style="background:rgba(29,185,84,.12);color:var(--green);border:1px solid rgba(29,185,84,.3)">Health</span>
           </div>
@@ -621,51 +619,51 @@
       </div>
       <div class="book-content">
         <div class="book-chapter">
-          <h4>🌱 Chapter 1: What is Puberty?</h4>
-          <p>Puberty is the time when your body changes from a boy's body to a man's body. For boys, this usually begins between ages 9 and 14. It is driven by a hormone called <strong>testosterone</strong>, made in your testicles. Puberty in boys usually takes 2–5 years.</p>
-          <p>There is no perfect age. Starting earlier or later than your friends does not mean anything is wrong with you. Everyone develops on their own timeline.</p>
+          <h4 data-i18n="str_1709">🌱 Chapter 1: What is Puberty?</h4>
+          <p data-i18n="str_1710">Puberty is the time when your body changes from a boy's body to a man's body. For boys, this usually begins between ages 9 and 14. It is driven by a hormone called <strong>testosterone</strong>, made in your testicles. Puberty in boys usually takes 2–5 years.</p>
+          <p data-i18n="str_1711">There is no perfect age. Starting earlier or later than your friends does not mean anything is wrong with you. Everyone develops on their own timeline.</p>
         </div>
         <div class="book-chapter">
-          <h4>💪 Chapter 2: Body Changes to Expect</h4>
+          <h4 data-i18n="str_1712">💪 Chapter 2: Body Changes to Expect</h4>
           <ul>
-            <li><strong>Your penis and testicles grow</strong> — one of the first changes. Testicles usually grow before the penis does. Testicles are often slightly different sizes — this is normal.</li>
-            <li><strong>Pubic hair appears</strong> — first in the pubic area, then armpits, legs, and sometimes the face. Hair colour and amount vary — all normal.</li>
-            <li><strong>Your voice changes ("breaks")</strong> — your voice box (larynx) grows and your voice moves to a lower pitch. It may "crack" between high and low for several months. This is temporary and normal — do not be embarrassed.</li>
-            <li><strong>Height increases quickly</strong> — boys often grow 7–8 cm in a single year during peak puberty.</li>
-            <li><strong>Muscles develop</strong> — shoulders broaden, chest deepens, muscles throughout the body become larger and stronger.</li>
-            <li><strong>Skin becomes oilier</strong> — pimples are common. Washing your face gently with clean water twice a day helps.</li>
-            <li><strong>Body odour increases</strong> — wash daily and use deodorant under your arms.</li>
-            <li><strong>Erections happen more often</strong> — sometimes unexpectedly. This is caused by hormones and is completely normal. It is not something you are doing wrong.</li>
+            <li data-i18n="str_1713"><strong>Your penis and testicles grow</strong> — one of the first changes. Testicles usually grow before the penis does. Testicles are often slightly different sizes — this is normal.</li>
+            <li data-i18n="str_1714"><strong>Pubic hair appears</strong> — first in the pubic area, then armpits, legs, and sometimes the face. Hair colour and amount vary — all normal.</li>
+            <li data-i18n="str_1715"><strong>Your voice changes ("breaks")</strong> — your voice box (larynx) grows and your voice moves to a lower pitch. It may "crack" between high and low for several months. This is temporary and normal — do not be embarrassed.</li>
+            <li data-i18n="str_1716"><strong>Height increases quickly</strong> — boys often grow 7–8 cm in a single year during peak puberty.</li>
+            <li data-i18n="str_1717"><strong>Muscles develop</strong> — shoulders broaden, chest deepens, muscles throughout the body become larger and stronger.</li>
+            <li data-i18n="str_1718"><strong>Skin becomes oilier</strong> — pimples are common. Washing your face gently with clean water twice a day helps.</li>
+            <li data-i18n="str_1719"><strong>Body odour increases</strong> — wash daily and use deodorant under your arms.</li>
+            <li data-i18n="str_1720"><strong>Erections happen more often</strong> — sometimes unexpectedly. This is caused by hormones and is completely normal. It is not something you are doing wrong.</li>
           </ul>
         </div>
         <div class="book-chapter">
-          <h4>💦 Chapter 3: Wet Dreams & Ejaculation</h4>
-          <p>At some point during puberty, your body will begin making sperm. You may experience <strong>wet dreams</strong> — ejaculation (release of semen) during sleep. This is completely normal and happens to almost all boys.</p>
-          <p>Ejaculation is when semen — a mixture of sperm and fluid — is released from the penis. This is how reproduction works, and it is a normal part of growing up. It does not mean you did anything wrong or inappropriate.</p>
-          <div class="fact-box"><strong>📌 Important:</strong> Sperm can cause pregnancy, and sexual fluids can transmit HIV and other infections. Understanding this is part of taking responsibility for your body and your choices.</div>
+          <h4 data-i18n="str_1721">💦 Chapter 3: Wet Dreams &amp; Ejaculation</h4>
+          <p data-i18n="str_1722">At some point during puberty, your body will begin making sperm. You may experience <strong>wet dreams</strong> — ejaculation (release of semen) during sleep. This is completely normal and happens to almost all boys.</p>
+          <p data-i18n="str_1723">Ejaculation is when semen — a mixture of sperm and fluid — is released from the penis. This is how reproduction works, and it is a normal part of growing up. It does not mean you did anything wrong or inappropriate.</p>
+          <div class="fact-box" data-i18n="str_1724"><strong>📌 Important:</strong> Sperm can cause pregnancy, and sexual fluids can transmit HIV and other infections. Understanding this is part of taking responsibility for your body and your choices.</div>
         </div>
         <div class="book-chapter">
-          <h4>💭 Chapter 4: Emotional Changes</h4>
-          <p>Boys also go through emotional changes during puberty that are just as real as the physical ones. You might feel:</p>
+          <h4 data-i18n="str_1725">💭 Chapter 4: Emotional Changes</h4>
+          <p data-i18n="str_1726">Boys also go through emotional changes during puberty that are just as real as the physical ones. You might feel:</p>
           <ul>
-            <li>Anger or frustration that feels harder to control than before</li>
-            <li>Interest in relationships or sexual feelings — this is normal</li>
-            <li>Pressure from friends to act a certain way ("prove" masculinity)</li>
-            <li>Embarrassment about body changes</li>
-            <li>Loneliness or confusion about who you are becoming</li>
+            <li data-i18n="str_1727">Anger or frustration that feels harder to control than before</li>
+            <li data-i18n="str_1728">Interest in relationships or sexual feelings — this is normal</li>
+            <li data-i18n="str_1729">Pressure from friends to act a certain way ("prove" masculinity)</li>
+            <li data-i18n="str_1730">Embarrassment about body changes</li>
+            <li data-i18n="str_1731">Loneliness or confusion about who you are becoming</li>
           </ul>
-          <p><strong>Masculinity is not about proving yourself through sex or dominance.</strong> Real strength includes kindness, honesty, and respect — for others and for yourself. You can talk to an older male you trust — a brother, uncle, teacher, or counsellor.</p>
+          <p data-i18n="str_1732"><strong>Masculinity is not about proving yourself through sex or dominance.</strong> Real strength includes kindness, honesty, and respect — for others and for yourself. You can talk to an older male you trust — a brother, uncle, teacher, or counsellor.</p>
         </div>
         <div class="book-chapter">
-          <h4>🩺 Chapter 5: Reproductive Health</h4>
+          <h4 data-i18n="str_1733">🩺 Chapter 5: Reproductive Health</h4>
           <ul>
-            <li>Wash your genital area daily with warm water (no soap inside the foreskin if uncircumcised)</li>
-            <li>If you are uncircumcised: gently pull back the foreskin and clean underneath regularly</li>
-            <li>Check your testicles regularly for unusual lumps — early detection of testicular issues leads to better outcomes</li>
-            <li>If you notice pain, unusual discharge from your penis, a sore, or burning when urinating — see a health worker. These are signs of possible infection that is always treatable</li>
-            <li>Use a condom every time you have sex — it protects you and your partner from HIV and STIs</li>
+            <li data-i18n="str_1734">Wash your genital area daily with warm water (no soap inside the foreskin if uncircumcised)</li>
+            <li data-i18n="str_1735">If you are uncircumcised: gently pull back the foreskin and clean underneath regularly</li>
+            <li data-i18n="str_1736">Check your testicles regularly for unusual lumps — early detection of testicular issues leads to better outcomes</li>
+            <li data-i18n="str_1737">If you notice pain, unusual discharge from your penis, a sore, or burning when urinating — see a health worker. These are signs of possible infection that is always treatable</li>
+            <li data-i18n="str_1738">Use a condom every time you have sex — it protects you and your partner from HIV and STIs</li>
           </ul>
-          <div class="fact-box"><strong>📌 Did you know?</strong> Voluntary Medical Male Circumcision (VMMC) reduces the risk of a man acquiring HIV during sex by up to 60%. It is free at many health centres in Rwanda. Talk to a health worker to learn more.</div>
+          <div class="fact-box" data-i18n="str_1739"><strong>📌 Did you know?</strong> Voluntary Medical Male Circumcision (VMMC) reduces the risk of a man acquiring HIV during sex by up to 60%. It is free at many health centres in Rwanda. Talk to a health worker to learn more.</div>
         </div>
       </div>
     </div>
@@ -675,9 +673,9 @@
       <div class="book-cover" onclick="toggleBook(3)">
         <div class="book-spine" style="background:linear-gradient(135deg,rgba(250,210,1,.2),rgba(255,71,87,.1))">💛</div>
         <div class="book-info">
-          <h3>Love, Relationships & Consent</h3>
-          <div class="book-sub">What healthy relationships look like, what consent means, and how to protect yourself emotionally and physically</div>
-          <div class="book-tags">
+          <h3 data-i18n="str_1740">Love, Relationships &amp; Consent</h3>
+          <div class="book-sub" data-i18n="str_1741">What healthy relationships look like, what consent means, and how to protect yourself emotionally and physically</div>
+          <div class="book-tags" data-i18n="str_1742">
             <span class="book-tag" style="background:rgba(250,210,1,.12);color:var(--gold);border:1px solid rgba(250,210,1,.3)">All Youth</span>
             <span class="book-tag" style="background:rgba(255,71,87,.12);color:var(--red);border:1px solid rgba(255,71,87,.3)">Relationships</span>
           </div>
@@ -686,62 +684,62 @@
       </div>
       <div class="book-content">
         <div class="book-chapter">
-          <h4>✅ Chapter 1: What is a Healthy Relationship?</h4>
-          <p>A healthy relationship — whether romantic or friendship — has certain qualities that make both people feel safe and valued:</p>
+          <h4 data-i18n="str_1743">✅ Chapter 1: What is a Healthy Relationship?</h4>
+          <p data-i18n="str_1744">A healthy relationship — whether romantic or friendship — has certain qualities that make both people feel safe and valued:</p>
           <ul>
-            <li><strong>Respect:</strong> Both people value each other's feelings, opinions, and boundaries</li>
-            <li><strong>Honesty:</strong> You can tell the truth even when it is hard</li>
-            <li><strong>Equality:</strong> Neither person controls the other; decisions are made together</li>
-            <li><strong>Safety:</strong> You never feel afraid of your partner's reactions</li>
-            <li><strong>Support:</strong> You encourage each other's goals and wellbeing</li>
-            <li><strong>Independence:</strong> You each have your own friendships, interests, and space</li>
+            <li data-i18n="str_1745"><strong>Respect:</strong> Both people value each other's feelings, opinions, and boundaries</li>
+            <li data-i18n="str_1746"><strong>Honesty:</strong> You can tell the truth even when it is hard</li>
+            <li data-i18n="str_1747"><strong>Equality:</strong> Neither person controls the other; decisions are made together</li>
+            <li data-i18n="str_1748"><strong>Safety:</strong> You never feel afraid of your partner's reactions</li>
+            <li data-i18n="str_1749"><strong>Support:</strong> You encourage each other's goals and wellbeing</li>
+            <li data-i18n="str_1750"><strong>Independence:</strong> You each have your own friendships, interests, and space</li>
           </ul>
         </div>
         <div class="book-chapter">
-          <h4>🚩 Chapter 2: Warning Signs — Unhealthy Relationships</h4>
-          <p>These signs suggest a relationship may be harmful:</p>
+          <h4 data-i18n="str_1751">🚩 Chapter 2: Warning Signs — Unhealthy Relationships</h4>
+          <p data-i18n="str_1752">These signs suggest a relationship may be harmful:</p>
           <ul>
-            <li>Your partner checks your phone or demands to know where you are all the time</li>
-            <li>They get very angry, shout or threaten you when they don't get their way</li>
-            <li>They make you feel stupid, ugly, or worthless</li>
-            <li>They pressure you into sex or doing things you don't want to do</li>
-            <li>They try to isolate you from your family and friends</li>
-            <li>They hit, push, or physically hurt you — even "just once"</li>
+            <li data-i18n="str_1753">Your partner checks your phone or demands to know where you are all the time</li>
+            <li data-i18n="str_1754">They get very angry, shout or threaten you when they don't get their way</li>
+            <li data-i18n="str_1755">They make you feel stupid, ugly, or worthless</li>
+            <li data-i18n="str_1756">They pressure you into sex or doing things you don't want to do</li>
+            <li data-i18n="str_1757">They try to isolate you from your family and friends</li>
+            <li data-i18n="str_1758">They hit, push, or physically hurt you — even "just once"</li>
           </ul>
-          <div class="fact-box"><strong>📌 Important:</strong> If any of these apply to your relationship, please speak to someone you trust. In Rwanda, GBV (Gender-Based Violence) survivors can call the free hotline 3029 or go to Isange One Stop Centre at any hospital.</div>
+          <div class="fact-box" data-i18n="str_1759"><strong>📌 Important:</strong> If any of these apply to your relationship, please speak to someone you trust. In Rwanda, GBV (Gender-Based Violence) survivors can call the free hotline 3029 or go to Isange One Stop Centre at any hospital.</div>
         </div>
         <div class="book-chapter">
-          <h4>🤝 Chapter 3: Understanding Consent</h4>
-          <p><strong>Consent</strong> means freely agreeing to something. In the context of sexual activity, consent must be:</p>
+          <h4 data-i18n="str_1760">🤝 Chapter 3: Understanding Consent</h4>
+          <p data-i18n="str_1761"><strong>Consent</strong> means freely agreeing to something. In the context of sexual activity, consent must be:</p>
           <ul>
-            <li><strong>Freely given</strong> — not because of pressure, fear, or being forced</li>
-            <li><strong>Reversible</strong> — anyone can change their mind at any time, even in the middle of something</li>
-            <li><strong>Informed</strong> — both people understand what they are agreeing to</li>
-            <li><strong>Enthusiastic</strong> — saying yes because you genuinely want to, not just to avoid conflict</li>
-            <li><strong>Specific</strong> — saying yes to one thing does not mean saying yes to everything</li>
+            <li data-i18n="str_1762"><strong>Freely given</strong> — not because of pressure, fear, or being forced</li>
+            <li data-i18n="str_1763"><strong>Reversible</strong> — anyone can change their mind at any time, even in the middle of something</li>
+            <li data-i18n="str_1764"><strong>Informed</strong> — both people understand what they are agreeing to</li>
+            <li data-i18n="str_1765"><strong>Enthusiastic</strong> — saying yes because you genuinely want to, not just to avoid conflict</li>
+            <li data-i18n="str_1766"><strong>Specific</strong> — saying yes to one thing does not mean saying yes to everything</li>
           </ul>
-          <p><strong>Silence is not consent. Saying nothing is not yes.</strong></p>
-          <p>In Rwanda, the legal age of consent is 18. Sex with someone under 18 is a criminal offence, regardless of whether the younger person "agreed."</p>
+          <p data-i18n="str_1767"><strong>Silence is not consent. Saying nothing is not yes.</strong></p>
+          <p data-i18n="str_1768">In Rwanda, the legal age of consent is 18. Sex with someone under 18 is a criminal offence, regardless of whether the younger person "agreed."</p>
         </div>
         <div class="book-chapter">
-          <h4>💬 Chapter 4: How to Say No — and Mean It</h4>
-          <p>Saying no to sex — or to anything you don't want — is your right. Here are ways to say it clearly:</p>
+          <h4 data-i18n="str_1769">💬 Chapter 4: How to Say No — and Mean It</h4>
+          <p data-i18n="str_1770">Saying no to sex — or to anything you don't want — is your right. Here are ways to say it clearly:</p>
           <ul>
-            <li>"I'm not ready for this and I need you to respect that."</li>
-            <li>"No. I said no, and my answer is no."</li>
-            <li>"This doesn't feel right to me and I'm going to leave now."</li>
-            <li>"If you care about me, you'll wait until I'm ready. Otherwise, this is not the relationship I want."</li>
+            <li data-i18n="str_1771">"I'm not ready for this and I need you to respect that."</li>
+            <li data-i18n="str_1772">"No. I said no, and my answer is no."</li>
+            <li data-i18n="str_1773">"This doesn't feel right to me and I'm going to leave now."</li>
+            <li data-i18n="str_1774">"If you care about me, you'll wait until I'm ready. Otherwise, this is not the relationship I want."</li>
           </ul>
-          <p>If someone doesn't respect your no — that is a serious warning sign. A person who cares about you will not pressure you.</p>
+          <p data-i18n="str_1775">If someone doesn't respect your no — that is a serious warning sign. A person who cares about you will not pressure you.</p>
         </div>
         <div class="book-chapter">
-          <h4>🛡️ Chapter 5: Protecting Yourself in Relationships</h4>
+          <h4 data-i18n="str_1776">🛡️ Chapter 5: Protecting Yourself in Relationships</h4>
           <ul>
-            <li>Test for HIV and STIs before stopping condom use in a new relationship</li>
-            <li>Never let someone pressure you into unprotected sex by saying "if you love me you would"</li>
-            <li>Talk openly with your partner about sexual health — it shows maturity and care</li>
-            <li>Know that being in a relationship does not give anyone the right to your body without consent</li>
-            <li>Keep your own money and independence — financial control is a form of abuse</li>
+            <li data-i18n="str_1777">Test for HIV and STIs before stopping condom use in a new relationship</li>
+            <li data-i18n="str_1778">Never let someone pressure you into unprotected sex by saying "if you love me you would"</li>
+            <li data-i18n="str_1779">Talk openly with your partner about sexual health — it shows maturity and care</li>
+            <li data-i18n="str_1780">Know that being in a relationship does not give anyone the right to your body without consent</li>
+            <li data-i18n="str_1781">Keep your own money and independence — financial control is a form of abuse</li>
           </ul>
         </div>
       </div>
@@ -752,9 +750,9 @@
       <div class="book-cover" onclick="toggleBook(4)">
         <div class="book-spine" style="background:linear-gradient(135deg,rgba(255,71,87,.2),rgba(0,160,220,.15))">🔬</div>
         <div class="book-info">
-          <h3>Understanding HIV — The Full Picture</h3>
-          <div class="book-sub">What HIV is, how it spreads, how it does NOT spread, treatment, and living positively</div>
-          <div class="book-tags">
+          <h3 data-i18n="str_1782">Understanding HIV — The Full Picture</h3>
+          <div class="book-sub" data-i18n="str_1783">What HIV is, how it spreads, how it does NOT spread, treatment, and living positively</div>
+          <div class="book-tags" data-i18n="str_1784">
             <span class="book-tag" style="background:rgba(255,71,87,.12);color:var(--red);border:1px solid rgba(255,71,87,.3)">HIV Education</span>
             <span class="book-tag" style="background:rgba(0,160,220,.12);color:var(--blue);border:1px solid rgba(0,160,220,.3)">All Ages</span>
           </div>
@@ -763,54 +761,54 @@
       </div>
       <div class="book-content">
         <div class="book-chapter">
-          <h4>🦠 Chapter 1: What is HIV?</h4>
-          <p><strong>HIV</strong> stands for Human Immunodeficiency Virus. It is a virus that attacks your immune system — specifically cells called CD4 cells, which are your body's defenders against disease.</p>
-          <p>Over time, if HIV is not treated, it destroys enough CD4 cells that your body can no longer fight off common infections and illnesses. When this happens, the condition is called <strong>AIDS</strong> (Acquired Immunodeficiency Syndrome).</p>
-          <p>However — and this is critical: <strong>with modern treatment (ART), HIV does not have to progress to AIDS.</strong> People on HIV treatment live long, healthy lives and can have children, relationships, careers, and full futures.</p>
+          <h4 data-i18n="str_1785">🦠 Chapter 1: What is HIV?</h4>
+          <p data-i18n="str_1786"><strong>HIV</strong> stands for Human Immunodeficiency Virus. It is a virus that attacks your immune system — specifically cells called CD4 cells, which are your body's defenders against disease.</p>
+          <p data-i18n="str_1787">Over time, if HIV is not treated, it destroys enough CD4 cells that your body can no longer fight off common infections and illnesses. When this happens, the condition is called <strong>AIDS</strong> (Acquired Immunodeficiency Syndrome).</p>
+          <p data-i18n="str_1788">However — and this is critical: <strong>with modern treatment (ART), HIV does not have to progress to AIDS.</strong> People on HIV treatment live long, healthy lives and can have children, relationships, careers, and full futures.</p>
         </div>
         <div class="book-chapter">
-          <h4>⚠️ Chapter 2: How HIV Spreads</h4>
-          <p>HIV is found in specific body fluids of an HIV-positive person. It can be transmitted through:</p>
+          <h4 data-i18n="str_1789">⚠️ Chapter 2: How HIV Spreads</h4>
+          <p data-i18n="str_1790">HIV is found in specific body fluids of an HIV-positive person. It can be transmitted through:</p>
           <ul>
-            <li><strong>Unprotected sex</strong> (vaginal, anal, or oral) with an HIV-positive person</li>
-            <li><strong>Sharing needles, syringes, or other injection equipment</strong></li>
-            <li><strong>Blood transfusion</strong> with HIV-positive blood (Rwanda screens all donated blood)</li>
-            <li><strong>Mother to child</strong> — during pregnancy, birth, or breastfeeding (with treatment, this risk is almost eliminated)</li>
+            <li data-i18n="str_1791"><strong>Unprotected sex</strong> (vaginal, anal, or oral) with an HIV-positive person</li>
+            <li data-i18n="str_1792"><strong>Sharing needles, syringes, or other injection equipment</strong></li>
+            <li data-i18n="str_1793"><strong>Blood transfusion</strong> with HIV-positive blood (Rwanda screens all donated blood)</li>
+            <li data-i18n="str_1794"><strong>Mother to child</strong> — during pregnancy, birth, or breastfeeding (with treatment, this risk is almost eliminated)</li>
           </ul>
-          <div class="fact-box"><strong>📌 Key fact:</strong> HIV is NOT spread by saliva, tears, sweat, urine, sharing food or utensils, shaking hands, hugging, coughing, sneezing, swimming in the same pool, or mosquito bites. You cannot get HIV from casual contact.</div>
+          <div class="fact-box" data-i18n="str_1795"><strong>📌 Key fact:</strong> HIV is NOT spread by saliva, tears, sweat, urine, sharing food or utensils, shaking hands, hugging, coughing, sneezing, swimming in the same pool, or mosquito bites. You cannot get HIV from casual contact.</div>
         </div>
         <div class="book-chapter">
-          <h4>🛡️ Chapter 3: How to Prevent HIV</h4>
+          <h4 data-i18n="str_1796">🛡️ Chapter 3: How to Prevent HIV</h4>
           <ul>
-            <li><strong>Use a condom correctly every time</strong> — this is the most reliable barrier against sexual transmission</li>
-            <li><strong>Test regularly</strong> — know your status and your partner's status</li>
-            <li><strong>PrEP (Pre-Exposure Prophylaxis)</strong> — a daily pill for HIV-negative people that is highly effective at preventing HIV. Available free at many Rwanda health centres</li>
-            <li><strong>PEP (Post-Exposure Prophylaxis)</strong> — if you think you may have been exposed to HIV, take PEP within 72 hours (3 days). Go to a clinic immediately</li>
-            <li><strong>Male circumcision</strong> — reduces transmission risk by up to 60% in men</li>
-            <li><strong>Don't share needles or sharp instruments</strong></li>
+            <li data-i18n="str_1797"><strong>Use a condom correctly every time</strong> — this is the most reliable barrier against sexual transmission</li>
+            <li data-i18n="str_1798"><strong>Test regularly</strong> — know your status and your partner's status</li>
+            <li data-i18n="str_1799"><strong>PrEP (Pre-Exposure Prophylaxis)</strong> — a daily pill for HIV-negative people that is highly effective at preventing HIV. Available free at many Rwanda health centres</li>
+            <li data-i18n="str_1800"><strong>PEP (Post-Exposure Prophylaxis)</strong> — if you think you may have been exposed to HIV, take PEP within 72 hours (3 days). Go to a clinic immediately</li>
+            <li data-i18n="str_1801"><strong>Male circumcision</strong> — reduces transmission risk by up to 60% in men</li>
+            <li data-i18n="str_1802"><strong>Don't share needles or sharp instruments</strong></li>
           </ul>
         </div>
         <div class="book-chapter">
-          <h4>💊 Chapter 4: HIV Treatment — ART</h4>
-          <p><strong>ART (Antiretroviral Therapy)</strong> is a combination of medicines that control HIV. It does not cure HIV, but it reduces the amount of virus in the body (called viral load) to undetectable levels.</p>
-          <p>This matters for three reasons:</p>
+          <h4 data-i18n="str_1803">💊 Chapter 4: HIV Treatment — ART</h4>
+          <p data-i18n="str_1804"><strong>ART (Antiretroviral Therapy)</strong> is a combination of medicines that control HIV. It does not cure HIV, but it reduces the amount of virus in the body (called viral load) to undetectable levels.</p>
+          <p data-i18n="str_1805">This matters for three reasons:</p>
           <ul>
-            <li>You stay healthy — your immune system recovers and protects you from illness</li>
-            <li>You live a normal lifespan with proper care</li>
-            <li>You cannot pass HIV to a sexual partner when your viral load is undetectable — this is <strong>U=U</strong> (Undetectable = Untransmittable)</li>
+            <li data-i18n="str_1806">You stay healthy — your immune system recovers and protects you from illness</li>
+            <li data-i18n="str_1807">You live a normal lifespan with proper care</li>
+            <li data-i18n="str_1808">You cannot pass HIV to a sexual partner when your viral load is undetectable — this is <strong>U=U</strong> (Undetectable = Untransmittable)</li>
           </ul>
-          <div class="fact-box"><strong>📌 Rwanda fact:</strong> ART is free for everyone in Rwanda through public health facilities. Rwanda has one of the best HIV treatment programmes in Africa, with over 95% of HIV-positive people who are aware of their status receiving treatment.</div>
+          <div class="fact-box" data-i18n="str_1809"><strong>📌 Rwanda fact:</strong> ART is free for everyone in Rwanda through public health facilities. Rwanda has one of the best HIV treatment programmes in Africa, with over 95% of HIV-positive people who are aware of their status receiving treatment.</div>
         </div>
         <div class="book-chapter">
-          <h4>🌱 Chapter 5: Living Positively with HIV</h4>
-          <p>Being HIV-positive is not the end of anything. People living with HIV in Rwanda are:</p>
+          <h4 data-i18n="str_1810">🌱 Chapter 5: Living Positively with HIV</h4>
+          <p data-i18n="str_1811">Being HIV-positive is not the end of anything. People living with HIV in Rwanda are:</p>
           <ul>
-            <li>Working in all professions — doctors, teachers, farmers, engineers</li>
-            <li>In loving long-term relationships and marriages</li>
-            <li>Having children who are HIV-negative (with proper medical care)</li>
-            <li>Living into old age</li>
+            <li data-i18n="str_1812">Working in all professions — doctors, teachers, farmers, engineers</li>
+            <li data-i18n="str_1813">In loving long-term relationships and marriages</li>
+            <li data-i18n="str_1814">Having children who are HIV-negative (with proper medical care)</li>
+            <li data-i18n="str_1815">Living into old age</li>
           </ul>
-          <p>The biggest obstacle to a good life with HIV is not the virus — it is stigma. Stigma is the unfair judgement and discrimination HIV-positive people face. Fighting stigma starts with accurate knowledge — which is what you are building right now.</p>
+          <p data-i18n="str_1816">The biggest obstacle to a good life with HIV is not the virus — it is stigma. Stigma is the unfair judgement and discrimination HIV-positive people face. Fighting stigma starts with accurate knowledge — which is what you are building right now.</p>
         </div>
       </div>
     </div>
@@ -819,9 +817,9 @@
   <!-- PANEL 3: PROTECTION GUIDES -->
   <div class="tab-panel" id="panel-guides">
     <div style="padding:1.25rem 1.5rem .5rem">
-      <div class="section-badge">🛡️ Step-by-Step Guides</div>
-      <h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.4rem">Protection — How To</h2>
-      <p style="font-size:.88rem;color:var(--text-muted)">Clear, practical instructions that protect your health.</p>
+      <div class="section-badge" data-i18n="str_1817">🛡️ Step-by-Step Guides</div>
+      <h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.4rem" data-i18n="str_1818">Protection — How To</h2>
+      <p style="font-size:.88rem;color:var(--text-muted)" data-i18n="str_1819">Clear, practical instructions that protect your health.</p>
     </div>
 
     <!-- AUDIO NEGOTIATION MODULE -->
@@ -829,17 +827,17 @@
       <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem">
         <div style="width:48px;height:48px;border-radius:50%;background:rgba(155,89,182,.2);border:1px solid rgba(155,89,182,.4);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">🎙️</div>
         <div>
-          <h3 style="margin-bottom:.15rem;color:#c39bea">Audio Condom Negotiation Module</h3>
-          <p style="font-size:.78rem;color:var(--text-muted)">🔊 Voice-guided · EN &amp; KIN · DHS 2025 data-backed · For young women</p>
+          <h3 style="margin-bottom:.15rem;color:#c39bea" data-i18n="str_1820">Audio Condom Negotiation Module</h3>
+          <p style="font-size:.78rem;color:var(--text-muted)" data-i18n="str_1821">🔊 Voice-guided · EN &amp; KIN · DHS 2025 data-backed · For young women</p>
         </div>
       </div>
 
       <div style="background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.25);border-radius:var(--radius-md);padding:1rem;margin-bottom:1.25rem">
-        <div style="font-size:.72rem;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">📊 Why This Module Exists</div>
-        <p style="font-size:.83rem;color:var(--text-secondary);line-height:1.6">Rwanda DHS 2025 Table 12: Only <strong style="color:var(--red)">47.4%</strong> of young women aged 15–24 used a condom at last high-risk sex — vs <strong style="color:var(--blue)">73.8%</strong> of young men. Among the poorest women, this drops to <strong style="color:var(--red)">34.1%</strong>. The gap is not knowledge — it is negotiation power.</p>
+        <div style="font-size:.72rem;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem" data-i18n="str_1822">📊 Why This Module Exists</div>
+        <p style="font-size:.83rem;color:var(--text-secondary);line-height:1.6" data-i18n="str_1823">Rwanda DHS 2025 Table 12: Only <strong style="color:var(--red)">47.4%</strong> of young women aged 15–24 used a condom at last high-risk sex — vs <strong style="color:var(--blue)">73.8%</strong> of young men. Among the poorest women, this drops to <strong style="color:var(--red)">34.1%</strong>. The gap is not knowledge — it is negotiation power.</p>
       </div>
 
-      <div style="display:flex;gap:.4rem;margin-bottom:1rem;overflow-x:auto;scrollbar-width:none">
+      <div style="display:flex;gap:.4rem;margin-bottom:1rem;overflow-x:auto;scrollbar-width:none" data-i18n="str_1824">
         <button class="neg-tab active" onclick="switchNeg(0,this)">1. He says no</button>
         <button class="neg-tab" onclick="switchNeg(1,this)">2. Peer pressure</button>
         <button class="neg-tab" onclick="switchNeg(2,this)">3. Age gap partner</button>
@@ -851,18 +849,18 @@
       <div style="display:flex;gap:.6rem;align-items:center;background:rgba(0,0,0,.3);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:.75rem 1rem">
         <button id="neg-play-btn" onclick="toggleNegAudio()" style="width:42px;height:42px;border-radius:50%;background:rgba(155,89,182,.8);border:none;font-size:1.1rem;cursor:pointer;flex-shrink:0;transition:transform .2s">▶</button>
         <div style="flex:1">
-          <div style="font-size:.72rem;color:var(--text-muted);margin-bottom:.3rem">🔊 Tap to hear this scenario read aloud in your language</div>
+          <div style="font-size:.72rem;color:var(--text-muted);margin-bottom:.3rem" data-i18n="str_1825">🔊 Tap to hear this scenario read aloud in your language</div>
           <div style="height:4px;background:rgba(255,255,255,.08);border-radius:2px">
             <div id="neg-audio-bar" style="height:100%;border-radius:2px;background:linear-gradient(90deg,#9b59b6,#c39bea);width:0%;transition:width .3s"></div>
           </div>
         </div>
-        <div style="display:flex;gap:.3rem">
+        <div style="display:flex;gap:.3rem" data-i18n="str_1826">
           <button onclick="speakNegScenario('en')" style="padding:.3rem .6rem;border-radius:var(--radius-sm);border:1px solid var(--glass-border);background:transparent;color:var(--text-secondary);font-size:.7rem;font-weight:700;cursor:pointer">EN</button>
           <button onclick="speakNegScenario('kin')" style="padding:.3rem .6rem;border-radius:var(--radius-sm);border:1px solid var(--glass-border);background:transparent;color:var(--text-secondary);font-size:.7rem;font-weight:700;cursor:pointer">KIN</button>
         </div>
       </div>
 
-      <div style="margin-top:1rem;font-size:.75rem;color:var(--text-muted);line-height:1.6;background:rgba(250,210,1,.06);border:1px solid rgba(250,210,1,.15);border-radius:var(--radius-sm);padding:.7rem 1rem">
+      <div style="margin-top:1rem;font-size:.75rem;color:var(--text-muted);line-height:1.6;background:rgba(250,210,1,.06);border:1px solid rgba(250,210,1,.15);border-radius:var(--radius-sm);padding:.7rem 1rem" data-i18n="str_1827">
         💡 <strong style="color:var(--gold)">Practice tip:</strong> Read the lines aloud yourself — then practice saying them naturally. Negotiation is a skill that gets easier with repetition.
       </div>
     </div>
@@ -870,63 +868,65 @@
 
     <!-- Male condom -->
     <div class="guide-card fade-in">
-      <h3>🟢 How to Use a Male (External) Condom — Step by Step</h3>
-      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-text"><strong>Check the packaging:</strong> Look at the expiry date — never use an expired condom. Look for the CE or ISO mark (quality proof). Feel the package — if there is no air bubble inside, the package is damaged. Do not use it.</div></div>
-      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-text"><strong>Open carefully:</strong> Tear open the corner — do not use teeth, scissors, or nails, as these can damage the condom. Push the condom to one side before tearing.</div></div>
-      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-text"><strong>Check the direction:</strong> Unroll a little bit — it should unroll easily. If it doesn't, it's upside down. Do not try to reverse it — throw it away and use a new one.</div></div>
-      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-text"><strong>Pinch the tip:</strong> Pinch the small tip (reservoir) at the top — this removes air and leaves space for semen. Air inside the tip can cause the condom to break.</div></div>
-      <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-text"><strong>Roll it on:</strong> While pinching the tip, roll the condom all the way down to the base of the erect penis. It should roll on smoothly.</div></div>
-      <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-text"><strong>Use water-based lubricant:</strong> A little lubricant on the outside of the condom reduces friction and lowers the chance of tearing. Use only water-based lubricant (like KY Jelly) — oil-based products (Vaseline, cooking oil, lotion) damage the condom and make it ineffective.</div></div>
-      <div class="guide-step"><div class="guide-step-num">7</div><div class="guide-step-text"><strong>After sex — remove carefully:</strong> While the penis is still erect, hold the base of the condom and withdraw slowly. Remove the condom away from your partner to prevent spills.</div></div>
-      <div class="guide-step"><div class="guide-step-num">8</div><div class="guide-step-text"><strong>Dispose properly:</strong> Tie a knot in the top and wrap in tissue or paper. Put in a dustbin — do not flush in a toilet (it causes blockages).</div></div>
-      <div class="guide-warning">⚠️ <strong>Never reuse a condom</strong> — each condom is single-use only. Never use two condoms at once — the friction between them makes both more likely to break.</div>
-      <div class="guide-tip">✅ A condom used correctly every single time gives about 98% protection against HIV transmission.</div>
+      <h3 data-i18n="str_1828">🟢 How to Use a Male (External) Condom — Step by Step</h3>
+      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-text" data-i18n="str_1829"><strong>Check the packaging:</strong> Look at the expiry date — never use an expired condom. Look for the CE or ISO mark (quality proof). Feel the package — if there is no air bubble inside, the package is damaged. Do not use it.</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-text" data-i18n="str_1830"><strong>Open carefully:</strong> Tear open the corner — do not use teeth, scissors, or nails, as these can damage the condom. Push the condom to one side before tearing.</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-text" data-i18n="str_1831"><strong>Check the direction:</strong> Unroll a little bit — it should unroll easily. If it doesn't, it's upside down. Do not try to reverse it — throw it away and use a new one.</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-text" data-i18n="str_1832"><strong>Pinch the tip:</strong> Pinch the small tip (reservoir) at the top — this removes air and leaves space for semen. Air inside the tip can cause the condom to break.</div></div>
+      <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-text" data-i18n="str_1833"><strong>Roll it on:</strong> While pinching the tip, roll the condom all the way down to the base of the erect penis. It should roll on smoothly.</div></div>
+      <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-text" data-i18n="str_1834"><strong>Use water-based lubricant:</strong> A little lubricant on the outside of the condom reduces friction and lowers the chance of tearing. Use only water-based lubricant (like KY Jelly) — oil-based products (Vaseline, cooking oil, lotion) damage the condom and make it ineffective.</div></div>
+      <div class="guide-step"><div class="guide-step-num">7</div><div class="guide-step-text" data-i18n="str_1835"><strong>After sex — remove carefully:</strong> While the penis is still erect, hold the base of the condom and withdraw slowly. Remove the condom away from your partner to prevent spills.</div></div>
+      <div class="guide-step"><div class="guide-step-num">8</div><div class="guide-step-text" data-i18n="str_1836"><strong>Dispose properly:</strong> Tie a knot in the top and wrap in tissue or paper. Put in a dustbin — do not flush in a toilet (it causes blockages).</div></div>
+      <div class="guide-warning" data-i18n="str_1837">⚠️ <strong>Never reuse a condom</strong> — each condom is single-use only. Never use two condoms at once — the friction between them makes both more likely to break.</div>
+      <div class="guide-tip" data-i18n="str_1838">✅ A condom used correctly every single time gives about 98% protection against HIV transmission.</div>
     </div>
 
     <!-- Female condom -->
     <div class="guide-card fade-in" style="transition-delay:.1s">
-      <h3>🔵 How to Use a Female (Internal) Condom</h3>
-      <p style="font-size:.86rem;color:var(--text-muted);margin-bottom:1rem">The female condom is a pouch inserted inside the vagina before sex. It can be put in up to 8 hours before sex — giving women more control over their own protection.</p>
-      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-text"><strong>Check and open:</strong> Check the expiry date. Open gently along the tear mark — do not use sharp objects.</div></div>
-      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-text"><strong>Prepare the condom:</strong> Add extra lubricant inside if needed (the condom is pre-lubricated). Find a comfortable position — squatting, one leg raised, or lying down.</div></div>
-      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-text"><strong>Insert:</strong> Squeeze the small inner ring at the closed end of the condom. Insert it into the vagina like a tampon, and push it as far up as it will go with your index finger.</div></div>
-      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-text"><strong>Position the outer ring:</strong> The large open ring at the outside end should rest flat against the outside of the vagina (the vulva). About 2–3 cm of the condom will remain outside the body — this is correct.</div></div>
-      <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-text"><strong>During sex:</strong> Guide the penis into the opening of the condom — not beside it. If the condom gets pushed sideways, adjust it. If you feel the outer ring being pushed inside, stop and reposition it.</div></div>
-      <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-text"><strong>Remove:</strong> Twist the outer ring to keep fluid inside, gently pull out, wrap and dispose in a bin.</div></div>
-      <div class="guide-tip">✅ The female condom is the only contraceptive method that is fully controlled by the woman and also protects against HIV.</div>
+      <h3 data-i18n="str_1839">🔵 How to Use a Female (Internal) Condom</h3>
+      <p style="font-size:.86rem;color:var(--text-muted);margin-bottom:1rem" data-i18n="str_1840">The female condom is a pouch inserted inside the vagina before sex. It can be put in up to 8 hours before sex — giving women more control over their own protection.</p>
+      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-text" data-i18n="str_1841"><strong>Check and open:</strong> Check the expiry date. Open gently along the tear mark — do not use sharp objects.</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-text" data-i18n="str_1842"><strong>Prepare the condom:</strong> Add extra lubricant inside if needed (the condom is pre-lubricated). Find a comfortable position — squatting, one leg raised, or lying down.</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-text" data-i18n="str_1843"><strong>Insert:</strong> Squeeze the small inner ring at the closed end of the condom. Insert it into the vagina like a tampon, and push it as far up as it will go with your index finger.</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-text" data-i18n="str_1844"><strong>Position the outer ring:</strong> The large open ring at the outside end should rest flat against the outside of the vagina (the vulva). About 2–3 cm of the condom will remain outside the body — this is correct.</div></div>
+      <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-text" data-i18n="str_1845"><strong>During sex:</strong> Guide the penis into the opening of the condom — not beside it. If the condom gets pushed sideways, adjust it. If you feel the outer ring being pushed inside, stop and reposition it.</div></div>
+      <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-text" data-i18n="str_1846"><strong>Remove:</strong> Twist the outer ring to keep fluid inside, gently pull out, wrap and dispose in a bin.</div></div>
+      <div class="guide-tip" data-i18n="str_1847">✅ The female condom is the only contraceptive method that is fully controlled by the woman and also protects against HIV.</div>
     </div>
 
     <!-- Self-test guide -->
     <div class="guide-card fade-in" style="transition-delay:.2s">
-      <h3>🔬 How to Do an HIV Oral Self-Test</h3>
-      <p style="font-size:.86rem;color:var(--text-muted);margin-bottom:1rem">An oral HIV self-test uses a swab from your mouth — no blood or needles. It takes 20 minutes and is 99% accurate.</p>
-      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-text"><strong>Wait 20 minutes after eating:</strong> Do not eat, drink, use toothpaste, or chew gum for 20 minutes before the test — this ensures accuracy.</div></div>
-      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-text"><strong>Remove the swab:</strong> Take it out of the sealed package. Do not touch the padded end of the swab with your fingers.</div></div>
-      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-text"><strong>Swab your gums:</strong> Rub the padded end of the swab slowly around your upper gums once, then lower gums once. Apply gentle pressure — you are collecting cells from the gum tissue.</div></div>
-      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-text"><strong>Place swab in the vial:</strong> Put the swab pad into the test vial (the small bottle with liquid). Push it down so the pad sits in the liquid.</div></div>
-      <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-text"><strong>Wait 20–40 minutes:</strong> Set a timer. Do not read the result before the minimum time stated in your kit instructions. Reading too early or too late affects accuracy.</div></div>
-      <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-text"><strong>Read the result:</strong><br/>• <strong style="color:var(--green)">1 line = NEGATIVE</strong> — no HIV antibodies detected<br/>• <strong style="color:var(--red)">2 lines = REACTIVE (Positive)</strong> — HIV antibodies detected; needs confirmatory test at a clinic<br/>• <strong>No lines = INVALID</strong> — test failed; repeat with a new kit</div></div>
-      <div class="guide-warning">⚠️ <strong>Window period:</strong> HIV antibodies take 18–45 days to appear after infection. If your last risk was within 45 days and your result is negative, test again in 6 weeks to confirm. A negative result before the window period is complete is not reliable.</div>
-      <div class="guide-tip">✅ A reactive result does NOT mean you definitely have HIV. It means you need a free, confidential confirmatory blood test at a clinic. Early confirmation = earlier treatment = better outcomes.</div>
+      <h3 data-i18n="str_1848">🔬 How to Do an HIV Oral Self-Test</h3>
+      <p style="font-size:.86rem;color:var(--text-muted);margin-bottom:1rem" data-i18n="str_1849">An oral HIV self-test uses a swab from your mouth — no blood or needles. It takes 20 minutes and is 99% accurate.</p>
+      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-text" data-i18n="str_1850"><strong>Wait 20 minutes after eating:</strong> Do not eat, drink, use toothpaste, or chew gum for 20 minutes before the test — this ensures accuracy.</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-text" data-i18n="str_1851"><strong>Remove the swab:</strong> Take it out of the sealed package. Do not touch the padded end of the swab with your fingers.</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-text" data-i18n="str_1852"><strong>Swab your gums:</strong> Rub the padded end of the swab slowly around your upper gums once, then lower gums once. Apply gentle pressure — you are collecting cells from the gum tissue.</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-text" data-i18n="str_1853"><strong>Place swab in the vial:</strong> Put the swab pad into the test vial (the small bottle with liquid). Push it down so the pad sits in the liquid.</div></div>
+      <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-text" data-i18n="str_1854"><strong>Wait 20–40 minutes:</strong> Set a timer. Do not read the result before the minimum time stated in your kit instructions. Reading too early or too late affects accuracy.</div></div>
+      <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-text" data-i18n="str_1855"><strong>Read the result:</strong><br>• <strong style="color:var(--green)">1 line = NEGATIVE</strong> — no HIV antibodies detected<br>• <strong style="color:var(--red)">2 lines = REACTIVE (Positive)</strong> — HIV antibodies detected; needs confirmatory test at a clinic<br>• <strong>No lines = INVALID</strong> — test failed; repeat with a new kit</div></div>
+      <div class="guide-warning" data-i18n="str_1856">⚠️ <strong>Window period:</strong> HIV antibodies take 18–45 days to appear after infection. If your last risk was within 45 days and your result is negative, test again in 6 weeks to confirm. A negative result before the window period is complete is not reliable.</div>
+      <div class="guide-tip" data-i18n="str_1857">✅ A reactive result does NOT mean you definitely have HIV. It means you need a free, confidential confirmatory blood test at a clinic. Early confirmation = earlier treatment = better outcomes.</div>
 
-      <h3 style="margin-top:1.5rem">🗓️ How Often Should You Test?</h3>
-      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-text"><strong>Sexually active youth:</strong> at least once every 6 months</div></div>
-      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-text"><strong>You or your partner have multiple partners:</strong> every 3 months</div></div>
-      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-text"><strong>After any unprotected sex:</strong> test after the window period (6 weeks after the event)</div></div>
-      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-text"><strong>Before starting a new committed relationship:</strong> both partners test together</div></div>
+      <h3 style="margin-top:1.5rem" data-i18n="str_1858">🗓️ How Often Should You Test?</h3>
+      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-text" data-i18n="str_1859"><strong>Sexually active youth:</strong> at least once every 6 months</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-text" data-i18n="str_1860"><strong>You or your partner have multiple partners:</strong> every 3 months</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-text" data-i18n="str_1861"><strong>After any unprotected sex:</strong> test after the window period (6 weeks after the event)</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-text" data-i18n="str_1862"><strong>Before starting a new committed relationship:</strong> both partners test together</div></div>
     </div>
   </div>
 
 </main>
 
 <nav class="bottom-nav">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item active" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1863"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1864"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1865"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item active" id="nav-modules" data-i18n="str_1866"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1867"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   /* ── Tab Switching ── */
@@ -1190,5 +1190,6 @@ function stopNegAudio() {
 document.addEventListener('DOMContentLoaded', () => { renderNegScenario(); });
 </script>
 
-</body>
-</html>
+
+
+</body></html>

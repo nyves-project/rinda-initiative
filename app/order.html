@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — Order Self-Test Kit</title>
-  <meta name="description" content="Order a discreet HIV self-test kit anonymously. Delivered by peer agents in unmarked packaging."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Order a discreet HIV self-test kit anonymously. Delivered by peer agents in unmarked packaging.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     /* ── Order Tracker ── */
     .tracker-section {
@@ -100,9 +98,9 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
+  <div class="app-logo" data-i18n="str_1868"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1869">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -111,70 +109,70 @@
 </header>
 
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1870">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1871"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1872">Font Size</span><div class="font-size-controls" data-i18n="str_1873"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <main class="app-main" role="main">
 
   <!-- Page Header -->
   <div class="page-header">
-    <div class="section-badge">📦 Anonymous Delivery</div>
+    <div class="section-badge" data-i18n="str_1874">📦 Anonymous Delivery</div>
     <h1 data-i18n="orderPageTitle">Order HIV Self-Test Kit</h1>
     <p data-i18n="orderPageDesc">No name or ID required. Delivered by a trained peer agent in unmarked packaging.</p>
   </div>
 
   <!-- Anonymity badge -->
   <div class="order-form">
-    <div class="anon-badge">
+    <div class="anon-badge" data-i18n="str_1875">
       🔒 <strong>100% Anonymous:</strong>&nbsp;We never store your name. Only your sector code matters.
     </div>
   </div>
 
   <!-- ORDER FORM -->
-  <form class="order-form" id="order-form" onsubmit="submitOrder(event)" novalidate>
+  <form class="order-form" id="order-form" onsubmit="submitOrder(event)" novalidate="">
     <div class="form-group">
-      <label for="sector">Province / Sector <span style="color:var(--red)">*</span></label>
-      <select id="sector" required aria-required="true">
-        <option value="">— Select your sector —</option>
+      <label for="sector" data-i18n="str_1876">Province / Sector <span style="color:var(--red)">*</span></label>
+      <select id="sector" required="" aria-required="true">
+        <option value="" data-i18n="str_1877">— Select your sector —</option>
         <optgroup label="Kigali">
-          <option>Gasabo — Kigali</option>
-          <option>Kicukiro — Kigali</option>
-          <option>Nyarugenge — Kigali</option>
+          <option data-i18n="str_1878">Gasabo — Kigali</option>
+          <option data-i18n="str_1879">Kicukiro — Kigali</option>
+          <option data-i18n="str_1880">Nyarugenge — Kigali</option>
         </optgroup>
         <optgroup label="Southern Province">
-          <option>Huye — Southern</option>
-          <option>Nyanza — Southern</option>
-          <option>Gisagara — Southern</option>
-          <option>Muhanga — Southern</option>
+          <option data-i18n="str_1881">Huye — Southern</option>
+          <option data-i18n="str_1882">Nyanza — Southern</option>
+          <option data-i18n="str_1883">Gisagara — Southern</option>
+          <option data-i18n="str_1884">Muhanga — Southern</option>
         </optgroup>
         <optgroup label="Eastern Province">
-          <option>Rwamagana — Eastern</option>
-          <option>Bugesera — Eastern</option>
-          <option>Kayonza — Eastern</option>
+          <option data-i18n="str_1885">Rwamagana — Eastern</option>
+          <option data-i18n="str_1886">Bugesera — Eastern</option>
+          <option data-i18n="str_1887">Kayonza — Eastern</option>
         </optgroup>
         <optgroup label="Northern Province">
-          <option>Musanze — Northern</option>
-          <option>Burera — Northern</option>
-          <option>Gicumbi — Northern</option>
+          <option data-i18n="str_1888">Musanze — Northern</option>
+          <option data-i18n="str_1889">Burera — Northern</option>
+          <option data-i18n="str_1890">Gicumbi — Northern</option>
         </optgroup>
         <optgroup label="Western Province">
-          <option>Rubavu — Western</option>
-          <option>Rusizi — Western</option>
-          <option>Karongi — Western</option>
+          <option data-i18n="str_1891">Rubavu — Western</option>
+          <option data-i18n="str_1892">Rusizi — Western</option>
+          <option data-i18n="str_1893">Karongi — Western</option>
         </optgroup>
       </select>
-      <div class="form-note">Used to dispatch the nearest peer agent. Not linked to your identity.</div>
+      <div class="form-note" data-i18n="str_1894">Used to dispatch the nearest peer agent. Not linked to your identity.</div>
     </div>
 
     <div class="form-group">
-      <label for="contact">Contact number <span class="optional">(optional — for delivery coordination)</span></label>
-      <input type="tel" id="contact" placeholder="e.g. 0788 000 000" autocomplete="tel"/>
-      <div class="form-note">🔒 Stored only for this delivery. Deleted after confirmation.</div>
+      <label for="contact" data-i18n="str_1895">Contact number <span class="optional">(optional — for delivery coordination)</span></label>
+      <input type="tel" id="contact" placeholder="e.g. 0788 000 000" autocomplete="tel">
+      <div class="form-note" data-i18n="str_1896">🔒 Stored only for this delivery. Deleted after confirmation.</div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" data-i18n="str_1897">
       <label for="pickup">Preferred pickup time <span class="optional">(optional)</span></label>
       <select id="pickup">
         <option value="">Any time is fine</option>
@@ -184,7 +182,7 @@
       </select>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" data-i18n="str_1898">
       <label for="disability">Accessibility needs <span class="optional">(optional)</span></label>
       <select id="disability">
         <option value="">None</option>
@@ -195,26 +193,26 @@
     </div>
 
     <div class="form-group">
-      <div class="checkbox-row">
-        <input type="checkbox" id="consent" required aria-required="true"/>
+      <div class="checkbox-row" data-i18n="str_1899">
+        <input type="checkbox" id="consent" required="" aria-required="true">
         <span>I understand that this self-test kit is for personal HIV testing and I consent to being contacted for delivery coordination only. <a href="knowledge.html" style="color:var(--blue)">Learn about your rights →</a></span>
       </div>
     </div>
 
-    <button type="submit" class="btn-submit" id="submit-btn">📦 Request My Kit — Free &amp; Anonymous</button>
+    <button type="submit" class="btn-submit" id="submit-btn" data-i18n="str_1900">📦 Request My Kit — Free &amp; Anonymous</button>
   </form>
 
   <!-- ── ORDER CONFIRMATION + TRACKER ── -->
   <div class="tracker-section" id="tracker-section">
     <div class="tracker-header">
       <span class="t-check">✅</span>
-      <h2>Kit Requested!</h2>
-      <p>Your peer agent has been notified. Estimated delivery: <strong style="color:var(--green)">24–48 hours</strong>.</p>
+      <h2 data-i18n="str_1901">Kit Requested!</h2>
+      <p data-i18n="str_1902">Your peer agent has been notified. Estimated delivery: <strong style="color:var(--green)">24–48 hours</strong>.</p>
     </div>
 
     <div class="tracking-code-box">
-      <div class="tc-label">YOUR TRACKING CODE</div>
-      <div class="tc-code" id="tracking-code">RND-00000</div>
+      <div class="tc-label" data-i18n="str_1903">YOUR TRACKING CODE</div>
+      <div class="tc-code" id="tracking-code" data-i18n="str_1904">RND-00000</div>
     </div>
 
     <!-- Status Timeline -->
@@ -223,45 +221,45 @@
       <div class="status-step" role="listitem">
         <div class="status-dot done" aria-label="Completed">✅</div>
         <div class="status-content">
-          <h4>Request Submitted</h4>
-          <p>Your anonymous request has been received and logged securely.</p>
-          <div class="status-time" id="step-time-1">Just now</div>
+          <h4 data-i18n="str_1905">Request Submitted</h4>
+          <p data-i18n="str_1906">Your anonymous request has been received and logged securely.</p>
+          <div class="status-time" id="step-time-1" data-i18n="str_1907">Just now</div>
         </div>
       </div>
 
       <div class="status-step" role="listitem">
         <div class="status-dot active" aria-label="In progress" id="step-dot-2">🔍</div>
         <div class="status-content">
-          <h4>Peer Agent Assigned</h4>
-          <p>A trained volunteer near your sector has been notified and is preparing your kit.</p>
-          <div class="status-time" id="step-time-2">~15–30 minutes</div>
+          <h4 data-i18n="str_1908">Peer Agent Assigned</h4>
+          <p data-i18n="str_1909">A trained volunteer near your sector has been notified and is preparing your kit.</p>
+          <div class="status-time" id="step-time-2" data-i18n="str_1910">~15–30 minutes</div>
         </div>
       </div>
 
       <div class="status-step" role="listitem">
         <div class="status-dot" aria-label="Pending" id="step-dot-3">📦</div>
         <div class="status-content">
-          <h4>Kit Packaged</h4>
-          <p>Your self-test kit is packaged in plain, unmarked packaging — zero branding visible.</p>
-          <div class="status-time" id="step-time-3">~2–4 hours</div>
+          <h4 data-i18n="str_1911">Kit Packaged</h4>
+          <p data-i18n="str_1912">Your self-test kit is packaged in plain, unmarked packaging — zero branding visible.</p>
+          <div class="status-time" id="step-time-3" data-i18n="str_1913">~2–4 hours</div>
         </div>
       </div>
 
       <div class="status-step" role="listitem">
         <div class="status-dot" aria-label="Pending" id="step-dot-4">🛵</div>
         <div class="status-content">
-          <h4>Out for Delivery</h4>
-          <p>Your agent is on their way. You will receive a discreet knock — no uniforms or identifiable signage.</p>
-          <div class="status-time" id="step-time-4">~12–24 hours</div>
+          <h4 data-i18n="str_1914">Out for Delivery</h4>
+          <p data-i18n="str_1915">Your agent is on their way. You will receive a discreet knock — no uniforms or identifiable signage.</p>
+          <div class="status-time" id="step-time-4" data-i18n="str_1916">~12–24 hours</div>
         </div>
       </div>
 
       <div class="status-step" role="listitem" style="margin-bottom:0">
         <div class="status-dot" aria-label="Pending" id="step-dot-5">🏠</div>
         <div class="status-content">
-          <h4>Delivered</h4>
-          <p>Kit delivered. Your agent will briefly explain how to use it in private. No paperwork required.</p>
-          <div class="status-time" id="step-time-5">~24–48 hours</div>
+          <h4 data-i18n="str_1917">Delivered</h4>
+          <p data-i18n="str_1918">Kit delivered. Your agent will briefly explain how to use it in private. No paperwork required.</p>
+          <div class="status-time" id="step-time-5" data-i18n="str_1919">~24–48 hours</div>
         </div>
       </div>
 
@@ -271,18 +269,18 @@
     <div class="eta-card">
       <div class="eta-icon">⏱️</div>
       <div class="eta-text">
-        <h4>Estimated Delivery Window</h4>
-        <p>Your kit will arrive within <strong id="eta-time">24–48 hours</strong>. Average delivery in your area: <strong>31 hours</strong>.</p>
+        <h4 data-i18n="str_1920">Estimated Delivery Window</h4>
+        <p data-i18n="str_1921">Your kit will arrive within <strong id="eta-time">24–48 hours</strong>. Average delivery in your area: <strong>31 hours</strong>.</p>
       </div>
     </div>
 
-    <div class="tracker-actions">
+    <div class="tracker-actions" data-i18n="str_1922">
       <button class="t-action-btn" onclick="resetOrderForm()">↺ Place Another Order</button>
       <a href="knowledge.html" class="t-action-btn primary">📚 Prep: Read How to Use Kit →</a>
     </div>
 
     <div style="text-align:center;padding:1.25rem 0 .5rem">
-      <p style="font-size:.75rem;color:var(--text-muted)">
+      <p style="font-size:.75rem;color:var(--text-muted)" data-i18n="str_1923">
         Questions? Call the free helpline: <a href="tel:114" style="color:var(--blue);font-weight:700">114</a>
         &nbsp;·&nbsp; Available 24/7 in Kinyarwanda &amp; English
       </p>
@@ -292,13 +290,15 @@
 </main>
 
 <nav class="bottom-nav">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1924"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1925"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1926"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1927"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1928"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   function submitOrder(e){
@@ -369,5 +369,6 @@
     }
   });
 </script>
-</body>
-</html>
+
+
+</body></html>

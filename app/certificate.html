@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — Certificate of Empowerment</title>
-  <meta name="description" content="Your Rinda Initiative Certificate of Empowerment — awarded for completing all condom negotiation modules."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Your Rinda Initiative Certificate of Empowerment — awarded for completing all condom negotiation modules.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     /* Locked State */
     .locked-state {
@@ -215,9 +213,9 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
+  <div class="app-logo" data-i18n="str_1107"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1108">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -226,9 +224,9 @@
 </header>
 
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1109">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1110"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1111">Font Size</span><div class="font-size-controls" data-i18n="str_1112"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <!-- Confetti container -->
@@ -239,12 +237,12 @@
   <!-- LOCKED STATE -->
   <div class="locked-state" id="locked-state">
     <div class="locked-icon">🏆</div>
-    <h2>Certificate Locked</h2>
-    <p>Complete all 3 learning quizzes in the Learn section to unlock your Certificate of Empowerment.</p>
-    <div class="module-checklist" id="module-checklist">
+    <h2 data-i18n="str_1113">Certificate Locked</h2>
+    <p data-i18n="str_1114">Complete all 3 learning quizzes in the Learn section to unlock your Certificate of Empowerment.</p>
+    <div class="module-checklist" id="module-checklist" data-i18n="str_1115">
       <!-- Populated by JS -->
     </div>
-    <a href="modules.html" class="go-modules-btn">📖 Go to Learn →</a>
+    <a href="modules.html" class="go-modules-btn" data-i18n="str_1116">📖 Go to Learn →</a>
   </div>
 
   <!-- CERTIFICATE STATE -->
@@ -257,35 +255,35 @@
       <span class="cert-corner br">✦</span>
 
       <div class="cert-badge-row">
-        <div class="cert-org-badge">🛡️ Rinda Initiative · iAccelerator 7</div>
+        <div class="cert-org-badge" data-i18n="str_1117">🛡️ Rinda Initiative · iAccelerator 7</div>
       </div>
 
-      <div class="cert-title">This Certifies That</div>
+      <div class="cert-title" data-i18n="str_1118">This Certifies That</div>
       <div style="margin:0.5rem 0">
-        <div class="cert-name-placeholder" id="cert-name-display">Anonymous Champion</div>
+        <div class="cert-name-placeholder" id="cert-name-display" data-i18n="str_1119">Anonymous Champion</div>
       </div>
 
-      <div class="cert-main-title">Certificate of Empowerment</div>
-      <div class="cert-subtitle">HIV Prevention Learning Programme</div>
+      <div class="cert-main-title" data-i18n="str_1120">Certificate of Empowerment</div>
+      <div class="cert-subtitle" data-i18n="str_1121">HIV Prevention Learning Programme</div>
 
       <div class="cert-divider"></div>
 
-      <div class="cert-desc">
+      <div class="cert-desc" data-i18n="str_1122">
         Has successfully completed all three HIV prevention learning modules,
         demonstrating knowledge and commitment to protecting
         <strong>Rwanda's youth</strong>. Grounded in Rwanda 2025 DHS data.
       </div>
 
       <div class="cert-modules-list">
-        <div class="cert-module-row">
+        <div class="cert-module-row" data-i18n="str_1123">
           <span class="cm-check">✅</span>
           <span>Story 01 — Grace's First Test <span class="cm-kin">(Self-Testing)</span></span>
         </div>
-        <div class="cert-module-row">
+        <div class="cert-module-row" data-i18n="str_1124">
           <span class="cm-check">✅</span>
-          <span>Story 02 — Jean & Diane: Testing Together <span class="cm-kin">(Couples Testing)</span></span>
+          <span>Story 02 — Jean &amp; Diane: Testing Together <span class="cm-kin">(Couples Testing)</span></span>
         </div>
-        <div class="cert-module-row">
+        <div class="cert-module-row" data-i18n="str_1125">
           <span class="cm-check">✅</span>
           <span>Story 03 — Patrick's Wake-Up Call <span class="cm-kin">(Condom Use)</span></span>
         </div>
@@ -293,31 +291,29 @@
 
       <div class="cert-divider"></div>
 
-      <div class="cert-date" id="cert-date">Issued: —</div>
+      <div class="cert-date" id="cert-date" data-i18n="str_1126">Issued: —</div>
 
       <div class="cert-seal" aria-label="Official seal">🏆</div>
     </div>
 
     <!-- Name personalisation -->
     <div class="name-section">
-      <label for="cert-name-input">✏️ Personalise your certificate (optional):</label>
-      <div class="name-input-row">
-        <input type="text" class="name-input" id="cert-name-input"
-          placeholder="Enter your name or leave anonymous"
-          maxlength="40" aria-label="Your name for the certificate"/>
+      <label for="cert-name-input" data-i18n="str_1127">✏️ Personalise your certificate (optional):</label>
+      <div class="name-input-row" data-i18n="str_1128">
+        <input type="text" class="name-input" id="cert-name-input" placeholder="Enter your name or leave anonymous" maxlength="40" aria-label="Your name for the certificate">
         <button class="apply-name-btn" onclick="applyName()">Apply</button>
       </div>
     </div>
 
     <!-- Action Buttons -->
-    <div class="cert-actions">
+    <div class="cert-actions" data-i18n="str_1129">
       <button class="cert-action-btn primary" onclick="printCertificate()">🖨️ Save / Print</button>
       <button class="cert-action-btn" onclick="shareCertificate()">📤 Share</button>
       <button class="cert-action-btn" onclick="shareWhatsApp()" style="background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.4);color:#25D366">💬 WhatsApp</button>
       <a href="order.html" class="cert-action-btn">📦 Order Test Kit</a>
     </div>
 
-    <div style="padding:1.5rem;text-align:center">
+    <div style="padding:1.5rem;text-align:center" data-i18n="str_1130">
       <a href="modules.html" style="font-size:.8rem;color:var(--text-muted)">← Back to Modules</a>
     </div>
   </div>
@@ -325,13 +321,15 @@
 </main>
 
 <nav class="bottom-nav">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item active" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1131"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1132"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1133"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item active" id="nav-modules" data-i18n="str_1134"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1135"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   const moduleLabels = [
@@ -438,5 +436,6 @@
 }
 </style>
 
-</body>
-</html>
+
+
+</body></html>

@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — Dashboard</title>
-  <meta name="description" content="Rinda Initiative Dashboard — Your private HIV health companion for Rwandan youth."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="manifest" href="../manifest.json"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Rinda Initiative Dashboard — Your private HIV health companion for Rwandan youth.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     /* Reminder widget */
     .reminder-widget {
@@ -99,12 +97,12 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo">
+  <div class="app-logo" data-i18n="str_1300">
     <span class="logo-shield">🛡️</span>
     <span>Rinda</span>&nbsp;Initiative
   </div>
   <div class="header-right">
-    <div class="lang-toggle" role="group" aria-label="Language switcher">
+    <div class="lang-toggle" role="group" aria-label="Language switcher" data-i18n="str_1301">
       <button class="lang-btn active" data-lang="en" aria-label="Switch to English">EN</button>
       <button class="lang-btn" data-lang="kin" aria-label="Switch to Kinyarwanda">KIN</button>
     </div>
@@ -114,19 +112,19 @@
 </header>
 
 <div class="access-panel" id="access-panel" role="dialog" aria-label="Accessibility settings">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row">
+  <h4 data-i18n="str_1302">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1303">
     <span>High Contrast</span>
-    <label class="toggle-switch"><input type="checkbox" id="contrast-toggle" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label>
+    <label class="toggle-switch"><input type="checkbox" id="contrast-toggle" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label>
   </div>
   <div class="access-row">
-    <span>Font Size</span>
-    <div class="font-size-controls">
+    <span data-i18n="str_1304">Font Size</span>
+    <div class="font-size-controls" data-i18n="str_1305">
       <button class="font-sz-btn" onclick="setFontSize(fontSize-2)" aria-label="Decrease font size">A-</button>
       <button class="font-sz-btn" onclick="setFontSize(fontSize+2)" aria-label="Increase font size">A+</button>
     </div>
   </div>
-  <div class="access-row">
+  <div class="access-row" data-i18n="str_1306">
     <span>Screen Reader Hint</span>
     <span style="font-size:.75rem;color:var(--blue)">USSD: *775#</span>
   </div>
@@ -136,53 +134,53 @@
 
   <!-- Hero Welcome -->
   <div style="background:linear-gradient(135deg,rgba(0,160,220,0.12),rgba(32,96,61,0.08));padding:2rem 1.5rem 1.5rem;border-bottom:1px solid var(--glass-border)">
-    <div class="section-badge">🛡️ iAccelerator 7</div>
+    <div class="section-badge" data-i18n="str_1307">🛡️ iAccelerator 7</div>
     <h1 style="font-size:1.9rem;font-weight:900;margin-bottom:.25rem" data-i18n="welcome">Welcome to Rinda</h1>
     <p style="color:var(--text-secondary);font-size:.9rem;line-height:1.5" data-i18n="subtitle">Your private HIV health &amp; mental wellness companion.</p>
-    <div style="display:inline-block;background:rgba(0,160,220,0.15);color:var(--blue);padding:0.25rem 0.6rem;border-radius:1rem;font-size:0.75rem;font-weight:700;margin-top:0.4rem;border:1px solid rgba(0,160,220,0.3)">👥 Designed for Adolescent Youth (Ages 15–24)</div>
+    <div style="display:inline-block;background:rgba(0,160,220,0.15);color:var(--blue);padding:0.25rem 0.6rem;border-radius:1rem;font-size:0.75rem;font-weight:700;margin-top:0.4rem;border:1px solid rgba(0,160,220,0.3)" data-i18n="str_1308">👥 Designed for Adolescent Youth (Ages 15–24)</div>
   </div>
 
   <!-- PWA Install Banner -->
   <div class="pwa-banner" id="pwa-banner" role="banner">
-    <div class="pwa-text">
+    <div class="pwa-text" data-i18n="str_1309">
       <strong>📲 Install Rinda on your phone</strong>
       <span>Works offline — no internet needed after install</span>
     </div>
-    <button class="pwa-install-btn" id="pwa-install-btn">Install</button>
+    <button class="pwa-install-btn" id="pwa-install-btn" data-i18n="str_1310">Install</button>
     <button class="pwa-dismiss" onclick="document.getElementById('pwa-banner').classList.remove('show')" aria-label="Dismiss">✕</button>
   </div>
 
   <!-- Reminder Widget (shown when set) -->
   <div class="reminder-widget" id="reminder-widget">
-    <div class="reminder-top">
+    <div class="reminder-top" data-i18n="str_1311">
       <span class="reminder-title">⏰ <span data-i18n="reminderTitle">Next HIV Test Reminder</span></span>
       <button class="reminder-dismiss" onclick="clearReminder()" aria-label="Dismiss reminder">✕</button>
     </div>
     <div class="countdown-row">
-      <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Days</div></div>
-      <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Hours</div></div>
-      <div class="cd-block"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Mins</div></div>
+      <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-label" data-i18n="str_1312">Days</div></div>
+      <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-label" data-i18n="str_1313">Hours</div></div>
+      <div class="cd-block"><div class="cd-num" id="cd-mins">--</div><div class="cd-label" data-i18n="str_1314">Mins</div></div>
     </div>
-    <button class="reminder-clear-btn" onclick="clearReminder()">↺ Clear reminder</button>
+    <button class="reminder-clear-btn" onclick="clearReminder()" data-i18n="str_1315">↺ Clear reminder</button>
   </div>
 
   <!-- Set Reminder Panel (shown when no reminder set) -->
   <div class="set-reminder-box" id="set-reminder-box">
-    <h4>⏰ <span data-i18n="setReminder">Set a Testing Reminder</span></h4>
+    <h4 data-i18n="str_1316">⏰ <span data-i18n="setReminder">Set a Testing Reminder</span></h4>
     <p style="font-size:.8rem;color:var(--text-secondary);margin-bottom:.75rem" data-i18n="reminderDesc">Rwanda guidelines: test every 3–6 months if sexually active. Never miss your next test.</p>
-    <div class="reminder-options" id="reminder-options">
+    <div class="reminder-options" id="reminder-options" data-i18n="str_1317">
       <button class="reminder-opt-btn" onclick="selectReminderCycle(this, 90)">3 months</button>
       <button class="reminder-opt-btn" onclick="selectReminderCycle(this, 180)">6 months</button>
       <button class="reminder-opt-btn" onclick="selectReminderCycle(this, 365)">1 year</button>
     </div>
-    <button class="set-reminder-submit" id="set-reminder-submit" onclick="setReminder()" disabled>Set Reminder →</button>
+    <button class="set-reminder-submit" id="set-reminder-submit" onclick="setReminder()" disabled="" data-i18n="str_1318">Set Reminder →</button>
   </div>
 
   <!-- Quick Stats Strip -->
   <div class="info-strip" role="region" aria-label="Key statistics">
     <div class="info-chip">
       <div class="chip-num" style="color:var(--gold)" id="global-points-display">0</div>
-      <div class="chip-label">Rewards Points Available</div>
+      <div class="chip-label" data-i18n="str_1319">Rewards Points Available</div>
     </div>
     <div class="info-chip">
       <div class="chip-num">81%</div>
@@ -195,13 +193,13 @@
   </div>
 
   <!-- Module Grid -->
-  <div style="padding:1.5rem 1.5rem .5rem">
+  <div style="padding:1.5rem 1.5rem .5rem" data-i18n="str_1320">
     <h2 style="font-size:1rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em" data-i18n="platformModules">Platform Modules</h2>
   </div>
   <div class="module-grid" role="region" aria-label="Platform modules">
-    <a href="clinic.html" class="module-card teal fade-in" id="mod-clinic" aria-label="Clinics & Care" style="transition-delay:0s">
+    <a href="clinic.html" class="module-card teal fade-in" id="mod-clinic" aria-label="Clinics &amp; Care" style="transition-delay:0s">
       <div class="m-icon">🏥</div>
-      <h3 data-i18n="clinicTitle">Clinics & Care</h3>
+      <h3 data-i18n="clinicTitle">Clinics &amp; Care</h3>
       <p data-i18n="clinicDesc">Find youth-friendly clinics, book an appointment, or chat with a professional.</p>
       <div class="m-arrow" style="color:var(--teal)" data-i18n="explore">Explore →</div>
     </a>
@@ -245,7 +243,7 @@
       <span class="ec-icon" style="color:var(--teal)">📖</span>
       <div class="ec-text">
         <h4 data-i18n="booksTitle">Growing Up Books</h4>
-        <p data-i18n="booksDesc">Puberty & body guides</p>
+        <p data-i18n="booksDesc">Puberty &amp; body guides</p>
       </div>
     </a>
     <a href="rewards.html" class="extra-card fade-in" style="transition-delay:.6s;background:rgba(250,210,1,0.1);border:1px solid rgba(250,210,1,0.2)">
@@ -279,13 +277,7 @@
         <p data-i18n="ussdDesc">Dial *775# offline simulation</p>
       </div>
     </a>
-    <a href="budget.html" class="extra-card fade-in" style="transition-delay:1s;background:rgba(250,210,1,0.06);border:1px solid rgba(250,210,1,0.18)">
-      <span class="ec-icon">📊</span>
-      <div class="ec-text">
-        <h4 style="color:var(--gold)" data-i18n="budgetTitle">Pilot Plan &amp; Budget</h4>
-        <p data-i18n="budgetDesc">6-month · 10M RWF breakdown</p>
-      </div>
-    </a>
+
   </div>
 
   <!-- Quick Resources -->
@@ -295,24 +287,26 @@
         <h4 style="font-size:.9rem;font-weight:700;margin-bottom:.2rem" data-i18n="helplineTitle">Rwanda Toll-Free Helpline</h4>
         <p style="font-size:.75rem;color:var(--text-secondary)" data-i18n="helplineDesc">Free counseling &amp; guidance</p>
       </div>
-      <a href="tel:114" style="background:rgba(29,185,84,0.15);color:var(--green);padding:.5rem 1rem;border-radius:var(--radius-xl);font-size:.85rem;font-weight:700;border:1px solid rgba(29,185,84,0.3)">📞 Call 114</a>
+      <a href="tel:114" style="background:rgba(29,185,84,0.15);color:var(--green);padding:.5rem 1rem;border-radius:var(--radius-xl);font-size:.85rem;font-weight:700;border:1px solid rgba(29,185,84,0.3)" data-i18n="str_1321">📞 Call 114</a>
     </div>
   </div>
 
   <!-- Back to Pitch -->
-  <div style="padding:2rem 1.5rem;text-align:center">
+  <div style="padding:2rem 1.5rem;text-align:center" data-i18n="str_1322">
     <a href="../index.html" style="display:inline-flex;align-items:center;gap:.5rem;color:var(--text-muted);font-size:.85rem;transition:color .3s" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text-muted)'">← Back to Pitch Landing Page</a>
   </div>
 </main>
 
 <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
-  <a href="index.html" class="bottom-nav-item active" id="nav-home" aria-label="Dashboard"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" aria-label="Care & Clinics"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" aria-label="Menstrual Health"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules" aria-label="Learn"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" aria-label="Knowledge Hub"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item active" id="nav-home" aria-label="Dashboard" data-i18n="str_1323"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" aria-label="Care &amp; Clinics" data-i18n="str_1324"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" aria-label="Menstrual Health" data-i18n="str_1325"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" aria-label="Learn" data-i18n="str_1326"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" aria-label="Knowledge Hub" data-i18n="str_1327"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   /* ── Reminder System ── */
@@ -401,5 +395,6 @@
     if(localStorage.getItem('rinda-reminder')) showReminderWidget();
   });
 </script>
-</body>
-</html>
+
+
+</body></html>

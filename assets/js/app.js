@@ -140,8 +140,26 @@ function setLang(lang){
   });
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key = el.dataset.i18n;
-    if(translations[lang] && translations[lang][key] !== undefined)
+    
+    // Skip lang-toggle container — translating it destroys listener-holding button elements
+    if(el.classList.contains('lang-toggle')) return;
+
+    // 1. Check legacy internal translations
+    if(translations[lang] && translations[lang][key] !== undefined) {
       el.textContent = translations[lang][key];
+      return;
+    }
+
+    // 2. Check auto-extracted dynamic dictionaries
+    const dict = lang === 'kin' ? window.I18N_KIN : window.I18N_EN;
+    if (dict && dict[key]) {
+       el.innerHTML = dict[key];
+    }
+  });
+
+  // Re-apply active class after innerHTML replacements may have reset button states
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
   });
 
   // Dynamically translate bottom nav icons across all pages
@@ -163,10 +181,13 @@ function setLang(lang){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.lang-btn').forEach(b=>{
-    b.addEventListener('click',()=>setLang(b.dataset.lang));
-  });
   setLang(currentLang);
+});
+
+/* Use event delegation so lang buttons still work even after innerHTML replacement by i18n */
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.lang-btn');
+  if (btn && btn.dataset.lang) setLang(btn.dataset.lang);
 });
 
 /* ── Voice Commands ── */
@@ -251,6 +272,38 @@ function toggleContrast(checked){
   localStorage.setItem('rinda-contrast', checked ? '1' : '0');
 }
 
+/* ── Dyslexia-Friendly Mode Toggle ── */
+function toggleDyslexia(checked){
+  document.body.classList.toggle('dyslexia-mode', checked);
+  localStorage.setItem('rinda-dyslexia', checked ? '1' : '0');
+}
+
+/* ── Reduced Motion Toggle ── */
+function toggleReducedMotion(checked){
+  document.body.classList.toggle('reduced-motion', checked);
+  localStorage.setItem('rinda-motion', checked ? '1' : '0');
+}
+
+/* ── Text-to-Speech (TTS) Reader ── */
+let ttsInstance = null;
+function toggleTTS(button, textToRead){
+  if(!('speechSynthesis' in window)) return alert('Text-to-Speech not supported in your browser.');
+  if(window.speechSynthesis.speaking){
+    window.speechSynthesis.cancel();
+    document.querySelectorAll('.tts-reader-btn').forEach(b=>{b.classList.remove('playing'); b.innerHTML='🔊 Read Aloud';});
+    return;
+  }
+  ttsInstance = new SpeechSynthesisUtterance(textToRead);
+  ttsInstance.lang = currentLang === 'kin' ? 'rw-RW' : 'en-US';
+  ttsInstance.onend = () => {
+    button.classList.remove('playing');
+    button.innerHTML='🔊 Read Aloud';
+  };
+  button.classList.add('playing');
+  button.innerHTML='⏸ Stop Reading';
+  window.speechSynthesis.speak(ttsInstance);
+}
+
 /* ── Font Size ── */
 let fontSize = parseInt(localStorage.getItem('rinda-fontsize') || '16');
 function setFontSize(size){
@@ -262,12 +315,68 @@ function setFontSize(size){
 /* ── Apply stored prefs on load ── */
 document.addEventListener('DOMContentLoaded',()=>{
   if(localStorage.getItem('rinda-contrast')==='1') document.body.classList.add('high-contrast');
+  if(localStorage.getItem('rinda-dyslexia')==='1') document.body.classList.add('dyslexia-mode');
+  if(localStorage.getItem('rinda-motion')==='1') document.body.classList.add('reduced-motion');
+
   const fs = localStorage.getItem('rinda-fontsize');
   if(fs) document.documentElement.style.fontSize = fs+'px';
 
-  // Restore contrast checkbox state
-  const toggle = document.getElementById('contrast-toggle');
-  if(toggle) toggle.checked = localStorage.getItem('rinda-contrast')==='1';
+  // Inject advanced accessibility toggles into `.access-panel` if it exists
+  const accessPanel = document.getElementById('access-panel');
+  if(accessPanel){
+    const hintRow = accessPanel.lastElementChild;
+    const extraHTML = `
+      <div class="access-row">
+        <span>Dyslexia Font</span>
+        <label class="toggle-switch"><input type="checkbox" id="dyslexia-toggle" onchange="toggleDyslexia(this.checked)"/><span class="toggle-slider"></span></label>
+      </div>
+      <div class="access-row">
+        <span>Reduce Motion</span>
+        <label class="toggle-switch"><input type="checkbox" id="motion-toggle" onchange="toggleReducedMotion(this.checked)"/><span class="toggle-slider"></span></label>
+      </div>
+    `;
+    if(hintRow) hintRow.insertAdjacentHTML('beforebegin', extraHTML);
+  }
+
+  // Restore checkbox states safely
+  const domContrast = document.getElementById('contrast-toggle');
+  if(domContrast) domContrast.checked = localStorage.getItem('rinda-contrast')==='1';
+  const domDyslexia = document.getElementById('dyslexia-toggle');
+  if(domDyslexia) domDyslexia.checked = localStorage.getItem('rinda-dyslexia')==='1';
+  const domMotion = document.getElementById('motion-toggle');
+  if(domMotion) domMotion.checked = localStorage.getItem('rinda-motion')==='1';
+
+  // Inject TTS button into Knowledge Hub cards
+  document.querySelectorAll('.knowledge-card').forEach(card => {
+    if(card.querySelector('.tts-reader-btn')) return;
+    const extractTitle = card.querySelector('h4')?.textContent || '';
+    const extractText = card.querySelector('p:not(.k-lang-badge)')?.textContent || card.textContent || '';
+    const readText = extractTitle + ". " + extractText;
+    const btn = document.createElement('button');
+    btn.className = 'tts-reader-btn';
+    btn.innerHTML = '🔊 Read Aloud';
+    btn.onclick = function(e){ e.stopPropagation(); e.preventDefault(); toggleTTS(this, readText); };
+    card.appendChild(btn);
+  });
+
+  // Inject TTS button into Learn Modular Scenarios
+  document.querySelectorAll('.scenario-card').forEach(card => {
+    if(card.querySelector('.tts-reader-btn')) return;
+    const title = card.querySelector('h4')?.textContent || '';
+    const textBoxes = card.querySelectorAll('.dialogue-box');
+    let storyText = title + ". ";
+    textBoxes.forEach(p => storyText += p.textContent + " ");
+    
+    // Check if it has dialogue to read
+    if(storyText.length > 20) {
+      const btn = document.createElement('button');
+      btn.className = 'tts-reader-btn';
+      btn.innerHTML = '🔊 Read Story Aloud';
+      btn.onclick = function(e){ e.stopPropagation(); e.preventDefault(); toggleTTS(this, storyText); };
+      const body = card.querySelector('.scenario-body');
+      if(body) body.insertBefore(btn, body.firstChild);
+    }
+  });
 
   // Clear any stale tour localStorage keys
   localStorage.removeItem('rinda-tour-active');

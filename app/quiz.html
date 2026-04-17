@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — HIV Risk Self-Assessment</title>
-  <meta name="description" content="Take Rinda's 5-question HIV risk self-assessment and get personalised next steps for your HIV prevention journey."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Take Rinda's 5-question HIV risk self-assessment and get personalised next steps for your HIV prevention journey.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     .quiz-hero {
       background: linear-gradient(135deg, rgba(255,71,87,0.1), rgba(0,160,220,0.06));
@@ -150,9 +148,9 @@
 </head>
 <body>
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
+  <div class="app-logo" data-i18n="str_1929"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1930">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -161,18 +159,18 @@
   </div>
 </header>
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1931">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1932"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1933">Font Size</span><div class="font-size-controls" data-i18n="str_1934"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <div class="points-toast" id="points-toast"></div>
 
 <main class="app-main" role="main">
   <div class="quiz-hero">
-    <div class="section-badge">❓ Private · Anonymous</div>
-    <h1 style="font-size:1.8rem;font-weight:900;margin-bottom:.25rem">HIV Risk Self-Assessment</h1>
-    <p style="color:var(--text-secondary);font-size:.88rem">5 quick questions → your personal risk level + recommended next steps. 100% private.</p>
+    <div class="section-badge" data-i18n="str_1935">❓ Private · Anonymous</div>
+    <h1 style="font-size:1.8rem;font-weight:900;margin-bottom:.25rem" data-i18n="str_1936">HIV Risk Self-Assessment</h1>
+    <p style="color:var(--text-secondary);font-size:.88rem" data-i18n="str_1937">5 quick questions → your personal risk level + recommended next steps. 100% private.</p>
   </div>
 
   <!-- Step Indicator -->
@@ -191,10 +189,10 @@
   <div class="q-wrap" id="questions-wrap">
     <!-- Q1 -->
     <div class="q-card active" id="q-1">
-      <div class="q-number">Question 1 of 5</div>
-      <div class="q-text">When did you last get tested for HIV?</div>
-      <div class="q-subtext">This helps us understand your current testing status.</div>
-      <div class="q-options" id="opts-1">
+      <div class="q-number" data-i18n="str_1938">Question 1 of 5</div>
+      <div class="q-text" data-i18n="str_1939">When did you last get tested for HIV?</div>
+      <div class="q-subtext" data-i18n="str_1940">This helps us understand your current testing status.</div>
+      <div class="q-options" id="opts-1" data-i18n="str_1941">
         <button class="q-option" onclick="selectOption(1,0,0)"><span class="opt-icon">✅</span>Within the last 6 months</button>
         <button class="q-option" onclick="selectOption(1,1,1)"><span class="opt-icon">📅</span>6–12 months ago</button>
         <button class="q-option" onclick="selectOption(1,2,2)"><span class="opt-icon">⚠️</span>More than 1 year ago</button>
@@ -203,10 +201,10 @@
     </div>
     <!-- Q2 -->
     <div class="q-card" id="q-2">
-      <div class="q-number">Question 2 of 5</div>
-      <div class="q-text">How consistently do you use condoms during sexual activity?</div>
-      <div class="q-subtext">Consistent and correct use is the most effective protection.</div>
-      <div class="q-options" id="opts-2">
+      <div class="q-number" data-i18n="str_1942">Question 2 of 5</div>
+      <div class="q-text" data-i18n="str_1943">How consistently do you use condoms during sexual activity?</div>
+      <div class="q-subtext" data-i18n="str_1944">Consistent and correct use is the most effective protection.</div>
+      <div class="q-options" id="opts-2" data-i18n="str_1945">
         <button class="q-option" onclick="selectOption(2,0,0)"><span class="opt-icon">✅</span>Every single time</button>
         <button class="q-option" onclick="selectOption(2,1,1)"><span class="opt-icon">📊</span>Most of the time</button>
         <button class="q-option" onclick="selectOption(2,2,2)"><span class="opt-icon">⚠️</span>Sometimes / rarely</button>
@@ -215,10 +213,10 @@
     </div>
     <!-- Q3 -->
     <div class="q-card" id="q-3">
-      <div class="q-number">Question 3 of 5</div>
-      <div class="q-text">Have you ever had difficulty asking your partner to use a condom?</div>
-      <div class="q-subtext">Power dynamics are the #1 barrier for young women in Rwanda (DHS 2025).</div>
-      <div class="q-options" id="opts-3">
+      <div class="q-number" data-i18n="str_1946">Question 3 of 5</div>
+      <div class="q-text" data-i18n="str_1947">Have you ever had difficulty asking your partner to use a condom?</div>
+      <div class="q-subtext" data-i18n="str_1948">Power dynamics are the #1 barrier for young women in Rwanda (DHS 2025).</div>
+      <div class="q-options" id="opts-3" data-i18n="str_1949">
         <button class="q-option" onclick="selectOption(3,0,0)"><span class="opt-icon">✅</span>No — I feel confident negotiating</button>
         <button class="q-option" onclick="selectOption(3,1,1)"><span class="opt-icon">😐</span>Sometimes it's difficult</button>
         <button class="q-option" onclick="selectOption(3,2,2)"><span class="opt-icon">⚠️</span>Yes, I often struggle</button>
@@ -227,10 +225,10 @@
     </div>
     <!-- Q4 -->
     <div class="q-card" id="q-4">
-      <div class="q-number">Question 4 of 5</div>
-      <div class="q-text">How would you describe your HIV knowledge?</div>
-      <div class="q-subtext">Only 52.7% of young men 15–24 have comprehensive HIV knowledge (Rwanda DHS 2025, Table 15).</div>
-      <div class="q-options" id="opts-4">
+      <div class="q-number" data-i18n="str_1950">Question 4 of 5</div>
+      <div class="q-text" data-i18n="str_1951">How would you describe your HIV knowledge?</div>
+      <div class="q-subtext" data-i18n="str_1952">Only 52.7% of young men 15–24 have comprehensive HIV knowledge (Rwanda DHS 2025, Table 15).</div>
+      <div class="q-options" id="opts-4" data-i18n="str_1953">
         <button class="q-option" onclick="selectOption(4,0,0)"><span class="opt-icon">📚</span>I know how HIV spreads, how to prevent it, and the facts</button>
         <button class="q-option" onclick="selectOption(4,1,1)"><span class="opt-icon">📖</span>I know the basics but have gaps</button>
         <button class="q-option" onclick="selectOption(4,2,2)"><span class="opt-icon">❓</span>I'm not very sure about HIV facts</button>
@@ -239,10 +237,10 @@
     </div>
     <!-- Q5 -->
     <div class="q-card" id="q-5">
-      <div class="q-number">Question 5 of 5</div>
-      <div class="q-text">Do you have access to HIV testing services in your area?</div>
-      <div class="q-subtext">Access gaps are highest in rural and lowest-wealth communities.</div>
-      <div class="q-options" id="opts-5">
+      <div class="q-number" data-i18n="str_1954">Question 5 of 5</div>
+      <div class="q-text" data-i18n="str_1955">Do you have access to HIV testing services in your area?</div>
+      <div class="q-subtext" data-i18n="str_1956">Access gaps are highest in rural and lowest-wealth communities.</div>
+      <div class="q-options" id="opts-5" data-i18n="str_1957">
         <button class="q-option" onclick="selectOption(5,0,0)"><span class="opt-icon">✅</span>Yes — clinic is nearby and accessible</button>
         <button class="q-option" onclick="selectOption(5,1,1)"><span class="opt-icon">🛣️</span>Yes, but it's far or costly to reach</button>
         <button class="q-option" onclick="selectOption(5,2,2)"><span class="opt-icon">⚠️</span>No — stigma or distance is a barrier</button>
@@ -252,15 +250,15 @@
   </div>
 
   <!-- Nav Buttons -->
-  <div class="q-nav" id="q-nav">
+  <div class="q-nav" id="q-nav" data-i18n="str_1958">
     <button class="q-nav-btn" id="btn-back" onclick="goBack()" style="display:none">← Back</button>
-    <button class="q-nav-btn next" id="btn-next" onclick="goNext()" disabled>Next →</button>
+    <button class="q-nav-btn next" id="btn-next" onclick="goNext()" disabled="">Next →</button>
   </div>
 
   <!-- Results -->
   <div class="result-wrap" id="result-wrap">
     <div id="result-content"></div>
-    <div style="text-align:center;padding:1rem 0">
+    <div style="text-align:center;padding:1rem 0" data-i18n="str_1959">
       <button onclick="restartQuiz()" style="font-size:.8rem;color:var(--text-muted);background:none;border:none;cursor:pointer;">↺ Retake Assessment</button>
     </div>
   </div>
@@ -268,13 +266,15 @@
 </main>
 
 <nav class="bottom-nav">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1960"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1961"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1962"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1963"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1964"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   let currentQ = 1;
@@ -442,5 +442,6 @@
     setTimeout(() => toast.classList.remove('show'), 3500);
   }
 </script>
-</body>
-</html>
+
+
+</body></html>

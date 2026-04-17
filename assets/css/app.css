@@ -453,3 +453,64 @@ body.high-contrast { --bg-deep: #000; --bg-card: #111; --text-primary: #fff; --t
 .app-modal-close:hover { color: var(--text-primary); }
 .app-modal-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary); }
 .app-modal-desc { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+/* ============================================================
+   ADVANCED ACCESSIBILITY SUITE
+   ============================================================ */
+
+/* ── Dyslexia-Friendly Mode ── */
+body.dyslexia-mode {
+  /* Use a generic sans-serif that is often better for dyslexia if OpenDyslexic is not loaded */
+  font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+  letter-spacing: 0.08em !important;
+  word-spacing: 0.15em !important;
+  line-height: 2 !important;
+}
+body.dyslexia-mode h1, body.dyslexia-mode h2, body.dyslexia-mode h3, 
+body.dyslexia-mode h4, body.dyslexia-mode h5, body.dyslexia-mode h6 {
+  font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif !important;
+  letter-spacing: 0.1em !important;
+  word-spacing: 0.2em !important;
+  line-height: 1.5 !important;
+}
+body.dyslexia-mode p, body.dyslexia-mode span, body.dyslexia-mode div {
+  font-weight: 500 !important;
+}
+body.dyslexia-mode .module-card, body.dyslexia-mode .knowledge-card {
+  border-width: 2px !important; /* Provide more distinct boundaries */
+}
+
+/* ── Reduced Motion Mode ── */
+body.reduced-motion *, body.reduced-motion *::before, body.reduced-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  scroll-behavior: auto !important;
+}
+body.reduced-motion .fade-in {
+  opacity: 1 !important; transform: none !important; transition: none !important;
+}
+body.reduced-motion .pulse {
+  animation: none !important; opacity: 1 !important;
+}
+
+/* ── TTS Reader Floating Button ── */
+.tts-reader-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.5rem; padding: 0.5rem 1rem; border-radius: var(--radius-xl);
+  background: rgba(0,160,220,0.15); border: 1px solid rgba(0,160,220,0.3);
+  color: var(--blue); font-size: 0.85rem; font-weight: 700; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: var(--transition);
+  margin-top: 0.5rem;
+}
+.tts-reader-btn:hover {
+  background: rgba(0,160,220,0.25);
+  box-shadow: 0 4px 12px rgba(0,160,220,0.2);
+}
+.tts-reader-btn.playing {
+  background: rgba(29,185,84,0.15); border-color: var(--green); color: var(--green);
+}
+.tts-reader-btn.playing:hover {
+  background: rgba(29,185,84,0.25);
+}
+

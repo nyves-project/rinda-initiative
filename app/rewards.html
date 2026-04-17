@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — Rewards Store</title>
-  <meta name="description" content="Earn points by learning about HIV prevention and redeem them for real-world items like reusable pads, soap, and data."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Earn points by learning about HIV prevention and redeem them for real-world items like reusable pads, soap, and data.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     .points-card { background: linear-gradient(135deg, rgba(250,210,1,0.15), rgba(0,0,0,0)); border: 1px solid rgba(250,210,1,0.3); border-radius: var(--radius-lg); padding: 2rem 1.5rem; text-align: center; margin-bottom: 2rem; }
     .points-amount { font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
@@ -32,60 +30,60 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Rewards</div>
-  <div class="header-right">
+  <div class="app-logo" data-i18n="str_1965"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Rewards</div>
+  <div class="header-right" data-i18n="str_1966">
     <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoiceCommand()">🎤</button>
     <button class="access-btn" onclick="toggleAccessPanel()">♿</button>
   </div>
 </header>
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
+  <h4 data-i18n="str_1967">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1968"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
 </div>
 
 <main class="app-main" role="main">
   <div class="page-header">
-    <div class="section-badge" style="background:rgba(250,210,1,0.15);color:var(--gold);border-color:rgba(250,210,1,0.3)">🎁 Rewards Store</div>
-    <h1>Redeem Points</h1>
-    <p>Earn points by learning about health and redeem them for real-world items.</p>
+    <div class="section-badge" style="background:rgba(250,210,1,0.15);color:var(--gold);border-color:rgba(250,210,1,0.3)" data-i18n="str_1969">🎁 Rewards Store</div>
+    <h1 data-i18n="str_1970">Redeem Points</h1>
+    <p data-i18n="str_1971">Earn points by learning about health and redeem them for real-world items.</p>
   </div>
 
   <div style="padding: 0 1.5rem">
     <div class="points-card fade-in">
       <div class="points-amount" id="pts-display">0</div>
-      <div class="points-label">Available Points</div>
-      <a href="quiz.html" class="earn-btn">❓ Take a Quiz to Earn</a>
+      <div class="points-label" data-i18n="str_1972">Available Points</div>
+      <a href="quiz.html" class="earn-btn" data-i18n="str_1973">❓ Take a Quiz to Earn</a>
     </div>
 
-    <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem">Available Items</h3>
+    <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem" data-i18n="str_1974">Available Items</h3>
     
     <div class="store-grid">
       <div class="store-item fade-in" style="transition-delay:0.1s">
         <span class="store-icon">🩸</span>
-        <div class="store-name">Reusable Pad Kit</div>
-        <div class="store-cost">Cost: 150 pts</div>
-        <button class="redeem-btn" data-cost="150" onclick="redeemItem(150, 'Reusable Pad Kit')">Redeem</button>
+        <div class="store-name" data-i18n="str_1975">Reusable Pad Kit</div>
+        <div class="store-cost" data-i18n="str_1976">Cost: 150 pts</div>
+        <button class="redeem-btn" data-cost="150" onclick="redeemItem(150, 'Reusable Pad Kit')" data-i18n="str_1977">Redeem</button>
       </div>
 
       <div class="store-item fade-in" style="transition-delay:0.2s">
         <span class="store-icon">🧼</span>
-        <div class="store-name">Clean Wash Soap</div>
-        <div class="store-cost">Cost: 50 pts</div>
-        <button class="redeem-btn" data-cost="50" onclick="redeemItem(50, 'Clean Wash Soap')">Redeem</button>
+        <div class="store-name" data-i18n="str_1978">Clean Wash Soap</div>
+        <div class="store-cost" data-i18n="str_1979">Cost: 50 pts</div>
+        <button class="redeem-btn" data-cost="50" onclick="redeemItem(50, 'Clean Wash Soap')" data-i18n="str_1980">Redeem</button>
       </div>
 
       <div class="store-item fade-in" style="transition-delay:0.3s">
         <span class="store-icon">📱</span>
-        <div class="store-name">MTN 500MB Data</div>
-        <div class="store-cost">Cost: 200 pts</div>
-        <button class="redeem-btn" data-cost="200" onclick="redeemItem(200, 'MTN Data Bundle')">Redeem</button>
+        <div class="store-name" data-i18n="str_1981">MTN 500MB Data</div>
+        <div class="store-cost" data-i18n="str_1982">Cost: 200 pts</div>
+        <button class="redeem-btn" data-cost="200" onclick="redeemItem(200, 'MTN Data Bundle')" data-i18n="str_1983">Redeem</button>
       </div>
 
       <div class="store-item fade-in" style="transition-delay:0.4s">
         <span class="store-icon">🎟️</span>
-        <div class="store-name">Youth Center Ticket</div>
-        <div class="store-cost">Cost: 100 pts</div>
-        <button class="redeem-btn" data-cost="100" onclick="redeemItem(100, 'Youth Center Ticket')">Redeem</button>
+        <div class="store-name" data-i18n="str_1984">Youth Center Ticket</div>
+        <div class="store-cost" data-i18n="str_1985">Cost: 100 pts</div>
+        <button class="redeem-btn" data-cost="100" onclick="redeemItem(100, 'Youth Center Ticket')" data-i18n="str_1986">Redeem</button>
       </div>
     </div>
   </div>
@@ -93,13 +91,15 @@
 </main>
 
 <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1987"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1988"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1989"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1990"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1991"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   function updateStoreUI(){
@@ -126,5 +126,6 @@
 
   document.addEventListener('DOMContentLoaded', updateStoreUI);
 </script>
-</body>
-</html>
+
+
+</body></html>

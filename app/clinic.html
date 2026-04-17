@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Rinda — Clinics & Care</title>
-  <meta name="description" content="Find youth-friendly HIV testing clinics near you, book appointments anonymously, and chat with healthcare professionals."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Rinda — Clinics &amp; Care</title>
+  <meta name="description" content="Find youth-friendly HIV testing clinics near you, book appointments anonymously, and chat with healthcare professionals.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     .clinic-tabs { display: flex; gap: 0.5rem; padding: 0 1.5rem 1rem; overflow-x: auto; scrollbar-width: none; }
     .clinic-tabs::-webkit-scrollbar { display: none; }
@@ -47,9 +45,9 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Care</div>
+  <div class="app-logo" data-i18n="str_1136"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Care</div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1137">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -58,18 +56,18 @@
   </div>
 </header>
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
+  <h4 data-i18n="str_1138">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1139"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
 </div>
 
 <main class="app-main" role="main">
   <div class="page-header">
-    <div class="section-badge" style="background:rgba(26,188,156,0.15);color:var(--teal);border-color:rgba(26,188,156,0.3)">🏥 SRH Services</div>
-    <h1>Clinics & Care</h1>
-    <p>Find youth-friendly services, book appointments without judgment, and talk to professionals.</p>
+    <div class="section-badge" style="background:rgba(26,188,156,0.15);color:var(--teal);border-color:rgba(26,188,156,0.3)" data-i18n="str_1140">🏥 SRH Services</div>
+    <h1 data-i18n="str_1141">Clinics &amp; Care</h1>
+    <p data-i18n="str_1142">Find youth-friendly services, book appointments without judgment, and talk to professionals.</p>
   </div>
 
-  <div class="clinic-tabs" role="tablist">
+  <div class="clinic-tabs" role="tablist" data-i18n="str_1143">
     <button class="c-tab active" onclick="switchTab('locator', this)">📍 Clinic Locator</button>
     <button class="c-tab" onclick="switchTab('chat', this)">💬 Chat with HCP</button>
     <button class="c-tab" onclick="switchTab('emergency', this)">🚨 Call for Help</button>
@@ -77,19 +75,19 @@
 
   <!-- Locator Panel -->
   <div class="c-panel active" id="panel-locator">
-    <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem">Showing verified Youth-Friendly Health Centres near you.</p>
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem" data-i18n="str_1144">Showing verified Youth-Friendly Health Centres near you.</p>
     
     <div class="clinic-card fade-in">
       <div class="c-icon">🏥</div>
       <div style="flex:1">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
           <div class="clinic-info">
-            <h4>Kigali Youth Center</h4>
-            <p>Remera Sector, Kigali<br/>Open: 8:00 AM - 5:00 PM</p>
+            <h4 data-i18n="str_1145">Kigali Youth Center</h4>
+            <p data-i18n="str_1146">Remera Sector, Kigali<br>Open: 8:00 AM - 5:00 PM</p>
           </div>
-          <span class="dist-badge">2.4 km</span>
+          <span class="dist-badge" data-i18n="str_1147">2.4 km</span>
         </div>
-        <div class="c-actions">
+        <div class="c-actions" data-i18n="str_1148">
           <button class="c-btn primary" onclick="bookApt('Kigali Youth Center')">Book Appt</button>
           <a href="tel:114" class="c-btn">Call</a>
         </div>
@@ -101,12 +99,12 @@
       <div style="flex:1">
         <div style="display:flex;justify-content:space-between;align-items:flex-start">
           <div class="clinic-info">
-            <h4>Kicukiro Health Clinic</h4>
-            <p>Kicukiro, Kigali<br/>PrEP & Family Planning Available</p>
+            <h4 data-i18n="str_1149">Kicukiro Health Clinic</h4>
+            <p data-i18n="str_1150">Kicukiro, Kigali<br>PrEP &amp; Family Planning Available</p>
           </div>
-          <span class="dist-badge">5.1 km</span>
+          <span class="dist-badge" data-i18n="str_1151">5.1 km</span>
         </div>
-        <div class="c-actions">
+        <div class="c-actions" data-i18n="str_1152">
           <button class="c-btn primary" onclick="bookApt('Kicukiro Health Clinic')">Book Appt</button>
           <a href="tel:114" class="c-btn">Call</a>
         </div>
@@ -119,17 +117,17 @@
     <div class="chat-box fade-in">
       <div class="chat-header">
         <div class="doc-avatar">👩🏾‍⚕️</div>
-        <div>
+        <div data-i18n="str_1153">
           <h4>Nurse Marie</h4>
           <span>🟢 Online • Anonymous Chat</span>
         </div>
       </div>
       <div class="chat-messages" id="chat-messages">
-        <div class="msg system">Encrypted connection established. Your identity is hidden.</div>
-        <div class="msg doc">Hello! I'm Nurse Marie. How can I help you today? You can ask me about testing, side effects, or anything related to sexual health.</div>
+        <div class="msg system" data-i18n="str_1154">Encrypted connection established. Your identity is hidden.</div>
+        <div class="msg doc" data-i18n="str_1155">Hello! I'm Nurse Marie. How can I help you today? You can ask me about testing, side effects, or anything related to sexual health.</div>
       </div>
-      <div class="chat-input">
-        <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off" onkeydown="if(event.key==='Enter')sendChat()"/>
+      <div class="chat-input" data-i18n="str_1156">
+        <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off" onkeydown="if(event.key==='Enter')sendChat()">
         <button onclick="sendChat()">📤</button>
       </div>
     </div>
@@ -139,16 +137,16 @@
   <div class="c-panel" id="panel-emergency">
     <div style="background:var(--bg-card);border:1px solid rgba(255,71,87,0.3);border-radius:var(--radius-md);padding:1.5rem;text-align:center;margin-bottom:1rem;" class="fade-in">
       <div style="font-size:3rem;margin-bottom:0.5rem">📞</div>
-      <h3 style="color:var(--red);margin-bottom:0.5rem;font-size:1.2rem">GBV & Child Abuse Hotline</h3>
-      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem">Isange One Stop Center — Free, confidential emergency support for Gender-Based Violence or abuse.</p>
-      <a href="tel:3029" style="display:inline-block;padding:1rem;background:var(--red);color:#fff;font-weight:900;border-radius:var(--radius-xl);width:100%">Call 3029 (Free)</a>
+      <h3 style="color:var(--red);margin-bottom:0.5rem;font-size:1.2rem" data-i18n="str_1157">GBV &amp; Child Abuse Hotline</h3>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem" data-i18n="str_1158">Isange One Stop Center — Free, confidential emergency support for Gender-Based Violence or abuse.</p>
+      <a href="tel:3029" style="display:inline-block;padding:1rem;background:var(--red);color:#fff;font-weight:900;border-radius:var(--radius-xl);width:100%" data-i18n="str_1159">Call 3029 (Free)</a>
     </div>
 
     <div style="background:var(--bg-card);border:1px solid rgba(29,185,84,0.3);border-radius:var(--radius-md);padding:1.5rem;text-align:center;transition-delay:0.1s" class="fade-in">
       <div style="font-size:3rem;margin-bottom:0.5rem">🩺</div>
-      <h3 style="color:var(--green);margin-bottom:0.5rem;font-size:1.2rem">RBC Health Info</h3>
-      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem">General health questions and counseling via the Rwanda Biomedical Centre.</p>
-      <a href="tel:114" style="display:inline-block;padding:1rem;background:var(--green);color:#fff;font-weight:900;border-radius:var(--radius-xl);width:100%">Call 114 (Free)</a>
+      <h3 style="color:var(--green);margin-bottom:0.5rem;font-size:1.2rem" data-i18n="str_1160">RBC Health Info</h3>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem" data-i18n="str_1161">General health questions and counseling via the Rwanda Biomedical Centre.</p>
+      <a href="tel:114" style="display:inline-block;padding:1rem;background:var(--green);color:#fff;font-weight:900;border-radius:var(--radius-xl);width:100%" data-i18n="str_1162">Call 114 (Free)</a>
     </div>
   </div>
 
@@ -158,24 +156,26 @@
 <div class="app-modal" id="book-modal">
   <div class="app-modal-content">
     <button class="app-modal-close" onclick="closeBookModal()">✕</button>
-    <div class="app-modal-title">Book Appointment</div>
-    <div class="app-modal-desc" id="book-clinic-name">Kigali Youth Center</div>
+    <div class="app-modal-title" data-i18n="str_1163">Book Appointment</div>
+    <div class="app-modal-desc" id="book-clinic-name" data-i18n="str_1164">Kigali Youth Center</div>
     
-    <label style="display:block;font-size:0.85rem;margin-bottom:0.4rem;color:var(--text-primary)">Select Date (Optional)</label>
-    <input type="date" style="width:100%;padding:0.75rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);background:var(--bg-deep);color:var(--text-primary);margin-bottom:1rem;outline:none"/>
+    <label style="display:block;font-size:0.85rem;margin-bottom:0.4rem;color:var(--text-primary)" data-i18n="str_1165">Select Date (Optional)</label>
+    <input type="date" style="width:100%;padding:0.75rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);background:var(--bg-deep);color:var(--text-primary);margin-bottom:1rem;outline:none">
     
-    <button style="width:100%;padding:0.8rem;border-radius:var(--radius-md);background:var(--teal);border:none;color:#fff;font-weight:700;cursor:pointer;font-size:0.9rem" onclick="confirmBooking()">Confirm Booking</button>
+    <button style="width:100%;padding:0.8rem;border-radius:var(--radius-md);background:var(--teal);border:none;color:#fff;font-weight:700;cursor:pointer;font-size:0.9rem" onclick="confirmBooking()" data-i18n="str_1166">Confirm Booking</button>
   </div>
 </div>
 
 <nav class="bottom-nav">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"> <span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item active" id="nav-clinic"> <span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"> <span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"> <span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"> <span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1167"> <span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item active" id="nav-clinic" data-i18n="str_1168"> <span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1169"> <span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1170"> <span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1171"> <span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   function switchTab(id, btn){
@@ -232,5 +232,6 @@
     }, 1200);
   }
 </script>
-</body>
-</html>
+
+
+</body></html>

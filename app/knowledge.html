@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — Knowledge Hub</title>
-  <meta name="description" content="Rinda Knowledge Hub: Comprehensive HIV education — basics, myths, prevention, testing, condoms, and your rights."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Rinda Knowledge Hub: Comprehensive HIV education — basics, myths, prevention, testing, condoms, and your rights.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
 </head>
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
+  <div class="app-logo" data-i18n="str_1328"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Initiative</div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1329">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -24,25 +22,25 @@
   </div>
 </header>
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1330">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1331"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1332">Font Size</span><div class="font-size-controls" data-i18n="str_1333"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <main class="app-main" role="main">
   <div class="page-header">
-    <div class="section-badge">📚 Knowledge Hub</div>
+    <div class="section-badge" data-i18n="str_1334">📚 Knowledge Hub</div>
     <h1 data-i18n="hubTitle">HIV Knowledge Hub</h1>
     <p data-i18n="hubSubtitle">Everything you need to know about HIV — facts, myths, prevention, treatment, and your rights.</p>
   </div>
 
   <!-- Search -->
-  <div style="padding:0 1.5rem 1rem">
-    <input type="search" placeholder="🔍 Search topics..." style="width:100%;background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-xl);padding:.7rem 1.25rem;color:var(--text-primary);font-size:.9rem;font-family:'Inter',sans-serif;outline:none" aria-label="Search knowledge hub" oninput="searchCards(this.value)"/>
+  <div style="padding:0 1.5rem 1rem" data-i18n="str_1335">
+    <input type="search" placeholder="🔍 Search topics..." style="width:100%;background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-xl);padding:.7rem 1.25rem;color:var(--text-primary);font-size:.9rem;font-family:'Inter',sans-serif;outline:none" aria-label="Search knowledge hub" oninput="searchCards(this.value)">
   </div>
 
   <!-- Filters -->
-  <div class="knowledge-filters" role="group" aria-label="Topic filters">
+  <div class="knowledge-filters" role="group" aria-label="Topic filters" data-i18n="str_1336">
     <button class="filter-chip active" data-tag="all" onclick="filterKnowledge('all')" id="filter-all">All</button>
     <button class="filter-chip" data-tag="basics" onclick="filterKnowledge('basics')" id="filter-basics">🔵 Basics</button>
     <button class="filter-chip" data-tag="myths" onclick="filterKnowledge('myths')" id="filter-myths">🔴 Myths</button>
@@ -58,158 +56,160 @@
 
     <!-- BASICS -->
     <div class="knowledge-card fade-in" data-tag="basics" role="listitem" id="kcard-1">
-      <div class="k-card-top"><span class="k-tag basics">Basics</span><button class="audio-icon-btn" onclick="speakCard('kcard-1-text')" aria-label="Listen">🔊</button></div>
-      <h4>What is HIV?</h4>
-      <p id="kcard-1-text">HIV (Human Immunodeficiency Virus) attacks the body's immune system — specifically the CD4 cells (T cells) that fight infection. Without treatment, HIV gradually destroys these cells, making the body unable to fight diseases. A person with HIV can look and feel completely healthy for years while unknowingly transmitting the virus to others. This is why testing is essential — you cannot tell who has HIV by looking at them.</p>
+      <div class="k-card-top" data-i18n="str_1337"><span class="k-tag basics">Basics</span><button class="audio-icon-btn" onclick="speakCard('kcard-1-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1338">What is HIV?</h4>
+      <p id="kcard-1-text" data-i18n="str_1339">HIV (Human Immunodeficiency Virus) attacks the body's immune system — specifically the CD4 cells (T cells) that fight infection. Without treatment, HIV gradually destroys these cells, making the body unable to fight diseases. A person with HIV can look and feel completely healthy for years while unknowingly transmitting the virus to others. This is why testing is essential — you cannot tell who has HIV by looking at them.</p>
     </div>
 
     <!-- FAMILY PLANNING -->
     <div class="knowledge-card fade-in" data-tag="fp" role="listitem" id="kcard-fp-1">
-      <div class="k-card-top"><span class="k-tag basics">Family Planning</span><button class="audio-icon-btn" onclick="speakCard('kcard-fp-1-text')" aria-label="Listen">🔊</button></div>
-      <h4>Short-term Contraceptives</h4>
-      <p id="kcard-fp-1-text">Short-term methods include pills, injections, and condoms. Pills must be taken daily at the same time. Injections (like Depo-Provera) are given every 3 months. Condoms are the only method that also protects against STIs and HIV. These methods are private and easily available at youth clinics without parental consent for older teens.</p>
+      <div class="k-card-top" data-i18n="str_1340"><span class="k-tag basics">Family Planning</span><button class="audio-icon-btn" onclick="speakCard('kcard-fp-1-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1341">Short-term Contraceptives</h4>
+      <p id="kcard-fp-1-text" data-i18n="str_1342">Short-term methods include pills, injections, and condoms. Pills must be taken daily at the same time. Injections (like Depo-Provera) are given every 3 months. Condoms are the only method that also protects against STIs and HIV. These methods are private and easily available at youth clinics without parental consent for older teens.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="fp" role="listitem" id="kcard-fp-2">
-      <div class="k-card-top"><span class="k-tag basics">Family Planning</span><button class="audio-icon-btn" onclick="speakCard('kcard-fp-2-text')" aria-label="Listen">🔊</button></div>
-      <h4>Long-term Contraceptives (LARC)</h4>
-      <p id="kcard-fp-2-text">Long-Acting Reversible Contraceptives include implants and IUDs. Implants are small rods placed under the skin of the arm lasting 3 to 5 years. IUDs are placed in the uterus and can last up to 10 years. They are safe, highly effective, and can be removed at any time by a health professional if you decide to have children.</p>
+      <div class="k-card-top" data-i18n="str_1343"><span class="k-tag basics">Family Planning</span><button class="audio-icon-btn" onclick="speakCard('kcard-fp-2-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1344">Long-term Contraceptives (LARC)</h4>
+      <p id="kcard-fp-2-text" data-i18n="str_1345">Long-Acting Reversible Contraceptives include implants and IUDs. Implants are small rods placed under the skin of the arm lasting 3 to 5 years. IUDs are placed in the uterus and can last up to 10 years. They are safe, highly effective, and can be removed at any time by a health professional if you decide to have children.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="basics" role="listitem" id="kcard-2" style="transition-delay:.05s">
-      <div class="k-card-top"><span class="k-tag basics">Basics</span><button class="audio-icon-btn" onclick="speakCard('kcard-2-text')" aria-label="Listen">🔊</button></div>
-      <h4>What is the difference between HIV and AIDS?</h4>
-      <p id="kcard-2-text">HIV is the virus. AIDS (Acquired Immunodeficiency Syndrome) is the final stage of untreated HIV infection, when the immune system is severely damaged. With modern treatment (ART), most people with HIV never develop AIDS. A person diagnosed with HIV today who starts treatment can live a normal, full lifespan — the same as someone without HIV. AIDS is preventable with early treatment.</p>
+      <div class="k-card-top" data-i18n="str_1346"><span class="k-tag basics">Basics</span><button class="audio-icon-btn" onclick="speakCard('kcard-2-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1347">What is the difference between HIV and AIDS?</h4>
+      <p id="kcard-2-text" data-i18n="str_1348">HIV is the virus. AIDS (Acquired Immunodeficiency Syndrome) is the final stage of untreated HIV infection, when the immune system is severely damaged. With modern treatment (ART), most people with HIV never develop AIDS. A person diagnosed with HIV today who starts treatment can live a normal, full lifespan — the same as someone without HIV. AIDS is preventable with early treatment.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="basics" role="listitem" id="kcard-3" style="transition-delay:.1s">
-      <div class="k-card-top"><span class="k-tag basics">Basics</span><button class="audio-icon-btn" onclick="speakCard('kcard-3-text')" aria-label="Listen">🔊</button></div>
-      <h4>How is HIV transmitted?</h4>
-      <p id="kcard-3-text">HIV is transmitted through specific body fluids: blood, semen, pre-seminal fluid, rectal fluids, vaginal fluids, and breast milk. The most common ways are: (1) unprotected vaginal or anal sex, (2) sharing needles or syringes, (3) from mother to child during pregnancy, birth, or breastfeeding. HIV is NOT spread through saliva, tears, sweat, casual contact, mosquitoes, toilet seats, or sharing food.</p>
+      <div class="k-card-top" data-i18n="str_1349"><span class="k-tag basics">Basics</span><button class="audio-icon-btn" onclick="speakCard('kcard-3-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1350">How is HIV transmitted?</h4>
+      <p id="kcard-3-text" data-i18n="str_1351">HIV is transmitted through specific body fluids: blood, semen, pre-seminal fluid, rectal fluids, vaginal fluids, and breast milk. The most common ways are: (1) unprotected vaginal or anal sex, (2) sharing needles or syringes, (3) from mother to child during pregnancy, birth, or breastfeeding. HIV is NOT spread through saliva, tears, sweat, casual contact, mosquitoes, toilet seats, or sharing food.</p>
     </div>
 
     <!-- MYTHS -->
     <div class="knowledge-card fade-in" data-tag="myths" role="listitem" id="kcard-4" style="transition-delay:.15s">
-      <div class="k-card-top"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-4-text')" aria-label="Listen">🔊</button></div>
-      <h4>❌ "You can get HIV from mosquito bites"</h4>
-      <p id="kcard-4-text">FACT: HIV cannot be transmitted by mosquitoes or any insect. When a mosquito bites, it injects its own saliva — not blood from a previous person. HIV cannot survive or reproduce inside a mosquito. Studies in areas with high HIV rates and high mosquito populations have confirmed zero cases of mosquito transmission.</p>
+      <div class="k-card-top" data-i18n="str_1352"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-4-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1353">❌ "You can get HIV from mosquito bites"</h4>
+      <p id="kcard-4-text" data-i18n="str_1354">FACT: HIV cannot be transmitted by mosquitoes or any insect. When a mosquito bites, it injects its own saliva — not blood from a previous person. HIV cannot survive or reproduce inside a mosquito. Studies in areas with high HIV rates and high mosquito populations have confirmed zero cases of mosquito transmission.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="myths" role="listitem" id="kcard-5" style="transition-delay:.2s">
-      <div class="k-card-top"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-5-text')" aria-label="Listen">🔊</button></div>
-      <h4>❌ "You can tell if someone has HIV by looking at them"</h4>
-      <p id="kcard-5-text">FACT: Most people with HIV look completely healthy, especially in the early years. There are no visible symptoms of HIV. A person can carry the virus for 10+ years without knowing. The only way to know is through testing. This myth is dangerous because it makes people believe they're safe when they might not be.</p>
+      <div class="k-card-top" data-i18n="str_1355"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-5-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1356">❌ "You can tell if someone has HIV by looking at them"</h4>
+      <p id="kcard-5-text" data-i18n="str_1357">FACT: Most people with HIV look completely healthy, especially in the early years. There are no visible symptoms of HIV. A person can carry the virus for 10+ years without knowing. The only way to know is through testing. This myth is dangerous because it makes people believe they're safe when they might not be.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="myths" role="listitem" id="kcard-6" style="transition-delay:.25s">
-      <div class="k-card-top"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-6-text')" aria-label="Listen">🔊</button></div>
-      <h4>❌ "HIV can be cured by traditional medicine or prayer"</h4>
-      <p id="kcard-6-text">FACT: There is currently no cure for HIV — not from traditional herbs, spiritual healers, or prayer. Antiretroviral therapy (ART) can control the virus so effectively that it becomes undetectable and untransmittable. But stopping ART allows the virus to return. People who abandon medical treatment for alternative cures put their lives at serious risk.</p>
+      <div class="k-card-top" data-i18n="str_1358"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-6-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1359">❌ "HIV can be cured by traditional medicine or prayer"</h4>
+      <p id="kcard-6-text" data-i18n="str_1360">FACT: There is currently no cure for HIV — not from traditional herbs, spiritual healers, or prayer. Antiretroviral therapy (ART) can control the virus so effectively that it becomes undetectable and untransmittable. But stopping ART allows the virus to return. People who abandon medical treatment for alternative cures put their lives at serious risk.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="myths" role="listitem" id="kcard-7" style="transition-delay:.3s">
-      <div class="k-card-top"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-7-text')" aria-label="Listen">🔊</button></div>
-      <h4>❌ "Only sex workers and drug users get HIV"</h4>
-      <p id="kcard-7-text">FACT: HIV does not discriminate. Anyone who has unprotected sex or shares needles can get HIV — regardless of age, gender, wealth, education, or occupation. In Rwanda, 81% of young men aged 15–19 have never been tested. Many infections happen in ordinary relationships where neither partner knew their status.</p>
+      <div class="k-card-top" data-i18n="str_1361"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-7-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1362">❌ "Only sex workers and drug users get HIV"</h4>
+      <p id="kcard-7-text" data-i18n="str_1363">FACT: HIV does not discriminate. Anyone who has unprotected sex or shares needles can get HIV — regardless of age, gender, wealth, education, or occupation. In Rwanda, 81% of young men aged 15–19 have never been tested. Many infections happen in ordinary relationships where neither partner knew their status.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="myths" role="listitem" id="kcard-8" style="transition-delay:.35s">
-      <div class="k-card-top"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-8-text')" aria-label="Listen">🔊</button></div>
-      <h4>❌ "If both partners have HIV, they don't need condoms"</h4>
-      <p id="kcard-8-text">FACT: Even if both partners are HIV-positive, condoms are still recommended. There are different strains of HIV, and re-infection with a different strain (called superinfection) can complicate treatment. Condoms also protect against other STIs like syphilis, gonorrhoea, and chlamydia.</p>
+      <div class="k-card-top" data-i18n="str_1364"><span class="k-tag myths">Myth vs Fact</span><button class="audio-icon-btn" onclick="speakCard('kcard-8-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1365">❌ "If both partners have HIV, they don't need condoms"</h4>
+      <p id="kcard-8-text" data-i18n="str_1366">FACT: Even if both partners are HIV-positive, condoms are still recommended. There are different strains of HIV, and re-infection with a different strain (called superinfection) can complicate treatment. Condoms also protect against other STIs like syphilis, gonorrhoea, and chlamydia.</p>
     </div>
 
     <!-- PREVENTION -->
     <div class="knowledge-card fade-in" data-tag="prevention" role="listitem" id="kcard-9" style="transition-delay:.05s">
-      <div class="k-card-top"><span class="k-tag prevention">Prevention</span><button class="audio-icon-btn" onclick="speakCard('kcard-9-text')" aria-label="Listen">🔊</button></div>
-      <h4>✅ Condom use — your best protection</h4>
-      <p id="kcard-9-text">Consistent and correct condom use reduces HIV transmission risk by over 80%. The key word is "every time." For condoms to work, they must be used from start to finish of every sexual encounter. Even one time without a condom is a risk. Both male and female condoms are effective. In Rwanda, condoms are available free at any public health centre.</p>
+      <div class="k-card-top" data-i18n="str_1367"><span class="k-tag prevention">Prevention</span><button class="audio-icon-btn" onclick="speakCard('kcard-9-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1368">✅ Condom use — your best protection</h4>
+      <p id="kcard-9-text" data-i18n="str_1369">Consistent and correct condom use reduces HIV transmission risk by over 80%. The key word is "every time." For condoms to work, they must be used from start to finish of every sexual encounter. Even one time without a condom is a risk. Both male and female condoms are effective. In Rwanda, condoms are available free at any public health centre.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="prevention" role="listitem" id="kcard-10" style="transition-delay:.1s">
-      <div class="k-card-top"><span class="k-tag prevention">Prevention</span><button class="audio-icon-btn" onclick="speakCard('kcard-10-text')" aria-label="Listen">🔊</button></div>
-      <h4>✅ PrEP — Prevention medicine for HIV-negative people</h4>
-      <p id="kcard-10-text">PrEP (Pre-Exposure Prophylaxis) is a daily pill taken by HIV-negative people who are at higher risk. When taken consistently, PrEP reduces the risk of getting HIV by about 99%. PrEP is available in Rwanda at selected health facilities. If you have an HIV-positive partner, or multiple partners, ask your health provider about PrEP.</p>
+      <div class="k-card-top" data-i18n="str_1370"><span class="k-tag prevention">Prevention</span><button class="audio-icon-btn" onclick="speakCard('kcard-10-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1371">✅ PrEP — Prevention medicine for HIV-negative people</h4>
+      <p id="kcard-10-text" data-i18n="str_1372">PrEP (Pre-Exposure Prophylaxis) is a daily pill taken by HIV-negative people who are at higher risk. When taken consistently, PrEP reduces the risk of getting HIV by about 99%. PrEP is available in Rwanda at selected health facilities. If you have an HIV-positive partner, or multiple partners, ask your health provider about PrEP.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="prevention" role="listitem" id="kcard-11" style="transition-delay:.15s">
-      <div class="k-card-top"><span class="k-tag prevention">Prevention</span><button class="audio-icon-btn" onclick="speakCard('kcard-11-text')" aria-label="Listen">🔊</button></div>
-      <h4>✅ Voluntary male circumcision</h4>
-      <p id="kcard-11-text">Medical studies show that voluntary male circumcision reduces the risk of female-to-male HIV transmission by approximately 60%. Rwanda offers free voluntary medical male circumcision (VMMC) at public health facilities. However, circumcision does NOT provide complete protection — condoms are still essential.</p>
+      <div class="k-card-top" data-i18n="str_1373"><span class="k-tag prevention">Prevention</span><button class="audio-icon-btn" onclick="speakCard('kcard-11-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1374">✅ Voluntary male circumcision</h4>
+      <p id="kcard-11-text" data-i18n="str_1375">Medical studies show that voluntary male circumcision reduces the risk of female-to-male HIV transmission by approximately 60%. Rwanda offers free voluntary medical male circumcision (VMMC) at public health facilities. However, circumcision does NOT provide complete protection — condoms are still essential.</p>
     </div>
 
     <!-- TESTING -->
     <div class="knowledge-card fade-in" data-tag="testing" role="listitem" id="kcard-12" style="transition-delay:.05s">
-      <div class="k-card-top"><span class="k-tag" style="background:rgba(0,160,220,.15);color:var(--blue)">Testing</span><button class="audio-icon-btn" onclick="speakCard('kcard-12-text')" aria-label="Listen">🔊</button></div>
-      <h4>🔬 Types of HIV tests available</h4>
-      <p id="kcard-12-text">There are three main types: (1) Rapid tests — results in 20 minutes, used at clinics and in self-test kits. (2) Antibody tests — blood drawn from a vein, results within 1–3 days. Most accurate after the window period. (3) NAT (Nucleic Acid Test) — detects the virus itself, not antibodies. Can detect HIV 10–33 days after exposure, but more expensive and less widely available.</p>
+      <div class="k-card-top" data-i18n="str_1376"><span class="k-tag" style="background:rgba(0,160,220,.15);color:var(--blue)">Testing</span><button class="audio-icon-btn" onclick="speakCard('kcard-12-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1377">🔬 Types of HIV tests available</h4>
+      <p id="kcard-12-text" data-i18n="str_1378">There are three main types: (1) Rapid tests — results in 20 minutes, used at clinics and in self-test kits. (2) Antibody tests — blood drawn from a vein, results within 1–3 days. Most accurate after the window period. (3) NAT (Nucleic Acid Test) — detects the virus itself, not antibodies. Can detect HIV 10–33 days after exposure, but more expensive and less widely available.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="testing" role="listitem" id="kcard-13" style="transition-delay:.1s">
-      <div class="k-card-top"><span class="k-tag" style="background:rgba(0,160,220,.15);color:var(--blue)">Testing</span><button class="audio-icon-btn" onclick="speakCard('kcard-13-text')" aria-label="Listen">🔊</button></div>
-      <h4>🔬 What is the window period?</h4>
-      <p id="kcard-13-text">The window period is the time between when you get HIV and when a test can detect it. For most rapid tests and antibody tests, this is 2–12 weeks (most people develop detectable antibodies within 23 days). If you test negative but had a recent exposure, test again after 3 months to be sure. During the window period, you can still transmit HIV to others.</p>
+      <div class="k-card-top" data-i18n="str_1379"><span class="k-tag" style="background:rgba(0,160,220,.15);color:var(--blue)">Testing</span><button class="audio-icon-btn" onclick="speakCard('kcard-13-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1380">🔬 What is the window period?</h4>
+      <p id="kcard-13-text" data-i18n="str_1381">The window period is the time between when you get HIV and when a test can detect it. For most rapid tests and antibody tests, this is 2–12 weeks (most people develop detectable antibodies within 23 days). If you test negative but had a recent exposure, test again after 3 months to be sure. During the window period, you can still transmit HIV to others.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="testing" role="listitem" id="kcard-14" style="transition-delay:.15s">
-      <div class="k-card-top"><span class="k-tag" style="background:rgba(0,160,220,.15);color:var(--blue)">Testing</span><button class="audio-icon-btn" onclick="speakCard('kcard-14-text')" aria-label="Listen">🔊</button></div>
-      <h4>🔬 Where to get tested in Rwanda</h4>
-      <p id="kcard-14-text">HIV testing is free at all public health centres and hospitals in Rwanda. You can also: (1) Order a self-test kit through the Rinda platform — delivered anonymously. (2) Visit any VCT (Voluntary Counselling and Testing) centre. (3) Request testing during any routine health visit. (4) Dial *775# from any phone to find the nearest testing facility. Remember: testing is confidential. By law, no one can share your results without your consent.</p>
+      <div class="k-card-top" data-i18n="str_1382"><span class="k-tag" style="background:rgba(0,160,220,.15);color:var(--blue)">Testing</span><button class="audio-icon-btn" onclick="speakCard('kcard-14-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1383">🔬 Where to get tested in Rwanda</h4>
+      <p id="kcard-14-text" data-i18n="str_1384">HIV testing is free at all public health centres and hospitals in Rwanda. You can also: (1) Order a self-test kit through the Rinda platform — delivered anonymously. (2) Visit any VCT (Voluntary Counselling and Testing) centre. (3) Request testing during any routine health visit. (4) Dial *775# from any phone to find the nearest testing facility. Remember: testing is confidential. By law, no one can share your results without your consent.</p>
     </div>
 
     <!-- TREATMENT -->
     <div class="knowledge-card fade-in" data-tag="treatment" role="listitem" id="kcard-15" style="transition-delay:.05s">
-      <div class="k-card-top"><span class="k-tag" style="background:rgba(159,122,234,.15);color:#9f7aea">Treatment</span><button class="audio-icon-btn" onclick="speakCard('kcard-15-text')" aria-label="Listen">🔊</button></div>
-      <h4>💊 ART — How treatment works</h4>
-      <p id="kcard-15-text">Antiretroviral Therapy (ART) is a combination of medicines taken daily that stops HIV from multiplying in the body. ART doesn't cure HIV, but it controls the virus so effectively that people on treatment can expect a normal lifespan. In Rwanda, ART is provided completely free at public health facilities. Treatment works best when started early — this is why testing is so important.</p>
+      <div class="k-card-top" data-i18n="str_1385"><span class="k-tag" style="background:rgba(159,122,234,.15);color:#9f7aea">Treatment</span><button class="audio-icon-btn" onclick="speakCard('kcard-15-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1386">💊 ART — How treatment works</h4>
+      <p id="kcard-15-text" data-i18n="str_1387">Antiretroviral Therapy (ART) is a combination of medicines taken daily that stops HIV from multiplying in the body. ART doesn't cure HIV, but it controls the virus so effectively that people on treatment can expect a normal lifespan. In Rwanda, ART is provided completely free at public health facilities. Treatment works best when started early — this is why testing is so important.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="treatment" role="listitem" id="kcard-16" style="transition-delay:.1s">
-      <div class="k-card-top"><span class="k-tag" style="background:rgba(159,122,234,.15);color:#9f7aea">Treatment</span><button class="audio-icon-btn" onclick="speakCard('kcard-16-text')" aria-label="Listen">🔊</button></div>
-      <h4>💊 U=U: Undetectable = Untransmittable</h4>
-      <p id="kcard-16-text">When a person takes ART consistently and achieves an "undetectable viral load" (meaning the amount of HIV in their blood is too low to measure), they CANNOT transmit HIV through sex. This is called U=U — one of the most important scientific discoveries in HIV history. It means that a person on effective treatment poses zero risk to their sexual partners.</p>
+      <div class="k-card-top" data-i18n="str_1388"><span class="k-tag" style="background:rgba(159,122,234,.15);color:#9f7aea">Treatment</span><button class="audio-icon-btn" onclick="speakCard('kcard-16-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1389">💊 U=U: Undetectable = Untransmittable</h4>
+      <p id="kcard-16-text" data-i18n="str_1390">When a person takes ART consistently and achieves an "undetectable viral load" (meaning the amount of HIV in their blood is too low to measure), they CANNOT transmit HIV through sex. This is called U=U — one of the most important scientific discoveries in HIV history. It means that a person on effective treatment poses zero risk to their sexual partners.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="treatment" role="listitem" id="kcard-17" style="transition-delay:.15s">
-      <div class="k-card-top"><span class="k-tag" style="background:rgba(159,122,234,.15);color:#9f7aea">Treatment</span><button class="audio-icon-btn" onclick="speakCard('kcard-17-text')" aria-label="Listen">🔊</button></div>
-      <h4>💊 PEP — Emergency treatment after exposure</h4>
-      <p id="kcard-17-text">PEP (Post-Exposure Prophylaxis) is emergency medication taken AFTER potential HIV exposure — such as unprotected sex, needle injury, or sexual assault. PEP must be started within 72 hours (3 days) and taken for 28 days. The sooner you start, the more effective it is. PEP is available free at public health facilities in Rwanda. If you think you've been exposed, go to a health centre IMMEDIATELY — do not wait.</p>
+      <div class="k-card-top" data-i18n="str_1391"><span class="k-tag" style="background:rgba(159,122,234,.15);color:#9f7aea">Treatment</span><button class="audio-icon-btn" onclick="speakCard('kcard-17-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1392">💊 PEP — Emergency treatment after exposure</h4>
+      <p id="kcard-17-text" data-i18n="str_1393">PEP (Post-Exposure Prophylaxis) is emergency medication taken AFTER potential HIV exposure — such as unprotected sex, needle injury, or sexual assault. PEP must be started within 72 hours (3 days) and taken for 28 days. The sooner you start, the more effective it is. PEP is available free at public health facilities in Rwanda. If you think you've been exposed, go to a health centre IMMEDIATELY — do not wait.</p>
     </div>
 
     <!-- RIGHTS -->
     <div class="knowledge-card fade-in" data-tag="rights" role="listitem" id="kcard-18" style="transition-delay:.05s">
-      <div class="k-card-top"><span class="k-tag rights">Your Rights</span><button class="audio-icon-btn" onclick="speakCard('kcard-18-text')" aria-label="Listen">🔊</button></div>
-      <h4>⚖️ Your right to test at age 15 in Rwanda</h4>
-      <p id="kcard-18-text">Since 2024, Rwanda lowered the medical consent age to 15. This means if you are 15 or older, you can: (1) Get an HIV test without parental permission. (2) Access contraceptives and condoms independently. (3) Start treatment without a parent's signature. Healthcare workers are legally required to keep your medical information private — they cannot share your results with parents, teachers, or anyone else without your consent.</p>
+      <div class="k-card-top" data-i18n="str_1394"><span class="k-tag rights">Your Rights</span><button class="audio-icon-btn" onclick="speakCard('kcard-18-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1395">⚖️ Your right to test at age 15 in Rwanda</h4>
+      <p id="kcard-18-text" data-i18n="str_1396">Since 2024, Rwanda lowered the medical consent age to 15. This means if you are 15 or older, you can: (1) Get an HIV test without parental permission. (2) Access contraceptives and condoms independently. (3) Start treatment without a parent's signature. Healthcare workers are legally required to keep your medical information private — they cannot share your results with parents, teachers, or anyone else without your consent.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="rights" role="listitem" id="kcard-19" style="transition-delay:.1s">
-      <div class="k-card-top"><span class="k-tag rights">Your Rights</span><button class="audio-icon-btn" onclick="speakCard('kcard-19-text')" aria-label="Listen">🔊</button></div>
-      <h4>⚖️ Discrimination is illegal</h4>
-      <p id="kcard-19-text">In Rwanda, it is illegal to discriminate against someone based on their HIV status. You cannot be fired from your job, expelled from school, or denied services because of HIV. If you experience discrimination, you can report it to the Rwanda National Human Rights Commission or call the national helpline 114. Stigma kills — but the law is on your side.</p>
+      <div class="k-card-top" data-i18n="str_1397"><span class="k-tag rights">Your Rights</span><button class="audio-icon-btn" onclick="speakCard('kcard-19-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1398">⚖️ Discrimination is illegal</h4>
+      <p id="kcard-19-text" data-i18n="str_1399">In Rwanda, it is illegal to discriminate against someone based on their HIV status. You cannot be fired from your job, expelled from school, or denied services because of HIV. If you experience discrimination, you can report it to the Rwanda National Human Rights Commission or call the national helpline 114. Stigma kills — but the law is on your side.</p>
     </div>
 
     <div class="knowledge-card fade-in" data-tag="rights" role="listitem" id="kcard-20" style="transition-delay:.15s">
-      <div class="k-card-top"><span class="k-tag rights">Your Rights</span><button class="audio-icon-btn" onclick="speakCard('kcard-20-text')" aria-label="Listen">🔊</button></div>
-      <h4>⚖️ Confidentiality is guaranteed</h4>
-      <p id="kcard-20-text">Your HIV test results are protected by law. No healthcare worker, counselor, or laboratory technician may reveal your status to anyone — not your family, partner, employer, or school. You have the right to decide who knows. The only exception is when a court orders disclosure. If someone violates your confidentiality, you have the right to take legal action.</p>
+      <div class="k-card-top" data-i18n="str_1400"><span class="k-tag rights">Your Rights</span><button class="audio-icon-btn" onclick="speakCard('kcard-20-text')" aria-label="Listen">🔊</button></div>
+      <h4 data-i18n="str_1401">⚖️ Confidentiality is guaranteed</h4>
+      <p id="kcard-20-text" data-i18n="str_1402">Your HIV test results are protected by law. No healthcare worker, counselor, or laboratory technician may reveal your status to anyone — not your family, partner, employer, or school. You have the right to decide who knows. The only exception is when a court orders disclosure. If someone violates your confidentiality, you have the right to take legal action.</p>
     </div>
 
   </div>
 
-  <div style="padding:1.5rem;text-align:center">
+  <div style="padding:1.5rem;text-align:center" data-i18n="str_1403">
     <a href="order.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 2rem;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--blue),#006fa8);color:#fff;font-weight:700;font-size:.9rem">📦 Ready to order your self-test kit? →</a>
   </div>
 </main>
 
 <nav class="bottom-nav">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item active" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1404"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1405"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1406"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1407"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item active" id="nav-knowledge" data-i18n="str_1408"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
 function toggleExpand(id){
@@ -238,5 +238,6 @@ function searchCards(q){
   });
 }
 </script>
-</body>
-</html>
+
+
+</body></html>

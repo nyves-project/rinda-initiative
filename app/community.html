@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Rinda — Mental Health & Peer Support</title>
-  <meta name="description" content="Anonymous mental health peer support for Rwanda's youth facing reproductive health challenges. Stigma-free, confidential, and safe."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Rinda — Mental Health &amp; Peer Support</title>
+  <meta name="description" content="Anonymous mental health peer support for Rwanda's youth facing reproductive health challenges. Stigma-free, confidential, and safe.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     .mh-tabs { display:flex; gap:.5rem; padding:0 1.5rem 1rem; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--glass-border); margin-bottom:1rem; }
     .mh-tabs::-webkit-scrollbar { display:none; }
@@ -80,9 +78,9 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Support</div>
+  <div class="app-logo" data-i18n="str_1172"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Support</div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1173">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -92,24 +90,24 @@
 </header>
 
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1174">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1175"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1176">Font Size</span><div class="font-size-controls" data-i18n="str_1177"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <main class="app-main" role="main">
   <div class="page-header" style="background:linear-gradient(135deg,rgba(155,89,182,.12),rgba(0,0,0,0))">
-    <div class="section-badge" style="background:rgba(155,89,182,.15);color:#c39bea;border-color:rgba(155,89,182,.3)">💜 Mental Health & Peer Support</div>
-    <h1>You Are Not Alone</h1>
-    <p>Anonymous, stigma-free support for young people navigating reproductive health, emotional stress, and crisis situations.</p>
+    <div class="section-badge" style="background:rgba(155,89,182,.15);color:#c39bea;border-color:rgba(155,89,182,.3)" data-i18n="str_1178">💜 Mental Health &amp; Peer Support</div>
+    <h1 data-i18n="str_1179">You Are Not Alone</h1>
+    <p data-i18n="str_1180">Anonymous, stigma-free support for young people navigating reproductive health, emotional stress, and crisis situations.</p>
 
     <!-- Disability inclusion note matching competition criterion #5 -->
-    <div style="background:rgba(0,160,220,.08);border:1px solid rgba(0,160,220,.2);border-radius:var(--radius-sm);padding:.75rem 1rem;margin-top:1rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5">
+    <div style="background:rgba(0,160,220,.08);border:1px solid rgba(0,160,220,.2);border-radius:var(--radius-sm);padding:.75rem 1rem;margin-top:1rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5" data-i18n="str_1181">
       ♿ <strong>Accessible Support:</strong> Voice-guided options available (tap 🎤 above). Deaf users: peer agents trained in basic sign language are available through the <a href="order.html" style="color:var(--blue)">Order &amp; Support</a> page.
     </div>
   </div>
 
-  <div class="mh-tabs" role="tablist">
+  <div class="mh-tabs" role="tablist" data-i18n="str_1182">
     <button class="mh-tab active" onclick="switchMH('crisis',this)" role="tab">🆘 Crisis Support</button>
     <button class="mh-tab" onclick="switchMH('qa',this)" role="tab">❓ Anonymous Q&amp;A</button>
     <button class="mh-tab" onclick="switchMH('chat',this)" role="tab">💬 Peer Group</button>
@@ -118,28 +116,28 @@
 
   <!-- ═══════ CRISIS PANEL ═══════ -->
   <div class="mh-panel active" id="panel-crisis">
-    <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.5">Common crisis situations Rwandan youth face — with honest guidance and next steps. All information is private.</p>
+    <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.5" data-i18n="str_1183">Common crisis situations Rwandan youth face — with honest guidance and next steps. All information is private.</p>
 
     <!-- Crisis 1: Unexpected pregnancy -->
     <div class="crisis-card fade-in" id="cc-1">
       <div class="crisis-header" onclick="toggleCrisis('cc-1')">
         <div class="crisis-emoji">🌸</div>
         <div class="crisis-meta">
-          <h4>Unexpected Pregnancy</h4>
-          <p>For teens and young women facing an unplanned pregnancy — alone or with a partner</p>
+          <h4 data-i18n="str_1184">Unexpected Pregnancy</h4>
+          <p data-i18n="str_1185">For teens and young women facing an unplanned pregnancy — alone or with a partner</p>
         </div>
         <span class="crisis-toggle">▾</span>
       </div>
       <div class="crisis-body">
-        <div class="crisis-scenario">"I'm 17 and I missed my period twice. I did a test — it's positive. My parents don't know. I don't know what to do. I feel scared and completely alone."</div>
+        <div class="crisis-scenario" data-i18n="str_1186">"I'm 17 and I missed my period twice. I did a test — it's positive. My parents don't know. I don't know what to do. I feel scared and completely alone."</div>
         <div class="crisis-response">
-          <h5>What to do right now — step by step</h5>
-          <div class="crisis-step"><div class="cs-dot">1</div><div class="cs-text"><strong>Breathe. You have time.</strong> An unplanned pregnancy is not an emergency in the medical sense. You have time to think, ask questions, and make a decision. You do not need to decide anything today.</div></div>
-          <div class="crisis-step"><div class="cs-dot">2</div><div class="cs-text"><strong>Confirm with a clinic.</strong> A home test is accurate but a clinic can confirm and estimate how far along you are — this information matters for understanding your options. Youth-friendly clinics in Rwanda treat this with full confidentiality.</div></div>
-          <div class="crisis-step"><div class="cs-dot">3</div><div class="cs-text"><strong>Know your options exist.</strong> Rwanda has free maternal healthcare services. If you decide to continue the pregnancy, antenatal care is free and available. If you are considering other options, speaking to a licensed health professional is the first step — not the internet.</div></div>
-          <div class="crisis-step"><div class="cs-dot">4</div><div class="cs-text"><strong>Tell one trusted adult — when you're ready.</strong> This does not have to be a parent. A school counsellor, aunt, older sister, church leader, or nurse can support you. You should not carry this alone.</div></div>
-          <div class="crisis-step"><div class="cs-dot">5</div><div class="cs-text"><strong>Call 5959 (free).</strong> The Rwanda Family Planning hotline provides free, confidential guidance in Kinyarwanda and English — 24 hours a day.</div></div>
-          <div class="crisis-hotline">⚠️ If you are feeling suicidal or in immediate danger — call <strong>114</strong> immediately. This is a free, 24/7 helpline.</div>
+          <h5 data-i18n="str_1187">What to do right now — step by step</h5>
+          <div class="crisis-step"><div class="cs-dot">1</div><div class="cs-text" data-i18n="str_1188"><strong>Breathe. You have time.</strong> An unplanned pregnancy is not an emergency in the medical sense. You have time to think, ask questions, and make a decision. You do not need to decide anything today.</div></div>
+          <div class="crisis-step"><div class="cs-dot">2</div><div class="cs-text" data-i18n="str_1189"><strong>Confirm with a clinic.</strong> A home test is accurate but a clinic can confirm and estimate how far along you are — this information matters for understanding your options. Youth-friendly clinics in Rwanda treat this with full confidentiality.</div></div>
+          <div class="crisis-step"><div class="cs-dot">3</div><div class="cs-text" data-i18n="str_1190"><strong>Know your options exist.</strong> Rwanda has free maternal healthcare services. If you decide to continue the pregnancy, antenatal care is free and available. If you are considering other options, speaking to a licensed health professional is the first step — not the internet.</div></div>
+          <div class="crisis-step"><div class="cs-dot">4</div><div class="cs-text" data-i18n="str_1191"><strong>Tell one trusted adult — when you're ready.</strong> This does not have to be a parent. A school counsellor, aunt, older sister, church leader, or nurse can support you. You should not carry this alone.</div></div>
+          <div class="crisis-step"><div class="cs-dot">5</div><div class="cs-text" data-i18n="str_1192"><strong>Call 5959 (free).</strong> The Rwanda Family Planning hotline provides free, confidential guidance in Kinyarwanda and English — 24 hours a day.</div></div>
+          <div class="crisis-hotline" data-i18n="str_1193">⚠️ If you are feeling suicidal or in immediate danger — call <strong>114</strong> immediately. This is a free, 24/7 helpline.</div>
         </div>
       </div>
     </div>
@@ -149,21 +147,21 @@
       <div class="crisis-header" onclick="toggleCrisis('cc-2')">
         <div class="crisis-emoji">🔴</div>
         <div class="crisis-meta">
-          <h4>Reactive HIV Test Result</h4>
-          <p>What to do if your self-test shows two lines — calm, clear, step-by-step</p>
+          <h4 data-i18n="str_1194">Reactive HIV Test Result</h4>
+          <p data-i18n="str_1195">What to do if your self-test shows two lines — calm, clear, step-by-step</p>
         </div>
         <span class="crisis-toggle">▾</span>
       </div>
       <div class="crisis-body">
-        <div class="crisis-scenario">"I just did a self-test and there are two lines. I can't stop shaking. I feel like my life is over. I don't know who to tell. I can't tell my parents. I don't know what to do next."</div>
+        <div class="crisis-scenario" data-i18n="str_1196">"I just did a self-test and there are two lines. I can't stop shaking. I feel like my life is over. I don't know who to tell. I can't tell my parents. I don't know what to do next."</div>
         <div class="crisis-response">
-          <h5>What this result means — and what to do</h5>
-          <div class="crisis-step"><div class="cs-dot">1</div><div class="cs-text"><strong>A reactive result is not a final diagnosis.</strong> It means HIV antibodies were detected — but you need a confirmatory blood test at a clinic before this is confirmed as HIV-positive. Some tests give false-reactive results.</div></div>
-          <div class="crisis-step"><div class="cs-dot">2</div><div class="cs-text"><strong>Go to a clinic within 48 hours.</strong> A free, confidential confirmatory test takes 20 minutes. In Rwanda, this is available at all health centres at no cost.</div></div>
-          <div class="crisis-step"><div class="cs-dot">3</div><div class="cs-text"><strong>If confirmed: HIV is manageable.</strong> Rwanda has one of Africa's best HIV treatment programmes. Treatment (ART) is free, effective, and means you can live a full, healthy life. People on treatment cannot pass the virus to partners.</div></div>
-          <div class="crisis-step"><div class="cs-dot">4</div><div class="cs-text"><strong>Tell one person you trust before your clinic visit.</strong> You should not go alone. A counsellor, nurse, or trusted adult can accompany you — without judgment.</div></div>
-          <div class="crisis-step"><div class="cs-dot">5</div><div class="cs-text"><strong>You are not alone in Rwanda.</strong> Over 95% of HIV-positive people who know their status are on treatment in Rwanda. Thousands of young people are living healthy lives.</div></div>
-          <div class="crisis-hotline">📞 Rwanda HIV/AIDS Hotline: <strong>3029</strong> (free, 24/7, confidential)</div>
+          <h5 data-i18n="str_1197">What this result means — and what to do</h5>
+          <div class="crisis-step"><div class="cs-dot">1</div><div class="cs-text" data-i18n="str_1198"><strong>A reactive result is not a final diagnosis.</strong> It means HIV antibodies were detected — but you need a confirmatory blood test at a clinic before this is confirmed as HIV-positive. Some tests give false-reactive results.</div></div>
+          <div class="crisis-step"><div class="cs-dot">2</div><div class="cs-text" data-i18n="str_1199"><strong>Go to a clinic within 48 hours.</strong> A free, confidential confirmatory test takes 20 minutes. In Rwanda, this is available at all health centres at no cost.</div></div>
+          <div class="crisis-step"><div class="cs-dot">3</div><div class="cs-text" data-i18n="str_1200"><strong>If confirmed: HIV is manageable.</strong> Rwanda has one of Africa's best HIV treatment programmes. Treatment (ART) is free, effective, and means you can live a full, healthy life. People on treatment cannot pass the virus to partners.</div></div>
+          <div class="crisis-step"><div class="cs-dot">4</div><div class="cs-text" data-i18n="str_1201"><strong>Tell one person you trust before your clinic visit.</strong> You should not go alone. A counsellor, nurse, or trusted adult can accompany you — without judgment.</div></div>
+          <div class="crisis-step"><div class="cs-dot">5</div><div class="cs-text" data-i18n="str_1202"><strong>You are not alone in Rwanda.</strong> Over 95% of HIV-positive people who know their status are on treatment in Rwanda. Thousands of young people are living healthy lives.</div></div>
+          <div class="crisis-hotline" data-i18n="str_1203">📞 Rwanda HIV/AIDS Hotline: <strong>3029</strong> (free, 24/7, confidential)</div>
         </div>
       </div>
     </div>
@@ -173,20 +171,20 @@
       <div class="crisis-header" onclick="toggleCrisis('cc-3')">
         <div class="crisis-emoji">🛡️</div>
         <div class="crisis-meta">
-          <h4>Sexual Violence or Assault</h4>
-          <p>For survivors and those supporting a survivor — immediate steps that protect your health and rights</p>
+          <h4 data-i18n="str_1204">Sexual Violence or Assault</h4>
+          <p data-i18n="str_1205">For survivors and those supporting a survivor — immediate steps that protect your health and rights</p>
         </div>
         <span class="crisis-toggle">▾</span>
       </div>
       <div class="crisis-body">
-        <div class="crisis-scenario">"Something happened to me at a party. I didn't want it to happen. I feel ashamed and I don't know if it counts as assault. I'm scared to tell anyone."</div>
+        <div class="crisis-scenario" data-i18n="str_1206">"Something happened to me at a party. I didn't want it to happen. I feel ashamed and I don't know if it counts as assault. I'm scared to tell anyone."</div>
         <div class="crisis-response">
-          <h5>What you need to know right now</h5>
-          <div class="crisis-step"><div class="cs-dot">1</div><div class="cs-text"><strong>What happened to you was not your fault.</strong> Regardless of what you were wearing, where you were, or what you had consumed — if you did not freely consent, it was not your fault.</div></div>
-          <div class="crisis-step"><div class="cs-dot">2</div><div class="cs-text"><strong>Go to an Isange One Stop Centre within 72 hours.</strong> Available at all referral hospitals in Rwanda. They provide medical care, counselling, legal support — all free and confidential. PEP (HIV prevention medicine after assault) must be taken within 72 hours to be effective.</div></div>
-          <div class="crisis-step"><div class="cs-dot">3</div><div class="cs-text"><strong>You do not have to report to police.</strong> You can receive medical care without reporting. The choice is yours — and the staff will not pressure you.</div></div>
-          <div class="crisis-step"><div class="cs-dot">4</div><div class="cs-text"><strong>Speak to someone today.</strong> A counsellor, trusted adult, nurse — anyone. You should not hold this alone.</div></div>
-          <div class="crisis-hotline">🆘 GBV Hotline: <strong>3029</strong> (free, 24/7) · Isange One Stop Centre: at all referral hospitals in Rwanda</div>
+          <h5 data-i18n="str_1207">What you need to know right now</h5>
+          <div class="crisis-step"><div class="cs-dot">1</div><div class="cs-text" data-i18n="str_1208"><strong>What happened to you was not your fault.</strong> Regardless of what you were wearing, where you were, or what you had consumed — if you did not freely consent, it was not your fault.</div></div>
+          <div class="crisis-step"><div class="cs-dot">2</div><div class="cs-text" data-i18n="str_1209"><strong>Go to an Isange One Stop Centre within 72 hours.</strong> Available at all referral hospitals in Rwanda. They provide medical care, counselling, legal support — all free and confidential. PEP (HIV prevention medicine after assault) must be taken within 72 hours to be effective.</div></div>
+          <div class="crisis-step"><div class="cs-dot">3</div><div class="cs-text" data-i18n="str_1210"><strong>You do not have to report to police.</strong> You can receive medical care without reporting. The choice is yours — and the staff will not pressure you.</div></div>
+          <div class="crisis-step"><div class="cs-dot">4</div><div class="cs-text" data-i18n="str_1211"><strong>Speak to someone today.</strong> A counsellor, trusted adult, nurse — anyone. You should not hold this alone.</div></div>
+          <div class="crisis-hotline" data-i18n="str_1212">🆘 GBV Hotline: <strong>3029</strong> (free, 24/7) · Isange One Stop Centre: at all referral hospitals in Rwanda</div>
         </div>
       </div>
     </div>
@@ -196,20 +194,20 @@
       <div class="crisis-header" onclick="toggleCrisis('cc-4')">
         <div class="crisis-emoji">💜</div>
         <div class="crisis-meta">
-          <h4>Overwhelming Stress, Anxiety & Suicidal Thoughts</h4>
-          <p>For young people struggling mentally — you are not weak for feeling this way</p>
+          <h4 data-i18n="str_1213">Overwhelming Stress, Anxiety &amp; Suicidal Thoughts</h4>
+          <p data-i18n="str_1214">For young people struggling mentally — you are not weak for feeling this way</p>
         </div>
         <span class="crisis-toggle">▾</span>
       </div>
       <div class="crisis-body">
-        <div class="crisis-scenario">"I feel like everything is too much. The pregnancy, telling my parents, my future — I don't see a way forward. Sometimes I feel like everyone would be better off without me."</div>
+        <div class="crisis-scenario" data-i18n="str_1215">"I feel like everything is too much. The pregnancy, telling my parents, my future — I don't see a way forward. Sometimes I feel like everyone would be better off without me."</div>
         <div class="crisis-response">
-          <h5>This matters. You matter.</h5>
-          <div class="crisis-step"><div class="cs-dot">1</div><div class="cs-text"><strong>If you feel you might hurt yourself — call 114 now.</strong> This is free, available 24/7, and completely confidential. The counsellors speak Kinyarwanda and English. You do not have to explain everything — just say you need help.</div></div>
-          <div class="crisis-step"><div class="cs-dot">2</div><div class="cs-text"><strong>You are not broken.</strong> Feeling overwhelmed when facing a crisis — pregnancy, HIV, violence, rejection — is a human response. These feelings are not a sign of weakness. They are a sign that you need support, not that your life is over.</div></div>
-          <div class="crisis-step"><div class="cs-dot">3</div><div class="cs-text"><strong>Tell one safe person right now.</strong> Reach out to one person you trust — a friend, teacher, nurse, or family member. Being with someone you trust can make the next hour more survivable.</div></div>
-          <div class="crisis-step"><div class="cs-dot">4</div><div class="cs-text"><strong>Use this chat right now.</strong> The peer chat in this app connects you to young people who have been through similar situations — available now, anonymously.</div></div>
-          <div class="crisis-hotline">🆘 Rwanda Crisis Helpline: <strong>114</strong> (free, 24/7, confidential) — call or SMS</div>
+          <h5 data-i18n="str_1216">This matters. You matter.</h5>
+          <div class="crisis-step"><div class="cs-dot">1</div><div class="cs-text" data-i18n="str_1217"><strong>If you feel you might hurt yourself — call 114 now.</strong> This is free, available 24/7, and completely confidential. The counsellors speak Kinyarwanda and English. You do not have to explain everything — just say you need help.</div></div>
+          <div class="crisis-step"><div class="cs-dot">2</div><div class="cs-text" data-i18n="str_1218"><strong>You are not broken.</strong> Feeling overwhelmed when facing a crisis — pregnancy, HIV, violence, rejection — is a human response. These feelings are not a sign of weakness. They are a sign that you need support, not that your life is over.</div></div>
+          <div class="crisis-step"><div class="cs-dot">3</div><div class="cs-text" data-i18n="str_1219"><strong>Tell one safe person right now.</strong> Reach out to one person you trust — a friend, teacher, nurse, or family member. Being with someone you trust can make the next hour more survivable.</div></div>
+          <div class="crisis-step"><div class="cs-dot">4</div><div class="cs-text" data-i18n="str_1220"><strong>Use this chat right now.</strong> The peer chat in this app connects you to young people who have been through similar situations — available now, anonymously.</div></div>
+          <div class="crisis-hotline" data-i18n="str_1221">🆘 Rwanda Crisis Helpline: <strong>114</strong> (free, 24/7, confidential) — call or SMS</div>
         </div>
       </div>
     </div>
@@ -218,36 +216,36 @@
   <!-- ═══════ Q&A PANEL ═══════ -->
   <div class="mh-panel" id="panel-qa">
     <div class="ask-box fade-in">
-      <h3 style="font-size:1rem;font-weight:800;margin-bottom:.35rem">Ask Anonymously</h3>
-      <p style="font-size:.8rem;color:var(--text-secondary);margin-bottom:1rem;line-height:1.5">Your identity is fully protected. Questions are answered by trained peer educators and certified nurses — usually within 24 hours.</p>
+      <h3 style="font-size:1rem;font-weight:800;margin-bottom:.35rem" data-i18n="str_1222">Ask Anonymously</h3>
+      <p style="font-size:.8rem;color:var(--text-secondary);margin-bottom:1rem;line-height:1.5" data-i18n="str_1223">Your identity is fully protected. Questions are answered by trained peer educators and certified nurses — usually within 24 hours.</p>
       <textarea id="qa-input" placeholder="What's on your mind? e.g. 'I think I might be pregnant and I'm scared to tell anyone...'"></textarea>
-      <button onclick="postQA()">Submit Anonymously →</button>
+      <button onclick="postQA()" data-i18n="str_1224">Submit Anonymously →</button>
     </div>
 
     <div id="qa-feed">
       <div class="qa-box fade-in">
-        <div class="qa-q">I tested positive on a self-test. I'm 16. I'm terrified. What do I do first?</div>
-        <div class="qa-meta">Anonymous · 3 hours ago</div>
+        <div class="qa-q" data-i18n="str_1225">I tested positive on a self-test. I'm 16. I'm terrified. What do I do first?</div>
+        <div class="qa-meta" data-i18n="str_1226">Anonymous · 3 hours ago</div>
         <div class="qa-a">
-          <div class="qa-verified">🛡️ Peer Educator Agathe</div>
+          <div class="qa-verified" data-i18n="str_1227">🛡️ Peer Educator Agathe</div>
           First — breathe. A reactive self-test result is not the final answer. You need a free confirmatory blood test at any Rwanda health centre. This test takes 20 minutes and is confidential. People get reactive results that turn out to be negative. If confirmed, HIV is 100% manageable with free treatment in Rwanda. Please go to a clinic tomorrow — you can go alone or I can help you find an Isange centre near you.
         </div>
       </div>
 
       <div class="qa-box fade-in" style="transition-delay:.1s">
-        <div class="qa-q">My boyfriend says if I loved him I wouldn't ask him to use a condom. What do I say?</div>
-        <div class="qa-meta">Anonymous · 1 day ago</div>
+        <div class="qa-q" data-i18n="str_1228">My boyfriend says if I loved him I wouldn't ask him to use a condom. What do I say?</div>
+        <div class="qa-meta" data-i18n="str_1229">Anonymous · 1 day ago</div>
         <div class="qa-a">
-          <div class="qa-verified">🛡️ Nurse Marie (Verified)</div>
+          <div class="qa-verified" data-i18n="str_1230">🛡️ Nurse Marie (Verified)</div>
           This is one of the most common manipulation tactics used to pressure young women into unsafe sex. Your response: "Protecting my health is how I take care of both of us. If you love me, you will respect this decision." A partner who truly cares will not put your health at risk. Our Learn section has an audio negotiation module with scripts you can practice.
         </div>
       </div>
 
       <div class="qa-box fade-in" style="transition-delay:.2s">
-        <div class="qa-q">Can you get HIV from someone who looks healthy and says they've been tested?</div>
-        <div class="qa-meta">Anonymous · 2 days ago</div>
+        <div class="qa-q" data-i18n="str_1231">Can you get HIV from someone who looks healthy and says they've been tested?</div>
+        <div class="qa-meta" data-i18n="str_1232">Anonymous · 2 days ago</div>
         <div class="qa-a">
-          <div class="qa-verified">🛡️ Peer Educator Didier</div>
+          <div class="qa-verified" data-i18n="str_1233">🛡️ Peer Educator Didier</div>
           Yes. HIV has no symptoms for 5–10 years. Someone can look and feel completely healthy while having HIV and being able to transmit it. Saying "I've been tested" without showing you the result or offering to test together is not the same as proof. Always use a condom unless you have both tested together and seen each other's results.
         </div>
       </div>
@@ -257,70 +255,72 @@
   <!-- ═══════ PEER CHAT ═══════ -->
   <div class="mh-panel" id="panel-chat">
     <div class="peer-chat fade-in">
-      <div class="peer-header">
+      <div class="peer-header" data-i18n="str_1234">
         <span><span class="online-dot"></span>Youth Mental Health Support Group</span>
         <span style="font-size:.72rem;color:var(--text-muted)">Anonymous · Safe Space</span>
       </div>
       <div class="peer-messages" id="peer-messages">
-        <div style="text-align:center;font-size:.72rem;color:var(--text-muted);margin:1rem 0;line-height:1.5">This is a safe, anonymous space. Be kind. Use a nickname. Peer counselors are present.</div>
+        <div style="text-align:center;font-size:.72rem;color:var(--text-muted);margin:1rem 0;line-height:1.5" data-i18n="str_1235">This is a safe, anonymous space. Be kind. Use a nickname. Peer counselors are present.</div>
         <div class="p-msg other">
-          <div class="p-name">HopeKgl</div>
+          <div class="p-name" data-i18n="str_1236">HopeKgl</div>
           I got my test result back today — it was negative. I was so scared for three weeks. If you're waiting for results, I want you to know it's okay to be scared.
         </div>
         <div class="p-msg other">
-          <div class="p-name">PeerEd_Marie</div>
+          <div class="p-name" data-i18n="str_1237">PeerEd_Marie</div>
           Welcome everyone 💜 I'm a trained peer counsellor. Whatever you're going through, you can share here without judgment. Nothing leaves this space.
         </div>
       </div>
-      <div class="peer-input">
-        <input type="text" id="peer-input" placeholder="Share something anonymously..." autocomplete="off" onkeydown="if(event.key==='Enter')sendPeer()"/>
+      <div class="peer-input" data-i18n="str_1238">
+        <input type="text" id="peer-input" placeholder="Share something anonymously..." autocomplete="off" onkeydown="if(event.key==='Enter')sendPeer()">
         <button onclick="sendPeer()">📤</button>
       </div>
     </div>
-    <p style="font-size:.72rem;color:var(--text-muted);text-align:center;margin-top:.75rem;line-height:1.5">🔒 Messages are anonymous and peer-moderated. For urgent help, call <strong>114</strong> (free, 24/7).</p>
+    <p style="font-size:.72rem;color:var(--text-muted);text-align:center;margin-top:.75rem;line-height:1.5" data-i18n="str_1239">🔒 Messages are anonymous and peer-moderated. For urgent help, call <strong>114</strong> (free, 24/7).</p>
   </div>
 
   <!-- ═══════ RESOURCES PANEL ═══════ -->
   <div class="mh-panel" id="panel-resources">
-    <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:1.25rem">All resources below are free, confidential, and available in Kinyarwanda.</p>
+    <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:1.25rem" data-i18n="str_1240">All resources below are free, confidential, and available in Kinyarwanda.</p>
 
     <div class="resource-card fade-in">
       <div class="rc-icon">📞</div>
-      <div class="rc-text"><h4>Rwanda Crisis Helpline</h4><p>Mental health, crisis, suicidal thoughts — 24/7, free, confidential</p></div>
-      <div class="rc-action"><a href="tel:114" class="rc-btn" style="background:var(--red);color:#fff">Call 114</a></div>
+      <div class="rc-text"><h4 data-i18n="str_1241">Rwanda Crisis Helpline</h4><p data-i18n="str_1242">Mental health, crisis, suicidal thoughts — 24/7, free, confidential</p></div>
+      <div class="rc-action" data-i18n="str_1243"><a href="tel:114" class="rc-btn" style="background:var(--red);color:#fff">Call 114</a></div>
     </div>
     <div class="resource-card fade-in" style="transition-delay:.1s">
       <div class="rc-icon">🏥</div>
-      <div class="rc-text"><h4>Isange One Stop Centre</h4><p>GBV, sexual violence, free medical care + legal support at any referral hospital</p></div>
-      <div class="rc-action"><a href="clinic.html" class="rc-btn" style="background:var(--violet);color:#fff">Find Centre</a></div>
+      <div class="rc-text"><h4 data-i18n="str_1244">Isange One Stop Centre</h4><p data-i18n="str_1245">GBV, sexual violence, free medical care + legal support at any referral hospital</p></div>
+      <div class="rc-action" data-i18n="str_1246"><a href="clinic.html" class="rc-btn" style="background:var(--violet);color:#fff">Find Centre</a></div>
     </div>
     <div class="resource-card fade-in" style="transition-delay:.2s">
       <div class="rc-icon">🧬</div>
-      <div class="rc-text"><h4>HIV/AIDS & GBV Hotline</h4><p>Free counseling for HIV, GBV, family planning — Kinyarwanda & English</p></div>
-      <div class="rc-action"><a href="tel:3029" class="rc-btn" style="background:var(--blue);color:#fff">Call 3029</a></div>
+      <div class="rc-text"><h4 data-i18n="str_1247">HIV/AIDS &amp; GBV Hotline</h4><p data-i18n="str_1248">Free counseling for HIV, GBV, family planning — Kinyarwanda &amp; English</p></div>
+      <div class="rc-action" data-i18n="str_1249"><a href="tel:3029" class="rc-btn" style="background:var(--blue);color:#fff">Call 3029</a></div>
     </div>
     <div class="resource-card fade-in" style="transition-delay:.3s">
       <div class="rc-icon">👶</div>
-      <div class="rc-text"><h4>Family Planning Hotline</h4><p>Pregnancy questions, contraception, antenatal care — free & confidential</p></div>
-      <div class="rc-action"><a href="tel:5959" class="rc-btn" style="background:var(--green);color:#fff">Call 5959</a></div>
+      <div class="rc-text"><h4 data-i18n="str_1250">Family Planning Hotline</h4><p data-i18n="str_1251">Pregnancy questions, contraception, antenatal care — free &amp; confidential</p></div>
+      <div class="rc-action" data-i18n="str_1252"><a href="tel:5959" class="rc-btn" style="background:var(--green);color:#fff">Call 5959</a></div>
     </div>
     <div class="resource-card fade-in" style="transition-delay:.4s">
       <div class="rc-icon">📦</div>
-      <div class="rc-text"><h4>Order a Self-Test Kit</h4><p>Anonymous, free HIV self-test delivery to your door in 24–48 hours</p></div>
-      <div class="rc-action"><a href="order.html" class="rc-btn" style="background:var(--green);color:#fff">Order Free</a></div>
+      <div class="rc-text"><h4 data-i18n="str_1253">Order a Self-Test Kit</h4><p data-i18n="str_1254">Anonymous, free HIV self-test delivery to your door in 24–48 hours</p></div>
+      <div class="rc-action" data-i18n="str_1255"><a href="order.html" class="rc-btn" style="background:var(--green);color:#fff">Order Free</a></div>
     </div>
   </div>
 
 </main>
 
 <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1256"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1257"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1258"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1259"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1260"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   function switchMH(id, btn) {
@@ -383,5 +383,6 @@
     }, 1500+Math.random()*2000);
   }
 </script>
-</body>
-</html>
+
+
+</body></html>

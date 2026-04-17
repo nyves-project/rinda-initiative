@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Rinda — 6-Month Pilot Plan & Budget</title>
-  <meta name="description" content="Rinda Initiative 6-month pilot plan — 10,000,000 RWF budget breakdown for iAccelerator 7 submission."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Rinda — 6-Month Pilot Plan &amp; Budget</title>
+  <meta name="description" content="Rinda Initiative 6-month pilot plan — 10,000,000 RWF budget breakdown for iAccelerator 7 submission.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     .budget-hero { background:linear-gradient(135deg,rgba(250,210,1,.1),rgba(29,185,84,.06)); padding:2rem 1.5rem 1.5rem; border-bottom:1px solid var(--glass-border); }
     .budget-hero h1 { font-size:1.7rem; font-weight:900; margin-bottom:.35rem; }
@@ -63,36 +61,36 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Pilot Plan</div>
-  <div class="header-right">
+  <div class="app-logo" data-i18n="str_1027"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Pilot Plan</div>
+  <div class="header-right" data-i18n="str_1028">
     <button class="access-btn" onclick="toggleAccessPanel()">♿</button>
   </div>
 </header>
 
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1029">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1030"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1031">Font Size</span><div class="font-size-controls" data-i18n="str_1032"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <main class="app-main" role="main">
 
   <div class="budget-hero fade-in">
-    <div class="section-badge" style="background:rgba(250,210,1,.12);color:var(--gold);border-color:rgba(250,210,1,.3)">📊 iAccelerator 7 Submission</div>
-    <h1>6-Month Pilot Plan</h1>
-    <p>A focused, evidence-based deployment of the Rinda Initiative in 2 districts of Rwanda — designed to achieve maximum impact within the grant ceiling.</p>
+    <div class="section-badge" style="background:rgba(250,210,1,.12);color:var(--gold);border-color:rgba(250,210,1,.3)" data-i18n="str_1033">📊 iAccelerator 7 Submission</div>
+    <h1 data-i18n="str_1034">6-Month Pilot Plan</h1>
+    <p data-i18n="str_1035">A focused, evidence-based deployment of the Rinda Initiative in 2 districts of Rwanda — designed to achieve maximum impact within the grant ceiling.</p>
   </div>
 
   <!-- Grand Total -->
   <div class="total-bar fade-in">
-    <div class="total-amount" id="total-display">10,000,000 RWF</div>
-    <div class="total-label">Total 6-Month Pilot Budget</div>
-    <div class="grant-cap">✅ Within the iAccelerator 7 maximum grant of 10,000,000 RWF</div>
+    <div class="total-amount" id="total-display" data-i18n="str_1036">10,000,000 RWF</div>
+    <div class="total-label" data-i18n="str_1037">Total 6-Month Pilot Budget</div>
+    <div class="grant-cap" data-i18n="str_1038">✅ Within the iAccelerator 7 maximum grant of 10,000,000 RWF</div>
   </div>
 
   <!-- Overall visual bar -->
   <div style="padding:0 1.5rem">
-    <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:.3rem">
+    <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:.3rem" data-i18n="str_1039">
       <span>Budget allocation</span><span>100% of grant used</span>
     </div>
     <div class="visual-bar" style="margin:0">
@@ -102,211 +100,213 @@
 
   <!-- SECTION 1: Human Capital -->
   <div class="budget-section fade-in">
-    <div class="budget-section-title">👥 Human Capital — 50% of Budget</div>
+    <div class="budget-section-title" data-i18n="str_1040">👥 Human Capital — 50% of Budget</div>
 
     <div class="budget-item">
       <div class="bi-icon">🎓</div>
       <div class="bi-text">
-        <h4>Peer Educator Training — 30 Agents</h4>
-        <p>5-day training in HIV counselling, self-test kit use, sign language basics, and safe delivery protocols. 15 agents per district (Gasabo + Huye).</p>
+        <h4 data-i18n="str_1041">Peer Educator Training — 30 Agents</h4>
+        <p data-i18n="str_1042">5-day training in HIV counselling, self-test kit use, sign language basics, and safe delivery protocols. 15 agents per district (Gasabo + Huye).</p>
         <div class="bi-bar"><div class="bi-bar-fill" style="background:var(--blue)" data-pct="28"></div></div>
       </div>
       <div>
         <div class="bi-amount" style="color:var(--blue)">2,800,000</div>
-        <div class="bi-pct">28% · RWF</div>
+        <div class="bi-pct" data-i18n="str_1043">28% · RWF</div>
       </div>
     </div>
 
     <div class="budget-item">
       <div class="bi-icon">💼</div>
       <div class="bi-text">
-        <h4>Agent Stipends — 6 Months</h4>
-        <p>Monthly stipends for 30 peer agents × 6 months. Ensures retention and commitment to delivery schedules.</p>
+        <h4 data-i18n="str_1044">Agent Stipends — 6 Months</h4>
+        <p data-i18n="str_1045">Monthly stipends for 30 peer agents × 6 months. Ensures retention and commitment to delivery schedules.</p>
         <div class="bi-bar"><div class="bi-bar-fill" style="background:var(--green)" data-pct="22"></div></div>
       </div>
       <div>
         <div class="bi-amount" style="color:var(--green)">2,200,000</div>
-        <div class="bi-pct">22% · RWF</div>
+        <div class="bi-pct" data-i18n="str_1046">22% · RWF</div>
       </div>
     </div>
   </div>
 
   <!-- SECTION 2: USSD Tech -->
   <div class="budget-section fade-in" style="transition-delay:.1s">
-    <div class="budget-section-title">📡 USSD & Platform Technology — 25%</div>
+    <div class="budget-section-title" data-i18n="str_1047">📡 USSD &amp; Platform Technology — 25%</div>
 
     <div class="budget-item">
       <div class="bi-icon">📟</div>
       <div class="bi-text">
-        <h4>USSD Gateway Integration (*775#)</h4>
-        <p>Integration with Rwanda's USSD gateway operators (MTN / Airtel) for live *775# service. Allows reach to 15M+ basic-phone users without internet.</p>
+        <h4 data-i18n="str_1048">USSD Gateway Integration (*775#)</h4>
+        <p data-i18n="str_1049">Integration with Rwanda's USSD gateway operators (MTN / Airtel) for live *775# service. Allows reach to 15M+ basic-phone users without internet.</p>
         <div class="bi-bar"><div class="bi-bar-fill" style="background:var(--violet)" data-pct="15"></div></div>
       </div>
       <div>
         <div class="bi-amount" style="color:var(--violet)">1,500,000</div>
-        <div class="bi-pct">15% · RWF</div>
+        <div class="bi-pct" data-i18n="str_1050">15% · RWF</div>
       </div>
     </div>
 
     <div class="budget-item">
       <div class="bi-icon">🖥️</div>
       <div class="bi-text">
-        <h4>Platform Hosting, SMS & IVR Services</h4>
-        <p>6-month PWA hosting, SMS notification system, and Interactive Voice Response (IVR) for feature phones. Ensures offline-first access for all users.</p>
+        <h4 data-i18n="str_1051">Platform Hosting, SMS &amp; IVR Services</h4>
+        <p data-i18n="str_1052">6-month PWA hosting, SMS notification system, and Interactive Voice Response (IVR) for feature phones. Ensures offline-first access for all users.</p>
         <div class="bi-bar"><div class="bi-bar-fill" style="background:var(--teal)" data-pct="10"></div></div>
       </div>
       <div>
         <div class="bi-amount" style="color:var(--teal)">1,000,000</div>
-        <div class="bi-pct">10% · RWF</div>
+        <div class="bi-pct" data-i18n="str_1053">10% · RWF</div>
       </div>
     </div>
   </div>
 
   <!-- SECTION 3: Test Kits & Supplies -->
   <div class="budget-section fade-in" style="transition-delay:.2s">
-    <div class="budget-section-title">🧪 HIV Self-Test Kits & Supplies — 15%</div>
+    <div class="budget-section-title" data-i18n="str_1054">🧪 HIV Self-Test Kits &amp; Supplies — 15%</div>
 
     <div class="budget-item">
       <div class="bi-icon">📦</div>
       <div class="bi-text">
-        <h4>500 HIV Oral Self-Test Kits</h4>
-        <p>WHO-approved oral HIV self-test kits for anonymous delivery. Enough stock for the 6-month pilot period across both pilot districts.</p>
+        <h4 data-i18n="str_1055">500 HIV Oral Self-Test Kits</h4>
+        <p data-i18n="str_1056">WHO-approved oral HIV self-test kits for anonymous delivery. Enough stock for the 6-month pilot period across both pilot districts.</p>
         <div class="bi-bar"><div class="bi-bar-fill" style="background:var(--red)" data-pct="12"></div></div>
       </div>
       <div>
         <div class="bi-amount" style="color:var(--red)">1,200,000</div>
-        <div class="bi-pct">12% · RWF</div>
+        <div class="bi-pct" data-i18n="str_1057">12% · RWF</div>
       </div>
     </div>
 
     <div class="budget-item">
       <div class="bi-icon">🛵</div>
       <div class="bi-text">
-        <h4>Delivery Logistics (Transport)</h4>
-        <p>Moto-taxi and foot delivery costs for discreet kit delivery. Agents use personal transport reimbursed per delivery.</p>
+        <h4 data-i18n="str_1058">Delivery Logistics (Transport)</h4>
+        <p data-i18n="str_1059">Moto-taxi and foot delivery costs for discreet kit delivery. Agents use personal transport reimbursed per delivery.</p>
         <div class="bi-bar"><div class="bi-bar-fill" style="background:var(--gold)" data-pct="3"></div></div>
       </div>
       <div>
         <div class="bi-amount" style="color:var(--gold)">300,000</div>
-        <div class="bi-pct">3% · RWF</div>
+        <div class="bi-pct" data-i18n="str_1060">3% · RWF</div>
       </div>
     </div>
   </div>
 
   <!-- SECTION 4: Community & M&E -->
   <div class="budget-section fade-in" style="transition-delay:.3s">
-    <div class="budget-section-title">📈 Monitoring, Evaluation & Community — 10%</div>
+    <div class="budget-section-title" data-i18n="str_1061">📈 Monitoring, Evaluation &amp; Community — 10%</div>
 
     <div class="budget-item">
       <div class="bi-icon">📊</div>
       <div class="bi-text">
-        <h4>M&E Framework & Reporting</h4>
-        <p>Baseline survey, 3-month midline, and 6-month endline evaluation. Tracks testing rates, USSD usage, and negotiation module completion.</p>
+        <h4 data-i18n="str_1062">M&amp;E Framework &amp; Reporting</h4>
+        <p data-i18n="str_1063">Baseline survey, 3-month midline, and 6-month endline evaluation. Tracks testing rates, USSD usage, and negotiation module completion.</p>
         <div class="bi-bar"><div class="bi-bar-fill" style="background:var(--blue)" data-pct="6"></div></div>
       </div>
       <div>
         <div class="bi-amount" style="color:var(--blue)">600,000</div>
-        <div class="bi-pct">6% · RWF</div>
+        <div class="bi-pct" data-i18n="str_1064">6% · RWF</div>
       </div>
     </div>
 
     <div class="budget-item">
       <div class="bi-icon">📣</div>
       <div class="bi-text">
-        <h4>Community Outreach & Youth Events</h4>
-        <p>School and church-based awareness events in pilot districts. Flyer printing, community radio announcements, and youth leader briefings.</p>
+        <h4 data-i18n="str_1065">Community Outreach &amp; Youth Events</h4>
+        <p data-i18n="str_1066">School and church-based awareness events in pilot districts. Flyer printing, community radio announcements, and youth leader briefings.</p>
         <div class="bi-bar"><div class="bi-bar-fill" style="background:var(--green)" data-pct="4"></div></div>
       </div>
       <div>
         <div class="bi-amount" style="color:var(--green)">400,000</div>
-        <div class="bi-pct">4% · RWF</div>
+        <div class="bi-pct" data-i18n="str_1067">4% · RWF</div>
       </div>
     </div>
   </div>
 
   <!-- 6-Month Timeline -->
   <div style="padding:1.5rem 1.5rem .5rem">
-    <div class="section-badge">🗓️ 6-Month Timeline</div>
-    <h2 style="font-size:1.1rem;font-weight:900;margin:.5rem 0 1rem">Pilot Execution Roadmap</h2>
+    <div class="section-badge" data-i18n="str_1068">🗓️ 6-Month Timeline</div>
+    <h2 style="font-size:1.1rem;font-weight:900;margin:.5rem 0 1rem" data-i18n="str_1069">Pilot Execution Roadmap</h2>
   </div>
   <div class="timeline fade-in">
     <div class="tl-item">
-      <div class="tl-dot" style="background:rgba(250,210,1,.15);border-color:var(--gold);color:var(--gold)">M1</div>
+      <div class="tl-dot" style="background:rgba(250,210,1,.15);border-color:var(--gold);color:var(--gold)" data-i18n="str_1070">M1</div>
       <div class="tl-content">
-        <div class="tl-month">Month 1 — Setup & Training</div>
-        <h4>Foundation</h4>
-        <p>Recruit and train 30 peer educators in 2 districts. Integrate live *775# USSD gateway. Establish baseline testing rate data.</p>
+        <div class="tl-month" data-i18n="str_1071">Month 1 — Setup &amp; Training</div>
+        <h4 data-i18n="str_1072">Foundation</h4>
+        <p data-i18n="str_1073">Recruit and train 30 peer educators in 2 districts. Integrate live *775# USSD gateway. Establish baseline testing rate data.</p>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot" style="background:rgba(0,160,220,.15);border-color:var(--blue);color:var(--blue)">M2</div>
+      <div class="tl-dot" style="background:rgba(0,160,220,.15);border-color:var(--blue);color:var(--blue)" data-i18n="str_1074">M2</div>
       <div class="tl-content">
-        <div class="tl-month">Month 2 — Soft Launch</div>
-        <h4>First Deliveries</h4>
-        <p>Begin anonymous kit deliveries and USSD service. School awareness events. Monitor first 100 orders and gather user feedback.</p>
+        <div class="tl-month" data-i18n="str_1075">Month 2 — Soft Launch</div>
+        <h4 data-i18n="str_1076">First Deliveries</h4>
+        <p data-i18n="str_1077">Begin anonymous kit deliveries and USSD service. School awareness events. Monitor first 100 orders and gather user feedback.</p>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot" style="background:rgba(155,89,182,.15);border-color:var(--violet);color:#c39bea">M3</div>
+      <div class="tl-dot" style="background:rgba(155,89,182,.15);border-color:var(--violet);color:#c39bea" data-i18n="str_1078">M3</div>
       <div class="tl-content">
-        <div class="tl-month">Month 3 — Midterm Review</div>
-        <h4>Evaluation & Adjustment</h4>
-        <p>Midline survey. Evaluate USSD adoption. Adjust delivery schedules based on demand. Communities of >50 active USSD users identified for deeper engagement.</p>
+        <div class="tl-month" data-i18n="str_1079">Month 3 — Midterm Review</div>
+        <h4 data-i18n="str_1080">Evaluation &amp; Adjustment</h4>
+        <p data-i18n="str_1081">Midline survey. Evaluate USSD adoption. Adjust delivery schedules based on demand. Communities of &gt;50 active USSD users identified for deeper engagement.</p>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot" style="background:rgba(29,185,84,.15);border-color:var(--green);color:var(--green)">M4</div>
+      <div class="tl-dot" style="background:rgba(29,185,84,.15);border-color:var(--green);color:var(--green)" data-i18n="str_1082">M4</div>
       <div class="tl-content">
-        <div class="tl-month">Month 4 — Scale Within Districts</div>
-        <h4>Expanding Reach</h4>
-        <p>Activate negotiation audio modules with school counsellors. Peer agents conduct community health fairs. 200+ kits delivered to date.</p>
+        <div class="tl-month" data-i18n="str_1083">Month 4 — Scale Within Districts</div>
+        <h4 data-i18n="str_1084">Expanding Reach</h4>
+        <p data-i18n="str_1085">Activate negotiation audio modules with school counsellors. Peer agents conduct community health fairs. 200+ kits delivered to date.</p>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot" style="background:rgba(0,160,220,.15);border-color:var(--blue);color:var(--blue)">M5</div>
+      <div class="tl-dot" style="background:rgba(0,160,220,.15);border-color:var(--blue);color:var(--blue)" data-i18n="str_1086">M5</div>
       <div class="tl-content">
-        <div class="tl-month">Month 5 — Consolidation</div>
-        <h4>Community Adoption</h4>
-        <p>Peer-to-peer referrals growing organically. Disabilities inclusion: sign-language agents fully deployed. Endline data collection begins.</p>
+        <div class="tl-month" data-i18n="str_1087">Month 5 — Consolidation</div>
+        <h4 data-i18n="str_1088">Community Adoption</h4>
+        <p data-i18n="str_1089">Peer-to-peer referrals growing organically. Disabilities inclusion: sign-language agents fully deployed. Endline data collection begins.</p>
       </div>
     </div>
     <div class="tl-item" style="margin-bottom:0">
-      <div class="tl-dot" style="background:rgba(250,210,1,.15);border-color:var(--gold);color:var(--gold)">M6</div>
+      <div class="tl-dot" style="background:rgba(250,210,1,.15);border-color:var(--gold);color:var(--gold)" data-i18n="str_1090">M6</div>
       <div class="tl-content">
-        <div class="tl-month">Month 6 — Endline & Scale Proposal</div>
-        <h4>Evidence & Expansion</h4>
-        <p>Complete endline evaluation. Present impact data to Imbuto Foundation for Phase 2 nationwide scaling. All 500 kits distributed.</p>
+        <div class="tl-month" data-i18n="str_1091">Month 6 — Endline &amp; Scale Proposal</div>
+        <h4 data-i18n="str_1092">Evidence &amp; Expansion</h4>
+        <p data-i18n="str_1093">Complete endline evaluation. Present impact data to Imbuto Foundation for Phase 2 nationwide scaling. All 500 kits distributed.</p>
       </div>
     </div>
   </div>
 
   <!-- Target KPIs -->
-  <div style="padding:1.5rem 1.5rem .75rem">
+  <div style="padding:1.5rem 1.5rem .75rem" data-i18n="str_1094">
     <h2 style="font-size:1rem;font-weight:800;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em">🎯 6-Month Target KPIs</h2>
   </div>
   <div class="kpi-grid fade-in">
-    <div class="kpi-card"><div class="kpi-num" style="color:var(--red)">500+</div><div class="kpi-label">HIV Tests Distributed</div></div>
-    <div class="kpi-card"><div class="kpi-num" style="color:var(--blue)">5,000+</div><div class="kpi-label">USSD Sessions (*775#)</div></div>
-    <div class="kpi-card"><div class="kpi-num" style="color:var(--green)">30</div><div class="kpi-label">Peer Agents Trained</div></div>
-    <div class="kpi-card"><div class="kpi-num" style="color:var(--gold)">2</div><div class="kpi-label">Pilot Districts</div></div>
-    <div class="kpi-card"><div class="kpi-num" style="color:var(--violet)">1,000+</div><div class="kpi-label">Negotiation Module Views</div></div>
-    <div class="kpi-card"><div class="kpi-num" style="color:var(--teal)">100%</div><div class="kpi-label">Within Grant Budget</div></div>
+    <div class="kpi-card"><div class="kpi-num" style="color:var(--red)">500+</div><div class="kpi-label" data-i18n="str_1095">HIV Tests Distributed</div></div>
+    <div class="kpi-card"><div class="kpi-num" style="color:var(--blue)">5,000+</div><div class="kpi-label" data-i18n="str_1096">USSD Sessions (*775#)</div></div>
+    <div class="kpi-card"><div class="kpi-num" style="color:var(--green)">30</div><div class="kpi-label" data-i18n="str_1097">Peer Agents Trained</div></div>
+    <div class="kpi-card"><div class="kpi-num" style="color:var(--gold)">2</div><div class="kpi-label" data-i18n="str_1098">Pilot Districts</div></div>
+    <div class="kpi-card"><div class="kpi-num" style="color:var(--violet)">1,000+</div><div class="kpi-label" data-i18n="str_1099">Negotiation Module Views</div></div>
+    <div class="kpi-card"><div class="kpi-num" style="color:var(--teal)">100%</div><div class="kpi-label" data-i18n="str_1100">Within Grant Budget</div></div>
   </div>
 
-  <div class="budget-note fade-in">
+  <div class="budget-note fade-in" data-i18n="str_1101">
     📌 <strong>Why 2 districts first?</strong> Starting in Gasabo (urban) and Huye (rural) allows direct comparison of urban vs. rural uptake, USSD usage patterns, and peer agent effectiveness. Success data from these districts forms the evidence base for nationwide scaling in Phase 2. This is the most resource-efficient approach to demonstrating proof of concept within a single grant cycle.
   </div>
 
 </main>
 
 <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1102"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1103"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1104"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1105"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1106"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -324,5 +324,6 @@
     }, 600);
   });
 </script>
-</body>
-</html>
+
+
+</body></html>

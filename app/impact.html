@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — Impact Dashboard</title>
-  <meta name="description" content="Live impact tracking for the Rinda Initiative — youth tested, modules completed, USSD users reached."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Live impact tracking for the Rinda Initiative — youth tested, modules completed, USSD users reached.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     .impact-hero {
       background: linear-gradient(135deg, rgba(0,160,220,0.12), rgba(29,185,84,0.08));
@@ -155,12 +153,12 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo">
+  <div class="app-logo" data-i18n="str_1261">
     <span class="logo-shield">🛡️</span>
     <span>Rinda</span>&nbsp;Initiative
   </div>
   <div class="header-right">
-    <div class="lang-toggle">
+    <div class="lang-toggle" data-i18n="str_1262">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -169,18 +167,18 @@
 </header>
 
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1263">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1264"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1265">Font Size</span><div class="font-size-controls" data-i18n="str_1266"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <main class="app-main" role="main">
 
   <!-- Hero -->
   <div class="impact-hero">
-    <div class="live-badge"><span class="live-dot"></span> Live Impact Data</div>
-    <h1 style="font-size:1.8rem;font-weight:900;margin-bottom:.25rem">Impact Dashboard</h1>
-    <p style="color:var(--text-secondary);font-size:.9rem">Real-time metrics — Year 1 pilot across Kigali, Southern, &amp; Eastern provinces.</p>
+    <div class="live-badge" data-i18n="str_1267"><span class="live-dot"></span> Live Impact Data</div>
+    <h1 style="font-size:1.8rem;font-weight:900;margin-bottom:.25rem" data-i18n="str_1268">Impact Dashboard</h1>
+    <p style="color:var(--text-secondary);font-size:.9rem" data-i18n="str_1269">Real-time metrics — Year 1 pilot across Kigali, Southern, &amp; Eastern provinces.</p>
   </div>
 
   <!-- Top Stats -->
@@ -188,63 +186,63 @@
     <div class="stat-card blue fade-in">
       <div class="s-icon">🔬</div>
       <div class="s-num" id="counter-tested">0</div>
-      <div class="s-label">Youth 15–24 tested for the first time</div>
-      <div class="s-trend">▲ +234 this week</div>
+      <div class="s-label" data-i18n="str_1270">Youth 15–24 tested for the first time</div>
+      <div class="s-trend" data-i18n="str_1271">▲ +234 this week</div>
       <div class="sparkline" id="sparkline-1"></div>
     </div>
     <div class="stat-card green fade-in" style="transition-delay:.1s">
       <div class="s-icon">📖</div>
       <div class="s-num" id="counter-modules">0</div>
-      <div class="s-label">Learning quizzes completed</div>
-      <div class="s-trend">▲ +89 this week</div>
+      <div class="s-label" data-i18n="str_1272">Learning quizzes completed</div>
+      <div class="s-trend" data-i18n="str_1273">▲ +89 this week</div>
     </div>
     <div class="stat-card gold fade-in" style="transition-delay:.2s">
       <div class="s-icon">📟</div>
       <div class="s-num" id="counter-ussd">0</div>
-      <div class="s-label">USSD users without smartphones</div>
-      <div class="s-trend">▲ +47 this week</div>
+      <div class="s-label" data-i18n="str_1274">USSD users without smartphones</div>
+      <div class="s-trend" data-i18n="str_1275">▲ +47 this week</div>
     </div>
     <div class="stat-card red fade-in" style="transition-delay:.3s">
       <div class="s-icon">♿</div>
       <div class="s-num" id="counter-pwd">0</div>
-      <div class="s-label">Persons with disabilities served</div>
-      <div class="s-trend">▲ +12 this week</div>
+      <div class="s-label" data-i18n="str_1276">Persons with disabilities served</div>
+      <div class="s-trend" data-i18n="str_1277">▲ +12 this week</div>
     </div>
     <div class="stat-card green stat-wide fade-in" style="transition-delay:.4s">
       <div class="s-icon">📦</div>
       <div class="s-num" id="counter-kits">0</div>
-      <div class="s-label">Self-test kits delivered anonymously — zero stigma encounters reported</div>
-      <div class="s-trend">▲ +61 kits this week · Average delivery: 31 hours</div>
+      <div class="s-label" data-i18n="str_1278">Self-test kits delivered anonymously — zero stigma encounters reported</div>
+      <div class="s-trend" data-i18n="str_1279">▲ +61 kits this week · Average delivery: 31 hours</div>
     </div>
   </div>
 
   <!-- Progress to Year-1 Targets -->
   <div class="gauge-section">
-    <h3>🎯 Progress to Year-1 Targets</h3>
+    <h3 data-i18n="str_1280">🎯 Progress to Year-1 Targets</h3>
     <div class="gauge-list">
       <div class="gauge-row fade-in">
-        <div class="gauge-row-top">
+        <div class="gauge-row-top" data-i18n="str_1281">
           <span class="gauge-label">Youth 15–24 tested (first time)</span>
           <span class="gauge-vals"><strong id="gauge-val-1">3,847</strong> / 5,000</span>
         </div>
         <div class="gauge-track"><div class="gauge-fill" id="gauge-fill-1" style="width:0%;background:linear-gradient(90deg,var(--blue),#33c1f5)"></div></div>
       </div>
       <div class="gauge-row fade-in" style="transition-delay:.1s">
-        <div class="gauge-row-top">
+        <div class="gauge-row-top" data-i18n="str_1282">
           <span class="gauge-label">Users completing all learning quizzes</span>
           <span class="gauge-vals"><strong id="gauge-val-2">1,924</strong> / 3,000</span>
         </div>
         <div class="gauge-track"><div class="gauge-fill" id="gauge-fill-2" style="width:0%;background:linear-gradient(90deg,var(--gold),#1DB954)"></div></div>
       </div>
       <div class="gauge-row fade-in" style="transition-delay:.2s">
-        <div class="gauge-row-top">
+        <div class="gauge-row-top" data-i18n="str_1283">
           <span class="gauge-label">USSD users without smartphones reached</span>
           <span class="gauge-vals"><strong id="gauge-val-3">1,289</strong> / 2,500</span>
         </div>
         <div class="gauge-track"><div class="gauge-fill" id="gauge-fill-3" style="width:0%;background:linear-gradient(90deg,var(--green-dark),var(--blue))"></div></div>
       </div>
       <div class="gauge-row fade-in" style="transition-delay:.3s">
-        <div class="gauge-row-top">
+        <div class="gauge-row-top" data-i18n="str_1284">
           <span class="gauge-label">Persons with disabilities served</span>
           <span class="gauge-vals"><strong id="gauge-val-4">412</strong> / 800</span>
         </div>
@@ -255,30 +253,30 @@
 
   <!-- District Breakdown -->
   <div class="district-section">
-    <h3>📍 Reach by District</h3>
+    <h3 data-i18n="str_1285">📍 Reach by District</h3>
     <div class="district-grid">
       <div class="district-card fade-in">
-        <div class="district-name">Kigali</div>
+        <div class="district-name" data-i18n="str_1286">Kigali</div>
         <div class="district-num" style="color:var(--blue)">1,247</div>
       </div>
       <div class="district-card fade-in" style="transition-delay:.05s">
-        <div class="district-name">Huye</div>
+        <div class="district-name" data-i18n="str_1287">Huye</div>
         <div class="district-num" style="color:var(--green)">892</div>
       </div>
       <div class="district-card fade-in" style="transition-delay:.1s">
-        <div class="district-name">Musanze</div>
+        <div class="district-name" data-i18n="str_1288">Musanze</div>
         <div class="district-num" style="color:var(--gold)">634</div>
       </div>
       <div class="district-card fade-in" style="transition-delay:.15s">
-        <div class="district-name">Rubavu</div>
+        <div class="district-name" data-i18n="str_1289">Rubavu</div>
         <div class="district-num" style="color:var(--red)">488</div>
       </div>
       <div class="district-card fade-in" style="transition-delay:.2s">
-        <div class="district-name">Rwamagana</div>
+        <div class="district-name" data-i18n="str_1290">Rwamagana</div>
         <div class="district-num" style="color:var(--blue)">371</div>
       </div>
       <div class="district-card fade-in" style="transition-delay:.25s">
-        <div class="district-name">Other</div>
+        <div class="district-name" data-i18n="str_1291">Other</div>
         <div class="district-num" style="color:var(--text-secondary)">215</div>
       </div>
     </div>
@@ -286,16 +284,16 @@
 
   <!-- Live Activity Feed -->
   <div class="activity-section">
-    <h3>⚡ Live Activity Feed</h3>
-    <div class="activity-feed" id="activity-feed">
+    <h3 data-i18n="str_1292">⚡ Live Activity Feed</h3>
+    <div class="activity-feed" id="activity-feed" data-i18n="str_1293">
       <!-- Populated by JS -->
     </div>
   </div>
 
   <!-- Data Note -->
   <div style="padding:0 1.5rem 2rem;text-align:center">
-    <p style="font-size:.75rem;color:var(--text-muted);line-height:1.7">
-      📊 Impact data collected anonymously. No personally identifiable information is stored.<br/>
+    <p style="font-size:.75rem;color:var(--text-muted);line-height:1.7" data-i18n="str_1294">
+      📊 Impact data collected anonymously. No personally identifiable information is stored.<br>
       All targets derived from Rwanda 2025 DHS statistical gaps. Data refreshes every 5 minutes.
     </p>
   </div>
@@ -303,13 +301,15 @@
 </main>
 
 <nav class="bottom-nav">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1295"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1296"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1297"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1298"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1299"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
   /* ── Animated Counters ── */
@@ -418,5 +418,6 @@
     }, 8000);
   });
 </script>
-</body>
-</html>
+
+
+</body></html>

@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Rinda — Menstrual Health Tracker</title>
-  <meta name="description" content="Track your menstrual cycle, predict your next 3 months, log symptoms, and find affordable reusable pads in Rwanda."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"/>
-  <link rel="stylesheet" href="../assets/css/app.css"/>
+  <meta name="description" content="Track your menstrual cycle, predict your next 3 months, log symptoms, and find affordable reusable pads in Rwanda.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <style>
     /* ── Tabs ── */
     .m-tabs { display:flex; gap:.5rem; padding:0 1.5rem 1rem; overflow-x:auto; scrollbar-width:none; border-bottom:1px solid var(--glass-border); margin-bottom:1rem; }
@@ -144,9 +142,9 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Health</div>
+  <div class="app-logo" data-i18n="str_1479"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Health</div>
   <div class="header-right">
-    <div class="lang-toggle" role="group" aria-label="Language switcher">
+    <div class="lang-toggle" role="group" aria-label="Language switcher" data-i18n="str_1480">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="kin">KIN</button>
     </div>
@@ -156,22 +154,22 @@
 </header>
 
 <div class="access-panel" id="access-panel">
-  <h4>♿ Accessibility</h4>
-  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"/><span class="toggle-slider"></span></label></div>
-  <div class="access-row"><span>Font Size</span><div class="font-size-controls"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
+  <h4 data-i18n="str_1481">♿ Accessibility</h4>
+  <div class="access-row" data-i18n="str_1482"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <div class="access-row"><span data-i18n="str_1483">Font Size</span><div class="font-size-controls" data-i18n="str_1484"><button class="font-sz-btn" onclick="setFontSize(fontSize-2)">A-</button><button class="font-sz-btn" onclick="setFontSize(fontSize+2)">A+</button></div></div>
 </div>
 
 <main class="app-main" role="main">
   <div class="page-header">
-    <div class="section-badge" style="background:rgba(255,71,87,.15);color:var(--red);border-color:rgba(255,71,87,.3)">🩸 Menstrual Tracker</div>
-    <h1>Cycle & Care</h1>
-    <p>Track your period, predict your next 3 months, and manage your health.</p>
+    <div class="section-badge" style="background:rgba(255,71,87,.15);color:var(--red);border-color:rgba(255,71,87,.3)" data-i18n="str_1485">🩸 Menstrual Tracker</div>
+    <h1 data-i18n="str_1486">Cycle &amp; Care</h1>
+    <p data-i18n="str_1487">Track your period, predict your next 3 months, and manage your health.</p>
   </div>
 
-  <div class="m-tabs" role="tablist">
+  <div class="m-tabs" role="tablist" data-i18n="str_1488">
     <button class="m-tab active" onclick="switchTab('tracker',this)" role="tab">📅 Tracker</button>
-    <button class="m-tab" onclick="switchTab('symptoms',this)" role="tab">🩺 Symptoms</button>
-    <button class="m-tab" onclick="switchTab('pads',this)" role="tab">♻️ Pads & Hygiene</button>
+    <button class="m-tab" onclick="switchTab('symptoms',this)" role="tab">🩺 Symptoms &amp; Management</button>
+    <button class="m-tab" onclick="switchTab('pads',this)" role="tab">♻️ Pads &amp; Hygiene</button>
   </div>
 
   <!-- ═══════ TRACKER PANEL ═══════ -->
@@ -179,28 +177,28 @@
 
     <!-- Setup Card -->
     <div class="setup-card fade-in" id="setup-card">
-      <h3>🌸 Set Up Your Tracker</h3>
-      <p>Enter your period details to predict your next 3 months. All data stays on your device — 100% private.</p>
+      <h3 data-i18n="str_1489">🌸 Set Up Your Tracker</h3>
+      <p data-i18n="str_1490">Enter your period details to predict your next 3 months. All data stays on your device — 100% private.</p>
 
       <div class="input-row">
-        <div class="input-col" style="grid-column:1/-1">
+        <div class="input-col" style="grid-column:1/-1" data-i18n="str_1491">
           <label for="inp-last-period">Last Period Started</label>
-          <input type="date" class="date-input" id="inp-last-period"/>
+          <input type="date" class="date-input" id="inp-last-period">
         </div>
       </div>
 
       <div class="input-row">
         <div class="input-col">
-          <label>Cycle Length (days)</label>
-          <div class="stepper">
+          <label data-i18n="str_1492">Cycle Length (days)</label>
+          <div class="stepper" data-i18n="str_1493">
             <button class="stepper-btn" onclick="step('cycle',-1)" aria-label="Decrease">−</button>
             <span class="stepper-val" id="cycle-val">28</span>
             <button class="stepper-btn" onclick="step('cycle',1)" aria-label="Increase">+</button>
           </div>
         </div>
         <div class="input-col">
-          <label>Period Duration (days)</label>
-          <div class="stepper">
+          <label data-i18n="str_1494">Period Duration (days)</label>
+          <div class="stepper" data-i18n="str_1495">
             <button class="stepper-btn" onclick="step('dur',-1)" aria-label="Decrease">−</button>
             <span class="stepper-val" id="dur-val">5</span>
             <button class="stepper-btn" onclick="step('dur',1)" aria-label="Increase">+</button>
@@ -208,7 +206,7 @@
         </div>
       </div>
 
-      <button class="btn-track" onclick="trackNow()">🔍 Track Now</button>
+      <button class="btn-track" onclick="trackNow()" data-i18n="str_1496">🔍 Track Now</button>
     </div>
 
     <!-- Results Dashboard -->
@@ -218,32 +216,32 @@
       <div class="cycle-stats fade-in">
         <div class="cs-chip">
           <div class="cs-num" id="stat-cycle-day" style="color:var(--red)">—</div>
-          <div class="cs-label">Cycle Day</div>
+          <div class="cs-label" data-i18n="str_1497">Cycle Day</div>
         </div>
         <div class="cs-chip">
           <div class="cs-num" id="stat-days-left" style="color:var(--blue)">—</div>
-          <div class="cs-label">Days Until Period</div>
+          <div class="cs-label" data-i18n="str_1498">Days Until Period</div>
         </div>
         <div class="cs-chip">
           <div class="cs-num" id="stat-phase" style="color:var(--gold); font-size:.85rem">—</div>
-          <div class="cs-label">Current Phase</div>
+          <div class="cs-label" data-i18n="str_1499">Current Phase</div>
         </div>
       </div>
 
       <!-- Log + Edit buttons -->
-      <div class="btn-log-row fade-in">
+      <div class="btn-log-row fade-in" data-i18n="str_1500">
         <button class="btn-log" id="btn-log-period" onclick="logPeriodToday()">🩸 Log Period Today</button>
         <button class="btn-edit" onclick="showSetup()">⚙️ Edit</button>
       </div>
 
       <!-- 3-Month Calendar Grid -->
-      <div class="section-h">📅 3-Month Overview</div>
-      <div class="three-month-view fade-in" id="three-month-view">
+      <div class="section-h" data-i18n="str_1501">📅 3-Month Overview</div>
+      <div class="three-month-view fade-in" id="three-month-view" data-i18n="str_1502">
         <!-- Populated by JS -->
       </div>
 
       <!-- Pagination -->
-      <div class="cal-pagination fade-in">
+      <div class="cal-pagination fade-in" data-i18n="str_1503">
         <button class="pg-btn" onclick="shiftMonths(-3)">← Previous 3 Months</button>
         <button class="pg-btn" onclick="shiftMonths(3)">Next 3 Months →</button>
       </div>
@@ -260,41 +258,41 @@
       <!-- iCal Export -->
       <div class="export-row fade-in">
         <span style="font-size:1.5rem">📆</span>
-        <p><strong>Sync to your calendar</strong><br/>Download predictions as an .ics file for Google Calendar, iPhone, or Outlook.</p>
-        <button class="export-btn" onclick="exportIcal()">Export</button>
+        <p data-i18n="str_1504"><strong>Sync to your calendar</strong><br>Download predictions as an .ics file for Google Calendar, iPhone, or Outlook.</p>
+        <button class="export-btn" onclick="exportIcal()" data-i18n="str_1505">Export</button>
       </div>
 
       <!-- Period History -->
-      <div class="section-h">📋 Period History</div>
+      <div class="section-h" data-i18n="str_1506">📋 Period History</div>
       <div class="history-list fade-in" id="history-list"></div>
 
-      <p class="disclaimer">⚠️ Cycle predictions are estimates based on your data. Actual periods may vary by several days. This tool is not a substitute for medical advice. If you notice significant irregularities, please visit a health centre.</p>
+      <p class="disclaimer" data-i18n="str_1507">⚠️ Cycle predictions are estimates based on your data. Actual periods may vary by several days. This tool is not a substitute for medical advice. If you notice significant irregularities, please visit a health centre.</p>
     </div>
   </div>
 
   <!-- ═══════ SYMPTOMS PANEL ═══════ -->
   <div class="m-panel" id="panel-symptoms">
-    <h3 style="font-size:1rem;font-weight:800;margin-bottom:.25rem">How are you feeling today?</h3>
-    <p style="font-size:.85rem;color:var(--text-muted)">Tap symptoms to log them and get personalised health tips.</p>
+    <h3 style="font-size:1rem;font-weight:800;margin-bottom:.25rem" data-i18n="str_1508">How are you feeling today?</h3>
+    <p style="font-size:.85rem;color:var(--text-muted)" data-i18n="str_1509">Tap symptoms to log them and get personalised health tips.</p>
 
     <div class="symp-grid fade-in">
-      <div class="symp-btn" onclick="toggleSymptom(this,'cramps')"><div class="symp-icon">😖</div><div class="symp-label">Cramps</div></div>
-      <div class="symp-btn" onclick="toggleSymptom(this,'headache')"><div class="symp-icon">🤕</div><div class="symp-label">Headache</div></div>
-      <div class="symp-btn" onclick="toggleSymptom(this,'fatigue')"><div class="symp-icon">😪</div><div class="symp-label">Fatigue</div></div>
-      <div class="symp-btn" onclick="toggleSymptom(this,'mood')"><div class="symp-icon">😢</div><div class="symp-label">Mood Swings</div></div>
-      <div class="symp-btn" onclick="toggleSymptom(this,'cravings')"><div class="symp-icon">🍫</div><div class="symp-label">Cravings</div></div>
-      <div class="symp-btn" onclick="toggleSymptom(this,'heavy')"><div class="symp-icon">🩸</div><div class="symp-label">Heavy Flow</div></div>
-      <div class="symp-btn" onclick="toggleSymptom(this,'backpain')"><div class="symp-icon">🦴</div><div class="symp-label">Back Pain</div></div>
-      <div class="symp-btn" onclick="toggleSymptom(this,'bloating')"><div class="symp-icon">🫧</div><div class="symp-label">Bloating</div></div>
-      <div class="symp-btn" onclick="toggleSymptom(this,'acne')"><div class="symp-icon">😰</div><div class="symp-label">Skin/Acne</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'cramps')"><div class="symp-icon">😖</div><div class="symp-label" data-i18n="str_1510">Cramps</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'headache')"><div class="symp-icon">🤕</div><div class="symp-label" data-i18n="str_1511">Headache</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'fatigue')"><div class="symp-icon">😪</div><div class="symp-label" data-i18n="str_1512">Fatigue</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'mood')"><div class="symp-icon">😢</div><div class="symp-label" data-i18n="str_1513">Mood Swings</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'cravings')"><div class="symp-icon">🍫</div><div class="symp-label" data-i18n="str_1514">Cravings</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'heavy')"><div class="symp-icon">🩸</div><div class="symp-label" data-i18n="str_1515">Heavy Flow</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'backpain')"><div class="symp-icon">🦴</div><div class="symp-label" data-i18n="str_1516">Back Pain</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'bloating')"><div class="symp-icon">🫧</div><div class="symp-label" data-i18n="str_1517">Bloating</div></div>
+      <div class="symp-btn" onclick="toggleSymptom(this,'acne')"><div class="symp-icon">😰</div><div class="symp-label" data-i18n="str_1518">Skin/Acne</div></div>
     </div>
 
     <div class="tip-box" id="tip-box">
-      <h4 style="color:var(--gold);font-size:.9rem;font-weight:700;margin-bottom:.25rem" id="tip-title">💡 Health Tip</h4>
+      <h4 style="color:var(--gold);font-size:.9rem;font-weight:700;margin-bottom:.25rem" id="tip-title" data-i18n="str_1519">💡 Health Tip</h4>
       <p style="font-size:.8rem;color:var(--text-secondary);line-height:1.6" id="tip-text"></p>
     </div>
 
-    <button style="width:100%;padding:1rem;background:var(--red);color:#fff;border:none;border-radius:var(--radius-xl);font-weight:800;font-family:'Outfit',sans-serif;cursor:pointer;box-shadow:0 8px 25px rgba(255,71,87,.3);transition:var(--transition);font-size:.95rem;margin-top:1.5rem" onclick="saveSymptoms()">
+    <button style="width:100%;padding:1rem;background:var(--red);color:#fff;border:none;border-radius:var(--radius-xl);font-weight:800;font-family:'Outfit',sans-serif;cursor:pointer;box-shadow:0 8px 25px rgba(255,71,87,.3);transition:var(--transition);font-size:.95rem;margin-top:1.5rem" onclick="saveSymptoms()" data-i18n="str_1520">
       💾 Save Today's Symptoms
     </button>
   </div>
@@ -302,16 +300,16 @@
   <!-- ═══════ PADS & HYGIENE PANEL ═══════ -->
   <div class="m-panel" id="panel-pads">
     <div class="pad-card fade-in">
-      <h4>📦 Order Free Reusable Pads</h4>
-      <p>Locate the nearest youth center distributing free reusable pads, or order them to be delivered quietly.</p>
-      <button style="padding:.6rem 1rem;background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);font-weight:700;cursor:pointer" onclick="openPadModal()">Find Distributor</button>
+      <h4 data-i18n="str_1521">📦 Order Free Reusable Pads</h4>
+      <p data-i18n="str_1522">Locate the nearest youth center distributing free reusable pads, or order them to be delivered quietly.</p>
+      <button style="padding:.6rem 1rem;background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);font-weight:700;cursor:pointer" onclick="openPadModal()" data-i18n="str_1523">Find Distributor</button>
     </div>
 
-    <h3 style="font-size:1rem;font-weight:800;margin:1.5rem 0 1rem" class="fade-in">🧼 Hygiene & Washing Guide</h3>
-    <div class="hygiene-step fade-in"><div class="h-num">1</div><div class="h-text"><strong>Soak in cold water:</strong> Always soak your reusable pad in cold water first. Hot water sets blood stains.</div></div>
-    <div class="hygiene-step fade-in"><div class="h-num">2</div><div class="h-text"><strong>Wash with soap:</strong> Use regular body soap or washing soap. Gently rub the fabric together until clean.</div></div>
-    <div class="hygiene-step fade-in"><div class="h-num">3</div><div class="h-text"><strong>Dry in direct sunlight:</strong> This is critical. Direct sunlight kills bacteria. Do not dry in damp, hidden areas.</div></div>
-    <div class="hygiene-step fade-in"><div class="h-num">4</div><div class="h-text"><strong>Store safely:</strong> Keep in a clean, dry bag ready for next month.</div></div>
+    <h3 style="font-size:1rem;font-weight:800;margin:1.5rem 0 1rem" class="fade-in" data-i18n="str_1524">🧼 Hygiene &amp; Washing Guide</h3>
+    <div class="hygiene-step fade-in"><div class="h-num">1</div><div class="h-text" data-i18n="str_1525"><strong>Soak in cold water:</strong> Always soak your reusable pad in cold water first. Hot water sets blood stains.</div></div>
+    <div class="hygiene-step fade-in"><div class="h-num">2</div><div class="h-text" data-i18n="str_1526"><strong>Wash with soap:</strong> Use regular body soap or washing soap. Gently rub the fabric together until clean.</div></div>
+    <div class="hygiene-step fade-in"><div class="h-num">3</div><div class="h-text" data-i18n="str_1527"><strong>Dry in direct sunlight:</strong> This is critical. Direct sunlight kills bacteria. Do not dry in damp, hidden areas.</div></div>
+    <div class="hygiene-step fade-in"><div class="h-num">4</div><div class="h-text" data-i18n="str_1528"><strong>Store safely:</strong> Keep in a clean, dry bag ready for next month.</div></div>
   </div>
 
 </main>
@@ -320,28 +318,30 @@
 <div class="app-modal" id="pad-modal">
   <div class="app-modal-content">
     <button class="app-modal-close" onclick="closePadModal()">✕</button>
-    <div class="app-modal-title">Pad Order</div>
-    <div class="app-modal-desc">Select your district to find the nearest free distribution zone or place an anonymous order.</div>
-    <label style="display:block;font-size:.85rem;margin-bottom:.4rem;color:var(--text-primary)">District</label>
+    <div class="app-modal-title" data-i18n="str_1529">Pad Order</div>
+    <div class="app-modal-desc" data-i18n="str_1530">Select your district to find the nearest free distribution zone or place an anonymous order.</div>
+    <label style="display:block;font-size:.85rem;margin-bottom:.4rem;color:var(--text-primary)" data-i18n="str_1531">District</label>
     <select style="width:100%;padding:.75rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);background:var(--bg-deep);color:var(--text-primary);margin-bottom:1rem;outline:none">
-      <option>Kigali - Gasabo</option><option>Kigali - Kicukiro</option><option>Kigali - Nyarugenge</option><option>Eastern Province</option><option>Southern Province</option><option>Western Province</option><option>Northern Province</option>
+      <option data-i18n="str_1532">Kigali - Gasabo</option><option data-i18n="str_1533">Kigali - Kicukiro</option><option data-i18n="str_1534">Kigali - Nyarugenge</option><option data-i18n="str_1535">Eastern Province</option><option data-i18n="str_1536">Southern Province</option><option data-i18n="str_1537">Western Province</option><option data-i18n="str_1538">Northern Province</option>
     </select>
-    <label style="display:block;font-size:.85rem;margin-bottom:.4rem;color:var(--text-primary)">Age Range</label>
+    <label style="display:block;font-size:.85rem;margin-bottom:.4rem;color:var(--text-primary)" data-i18n="str_1539">Age Range</label>
     <select style="width:100%;padding:.75rem;border-radius:var(--radius-md);border:1px solid var(--glass-border);background:var(--bg-deep);color:var(--text-primary);margin-bottom:1rem;outline:none">
-      <option>Under 15</option><option>15 - 19</option><option>20 - 24</option><option>Over 24</option>
+      <option data-i18n="str_1540">Under 15</option><option>15 - 19</option><option>20 - 24</option><option data-i18n="str_1541">Over 24</option>
     </select>
-    <button style="width:100%;padding:.8rem;border-radius:var(--radius-md);background:var(--green);border:none;color:#fff;font-weight:700;cursor:pointer;font-size:.9rem" onclick="confirmPadOrder()">Confirm Request</button>
+    <button style="width:100%;padding:.8rem;border-radius:var(--radius-md);background:var(--green);border:none;color:#fff;font-weight:700;cursor:pointer;font-size:.9rem" onclick="confirmPadOrder()" data-i18n="str_1542">Confirm Request</button>
   </div>
 </div>
 
 <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
-  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item active" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1543"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1544"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item active" id="nav-menstrual" data-i18n="str_1545"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1546"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1547"><span class="nav-icon">📚</span>Hub</a>
 </nav>
 
+<script src="../locales/en.js"></script>
+<script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════
@@ -775,5 +775,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }
 });
 </script>
-</body>
-</html>
+
+
+</body></html>
