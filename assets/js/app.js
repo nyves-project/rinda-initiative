@@ -72,7 +72,7 @@ const translations = {
     platformModules:"Gahunda z'Urubuga",
     module1:"Gutumiza Igikoresho cyo Kwipima",
     module2:"Kwiga: Gukumira Virusi itera SIDA",
-    module3:"Igerageza rya USSD",
+    module3:"Igerageza rya akanyenyeri",
     module4:"Ubumenyi",
     m1desc:"Tumiza igikoresho cyo kwipima Virusi itera SIDA. Kigezwa iwanyu mu ibanga.",
     m2desc:"Inkuru z'ukuri, amabwiriza, no kwiga ibijyanye n'agakingirizo.",
