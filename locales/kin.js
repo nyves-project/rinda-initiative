@@ -518,7 +518,7 @@ window.I18N_KIN = {
   "str_1482": "<span>Kugaragaza neza inyandiko</span><label class=\"toggle-switch\"><input type=\"checkbox\" onchange=\"toggleContrast(this.checked)\"><span class=\"toggle-slider\"></span></label>",
   "str_1483": "Ingano y'inyandiko",
   "str_1484": "<button class=\"font-sz-btn\" onclick=\"setFontSize(fontSize-2)\">A-</button><button class=\"font-sz-btn\" onclick=\"setFontSize(fontSize+2)\">A+</button>",
-  "str_1485": "🩸 Iyandikishe ry'Ubuzima bw'ukwezi k'umugore",
+  "str_1485": "Gukurikirana igihe kimihango",
   "str_1486": "Igihe cy'Imihango &amp; Kwitaho",
   "str_1487": "Kurikirana imihango yawe, menya igihe izazira mu mezi 3 ari imbere, kandi ucunge ubuzima bwawe.",
   "str_1488": "<button class=\"m-tab active\" onclick=\"switchTab('tracker',this)\" role=\"tab\">📅 Iyandikishe</button>\n    <button class=\"m-tab\" onclick=\"switchTab('symptoms',this)\" role=\"tab\">🩺 Ibimenyetso &amp; Uko Wabyitwaramo</button>\n    <button class=\"m-tab\" onclick=\"switchTab('pads',this)\" role=\"tab\">♻️ Isuku</button>",
