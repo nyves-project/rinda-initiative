@@ -87,8 +87,8 @@ const translations = {
     explore:"Shakisha →",
     /* Reminder */
     reminderTitle:"Igihe cyo Kwipima",
-    setReminder:"Shyiraho Urukurikirane rwo Kwipima",
-    reminderDesc:"Amabwiriza ya Rwanda: ipimishe buri mezi 3–6 niba uri mu mibanire.",
+    setReminder:"Kwibutsa",
+    reminderDesc:"Amabwiriza ya Rwanda: ipimishe buri mezi 3–6 niba ukora imibonano mpuzabitsina.",
     /* Extra modules */
     quizTitle:"Gupima Ibyago",
     quizDesc:"Ibibazo 5 → urwego rw'ibyago byawe",
