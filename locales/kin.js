@@ -449,7 +449,7 @@ window.I18N_KIN = {
   "str_1413": "📁 Ibikoresho by'Ubuzima",
   "str_1414": "ISOMERO",
   "str_1415": "Kuramo amabwiriza yemewe y'ubuzima, ibitabo, n'imfashanyigisho byemejwe n'Ikigo cy'Igihugu Gishinzwe Ubuzima (RBC) na Minisiteri y'Ubuzima.",
-  "str_1416": "<button class=\"filter-chip active\" data-tag=\"all\" onclick=\"filterDocs('all',this)\">Inyandiko Zose</button>\n    <button class=\"filter-chip\" data-tag=\"fp\" onclick=\"filterDocs('fp',this)\">Kuboneza Urubyaro</button>\n    <button class=\"filter-chip\" data-tag=\"hiv\" onclick=\"filterDocs('hiv',this)\">Gukumira SIDA</button>\n    <button class=\"filter-chip\" data-tag=\"peer\" onclick=\"filterDocs('peer',this)\">Inyigisho z'Urubiruko</button>",
+  "str_1416": "<button class=\"filter-chip active\" data-tag=\"all\" onclick=\"filterDocs('all',this)\">Inyandiko Zose</button>\n    <button class=\"filter-chip\" data-tag=\"fp\" onclick=\"filterDocs('fp',this)\">Kuboneza Urubyaro</button>\n    <button class=\"filter-chip\" data-tag=\"hiv\" onclick=\"filterDocs('hiv',this)\">Gukumira SIDA</button>\n    <button class=\"filter-chip\" data-tag=\"peer\" onclick=\"filterDocs('peer',this)\">Inyigisho z'Urubyiruko</button>",
   "str_1417": "Agaciro Kanjye Agatabo Kagenewe Urubyiruko Rufite Imyaka Hagati Ya 15 Na 24",
   "str_1418": "<span class=\"d-badge\" style=\"background:var(--bg-deep);color:var(--text-secondary)\">PDF</span>\n          <span class=\"d-badge\" style=\"background:var(--bg-deep);color:var(--text-secondary)\">7.4 MB</span>",
   "str_1419": "Comprehensive Sexuality Education Sexuality Education And Youth Friendly Health Services In Rwanda",
