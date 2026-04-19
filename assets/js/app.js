@@ -106,7 +106,7 @@ const translations = {
     learnTitle:"Kwiga Gukumira Virusi itera SIDA",
     learnSubtitle:"Inkuru z'ukuri. Amabwiriza y'ingenzi. Ibyo ukeneye byose kugira ngo wirinde.",
     /* Knowledge Hub */
-    hubTitle:"Ubumenyi ku Bijyanye na Virusi itera SIDA",
+    hubTitle:"Ubumenyi ku Bijyanye na Virusi itera SIDA no Kuboneza Urubyaro",
     hubSubtitle:"Ibyo ukeneye kumenya byose: ibintu by'ibanze, ibinyoma, gukumira, kuvura, n'uburenganzira bwawe.",
     /* New Modules */
     clinicTitle:"Amavuriro n'Ukwitaho",
