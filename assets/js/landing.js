@@ -1,4 +1,4 @@
-/* Rinda Initiative — Landing Page JS */
+/* RINDA — Landing Page JS */
 
 /* ── Particle Canvas ── */
 (function(){

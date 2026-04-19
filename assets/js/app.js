@@ -581,7 +581,7 @@ function openShareModal(title, text, url){
     document.body.appendChild(modal);
   }
   const shareUrl = url || window.location.href;
-  const shareText = text || 'Check out the RINDA Initiative — HIV prevention platform for Rwanda\'s youth.';
+  const shareText = text || 'Check out RINDA — HIV prevention platform for Rwanda\'s youth.';
   document.getElementById('smc-title').textContent = title || 'Share RINDA';
   document.getElementById('smc-desc').textContent = shareText;
   document.getElementById('smc-wa').href = 'https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + shareUrl);
