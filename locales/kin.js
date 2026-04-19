@@ -972,7 +972,7 @@ window.I18N_KIN = {
   "str_1934": "<button class=\"font-sz-btn\" onclick=\"setFontSize(fontSize-2)\">A-</button><button class=\"font-sz-btn\" onclick=\"setFontSize(fontSize+2)\">A+</button>",
   "str_1935": "❓ IBIBAZO BY'IBANGA",
   "str_1936": "Ikizamini cyo Gusuzuma kubijyanye na Virusi itera SIDA",
-  "str_1937": "Ibibazo 5 by'ingenzi",
+  "str_1937": "Ibibazo 5",
   "str_1938": "Ikibazo cya 1 kuri 5",
   "str_1939": "Wigeze wipimishe Virusi itera SIDA ryari?",
   "str_1940": "Ibi bitugira uko dusobanukirwa n'aho ugeze mu kwipima.",
