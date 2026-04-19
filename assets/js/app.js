@@ -348,6 +348,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   // Inject TTS button into Knowledge Hub cards
   document.querySelectorAll('.knowledge-card').forEach(card => {
+    if(currentLang === 'kin') return; // Skip TTS for Kinyarwanda
     if(card.querySelector('.tts-reader-btn')) return;
     const extractTitle = card.querySelector('h4')?.textContent || '';
     const extractText = card.querySelector('p:not(.k-lang-badge)')?.textContent || card.textContent || '';
@@ -361,6 +362,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   // Inject TTS button into Learn Modular Scenarios
   document.querySelectorAll('.scenario-card').forEach(card => {
+    if(currentLang === 'kin') return; // Skip TTS for Kinyarwanda
     if(card.querySelector('.tts-reader-btn')) return;
     const title = card.querySelector('h4')?.textContent || '';
     const textBoxes = card.querySelectorAll('.dialogue-box');
