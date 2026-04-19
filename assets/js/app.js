@@ -68,7 +68,7 @@ const translations = {
   kin:{
     /* Dashboard — Verified Kinyarwanda (RBC / MoH Rwanda) */
     welcome:"Murakaza neza kuri Rinda",
-    subtitle:"Umurinzi wawe w'ubuzima bwa Virusi itera SIDA",
+    subtitle:"Umurinzi wawe w'ubuzima bwa Virusi itera SIDA n' ubuzima bwimyororokere nuburyo wabona service",
     platformModules:"Gahunda z'Urubuga",
     module1:"Gutumiza Igikoresho cyo Kwipima",
     module2:"Kwiga: Gukumira Virusi itera SIDA",
@@ -115,7 +115,7 @@ const translations = {
     menstrualDesc:"Kurikirana imihango yawe, gabanya ububabare, kandi ushake ibikoresho by'isuku.",
     communityTitle:"Ibibazo n'Ibisubizo",
     communityDesc:"Baza ibibazo mu ibanga, ubone ibisubizo kuva ku bandi n'abahanga.",
-    rewardsTitle:"Isoko ry'Ibihembo",
+    rewardsTitle:"ibihembo",
     rewardsDesc:"Gura ibikoresho by'isuku cyangwa interineti ukoresheje amanota yawe.",
     libraryTitle:"Isomero",
     libraryDesc:"Ibitabo byemewe bya Minisante na RBC byo kwigisha ubuzima.",
