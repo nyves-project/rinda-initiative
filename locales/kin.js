@@ -561,7 +561,7 @@ window.I18N_KIN = {
   "str_1525": "<strong>Kuyinika mu mazi akonje:</strong> Buri gihe inika cotex yawe mu mazi akonje mbere. Amazi ashyushye atuma amaraso adashiramo.",
   "str_1526": "<strong>Kumesa n'isabune:</strong> Koresha isabune isanzwe y'umubiri cyangwa iy'imyenda. Fura umwenda witonze kugeza usukuye.",
   "str_1527": "<strong>Yimanike ahantu hari izuba ryinshi:</strong> Ibi ni ingenzi cyane. Izuba ryinshi ryica udukoko. Ntuyimanike ahantu hatose cyangwa hatagera izuba.",
-  "str_1528": "<strong>Kubika neza:</strong> Ibike mu gikapu gisukuye kandi cyumutse utegereje ukwezi gutaha.",
+  "str_1528": "<strong>Kuyibika neza:</strong> yibike mu gikapu gisukuye kandi cyumutse utegereje ukwezi gutaha.",
   "str_1529": "Pad Order",
   "str_1530": "Select your district to find the nearest free distribution zone or place an anonymous order.",
   "str_1531": "District",
