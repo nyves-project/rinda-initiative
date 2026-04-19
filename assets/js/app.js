@@ -91,7 +91,7 @@ const translations = {
     reminderDesc:"Amabwiriza ya Rwanda: ipimishe buri mezi 3–6 niba ukora imibonano mpuzabitsina.",
     /* Extra modules */
     quizTitle:"Gusuzuma kubijyanye na Virusi itera SIDA",
-    quizDesc:"Ibibazo 5 → urwego rw'ibyago byawe",
+    quizDesc:"Ibibazo 5",
     impactTitle:"Imibare y'Ingaruka",
     impactDesc:"Imibare y'urubuga mu gihe nyacyo",
     certTitle:"Icyemezo",
