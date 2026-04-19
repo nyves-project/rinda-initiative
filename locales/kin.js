@@ -521,7 +521,7 @@ window.I18N_KIN = {
   "str_1485": "Gukurikirana igihe kimihango",
   "str_1486": "Igihe cy'Imihango &amp; Kwitaho",
   "str_1487": "Kurikirana imihango yawe, menya igihe izazira mu mezi 3 ari imbere, kandi ucunge ubuzima bwawe.",
-  "str_1488": "<button class=\"m-tab active\" onclick=\"switchTab('tracker',this)\" role=\"tab\">📅 Iyandikishe</button>\n    <button class=\"m-tab\" onclick=\"switchTab('symptoms',this)\" role=\"tab\">🩺 Ibimenyetso &amp; Uko Wabyitwaramo</button>\n    <button class=\"m-tab\" onclick=\"switchTab('pads',this)\" role=\"tab\">♻️ Isuku</button>",
+  "str_1488": "<button class=\"m-tab active\" onclick=\"switchTab('tracker',this)\" role=\"tab\">📅 Iyandikishe</button>\n    <button class=\"m-tab\" onclick=\"switchTab('symptoms',this)\" role=\"tab\">🩺 Ibimenyetso &amp; Uko Wabyitwaramo</button>\n    <button class=\"m-tab\" onclick=\"switchTab('pads',this)\" role=\"tab\">♻️ Isuku no gutumiza ibikoresho by'isuku mugihe kimihango</button>",
   "str_1489": "🌸 Shyiraho Igikoresho cyawe",
   "str_1490": "Injiza amakuru y'imihango yawe kugira ngo umenye igihe izazira mu mezi 3. Amakuru yose aguma kuri telefone yawe — ni ibanga 100%.",
   "str_1491": "<label for=\"inp-last-period\">Igihe Imihango ya Nyuma Yatangiye</label>\n          <input type=\"date\" class=\"date-input\" id=\"inp-last-period\">",
