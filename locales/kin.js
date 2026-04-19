@@ -347,7 +347,7 @@ window.I18N_KIN = {
   "module1": "Gutumiza Igikoresho cyo Kwipima",
   "orderSmallDesc": "Tumiza igikoresho cyo kwipima mu mutekano",
   "module3": "Igerageza rya akanyenyeri",
-  "ussdDesc": "Kanda *775# bose batareba",
+  "ussdDesc": "Kanda *775#",
   "budgetTitle": "Gahunda n'Ingengo y'Imari",
   "budgetDesc": "Amezi 6 · Miliyoni 10 RWF",
   "helplineTitle": "Telefone y'Ubuntu ya Rwanda",

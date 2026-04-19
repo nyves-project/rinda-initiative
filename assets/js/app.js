@@ -124,7 +124,7 @@ const translations = {
     booksTitle:"Kwiga k'ubwangavu n'ubugimbi",
     booksDesc:"Ibitabo byihariye ku bwangavu n'ubugimbi",
     orderSmallDesc:"Tumiza igikoresho cyo kwipima mu mutekano",
-    ussdDesc:"Kanda *775# bose batareba",
+    ussdDesc:"Kanda *775#",
     budgetTitle:"Gahunda n'Ingengo y'Imari",
     budgetDesc:"Amezi 6 · Miliyoni 10 RWF",
   }
