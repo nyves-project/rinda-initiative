@@ -335,7 +335,7 @@ window.I18N_KIN = {
   "module4": "Ubumenyi",
   "m4desc": "Ibijyanye na Virusi itera SIDA: ibintu by'ibanze, ibinyoma, gukumira, kuvura, n'uburenganzira.",
   "mentalTitle": "Ubuzima bwo mu Mutwe",
-  "mentalDesc": "Ubufasha bw'ibanga mu bihe bigoranye",
+  "mentalDesc": "Ubufasha bw'ibanga mu rubyiruko ruri mu ubuzima bw'imyororokere guhangayika kumarangamutima hamwe nibibazo",
   "libraryTitle": "Isomero",
   "libraryDesc": "Ibitabo bya Minisante na RBC",
   "booksTitle": "Kwiga k'ubwangavu n'ubugimbi",

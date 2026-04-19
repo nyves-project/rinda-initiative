@@ -120,7 +120,7 @@ const translations = {
     libraryTitle:"Isomero",
     libraryDesc:"Ibitabo byemewe bya Minisante na RBC byo kwigisha ubuzima.",
     mentalTitle:"Ubuzima bwo mu Mutwe",
-    mentalDesc:"Ubufasha bw'ibanga mu bihe bigoranye",
+    mentalDesc:"Ubufasha bw'ibanga mu rubyiruko ruri mu ubuzima bw'imyororokere guhangayika kumarangamutima hamwe nibibazo",
     booksTitle:"Kwiga k'ubwangavu n'ubugimbi",
     booksDesc:"Ibitabo byihariye ku bwangavu n'ubugimbi",
     orderSmallDesc:"Tumiza igikoresho cyo kwipima mu mutekano",
