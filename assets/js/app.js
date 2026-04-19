@@ -180,8 +180,52 @@ function setLang(lang){
   document.documentElement.lang = lang === 'kin' ? 'rw' : 'en';
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
+async function authSync() {
+  try {
+    const existingSession = localStorage.getItem('rinda-session-id');
+    const res = await fetch('/api/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId: existingSession })
+    });
+    
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.sessionId) {
+        localStorage.setItem('rinda-session-id', data.sessionId);
+        // Sync points from server
+        if (data.user && typeof data.user.globalPoints !== 'undefined') {
+          globalPoints = data.user.globalPoints;
+          localStorage.setItem('rinda-points', globalPoints);
+          const pDisplay = document.getElementById('global-points-display');
+          if(pDisplay) pDisplay.textContent = globalPoints;
+        }
+        console.log('Backend auth synced. Session:', data.sessionId);
+      }
+    }
+  } catch (err) {
+    console.error('Failed to sync with backend auth. Running in offline mode.', err);
+  }
+}
+
+async function trackEvent(eventName, data = {}) {
+  try {
+    const sessionId = localStorage.getItem('rinda-session-id');
+    if (!sessionId) return;
+    await fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId, event: eventName, data })
+    });
+  } catch (err) {
+    // Silent fail for analytics
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
   setLang(currentLang);
+  await authSync();
+  trackEvent('page_view', { path: window.location.pathname });
 });
 
 /* Use event delegation so lang buttons still work even after innerHTML replacement by i18n */
@@ -495,8 +539,31 @@ function answerQuiz(scenarioId, clickedIdx){
     completedScenarios.push(scenarioId);
     localStorage.setItem('rinda-scenarios', JSON.stringify(completedScenarios));
     updateProgress();
-    // Award points for completing a story quiz
-    if(typeof addPoints === 'function') addPoints(15);
+    
+    // Award points securely on backend
+    const sessionId = localStorage.getItem('rinda-session-id');
+    if (sessionId) {
+      fetch('/api/quiz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, points: 15 })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && typeof data.newTotal !== 'undefined') {
+           globalPoints = data.newTotal;
+           localStorage.setItem('rinda-points', globalPoints);
+           const pDisplay = document.getElementById('global-points-display');
+           if(pDisplay) pDisplay.textContent = globalPoints;
+        }
+      })
+      .catch(err => {
+         console.error('Quiz point sync failed. Falling back to local points.', err);
+         if(typeof addPoints === 'function') addPoints(15);
+      });
+    } else {
+       if(typeof addPoints === 'function') addPoints(15);
+    }
   }
 }
 

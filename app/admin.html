@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>RINDA — Admin Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <style>
+    .admin-container { padding: 2rem 1.5rem; }
+    .auth-box { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 2rem; text-align: center; max-width: 400px; margin: 4rem auto; }
+    .auth-box input { width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-bottom: 1rem; }
+    .auth-box button { width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); background: var(--primary); color: #fff; font-weight: 700; border: none; cursor: pointer; }
+    
+    .dashboard-grid { display: none; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; }
+    .stat-val { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
+    .stat-label { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-logo"><span class="logo-shield">🛡️</span><span>RINDA</span>&nbsp;Admin</div>
+</header>
+
+<main class="app-main admin-container" role="main">
+  
+  <div class="auth-box" id="auth-box">
+    <h2 style="margin-bottom:1rem">Admin Access</h2>
+    <input type="password" id="admin-pass" placeholder="Enter Admin Password">
+    <button onclick="loadDashboard()">Login</button>
+  </div>
+
+  <div class="dashboard-grid fade-in" id="dashboard-grid">
+    <div class="stat-card">
+      <div class="stat-val" id="stat-users">0</div>
+      <div class="stat-label">Total Unique Users</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val" id="stat-quizzes">0</div>
+      <div class="stat-label">Quizzes Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val" id="stat-orders">0</div>
+      <div class="stat-label">Rewards Redeemed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val" id="stat-points">0</div>
+      <div class="stat-label">Points Circulating</div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  async function loadDashboard() {
+    const pass = document.getElementById('admin-pass').value;
+    const btn = document.querySelector('.auth-box button');
+    btn.textContent = 'Loading...';
+    
+    try {
+      const res = await fetch('/api/admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ adminSecret: pass })
+      });
+      
+      const data = await res.json();
+      
+      if (res.ok && data.success) {
+        document.getElementById('auth-box').style.display = 'none';
+        document.getElementById('dashboard-grid').style.display = 'grid';
+        
+        document.getElementById('stat-users').textContent = data.metrics.totalUsers;
+        document.getElementById('stat-quizzes').textContent = data.metrics.completedQuizzes;
+        document.getElementById('stat-orders').textContent = data.metrics.totalOrders;
+        document.getElementById('stat-points').textContent = data.metrics.totalPointsDist;
+      } else {
+        alert(data.message || 'Invalid password');
+        btn.textContent = 'Login';
+      }
+    } catch(err) {
+      alert('Network error connecting to backend API.');
+      btn.textContent = 'Login';
+    }
+  }
+</script>
+
+</body>
+</html>

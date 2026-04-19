@@ -1,0 +1,27 @@
+{
+  "name": "rinda-initiative",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rename_books.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nyves-project@github.com/nyves-project/rinda-initiative.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nyves-project/rinda-initiative/issues"
+  },
+  "homepage": "https://github.com/nyves-project/rinda-initiative#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "mongoose": "^9.4.1",
+    "uuid": "^14.0.0"
+  }
+}

@@ -116,12 +116,34 @@
     });
   }
 
-  function redeemItem(cost, itemName){
+  async function redeemItem(cost, itemName){
     if(globalPoints >= cost){
-      addPoints(-cost);
-      const msg = t('str_redeem_success').replace('{item}', itemName);
-      alert(msg);
-      updateStoreUI();
+      const sessionId = localStorage.getItem('rinda-session-id');
+      if (!sessionId) {
+        alert("Authentication error. Please refresh the page.");
+        return;
+      }
+      
+      try {
+        const res = await fetch('/api/rewards', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId, cost, item: itemName })
+        });
+        
+        const data = await res.json();
+        if (res.ok && data.success) {
+          globalPoints = data.newTotal;
+          localStorage.setItem('rinda-points', globalPoints);
+          const msg = t('str_redeem_success').replace('{item}', itemName);
+          alert(msg);
+          updateStoreUI();
+        } else {
+          alert('Error: ' + (data.message || 'Could not process redemption.'));
+        }
+      } catch(err) {
+        alert('Network error. You need an internet connection to process real-world rewards.');
+      }
     }
   }
 
