@@ -980,7 +980,7 @@ window.I18N_KIN = {
   "str_1942": "Ikibazo cya 2 kuri 5",
   "str_1943": "Urakoresha agakingirizo buri gihe mu gihe cy'imibonano?",
   "str_1944": "Kugikoresha neza buri gihe ni uburyo bw'ibanze bwo kwirinda.",
-  "str_1945": "<button class=\"q-option\" onclick=\"selectOption(2,0,0)\"><span class=\"opt-icon\">✅</span>Buri nshuro yose</button>\n        <button class=\"q-option\" onclick=\"selectOption(2,1,1)\"><span class=\"opt-icon\">📊</span>Inshuro nyinshi</button>\n        <button class=\"q-option\" onclick=\"selectOption(2,2,2)\"><span class=\"opt-icon\">⚠️</span>Rimwe na rimwe / gake</button>\n        <button class=\"q-option\" onclick=\"selectOption(2,3,2)\"><span class=\"opt-icon\">🚫</span>Ntago nabigeze / ntago nkora imibonano</button>",
+  "str_1945": "<button class=\"q-option\" onclick=\"selectOption(2,0,0)\"><span class=\"opt-icon\">✅</span>Buri nshuro yose</button>\n        <button class=\"q-option\" onclick=\"selectOption(2,1,1)\"><span class=\"opt-icon\">📊</span>Inshuro nyinshi</button>\n        <button class=\"q-option\" onclick=\"selectOption(2,2,2)\"><span class=\"opt-icon\">⚠️</span>Rimwe na rimwe / gake</button>\n        <button class=\"q-option\" onclick=\"selectOption(2,3,2)\"><span class=\"opt-icon\">🚫</span>Ntabwo nabyigeze / ntago nkora imibonano</button>",
   "str_1946": "Ikibazo cya 3 kuri 5",
   "str_1947": "Wigeze ubona ikibazo cyo gusaba uwo mubanariye gukoresha agakingirizo?",
   "str_1948": "Imbaraga z'imyanya ni inzitizi nkuru ku bagore bato mu Rwanda (DHS 2025).",
