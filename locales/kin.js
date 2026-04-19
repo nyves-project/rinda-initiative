@@ -550,7 +550,7 @@ window.I18N_KIN = {
   "str_1514": "kwarara",
   "str_1515": "Imihango myinshi",
   "str_1516": "Kuribwa n'umugongo",
-  "str_1517": "kubyimba",
+  "str_1517": "Kubyimbirwa munda",
   "str_1518": "Ibishishi",
   "str_1519": "💡 Inama y'Ubuzima",
   "str_1520": "💾 Bika Ibimenyetso by'Uyu Munsi",
