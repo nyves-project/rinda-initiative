@@ -1006,7 +1006,7 @@
   "str_1968": "<span>High Contrast</span><label class=\"toggle-switch\"><input type=\"checkbox\" onchange=\"toggleContrast(this.checked)\"><span class=\"toggle-slider\"></span></label>",
   "str_1969": "🎁 Rewards Store",
   "str_1970": "Redeem Points",
-  "str_1971": "Earn points by learning about health and redeem them for real-world items.",
+  "str_1971": "",
   "str_1972": "Available Points",
   "str_1973": "❓ Take a Quiz to Earn",
   "str_1974": "Available Items",
