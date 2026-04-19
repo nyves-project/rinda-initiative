@@ -1008,7 +1008,7 @@ window.I18N_KIN = {
   "str_1970": "Gura Ukoresheje Amanota",
   "str_1971": "",
   "str_1972": "Amanota Ufite",
-  "str_1973": "❓ Fanya Ikizamini Kugira Ngo Ugebuke Amanota",
+  "str_1973": "❓ Kora ikizamini kugirango ubone amanota",
   "str_1974": "Ibikoresho Bihari",
   "str_1975": "Agafuka k'Ibikoresho by'Isuku ky'Imweho",
   "str_1976": "Igiciro: Amanota 150",
