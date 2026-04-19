@@ -108,10 +108,10 @@
       const cost = parseInt(btn.dataset.cost);
       if(globalPoints < cost) {
         btn.disabled = true;
-        btn.textContent = 'Not enough pts';
+        btn.textContent = t('str_not_enough_pts');
       } else {
         btn.disabled = false;
-        btn.textContent = 'Redeem';
+        btn.textContent = t('str_1977'); // "Redeem" / "Gura"
       }
     });
   }
@@ -119,7 +119,8 @@
   function redeemItem(cost, itemName){
     if(globalPoints >= cost){
       addPoints(-cost);
-      alert(`Success! You have redeemed ${itemName}. Your request has been sent to the nearest distribution center.`);
+      const msg = t('str_redeem_success').replace('{item}', itemName);
+      alert(msg);
       updateStoreUI();
     }
   }
