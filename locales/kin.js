@@ -1006,7 +1006,7 @@ window.I18N_KIN = {
   "str_1968": "<span>Kugaragaza neza inyandiko</span><label class=\"toggle-switch\"><input type=\"checkbox\" onchange=\"toggleContrast(this.checked)\"><span class=\"toggle-slider\"></span></label>",
   "str_1969": "🎁 ibihembo",
   "str_1970": "Gura Ukoresheje Amanota",
-  "str_1971": "Noheza amanota ugize mu kwiga ubuzima ukagura ibikoresho by'ingenzi.",
+  "str_1971": "",
   "str_1972": "Amanota Ufite",
   "str_1973": "❓ Fanya Ikizamini Kugira Ngo Ugebuke Amanota",
   "str_1974": "Ibikoresho Bihari",

@@ -1,5 +1,5 @@
 /* Rinda Initiative — Service Worker */
-const CACHE_NAME = 'rinda-v48';
+const CACHE_NAME = 'rinda-v49';
 const ASSETS = [
   '/',
   '/index.html',
