@@ -4,7 +4,7 @@
 const translations = {
   en:{
     /* Dashboard */
-    welcome:"Welcome to Rinda",
+    welcome:"Welcome to RINDA",
     subtitle:"Your private HIV health companion",
     platformModules:"Platform Modules",
     module1:"Self-Test Kit Order",
@@ -67,7 +67,7 @@ const translations = {
   },
   kin:{
     /* Dashboard — Verified Kinyarwanda (RBC / MoH Rwanda) */
-    welcome:"Murakaza neza kuri Rinda",
+    welcome:"Murakaza neza kuri RINDA",
     subtitle:"Umurinzi wawe w'ubuzima bwa Virusi itera SIDA n' ubuzima bwimyororokere nuburyo wabona service",
     platformModules:"Gahunda z'Urubuga",
     module1:"Gutumiza Igikoresho cyo Kwipima",
@@ -401,8 +401,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 /* ── USSD Simulator ── */
 const ussdData = {
   home:{
-    header:"*775# — Rinda Health",
-    body:"Murakaza neza kuri Rinda\n(Welcome to Rinda)\n\n1. Kwipima SIDA (HIV Test)\n2. Kwiga (Learn)\n3. Gutumiza Igikoresho (Order Kit)\n4. Ivuriro rya Hafi (Nearest Clinic)\n5. Ubujyanama (Counseling)\n\n0. Garuka (Back)"
+    header:"*775# — RINDA Health",
+    body:"Murakaza neza kuri RINDA\n(Welcome to RINDA)\n\n1. Kwipima SIDA (HIV Test)\n2. Kwiga (Learn)\n3. Gutumiza Igikoresho (Order Kit)\n4. Ivuriro rya Hafi (Nearest Clinic)\n5. Ubujyanama (Counseling)\n\n0. Garuka (Back)"
   },
   '1':{header:"Kwipima SIDA",body:"Kwipima Virusi itera SIDA\n(HIV Self-Test)\n\n☑ Wiyipima mu rugo\n  (Test yourself at home)\n☑ Ibisubizo mu minota 20\n  (Results in 20 minutes)\n☑ Ibanga ryawe rirabikwa\n  (Your privacy is protected)\n☑ Bisubiranyeho bwose\n  (Completely confidential)\n\n1. Gutumiza Igikoresho (Order kit)\n2. Soma ibisubizo (How to read results)\n0. Garuka (Back)"},
   '2':{header:"Kwiga — Ubumenyi",body:"Ubumenyi bwo Kwirinda SIDA\n(HIV Prevention Knowledge)\n\n📚 Virusi itera SIDA ni iki?\n   (What is HIV?)\n📚 Ibinyoma bikunze kwumvikana\n   (Common myths)\n📚 Gukumira SIDA (Prevention)\n📚 Agakingirizo gakoresha ite?\n   (How to use a condom)\n\n1. Tangira Kwiga (Start learning)\n0. Garuka (Back)"},
@@ -564,7 +564,7 @@ function openShareModal(title, text, url){
       <div class="share-modal-card">
         <div style="font-size:2rem;margin-bottom:.75rem">📤</div>
         <h3 id="smc-title">Share</h3>
-        <p id="smc-desc">Spread the word about Rinda</p>
+        <p id="smc-desc">Spread the word about RINDA</p>
         <div class="share-btns">
           <a class="share-btn whatsapp" id="smc-wa" target="_blank" rel="noopener">
             <span style="font-size:1.3rem">💬</span><span>Share via WhatsApp</span>
@@ -581,8 +581,8 @@ function openShareModal(title, text, url){
     document.body.appendChild(modal);
   }
   const shareUrl = url || window.location.href;
-  const shareText = text || 'Check out the Rinda Initiative — HIV prevention platform for Rwanda\'s youth.';
-  document.getElementById('smc-title').textContent = title || 'Share Rinda';
+  const shareText = text || 'Check out the RINDA Initiative — HIV prevention platform for Rwanda\'s youth.';
+  document.getElementById('smc-title').textContent = title || 'Share RINDA';
   document.getElementById('smc-desc').textContent = shareText;
   document.getElementById('smc-wa').href = 'https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + shareUrl);
   document.getElementById('smc-copy').dataset.url = shareUrl;
@@ -591,7 +591,7 @@ function openShareModal(title, text, url){
   if(navigator.share){
     const nativeBtn = document.getElementById('smc-native');
     nativeBtn.style.display='flex';
-    nativeBtn.onclick = (e)=>{ e.preventDefault(); navigator.share({title: title||'Rinda', text: shareText, url: shareUrl}).catch(()=>{}); };
+    nativeBtn.onclick = (e)=>{ e.preventDefault(); navigator.share({title: title||'RINDA', text: shareText, url: shareUrl}).catch(()=>{}); };
   }
   modal.classList.add('open');
 }

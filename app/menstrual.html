@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Rinda — Menstrual Health Tracker</title>
+  <title>RINDA — Menstrual Health Tracker</title>
   <meta name="description" content="Track your menstrual cycle, predict your next 3 months, log symptoms, and find affordable reusable pads in Rwanda.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,7 +142,7 @@
 <body>
 
 <header class="app-header">
-  <div class="app-logo" data-i18n="str_1479"><span class="logo-shield">🛡️</span><span>Rinda</span>&nbsp;Health</div>
+  <div class="app-logo" data-i18n="str_1479"><span class="logo-shield">🛡️</span><span>RINDA</span>&nbsp;Health</div>
   <div class="header-right">
     <div class="lang-toggle" role="group" aria-label="Language switcher" data-i18n="str_1480">
       <button class="lang-btn active" data-lang="en">EN</button>
@@ -684,14 +684,14 @@ function exportIcal() {
   const lp = parseDate(data.history[data.history.length-1]);
   const cl = data.cycleLen || 28;
   const pd = data.periodDur || 5;
-  let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Rinda Initiative//Menstrual Tracker//EN\r\n';
+  let ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//RINDA//Menstrual Tracker//EN\r\n';
 
   for(let c=0; c<6; c++){
     const start = addDays(lp, c*cl);
     const end   = addDays(start, pd);
     const dtStart = start.toISOString().replace(/-|:/g,'').split('.')[0]+'Z';
     const dtEnd   = end.toISOString().replace(/-|:/g,'').split('.')[0]+'Z';
-    ics += `BEGIN:VEVENT\r\nUID:rinda-period-${c}@rinda\r\nDTSTART:${dtStart}\r\nDTEND:${dtEnd}\r\nSUMMARY:🩸 Period (Rinda Prediction)\r\nDESCRIPTION:Predicted by your Rinda Initiative Cycle Tracker.\r\nEND:VEVENT\r\n`;
+    ics += `BEGIN:VEVENT\r\nUID:rinda-period-${c}@rinda\r\nDTSTART:${dtStart}\r\nDTEND:${dtEnd}\r\nSUMMARY:🩸 Period (Rinda Prediction)\r\nDESCRIPTION:Predicted by your RINDA Cycle Tracker.\r\nEND:VEVENT\r\n`;
     const ov = addDays(start, cl-14);
     const ovStr = ov.toISOString().split('T')[0].replace(/-/g,'');
     ics += `BEGIN:VEVENT\r\nUID:rinda-ovulation-${c}@rinda\r\nDTSTART;VALUE=DATE:${ovStr}\r\nDTEND;VALUE=DATE:${ovStr}\r\nSUMMARY:🥚 Ovulation Day (Rinda)\r\nEND:VEVENT\r\n`;

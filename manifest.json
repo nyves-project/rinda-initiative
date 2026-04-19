@@ -1,6 +1,6 @@
 {
-  "name": "Rinda Initiative",
-  "short_name": "Rinda",
+  "name": "RINDA",
+  "short_name": "RINDA",
   "description": "HIV testing and prevention platform for Rwanda's youth — bilingual, offline-capable.",
   "start_url": "/app/index.html",
   "display": "standalone",
