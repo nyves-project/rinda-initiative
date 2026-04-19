@@ -446,7 +446,7 @@ window.I18N_KIN = {
   "str_1410": "<button class=\"voice-mic-btn\" id=\"voice-mic-btn\" onclick=\"toggleVoiceCommand()\">🎤</button>\n    <button class=\"access-btn\" onclick=\"toggleAccessPanel()\">♿</button>",
   "str_1411": "♿ Kwita ku bafite ubumuga",
   "str_1412": "<span>Kugaragaza neza inyandiko</span><label class=\"toggle-switch\"><input type=\"checkbox\" onchange=\"toggleContrast(this.checked)\"><span class=\"toggle-slider\"></span></label>",
-  "str_1413": "📁 Ibikoresho by'Ubuzima",
+  "str_1413": "📁 Ibitabo k'ubuzima",
   "str_1414": "ISOMERO",
   "str_1415": "Kuramo amabwiriza yemewe y'ubuzima, ibitabo, n'imfashanyigisho byemejwe n'Ikigo cy'Igihugu Gishinzwe Ubuzima (RBC) na Minisiteri y'Ubuzima.",
   "str_1416": "<button class=\"filter-chip active\" data-tag=\"all\" onclick=\"filterDocs('all',this)\">Inyandiko Zose</button>\n    <button class=\"filter-chip\" data-tag=\"fp\" onclick=\"filterDocs('fp',this)\">Kuboneza Urubyaro</button>\n    <button class=\"filter-chip\" data-tag=\"hiv\" onclick=\"filterDocs('hiv',this)\">Gukumira SIDA</button>\n    <button class=\"filter-chip\" data-tag=\"peer\" onclick=\"filterDocs('peer',this)\">Inyigisho z'Urubyiruko</button>",
