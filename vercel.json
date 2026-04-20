@@ -2,11 +2,6 @@
   "version": 2,
   "name": "rinda-initiative",
   "cleanUrls": true,
-  "functions": {
-    "api/*.js": {
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
       "source": "/sw.js",
