@@ -1,7 +1,6 @@
 {
   "version": 2,
   "name": "rinda-initiative",
-  "cleanUrls": true,
   "rewrites": [
     { "source": "/rewards", "destination": "/app/rewards.html" },
     { "source": "/clinic", "destination": "/app/clinic.html" },
