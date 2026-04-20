@@ -2,6 +2,18 @@
   "version": 2,
   "name": "rinda-initiative",
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/rewards", "destination": "/app/rewards.html" },
+    { "source": "/clinic", "destination": "/app/clinic.html" },
+    { "source": "/admin", "destination": "/app/admin.html" },
+    { "source": "/quiz", "destination": "/app/quiz.html" },
+    { "source": "/community", "destination": "/app/community.html" },
+    { "source": "/library", "destination": "/app/library.html" },
+    { "source": "/order", "destination": "/app/order.html" },
+    { "source": "/knowledge", "destination": "/app/knowledge.html" },
+    { "source": "/menstrual", "destination": "/app/menstrual.html" },
+    { "source": "/modules", "destination": "/app/modules.html" }
+  ],
   "headers": [
     {
       "source": "/sw.js",
