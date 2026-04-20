@@ -1,45 +1,12 @@
 {
   "version": 2,
   "name": "rinda-initiative",
+  "cleanUrls": true,
   "functions": {
-    "api/**/*.js": {
+    "api/*.js": {
       "maxDuration": 10
     }
   },
-  "routes": [
-    {
-      "src": "/api/auth",
-      "dest": "/api/auth.js"
-    },
-    {
-      "src": "/api/quiz",
-      "dest": "/api/quiz.js"
-    },
-    {
-      "src": "/api/rewards",
-      "dest": "/api/rewards.js"
-    },
-    {
-      "src": "/api/track",
-      "dest": "/api/track.js"
-    },
-    {
-      "src": "/api/admin",
-      "dest": "/api/admin.js"
-    },
-    {
-      "src": "/api/ussd",
-      "dest": "/api/ussd.js"
-    },
-    {
-      "src": "/app/(.*)",
-      "dest": "/app/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/sw.js",
@@ -70,14 +37,6 @@
       "source": "/assets/css/(.*)\\.css",
       "headers": [
         { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "no-referrer" }
       ]
     }
   ]
