@@ -1,9 +1,44 @@
 {
   "version": 2,
   "name": "rinda-initiative",
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 10
+    }
+  },
   "routes": [
-    { "src": "/app/(.*)", "dest": "/app/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
+    {
+      "src": "/api/auth",
+      "dest": "/api/auth.js"
+    },
+    {
+      "src": "/api/quiz",
+      "dest": "/api/quiz.js"
+    },
+    {
+      "src": "/api/rewards",
+      "dest": "/api/rewards.js"
+    },
+    {
+      "src": "/api/track",
+      "dest": "/api/track.js"
+    },
+    {
+      "src": "/api/admin",
+      "dest": "/api/admin.js"
+    },
+    {
+      "src": "/api/ussd",
+      "dest": "/api/ussd.js"
+    },
+    {
+      "src": "/app/(.*)",
+      "dest": "/app/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ],
   "headers": [
     {

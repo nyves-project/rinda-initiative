@@ -9,85 +9,482 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="../assets/css/app.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
   <style>
-    .admin-container { padding: 2rem 1.5rem; }
-    .auth-box { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 2rem; text-align: center; max-width: 400px; margin: 4rem auto; }
-    .auth-box input { width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-bottom: 1rem; }
-    .auth-box button { width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); background: var(--primary); color: #fff; font-weight: 700; border: none; cursor: pointer; }
-    
-    .dashboard-grid { display: none; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-    .stat-card { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; }
-    .stat-val { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
-    .stat-label { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    :root {
+      --admin-gold: #FAD201;
+      --admin-green: #00e676;
+      --admin-blue: #4fc3f7;
+      --admin-red: #ff5252;
+    }
+
+    body { background: #090912; }
+
+    /* ── Auth Screen ── */
+    .auth-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(250,210,1,0.06) 0%, transparent 70%);
+    }
+    .auth-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(24px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .auth-shield { font-size: 3.5rem; display: block; margin-bottom: 1rem; }
+    .auth-card h1 { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 0.25rem; }
+    .auth-card p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 2rem; }
+    .auth-input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+      letter-spacing: 0.1em;
+    }
+    .auth-input:focus { border-color: var(--admin-gold); }
+    .auth-btn {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, var(--admin-gold), #f0a500);
+      color: #000;
+      font-weight: 800;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      font-family: 'Outfit', sans-serif;
+    }
+    .auth-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .auth-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .auth-error { color: var(--admin-red); font-size: 0.85rem; margin-top: 0.75rem; display: none; }
+
+    /* ── Dashboard Layout ── */
+    .dashboard { display: none; padding: 0 1.25rem 6rem; }
+    .dash-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.25rem 0;
+      margin-bottom: 1.5rem;
+    }
+    .dash-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .dash-badge {
+      background: rgba(0,230,118,0.12);
+      color: var(--admin-green);
+      border: 1px solid rgba(0,230,118,0.25);
+      border-radius: 6rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .dash-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--admin-green);
+      display: inline-block;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+
+    .logout-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      padding: 0.4rem 0.9rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .logout-btn:hover { background: rgba(255,82,82,0.15); border-color: var(--admin-red); color: var(--admin-red); }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    /* ── KPI Cards ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .kpi-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 1.1rem;
+      padding: 1.25rem 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .kpi-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); }
+    .kpi-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      border-radius: 1rem 1rem 0 0;
+    }
+    .kpi-card.gold::after  { background: var(--admin-gold); }
+    .kpi-card.green::after { background: var(--admin-green); }
+    .kpi-card.blue::after  { background: var(--admin-blue); }
+    .kpi-card.red::after   { background: var(--admin-red); }
+
+    .kpi-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+    .kpi-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .kpi-card.gold .kpi-val  { color: var(--admin-gold); }
+    .kpi-card.green .kpi-val { color: var(--admin-green); }
+    .kpi-card.blue .kpi-val  { color: var(--admin-blue); }
+    .kpi-card.red .kpi-val   { color: var(--admin-red); }
+
+    .kpi-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Chart Card ── */
+    .chart-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 1.1rem;
+      padding: 1.25rem;
+    }
+    .chart-card h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+    }
+
+    /* ── Orders Table ── */
+    .orders-table-wrap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 1.1rem;
+      overflow: hidden;
+    }
+    .orders-table-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.35);
+    }
+    .orders-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.82rem;
+      align-items: center;
+      transition: background 0.15s;
+    }
+    .orders-row:last-child { border-bottom: none; }
+    .orders-row:hover { background: rgba(255,255,255,0.03); }
+    .orders-row .session { color: rgba(255,255,255,0.4); font-family: monospace; font-size: 0.75rem; }
+    .orders-row .item-name { color: #fff; font-weight: 600; }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    .status-pending { background: rgba(250,210,1,0.12); color: var(--admin-gold); border: 1px solid rgba(250,210,1,0.2); }
+    .status-fulfilled { background: rgba(0,230,118,0.12); color: var(--admin-green); border: 1px solid rgba(0,230,118,0.2); }
+
+    .empty-state {
+      text-align: center;
+      padding: 2.5rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.9rem;
+    }
+
+    /* ── Loading Skeleton ── */
+    .skeleton {
+      background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 0.5rem;
+      height: 32px;
+      margin-bottom: 0.5rem;
+    }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
   </style>
 </head>
 <body>
 
-<header class="app-header">
-  <div class="app-logo"><span class="logo-shield">🛡️</span><span>RINDA</span>&nbsp;Admin</div>
-</header>
+<!-- ── Auth Screen ── -->
+<div class="auth-screen" id="auth-screen">
+  <div class="auth-card">
+    <span class="auth-shield">🛡️</span>
+    <h1>RINDA Admin</h1>
+    <p>Pilot Dashboard — Restricted Access</p>
+    <input
+      type="password"
+      id="admin-pass"
+      class="auth-input"
+      placeholder="Enter Admin Password"
+      autocomplete="current-password"
+      onkeydown="if(event.key==='Enter') loadDashboard()"
+    >
+    <button id="auth-btn" class="auth-btn" onclick="loadDashboard()">Access Dashboard →</button>
+    <div class="auth-error" id="auth-error">⚠️ Incorrect password. Please try again.</div>
+  </div>
+</div>
 
-<main class="app-main admin-container" role="main">
-  
-  <div class="auth-box" id="auth-box">
-    <h2 style="margin-bottom:1rem">Admin Access</h2>
-    <input type="password" id="admin-pass" placeholder="Enter Admin Password">
-    <button onclick="loadDashboard()">Login</button>
+<!-- ── Dashboard ── -->
+<div class="dashboard" id="dashboard">
+
+  <div class="dash-header">
+    <div class="dash-logo">
+      <span>🛡️</span> RINDA Admin
+      <span class="dash-badge">● Live</span>
+    </div>
+    <button class="logout-btn" onclick="logout()">Sign Out</button>
   </div>
 
-  <div class="dashboard-grid fade-in" id="dashboard-grid">
-    <div class="stat-card">
-      <div class="stat-val" id="stat-users">0</div>
-      <div class="stat-label">Total Unique Users</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val" id="stat-quizzes">0</div>
-      <div class="stat-label">Quizzes Completed</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val" id="stat-orders">0</div>
-      <div class="stat-label">Rewards Redeemed</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val" id="stat-points">0</div>
-      <div class="stat-label">Points Circulating</div>
-    </div>
-  </div>
+  <div style="padding: 0 0">
 
-</main>
+    <div class="section-title">Key Metrics</div>
+    <div class="kpi-grid">
+      <div class="kpi-card gold">
+        <span class="kpi-icon">👤</span>
+        <div class="kpi-val" id="kpi-users">–</div>
+        <div class="kpi-label">Total Users</div>
+      </div>
+      <div class="kpi-card green">
+        <span class="kpi-icon">✅</span>
+        <div class="kpi-val" id="kpi-quizzes">–</div>
+        <div class="kpi-label">Quizzes Done</div>
+      </div>
+      <div class="kpi-card blue">
+        <span class="kpi-icon">🎁</span>
+        <div class="kpi-val" id="kpi-orders">–</div>
+        <div class="kpi-label">Rewards Redeemed</div>
+      </div>
+      <div class="kpi-card red">
+        <span class="kpi-icon">⭐</span>
+        <div class="kpi-val" id="kpi-points">–</div>
+        <div class="kpi-label">Points Circulating</div>
+      </div>
+    </div>
+
+    <div class="section-title">7-Day Signups</div>
+    <div class="chart-card">
+      <h4>📈 New User Registrations (Last 7 Days)</h4>
+      <canvas id="signups-chart" height="140"></canvas>
+    </div>
+
+    <div class="section-title">Recent Redemptions</div>
+    <div class="orders-table-wrap">
+      <div class="orders-table-header">
+        <span>Session</span>
+        <span>Item</span>
+        <span>Status</span>
+      </div>
+      <div id="orders-list">
+        <div class="empty-state">No redemptions yet</div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <script>
-  async function loadDashboard() {
-    const pass = document.getElementById('admin-pass').value;
-    const btn = document.querySelector('.auth-box button');
-    btn.textContent = 'Loading...';
-    
-    try {
-      const res = await fetch('/api/admin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ adminSecret: pass })
-      });
-      
-      const data = await res.json();
-      
-      if (res.ok && data.success) {
-        document.getElementById('auth-box').style.display = 'none';
-        document.getElementById('dashboard-grid').style.display = 'grid';
-        
-        document.getElementById('stat-users').textContent = data.metrics.totalUsers;
-        document.getElementById('stat-quizzes').textContent = data.metrics.completedQuizzes;
-        document.getElementById('stat-orders').textContent = data.metrics.totalOrders;
-        document.getElementById('stat-points').textContent = data.metrics.totalPointsDist;
-      } else {
-        alert(data.message || 'Invalid password');
-        btn.textContent = 'Login';
-      }
-    } catch(err) {
-      alert('Network error connecting to backend API.');
-      btn.textContent = 'Login';
+let signupsChart = null;
+
+async function loadDashboard() {
+  const pass = document.getElementById('admin-pass').value.trim();
+  if (!pass) return;
+
+  const btn = document.getElementById('auth-btn');
+  const errEl = document.getElementById('auth-error');
+  btn.disabled = true;
+  btn.textContent = 'Authenticating…';
+  errEl.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/admin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ adminSecret: pass })
+    });
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      // Transition screens
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      renderDashboard(data.metrics);
+    } else {
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Access Dashboard →';
     }
+  } catch(err) {
+    errEl.textContent = '⚠️ Network error. Check connection and try again.';
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Access Dashboard →';
   }
+}
+
+function animateCount(el, target, duration = 1200) {
+  const start = 0;
+  const step = (timestamp) => {
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    // Ease out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target).toLocaleString();
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target.toLocaleString();
+  };
+  let startTime;
+  requestAnimationFrame(ts => { startTime = ts; requestAnimationFrame(step); });
+}
+
+function renderDashboard(metrics) {
+  // KPI counters
+  animateCount(document.getElementById('kpi-users'), metrics.totalUsers);
+  animateCount(document.getElementById('kpi-quizzes'), metrics.completedQuizzes);
+  animateCount(document.getElementById('kpi-orders'), metrics.totalOrders);
+  animateCount(document.getElementById('kpi-points'), metrics.totalPointsDist);
+
+  // Signups chart
+  const labels = (metrics.dailySignups || []).map(d => {
+    const date = new Date(d.date);
+    return date.toLocaleDateString('en', { weekday: 'short', month: 'short', day: 'numeric' });
+  });
+  const counts = (metrics.dailySignups || []).map(d => d.count);
+
+  const ctx = document.getElementById('signups-chart').getContext('2d');
+  if (signupsChart) signupsChart.destroy();
+  signupsChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'New Users',
+        data: counts,
+        backgroundColor: 'rgba(250,210,1,0.25)',
+        borderColor: 'rgba(250,210,1,0.8)',
+        borderWidth: 1.5,
+        borderRadius: 6,
+        hoverBackgroundColor: 'rgba(250,210,1,0.45)',
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(9,9,18,0.95)',
+          titleColor: '#FAD201',
+          bodyColor: 'rgba(255,255,255,0.7)',
+          borderColor: 'rgba(250,210,1,0.2)',
+          borderWidth: 1,
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { color: 'rgba(255,255,255,0.4)', font: { size: 10 } }
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: { color: 'rgba(255,255,255,0.4)', font: { size: 10 }, stepSize: 1 }
+        }
+      }
+    }
+  });
+
+  // Orders list
+  const ordersList = document.getElementById('orders-list');
+  const orders = metrics.recentOrders || [];
+  if (orders.length === 0) {
+    ordersList.innerHTML = '<div class="empty-state">🎁 No redemptions yet — platform is warming up!</div>';
+  } else {
+    ordersList.innerHTML = orders.map(o => {
+      const date = o.redeemedAt ? new Date(o.redeemedAt).toLocaleDateString('en', { month:'short', day:'numeric' }) : '—';
+      const statusClass = o.status === 'fulfilled' ? 'status-fulfilled' : 'status-pending';
+      const statusLabel = o.status === 'fulfilled' ? '✅ Fulfilled' : '⏳ Pending';
+      return `
+        <div class="orders-row">
+          <span class="session">${o.sessionId || '—'}</span>
+          <span class="item-name">${escapeHtml(o.item || '—')}</span>
+          <span><span class="status-pill ${statusClass}">${statusLabel}</span></span>
+        </div>`;
+    }).join('');
+  }
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function logout() {
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('auth-screen').style.display = 'flex';
+  document.getElementById('admin-pass').value = '';
+  document.getElementById('auth-btn').disabled = false;
+  document.getElementById('auth-btn').textContent = 'Access Dashboard →';
+}
 </script>
 
 </body>

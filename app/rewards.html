@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>RINDA — Rewards Store</title>
@@ -6,149 +8,542 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="../assets/css/app.css">
   <style>
-    .points-card { background: linear-gradient(135deg, rgba(250,210,1,0.15), rgba(0,0,0,0)); border: 1px solid rgba(250,210,1,0.3); border-radius: var(--radius-lg); padding: 2rem 1.5rem; text-align: center; margin-bottom: 2rem; }
-    .points-amount { font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
-    .points-label { font-size: 0.9rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    /* ── Points Hero ── */
+    .points-hero {
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(250,210,1,0.12) 0%, transparent 70%),
+        rgba(255,255,255,0.02);
+      border: 1px solid rgba(250,210,1,0.15);
+      border-radius: 1.5rem;
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .points-hero::before {
+      content: '⭐';
+      position: absolute;
+      font-size: 8rem;
+      top: -2rem; right: -1rem;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .points-amount {
+      font-family: 'Outfit', sans-serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.02em;
+      transition: transform 0.3s;
+    }
+    .points-amount.bump { animation: bump 0.35s ease; }
+    @keyframes bump { 0%{transform:scale(1)} 50%{transform:scale(1.15)} 100%{transform:scale(1)} }
 
-    .earn-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 0.75rem 1.5rem; border-radius: var(--radius-xl); color: var(--text-primary); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: var(--transition); margin-top: 1.5rem; text-decoration: none; }
-    .earn-btn:hover { border-color: var(--gold); }
+    .points-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+    .points-sync-status {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1.5rem;
+      min-height: 1rem;
+    }
+    .points-sync-status.synced { color: #00e676; }
+    .points-sync-status.offline { color: rgba(255,255,255,0.3); }
 
-    .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .store-item { background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 1.25rem; display: flex; flex-direction: column; text-align: center; transition: var(--transition); }
-    .store-item:hover { border-color: var(--gold); transform: translateY(-3px); }
-    .store-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
-    .store-name { font-size: 0.95rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.2rem; }
-    .store-cost { font-size: 0.8rem; font-weight: 700; color: var(--gold); margin-bottom: 1rem; }
-    .redeem-btn { padding: 0.6rem; border-radius: var(--radius-sm); border: none; background: var(--gold); color: #000; font-weight: 800; cursor: pointer; transition: opacity 0.2s; font-family: 'Inter', sans-serif; }
-    .redeem-btn:hover:not(:disabled) { opacity: 0.85; }
-    .redeem-btn:disabled { background: rgba(255,255,255,0.1); color: var(--text-muted); cursor: not-allowed; }
+    .earn-cta { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+    .earn-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 6rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s;
+      border: 1px solid;
+    }
+    .earn-btn.quiz {
+      background: rgba(250,210,1,0.12);
+      color: var(--gold);
+      border-color: rgba(250,210,1,0.3);
+    }
+    .earn-btn.quiz:hover { background: rgba(250,210,1,0.2); }
+    .earn-btn.learn {
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.7);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .earn-btn.learn:hover { background: rgba(255,255,255,0.1); }
+
+    /* ── Progress Bar ── */
+    .goal-section { margin-bottom: 1.5rem; }
+    .goal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.5rem;
+    }
+    .goal-bar-track {
+      height: 6px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 6rem;
+      overflow: hidden;
+    }
+    .goal-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), #f0a500);
+      border-radius: 6rem;
+      transition: width 1s cubic-bezier(0.4,0,0.2,1);
+      width: 0%;
+    }
+
+    /* ── Store Grid ── */
+    .store-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 0.75rem;
+    }
+    .store-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .store-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 1.1rem;
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .store-card:hover {
+      border-color: rgba(250,210,1,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(250,210,1,0.08);
+    }
+    .store-card.affordable { border-color: rgba(250,210,1,0.2); }
+    .store-card.unaffordable { opacity: 0.55; }
+
+    .store-icon { font-size: 2.5rem; margin-bottom: 0.65rem; display: block; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
+    .store-name { font-size: 0.88rem; font-weight: 800; color: #fff; margin-bottom: 0.25rem; line-height: 1.3; }
+    .store-desc { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-bottom: 0.75rem; line-height: 1.4; }
+    .store-cost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(250,210,1,0.1);
+      border: 1px solid rgba(250,210,1,0.2);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6rem;
+      margin-bottom: 0.85rem;
+    }
+    .redeem-btn {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 0.6rem;
+      border: none;
+      background: linear-gradient(135deg, var(--gold), #f0a500);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+    .redeem-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+    .redeem-btn:disabled {
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.3);
+      cursor: not-allowed;
+      transform: none;
+    }
+    .redeem-btn.loading { opacity: 0.7; cursor: wait; }
+
+    /* ── Success Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 6rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: rgba(0,230,118,0.15);
+      border: 1px solid rgba(0,230,118,0.3);
+      color: #00e676;
+      padding: 0.85rem 1.5rem;
+      border-radius: 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      backdrop-filter: blur(12px);
+      z-index: 999;
+      transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+      white-space: nowrap;
+      max-width: 90vw;
+      text-align: center;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.error {
+      background: rgba(255,82,82,0.15);
+      border-color: rgba(255,82,82,0.3);
+      color: #ff5252;
+    }
+
+    /* ── Redemption History ── */
+    .history-section {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 1.1rem;
+      overflow: hidden;
+    }
+    .history-header {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .history-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.83rem;
+    }
+    .history-row:last-child { border-bottom: none; }
+    .history-item { color: rgba(255,255,255,0.8); font-weight: 600; }
+    .history-date { color: rgba(255,255,255,0.3); font-size: 0.72rem; }
+    .history-status {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6rem;
+      background: rgba(250,210,1,0.12);
+      color: var(--gold);
+      border: 1px solid rgba(250,210,1,0.2);
+    }
+    .history-empty { padding: 1.5rem; text-align: center; color: rgba(255,255,255,0.25); font-size: 0.85rem; }
   </style>
 </head>
 <body>
 
 <header class="app-header">
-  <div class="app-logo" data-i18n="str_1965"><span class="logo-shield">🛡️</span><span>RINDA</span>&nbsp;Rewards</div>
-  <div class="header-right" data-i18n="str_1966">
+  <div class="app-logo"><span class="logo-shield">🛡️</span><span>RINDA</span>&nbsp;Rewards</div>
+  <div class="header-right">
     <button class="voice-mic-btn" id="voice-mic-btn" onclick="toggleVoiceCommand()">🎤</button>
     <button class="access-btn" onclick="toggleAccessPanel()">♿</button>
   </div>
 </header>
 <div class="access-panel" id="access-panel">
-  <h4 data-i18n="str_1967">♿ Accessibility</h4>
-  <div class="access-row" data-i18n="str_1968"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
+  <h4>♿ Accessibility</h4>
+  <div class="access-row"><span>High Contrast</span><label class="toggle-switch"><input type="checkbox" id="contrast-toggle" onchange="toggleContrast(this.checked)"><span class="toggle-slider"></span></label></div>
 </div>
 
 <main class="app-main" role="main">
   <div class="page-header">
-    <div class="section-badge" style="background:rgba(250,210,1,0.15);color:var(--gold);border-color:rgba(250,210,1,0.3)" data-i18n="str_1969">🎁 Rewards Store</div>
-    <h1 data-i18n="str_1970">Redeem Points</h1>
-    <p data-i18n="str_1971"></p>
+    <div class="section-badge" style="background:rgba(250,210,1,0.15);color:var(--gold);border-color:rgba(250,210,1,0.3)">🎁 Rewards Store</div>
+    <h1>Redeem Your Points</h1>
+    <p style="color:var(--text-secondary);font-size:.9rem">Earn points by completing quizzes and learning modules. Redeem them for real health items.</p>
   </div>
 
-  <div style="padding: 0 1.5rem">
-    <div class="points-card fade-in">
-      <div class="points-amount" id="pts-display">0</div>
-      <div class="points-label" data-i18n="str_1972">Available Points</div>
-      <a href="quiz.html" class="earn-btn" data-i18n="str_1973">❓ Take a Quiz to Earn</a>
+  <div style="padding:0 1.25rem">
+
+    <!-- Points Balance Hero -->
+    <div class="points-hero fade-in">
+      <div class="points-label">Your Balance</div>
+      <div class="points-amount" id="pts-display">–</div>
+      <div class="points-sync-status" id="sync-status">Syncing with server…</div>
+      <div class="earn-cta">
+        <a href="quiz.html" class="earn-btn quiz">❓ Take a Quiz <span style="opacity:0.6">+15 pts</span></a>
+        <a href="modules.html" class="earn-btn learn">📖 Learn: +15 pts/module</a>
+      </div>
     </div>
 
-    <h3 style="font-size:1rem;font-weight:800;margin-bottom:1rem" data-i18n="str_1974">Available Items</h3>
-    
+    <!-- Goal Progress -->
+    <div class="goal-section fade-in">
+      <div class="goal-header">
+        <span>Next Reward Goal</span>
+        <span id="goal-label">0 / 50 pts to Soap</span>
+      </div>
+      <div class="goal-bar-track">
+        <div class="goal-bar-fill" id="goal-bar"></div>
+      </div>
+    </div>
+
+    <!-- Store -->
+    <div class="store-section-title">Available Items</div>
     <div class="store-grid">
-      <div class="store-item fade-in" style="transition-delay:0.1s">
-        <span class="store-icon">🩸</span>
-        <div class="store-name" data-i18n="str_1975">Reusable Pad Kit</div>
-        <div class="store-cost" data-i18n="str_1976">Cost: 150 pts</div>
-        <button class="redeem-btn" data-cost="150" onclick="redeemItem(150, 'Reusable Pad Kit')" data-i18n="str_1977">Redeem</button>
-      </div>
 
-      <div class="store-item fade-in" style="transition-delay:0.2s">
+      <div class="store-card fade-in unaffordable" id="card-soap" style="transition-delay:0.05s">
         <span class="store-icon">🧼</span>
-        <div class="store-name" data-i18n="str_1978">Clean Wash Soap</div>
-        <div class="store-cost" data-i18n="str_1979">Cost: 50 pts</div>
-        <button class="redeem-btn" data-cost="50" onclick="redeemItem(50, 'Clean Wash Soap')" data-i18n="str_1980">Redeem</button>
+        <div class="store-name">Clean Wash Soap</div>
+        <div class="store-desc">Antibacterial hygiene bar</div>
+        <div class="store-cost">⭐ 50 pts</div>
+        <button class="redeem-btn" id="btn-soap" disabled onclick="redeemItem(50, 'Clean Wash Soap', 'btn-soap', 'card-soap')">Not enough points</button>
       </div>
 
-      <div class="store-item fade-in" style="transition-delay:0.3s">
-        <span class="store-icon">📱</span>
-        <div class="store-name" data-i18n="str_1981">MTN 500MB Data</div>
-        <div class="store-cost" data-i18n="str_1982">Cost: 200 pts</div>
-        <button class="redeem-btn" data-cost="200" onclick="redeemItem(200, 'MTN Data Bundle')" data-i18n="str_1983">Redeem</button>
-      </div>
-
-      <div class="store-item fade-in" style="transition-delay:0.4s">
+      <div class="store-card fade-in unaffordable" id="card-ticket" style="transition-delay:0.1s">
         <span class="store-icon">🎟️</span>
-        <div class="store-name" data-i18n="str_1984">Youth Center Ticket</div>
-        <div class="store-cost" data-i18n="str_1985">Cost: 100 pts</div>
-        <button class="redeem-btn" data-cost="100" onclick="redeemItem(100, 'Youth Center Ticket')" data-i18n="str_1986">Redeem</button>
+        <div class="store-name">Youth Center Ticket</div>
+        <div class="store-desc">Health program session</div>
+        <div class="store-cost">⭐ 100 pts</div>
+        <button class="redeem-btn" id="btn-ticket" disabled onclick="redeemItem(100, 'Youth Center Ticket', 'btn-ticket', 'card-ticket')">Not enough points</button>
+      </div>
+
+      <div class="store-card fade-in unaffordable" id="card-pads" style="transition-delay:0.15s">
+        <span class="store-icon">🩸</span>
+        <div class="store-name">Reusable Pad Kit</div>
+        <div class="store-desc">3-month supply, eco-friendly</div>
+        <div class="store-cost">⭐ 150 pts</div>
+        <button class="redeem-btn" id="btn-pads" disabled onclick="redeemItem(150, 'Reusable Pad Kit', 'btn-pads', 'card-pads')">Not enough points</button>
+      </div>
+
+      <div class="store-card fade-in unaffordable" id="card-data" style="transition-delay:0.2s">
+        <span class="store-icon">📱</span>
+        <div class="store-name">MTN 500MB Data</div>
+        <div class="store-desc">Mobile internet bundle</div>
+        <div class="store-cost">⭐ 200 pts</div>
+        <button class="redeem-btn" id="btn-data" disabled onclick="redeemItem(200, 'MTN Data Bundle', 'btn-data', 'card-data')">Not enough points</button>
+      </div>
+
+    </div>
+
+    <!-- Redemption History -->
+    <div class="store-section-title">Redemption History</div>
+    <div class="history-section fade-in">
+      <div class="history-header">📋 Your Redemptions</div>
+      <div id="history-list">
+        <div class="history-empty">No redemptions yet. Start earning points!</div>
       </div>
     </div>
-  </div>
 
+  </div>
 </main>
 
 <nav class="bottom-nav" role="navigation" aria-label="Bottom navigation">
-  <a href="index.html" class="bottom-nav-item" id="nav-home" data-i18n="str_1987"><span class="nav-icon">🏠</span>Home</a>
-  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic" data-i18n="str_1988"><span class="nav-icon">🏥</span>Care</a>
-  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual" data-i18n="str_1989"><span class="nav-icon">🩸</span>Health</a>
-  <a href="modules.html" class="bottom-nav-item" id="nav-modules" data-i18n="str_1990"><span class="nav-icon">📖</span>Learn</a>
-  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge" data-i18n="str_1991"><span class="nav-icon">📚</span>Hub</a>
+  <a href="index.html" class="bottom-nav-item" id="nav-home"><span class="nav-icon">🏠</span>Home</a>
+  <a href="clinic.html" class="bottom-nav-item" id="nav-clinic"><span class="nav-icon">🏥</span>Care</a>
+  <a href="menstrual.html" class="bottom-nav-item" id="nav-menstrual"><span class="nav-icon">🩸</span>Health</a>
+  <a href="modules.html" class="bottom-nav-item" id="nav-modules"><span class="nav-icon">📖</span>Learn</a>
+  <a href="knowledge.html" class="bottom-nav-item" id="nav-knowledge"><span class="nav-icon">📚</span>Hub</a>
 </nav>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
 
 <script src="../locales/en.js"></script>
 <script src="../locales/kin.js"></script>
 <script src="../assets/js/app.js"></script>
 <script>
-  function updateStoreUI(){
-    document.getElementById('pts-display').textContent = globalPoints;
-    document.querySelectorAll('.redeem-btn').forEach(btn => {
-      const cost = parseInt(btn.dataset.cost);
-      if(globalPoints < cost) {
-        btn.disabled = true;
-        btn.textContent = t('str_not_enough_pts');
-      } else {
-        btn.disabled = false;
-        btn.textContent = t('str_1977'); // "Redeem" / "Gura"
-      }
+  // ── Store Config ──
+  const STORE_ITEMS = [
+    { id: 'soap',   cost: 50  },
+    { id: 'ticket', cost: 100 },
+    { id: 'pads',   cost: 150 },
+    { id: 'data',   cost: 200 },
+  ];
+  const GOAL_ITEM = { label: 'Soap', cost: 50 };
+
+  // ── Toast ──
+  function showToast(msg, isError = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast' + (isError ? ' error' : '');
+    requestAnimationFrame(() => t.classList.add('show'));
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // ── Update UI after balance changes ──
+  function updateStoreUI(points) {
+    // Points display
+    const display = document.getElementById('pts-display');
+    display.textContent = points.toLocaleString();
+    display.classList.add('bump');
+    display.addEventListener('animationend', () => display.classList.remove('bump'), { once: true });
+
+    // Goal bar
+    const progress = Math.min(100, Math.round((points / GOAL_ITEM.cost) * 100));
+    document.getElementById('goal-bar').style.width = progress + '%';
+    document.getElementById('goal-label').textContent = `${points} / ${GOAL_ITEM.cost} pts to ${GOAL_ITEM.label}`;
+
+    // Buttons & card states
+    STORE_ITEMS.forEach(item => {
+      const btn  = document.getElementById('btn-' + item.id);
+      const card = document.getElementById('card-' + item.id);
+      if (!btn || !card) return;
+      const canAfford = points >= item.cost;
+      btn.disabled = !canAfford;
+      btn.textContent = canAfford ? '🎁 Redeem' : `Need ${item.cost - points} more pts`;
+      card.classList.toggle('affordable', canAfford);
+      card.classList.toggle('unaffordable', !canAfford);
     });
   }
 
-  async function redeemItem(cost, itemName){
-    if(globalPoints >= cost){
-      const sessionId = localStorage.getItem('rinda-session-id');
-      if (!sessionId) {
-        alert("Authentication error. Please refresh the page.");
-        return;
+  // ── Load balance from server / local fallback ──
+  async function initRewardsPage() {
+    const sessionId = localStorage.getItem('rinda-session-id');
+    const syncEl = document.getElementById('sync-status');
+
+    // Show local balance immediately while we sync
+    const localPoints = parseInt(localStorage.getItem('rinda-points') || '0');
+    updateStoreUI(localPoints);
+
+    if (!sessionId) {
+      syncEl.textContent = 'Running in offline mode — points stored locally';
+      syncEl.className = 'points-sync-status offline';
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId })
+      });
+      const data = await res.json();
+      if (data.success && data.user) {
+        const serverPoints = data.user.globalPoints;
+        globalPoints = serverPoints;
+        localStorage.setItem('rinda-points', serverPoints);
+        updateStoreUI(serverPoints);
+        syncEl.textContent = '✓ Points synced with server';
+        syncEl.className = 'points-sync-status synced';
+
+        // Render redemption history
+        renderHistory(data.user.orders || []);
       }
-      
-      try {
-        const res = await fetch('/api/rewards', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sessionId, cost, item: itemName })
-        });
-        
-        const data = await res.json();
-        if (res.ok && data.success) {
-          globalPoints = data.newTotal;
-          localStorage.setItem('rinda-points', globalPoints);
-          const msg = t('str_redeem_success').replace('{item}', itemName);
-          alert(msg);
-          updateStoreUI();
-        } else {
-          alert('Error: ' + (data.message || 'Could not process redemption.'));
-        }
-      } catch(err) {
-        alert('Network error. You need an internet connection to process real-world rewards.');
-      }
+    } catch(err) {
+      syncEl.textContent = '⚠️ Offline mode — server unavailable';
+      syncEl.className = 'points-sync-status offline';
     }
   }
 
-  document.addEventListener('DOMContentLoaded', updateStoreUI);
+  function renderHistory(orders) {
+    const list = document.getElementById('history-list');
+    if (!orders.length) return; // Keep empty state
+    list.innerHTML = orders
+      .slice()
+      .reverse()
+      .map(o => {
+        const date = o.redeemedAt
+          ? new Date(o.redeemedAt).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })
+          : '—';
+        return `
+          <div class="history-row">
+            <div>
+              <div class="history-item">${escapeHtml(o.item || '—')}</div>
+              <div class="history-date">${date}</div>
+            </div>
+            <span class="history-status">⏳ ${o.status || 'pending'}</span>
+          </div>`;
+      }).join('');
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  // ── Redeem ──
+  async function redeemItem(cost, itemName, btnId, cardId) {
+    const sessionId = localStorage.getItem('rinda-session-id');
+    const currentPoints = parseInt(localStorage.getItem('rinda-points') || '0');
+
+    if (currentPoints < cost) {
+      showToast(`⚠️ Not enough points. You need ${cost - currentPoints} more.`, true);
+      return;
+    }
+
+    const btn = document.getElementById(btnId);
+    if (btn.classList.contains('loading')) return;
+    btn.classList.add('loading');
+    btn.textContent = 'Processing…';
+
+    if (!sessionId) {
+      // Offline fallback — local deduction
+      globalPoints -= cost;
+      localStorage.setItem('rinda-points', globalPoints);
+      updateStoreUI(globalPoints);
+      showToast(`✅ ${itemName} redeemed! (offline mode)`);
+      btn.classList.remove('loading');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/rewards', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, cost, item: itemName })
+      });
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        globalPoints = data.newTotal;
+        localStorage.setItem('rinda-points', globalPoints);
+        updateStoreUI(globalPoints);
+        showToast(`✅ ${itemName} redeemed! Team will contact you soon.`);
+
+        // Add to local history display
+        const list = document.getElementById('history-list');
+        const emptyEl = list.querySelector('.history-empty');
+        if (emptyEl) emptyEl.remove();
+        const today = new Date().toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' });
+        list.insertAdjacentHTML('afterbegin', `
+          <div class="history-row">
+            <div>
+              <div class="history-item">${escapeHtml(itemName)}</div>
+              <div class="history-date">${today}</div>
+            </div>
+            <span class="history-status">⏳ pending</span>
+          </div>`);
+      } else {
+        showToast('⚠️ ' + (data.message || 'Redemption failed. Try again.'), true);
+        btn.textContent = '🎁 Redeem';
+      }
+    } catch(err) {
+      showToast('⚠️ Network error. Check your connection.', true);
+      btn.textContent = '🎁 Redeem';
+    }
+
+    btn.classList.remove('loading');
+  }
+
+  document.addEventListener('DOMContentLoaded', initRewardsPage);
 </script>
 
-
-</body></html>
+</body>
+</html>
