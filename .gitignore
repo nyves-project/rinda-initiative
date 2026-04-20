@@ -1,6 +1,8 @@
 node_modules/
 *.js
 !assets/js/*.js
+!api/**/*.js
+!api/*.js
 !sw.js
 !locales/*.js
 .DS_Store
