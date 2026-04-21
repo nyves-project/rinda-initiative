@@ -21,7 +21,6 @@
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
-    "mongoose": "^9.4.1",
-    "uuid": "^14.0.0"
+    "mongoose": "^9.4.1"
   }
 }

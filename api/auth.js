@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require('uuid');
+const crypto = require('crypto');
 const connectToDatabase = require('./utils/db');
 const User = require('./models/User');
 
@@ -12,7 +12,7 @@ const handler = async (req, res) => {
 
     if (!sessionId) {
       // Create new anonymous user
-      const newSessionId = uuidv4();
+      const newSessionId = crypto.randomUUID();
       const user = new User({ sessionId: newSessionId });
       await user.save();
       return res.status(200).json({ success: true, sessionId: newSessionId, user });
